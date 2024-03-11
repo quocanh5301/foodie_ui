@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:foodie/model/user.dart';
+import 'package:foodie/model/user/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPref {

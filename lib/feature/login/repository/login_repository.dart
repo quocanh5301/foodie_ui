@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:foodie/core/api.dart';
 import 'package:foodie/core/share_pref.dart';
 import 'package:foodie/feature/login/provider/login_provider.dart';
-import 'package:foodie/model/user.dart';
+import 'package:foodie/model/user/user.dart';
 import 'package:fpdart/fpdart.dart';
 // import 'package:tango/models/user/user.dart' as tango_user;
 

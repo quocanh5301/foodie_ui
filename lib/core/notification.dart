@@ -10,13 +10,14 @@ class NotificationHelper {
   static bool helperNotificationOn = true;
 
   NotificationHelper() {
-    helperNotificationOn = SharedPref.getNotificationSetting();
+    // helperNotificationOn = SharedPref.getNotificationSetting();
   }
 
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
 
-  Future<void> initNotifications({required Future<void> Function(RemoteMessage) backgroundNoti}) async {
+  Future<void> initNotifications(
+      {required Future<void> Function(RemoteMessage) backgroundNoti}) async {
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('app_icon');
 
@@ -84,6 +85,7 @@ class NotificationHelper {
         AndroidNotificationDetails(
       channelId,
       channelName,
+      styleInformation: BigTextStyleInformation(''),
     );
 
     const DarwinNotificationDetails darwinNotificationDetails =

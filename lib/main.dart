@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foodie/core/app_state/bloc/app_cubit.dart';
 import 'package:foodie/core/app_state/bloc/app_state.dart';
 import 'package:foodie/core/injection.dart';
+import 'package:foodie/core/notification.dart';
 import 'package:foodie/core/router/router.dart';
 import 'package:foodie/core/share_pref.dart';
 import 'package:foodie/core/styles.dart';
@@ -16,15 +18,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:foodie/core/injection.dart' as di;
 
 //!qa notification
-// NotificationHelper notificationHelper = NotificationHelper();
+NotificationHelper notificationHelper = NotificationHelper();
 
-// @pragma('vm:entry-point')
-// Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-//   notificationHelper.handleNotificationSetting(
-//     message.data['title'],
-//     message.data['content'],
-//   );
-// }
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  debugPrint('Handling a background message ${message.data['title']} ${message.data['content']}');
+  notificationHelper.handleNotificationSetting(
+    message.data['title'],
+    message.data['content'],
+  );
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,9 +36,9 @@ void main() async {
   await di.init();
 
   //!qa notification
-  // notificationHelper.initNotifications(
-  //   backgroundNoti: _firebaseMessagingBackgroundHandler,
-  // );
+  notificationHelper.initNotifications(
+    backgroundNoti: _firebaseMessagingBackgroundHandler,
+  );
 
   runApp(const MyApp());
 }

@@ -9,7 +9,10 @@ class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
   final List<PersistentBottomNavBarItem> testTabItems = [
-    ('Explore', AppImage.icHome, AppImage.icHome),
+    ('Explore', AppImage.icHome),
+    ('Create Recipe', AppImage.icAddRecipe),
+    ('Bookmark', AppImage.icBookmark),
+    ('Profile', AppImage.icProfile),
     // ('Agenda', AppImage.icDetailAgendaInactive, AppImage.icDetailAgendaActive),
     // (
     //   'Speakers',
@@ -19,19 +22,30 @@ class HomeScreen extends StatelessWidget {
     // ('Q&A', AppImage.icDetailFAQInactive, AppImage.icDetailFAQActive),
     // ('Assets', AppImage.icDetailAssetsInactive, AppImage.icDetailAssetsActive)
   ]
-      .map((item) => PersistentBottomNavBarItem(
+      .map(
+        (item) => PersistentBottomNavBarItem(
           icon: SizedBox(
-              width: AppStyles.height(12),
-              height: AppStyles.height(12),
-              child: SvgPicture.asset(item.$2)),
+            width: AppStyles.height(12),
+            height: AppStyles.height(12),
+            child: SvgPicture.asset(
+              item.$2,
+              colorFilter: const ColorFilter.mode(
+                Colors.white,
+                BlendMode.srcIn,
+              ),
+            ),
+          ),
           inactiveIcon: SizedBox(
-              width: AppStyles.height(12),
-              height: AppStyles.height(12),
-              child: SvgPicture.asset(item.$3)),
-          activeColorPrimary: '#08357C'.toColor(),
+            width: AppStyles.height(12),
+            height: AppStyles.height(12),
+            child: SvgPicture.asset(item.$2),
+          ),
+          activeColorPrimary: '#E23E3E'.toColor(),
           activeColorSecondary: Colors.white,
           inactiveColorSecondary: '#08357C'.toColor(),
-          title: item.$1))
+          title: item.$1,
+        ),
+      )
       .toList();
   final PersistentTabController controller =
       PersistentTabController(initialIndex: 0);
@@ -40,6 +54,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> testTabScreens = [
       ExploreTab(),
+      const Text('Create Recipe'),
+      const Text('Bookmark'),
+      const Text('Profile'),
       // HomeTabScreen(event: event),
       // AgendaTab(
       //   eventId: event.id!.toString(),
@@ -75,6 +92,9 @@ class HomeScreen extends StatelessWidget {
           curve: Curves.ease,
           duration: Duration(milliseconds: 200)),
       navBarStyle: NavBarStyle.style7,
+      onItemSelected: (index) {
+        debugPrint('QA index: $index');
+      },
     );
   }
 }

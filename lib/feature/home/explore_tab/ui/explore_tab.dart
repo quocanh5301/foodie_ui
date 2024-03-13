@@ -1,9 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:foodie/core/images.dart';
 import 'package:foodie/core/styles.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/search_field.dart';
+import 'package:foodie/feature/home/explore_tab/ui/widget/rectangle_recipe.dart';
+import 'package:foodie/feature/home/explore_tab/ui/widget/square_recipe.dart';
 import 'package:foodie/generated/l10n.dart';
 
 class ExploreTab extends StatelessWidget {
@@ -74,7 +75,7 @@ class ExploreTab extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: AppStyles.width(16),
+                      horizontal: AppStyles.width(15),
                       vertical: AppStyles.height(10),
                     ),
                     child: Text(
@@ -95,9 +96,32 @@ class ExploreTab extends StatelessWidget {
                   //         upcomingEvents: upcomingEvents,
                   //       )
                   //     : const SizedBox.shrink(),
+                  Container(
+                    padding: EdgeInsets.only(left: AppStyles.width(15)),
+                    height: AppStyles.screenW / 2.5,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 10,
+                      separatorBuilder: (context, index) =>
+                          const HorizontalSpace(10),
+                      itemBuilder: (context, index) => RectangleRecipeItem(),
+                    ),
+                  ),
                   // (pastEvents.isNotEmpty)
                   //     ? PastEventsList(pastEvents: pastEvents)
                   //     : const SizedBox.shrink(),
+                  const VerticalSpace(15),
+                  Container(
+                    padding: EdgeInsets.only(left: AppStyles.width(15)),
+                    height: AppStyles.screenW / 2,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 10,
+                      separatorBuilder: (context, index) =>
+                          const HorizontalSpace(10),
+                      itemBuilder: (context, index) => SquareRecipeItem(),
+                    ),
+                  ),
                 ],
               ),
             ),

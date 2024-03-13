@@ -22,5 +22,7 @@
     "name": "Name",
     "nameHint": "Enter your Name",
     "nameError": "Please fill name",
-    "ok": "OK"
+    "ok": "OK",
+    "searchAll": "Search",
+    "explore": "What would you like to cook today?"
 }

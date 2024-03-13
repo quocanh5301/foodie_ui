@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailFormatError":
             MessageLookupByLibrary.simpleMessage("Email không hợp lệ"),
         "emailHint": MessageLookupByLibrary.simpleMessage("Email"),
+        "explore": MessageLookupByLibrary.simpleMessage(
+            "What would you like to cook today?"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot Password?"),
         "forgotPasswordSuccess": MessageLookupByLibrary.simpleMessage(
@@ -54,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerText2": MessageLookupByLibrary.simpleMessage("Tạo tài khoản"),
         "registerTitle1": MessageLookupByLibrary.simpleMessage("Tạo tài khoản"),
         "registerTitle2": MessageLookupByLibrary.simpleMessage(
-            "Khám phá các món ăn mới chúng tôi ngay hôm nay")
+            "Khám phá các món ăn mới chúng tôi ngay hôm nay"),
+        "searchAll": MessageLookupByLibrary.simpleMessage("Search")
       };
 }

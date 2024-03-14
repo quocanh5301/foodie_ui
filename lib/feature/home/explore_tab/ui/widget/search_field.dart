@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:foodie/core/images.dart';
-import 'package:foodie/core/styles.dart';
+import 'package:foodie/core/resource/images.dart';
+import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/generated/l10n.dart';
 
 class SearchField extends StatelessWidget {

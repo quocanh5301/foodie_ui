@@ -1,4 +1,4 @@
-import 'package:foodie/core/api.dart';
+import 'package:foodie/core/data/api.dart';
 import 'package:foodie/core/app_state/bloc/app_cubit.dart';
 import 'package:foodie/core/app_state/provider/app_provider.dart';
 import 'package:foodie/core/app_state/repository/app_repository.dart';

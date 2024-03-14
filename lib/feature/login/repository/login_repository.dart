@@ -1,7 +1,7 @@
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:flutter/material.dart';
-import 'package:foodie/core/api.dart';
-import 'package:foodie/core/share_pref.dart';
+import 'package:foodie/core/data/api.dart';
+import 'package:foodie/core/data/share_pref.dart';
 import 'package:foodie/feature/login/provider/login_provider.dart';
 import 'package:foodie/model/user/user.dart';
 import 'package:fpdart/fpdart.dart';

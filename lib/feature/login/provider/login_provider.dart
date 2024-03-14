@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:foodie/core/api.dart';
+import 'package:foodie/core/data/api.dart';
 
 class LoginProvider {
   const LoginProvider({required this.apiRequest});

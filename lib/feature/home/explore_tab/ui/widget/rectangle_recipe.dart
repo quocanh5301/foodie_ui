@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:foodie/core/images.dart';
-import 'package:foodie/core/styles.dart';
+import 'package:foodie/core/resource/images.dart';
+import 'package:foodie/core/resource/styles.dart';
 
 class RectangleRecipeItem extends StatelessWidget {
   const RectangleRecipeItem({super.key});

@@ -1,9 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
+import 'package:foodie/feature/home/add_new_recipe_tab/bloc/add_new_recipe_cubit.dart';
 
 class AddIngredientButton extends StatelessWidget {
   const AddIngredientButton({super.key});
@@ -11,7 +11,7 @@ class AddIngredientButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => debugPrint('Add Ingredient'),
+      onTap: () => context.read<AddNewRecipeCubit>().addNewIngredient(),
       child: SizedBox(
         width: AppStyles.width(160),
         height: AppStyles.width(40),

@@ -1,19 +1,23 @@
-// // ignore_for_file: invalid_annotation_target
+// ignore_for_file: invalid_annotation_target
 
-// import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-// part 'ingredient.freezed.dart';
-// part 'ingredient.g.dart';
+part 'ingredient.freezed.dart';
+part 'ingredient.g.dart';
 
-// @freezed
-// class Ingredient with _$Ingredient {
-//   const factory Ingredient({
-//     @JsonKey(name: 'id') int? id,
-//     @JsonKey(name: 'ingredient_name') String? ingredientName,
-//     @JsonKey(name: 'ingredient_image') String? ingredientImage,
-//     @JsonKey(name: 'quantity') int? quantity,
-//     @JsonKey(name: 'mearsurement') String? mearsurement,
-//   }) = _Ingredient;
+@freezed
+class Ingredient with _$Ingredient {
+  const factory Ingredient({
+    // @Default(0) 
+    @JsonKey(name: 'ingredient_id') int? id,
+    // @Default('') 
+    @JsonKey(name: 'ingredient_name') String? ingredientName,
+    // @Default('')
+    // @JsonKey(name: 'ingredient_image') String? ingredientImage,
+    // @Default('') 
+    @JsonKey(name: 'amount') String? quantity,
+  }) = _Ingredient;
 
-//   factory Ingredient.fromJson(Map<String, dynamic> json) => _$IngredientFromJson(json);
-// }
+  factory Ingredient.fromJson(Map<String, dynamic> json) =>
+      _$IngredientFromJson(json);
+}

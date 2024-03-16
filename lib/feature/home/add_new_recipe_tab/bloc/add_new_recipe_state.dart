@@ -1,25 +1,40 @@
-// import 'package:freezed_annotation/freezed_annotation.dart';
-// import 'package:tango/models/user/user.dart';
+import 'package:foodie/model/recipe/ingredient.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-// part 'add_new_recipe_state.freezed.dart';
+part 'add_new_recipe_state.freezed.dart';
 
-// @freezed
-// class AddNewRecipeState with _$AddNewRecipeState {
-//   const factory AddNewRecipeState({
-//     @Default('') List<Map<String,String, String>> i,
-//     @Default('') String errorMessage,
-//     @Default(UserInfoStatus.initial) UserInfoStatus userInfoStatus,
-//     @Default(UserAvatarStatus.initial) UserAvatarStatus userAvatarStatus,
-//     @Default(UserLogoutStatus.initial) UserLogoutStatus userLogoutStatus,
-//     @Default(UserDeleteAccountStatus.initial) UserDeleteAccountStatus deleteAccountStatus,
-//     @Default(false) bool notificationOn,
-//   }) = _AddNewRecipeState;
-// }
+@freezed
+class AddNewRecipeState with _$AddNewRecipeState {
+  const factory AddNewRecipeState({
+    @Default('') String mess,
+    @Default(200) int code,
+    @Default([]) List<Ingredient> ingredientList,
+    @Default('') String recipeName,
+    @Default('') String description,
+    @Default('') String instruction,
+    @Default('') String recipeImage, // file path
+    
+    @Default(UpdateIngredientListStatus.initial)
+    UpdateIngredientListStatus updateIngredientListStatus,
+    @Default(UploadRecipeStatus.initial) UploadRecipeStatus uploadRecipeStatus,
+  }) = _AddNewRecipeState;
+}
 
-// enum UserInfoStatus { initial, loading, success, failure }
+enum UploadRecipeStatus { initial, loading, success, failure }
 
-// enum UserAvatarStatus { initial, updating, success, failure } 
+enum UpdateRecipeImageStatus {
+  initial,
+  loading,
+  success,
+  failure,
+} // add new recipe image, show on UI when choosed img
 
-// enum UserLogoutStatus { initial, loggingOut, success, failure }
+enum UploadIngredientImageStatus { initial, loading, success, failure }
 
-// enum UserDeleteAccountStatus { initial, deleting, success, failure }
+enum UpdateIngredientListStatus {
+  initial,
+  loading,
+  success,
+  failure,
+} //add new ingredient row
+

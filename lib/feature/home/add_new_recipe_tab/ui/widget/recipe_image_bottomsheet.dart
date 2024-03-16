@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:foodie/core/resource/my_image_picker.dart';
 import 'package:foodie/core/resource/styles.dart';
-import 'package:go_router/go_router.dart';
 
 class RecipeImagePicker extends StatelessWidget {
   RecipeImagePicker({super.key});
@@ -35,7 +34,7 @@ class RecipeImagePicker extends StatelessWidget {
               onTap: () async {
                 File? chosenImg = await myImagePicker.openCamera();
                 if (context.mounted) {
-                  context.pop(chosenImg);
+                  Navigator.of(context).pop(chosenImg);
                 }
               },
               child: Row(
@@ -62,7 +61,7 @@ class RecipeImagePicker extends StatelessWidget {
               onTap: () async {
                 File? chosenImg = await myImagePicker.openGallery();
                 if (context.mounted) {
-                  context.pop(chosenImg);
+                  Navigator.of(context).pop(chosenImg);
                 }
               },
               child: Row(

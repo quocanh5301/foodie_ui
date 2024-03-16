@@ -1,18 +1,17 @@
-import 'dart:math';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
-import 'package:foodie/feature/home/add_new_recipe_tab/ui/widget/measurement_dropdown.dart';
+import 'package:foodie/feature/home/add_new_recipe_tab/bloc/add_new_recipe_cubit.dart';
 import 'package:foodie/generated/l10n.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 class AddIngredientField extends StatefulWidget {
-  const AddIngredientField({super.key});
+  const AddIngredientField({super.key, required this.index});
+
+  final int index;
 
   @override
   State<AddIngredientField> createState() => _AddIngredientFieldState();
@@ -25,8 +24,10 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
 
   @override
   Widget build(BuildContext context) {
+    final value = widget.index.toString();
+
     return Dismissible(
-      key: ValueKey(1),
+      key: ValueKey(value),
       background: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -47,7 +48,12 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
       onDismissed: (direction) {
         if (direction == DismissDirection.endToStart) {
           //delete ingredient in state
-          debugPrint('delete ingredient');
+          debugPrint(
+              'delete ingredient ${context.read<AddNewRecipeCubit>().state.ingredientList}');
+          context
+              .read<AddNewRecipeCubit>()
+              .deleteIngredient(index: widget.index);
+          setState(() {});
         }
       },
       direction: DismissDirection.endToStart,
@@ -60,13 +66,13 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
         child: Row(
           children: [
             Expanded(
-              flex: 13,
+              flex: 14,
               child: FormBuilderTextField(
-                name: 'emailField',
-                keyboardType: TextInputType.emailAddress,
+                name: 'ingredientField',
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-                  labelText: S.of(context).email,
-                  hintText: S.of(context).emailHint,
+                  labelText: 'Ingredient',
+                  hintText: 'Ingredient',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                     borderSide: BorderSide(
@@ -95,15 +101,19 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
                     )
                   ],
                 ),
-                onChanged: (email) => {},
+                onChanged: (value) =>
+                    context.read<AddNewRecipeCubit>().setIngredientName(
+                          index: widget.index,
+                          ingredientName: value ?? '',
+                        ),
               ),
             ),
             const Spacer(),
             Expanded(
-              flex: 5,
+              flex: 7,
               child: FormBuilderTextField(
                 name: 'quantityField',
-                keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   labelText: 'Quantity',
                   hintText: 'Quantity',
@@ -113,14 +123,14 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
                       color: '#FF6B00'.toColor(),
                     ),
                   ),
-                  labelStyle: AppStyles.f14m().copyWith(
+                  labelStyle: AppStyles.f13m().copyWith(
                     color: '#FF6B00'.toColor(),
                   ),
-                  hintStyle: AppStyles.f14m().copyWith(
+                  hintStyle: AppStyles.f13m().copyWith(
                     color: Colors.white,
                   ),
                 ),
-                style: AppStyles.f14m().copyWith(
+                style: AppStyles.f13m().copyWith(
                   color: '#FF6B00'.toColor(),
                 ),
                 onTapOutside: (event) =>
@@ -128,28 +138,32 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
                 validator: FormBuilderValidators.compose(
                   [
                     FormBuilderValidators.required(
-                      errorText: S.of(context).emailEmpty,
+                      errorText: "Please fill in this field",
                     ),
-                    FormBuilderValidators.email(
-                      errorText: S.of(context).emailFormatError,
+                    FormBuilderValidators.maxLength(
+                      2,
+                      errorText: 'Max length is 2',
                     )
                   ],
                 ),
-                onChanged: (email) => {},
+                onChanged: (value) => context.read<AddNewRecipeCubit>().setIngredientQuantity(
+                          index: widget.index,
+                          quantity: value ?? '0',
+                        ),
               ),
             ),
-            // const Spacer(),
-            // Expanded(
-            //   flex: 1,
-            //   child: SvgPicture.asset(
-            //     AppImage.icTwoDots,
-            //     fit: BoxFit.cover,
-            //     colorFilter: const ColorFilter.mode(
-            //       Colors.white,
-            //       BlendMode.srcIn,
-            //     ),
-            //   ),
-            // ),
+            const Spacer(),
+            Expanded(
+              flex: 1,
+              child: SvgPicture.asset(
+                AppImage.icTwoDots,
+                fit: BoxFit.cover,
+                colorFilter: const ColorFilter.mode(
+                  Colors.white,
+                  BlendMode.srcIn,
+                ),
+              ),
+            ),
           ],
         ),
       ),

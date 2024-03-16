@@ -56,16 +56,12 @@ dependencies:
   fpdart: ^1.1.0
   dart_jsonwebtoken: ^2.13.0
   cached_network_image: ^3.3.0
-  dropdown_button2: ^2.3.9
-  
-  # 11/03
   persistent_bottom_nav_bar: ^5.0.2
   flutter_animate: ^4.5.0
-
-
   flutter_native_splash: ^2.3.8
   image_picker: ^1.0.7 
   image_cropper: ^5.0.1
+
   
   timeago: ^3.6.0
   intl: ^0.18.1

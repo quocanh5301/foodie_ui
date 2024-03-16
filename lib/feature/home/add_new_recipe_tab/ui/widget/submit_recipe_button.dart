@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/core/resource/styles.dart';
+import 'package:foodie/feature/home/add_new_recipe_tab/bloc/add_new_recipe_cubit.dart';
 import 'package:foodie/generated/l10n.dart';
 
 class SubmitRecipeButton extends StatelessWidget {
@@ -19,9 +18,8 @@ class SubmitRecipeButton extends StatelessWidget {
       ),
       child: TextButton(
         onPressed: () {
-          // if (formKey.currentState?.validate() ?? false) {
-          //   context.read<LoginCubit>().login();
-          // }
+          debugPrint('Submit Recipe ${context.read<AddNewRecipeCubit>().state.ingredientList}');
+          
         },
         child:
             // BlocBuilder<LoginCubit, LoginState>(

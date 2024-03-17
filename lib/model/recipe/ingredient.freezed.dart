@@ -28,7 +28,7 @@ mixin _$Ingredient {
       throw _privateConstructorUsedError; // @Default('')
 // @JsonKey(name: 'ingredient_image') String? ingredientImage,
 // @Default('')
-  @JsonKey(name: 'amount')
+  @JsonKey(name: 'quantity')
   String? get quantity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,7 +46,7 @@ abstract class $IngredientCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'ingredient_id') int? id,
       @JsonKey(name: 'ingredient_name') String? ingredientName,
-      @JsonKey(name: 'amount') String? quantity});
+      @JsonKey(name: 'quantity') String? quantity});
 }
 
 /// @nodoc
@@ -94,7 +94,7 @@ abstract class _$$IngredientImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'ingredient_id') int? id,
       @JsonKey(name: 'ingredient_name') String? ingredientName,
-      @JsonKey(name: 'amount') String? quantity});
+      @JsonKey(name: 'quantity') String? quantity});
 }
 
 /// @nodoc
@@ -135,7 +135,7 @@ class _$IngredientImpl implements _Ingredient {
   const _$IngredientImpl(
       {@JsonKey(name: 'ingredient_id') this.id,
       @JsonKey(name: 'ingredient_name') this.ingredientName,
-      @JsonKey(name: 'amount') this.quantity});
+      @JsonKey(name: 'quantity') this.quantity});
 
   factory _$IngredientImpl.fromJson(Map<String, dynamic> json) =>
       _$$IngredientImplFromJson(json);
@@ -152,7 +152,7 @@ class _$IngredientImpl implements _Ingredient {
 // @JsonKey(name: 'ingredient_image') String? ingredientImage,
 // @Default('')
   @override
-  @JsonKey(name: 'amount')
+  @JsonKey(name: 'quantity')
   final String? quantity;
 
   @override
@@ -194,7 +194,7 @@ abstract class _Ingredient implements Ingredient {
   const factory _Ingredient(
       {@JsonKey(name: 'ingredient_id') final int? id,
       @JsonKey(name: 'ingredient_name') final String? ingredientName,
-      @JsonKey(name: 'amount') final String? quantity}) = _$IngredientImpl;
+      @JsonKey(name: 'quantity') final String? quantity}) = _$IngredientImpl;
 
   factory _Ingredient.fromJson(Map<String, dynamic> json) =
       _$IngredientImpl.fromJson;
@@ -208,7 +208,7 @@ abstract class _Ingredient implements Ingredient {
   @override // @Default('')
 // @JsonKey(name: 'ingredient_image') String? ingredientImage,
 // @Default('')
-  @JsonKey(name: 'amount')
+  @JsonKey(name: 'quantity')
   String? get quantity;
   @override
   @JsonKey(ignore: true)

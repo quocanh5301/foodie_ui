@@ -189,7 +189,9 @@ class _$AddNewRecipeStateImpl implements _AddNewRecipeState {
   const _$AddNewRecipeStateImpl(
       {this.mess = '',
       this.code = 200,
-      final List<Ingredient> ingredientList = const [],
+      final List<Ingredient> ingredientList = const [
+        Ingredient(ingredientName: '', quantity: '')
+      ],
       this.recipeName = '',
       this.description = '',
       this.instruction = '',

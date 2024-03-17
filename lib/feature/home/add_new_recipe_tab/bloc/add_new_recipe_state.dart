@@ -8,7 +8,7 @@ class AddNewRecipeState with _$AddNewRecipeState {
   const factory AddNewRecipeState({
     @Default('') String mess,
     @Default(200) int code,
-    @Default([]) List<Ingredient> ingredientList,
+    @Default([Ingredient(ingredientName: '', quantity: '')]) List<Ingredient> ingredientList,
     @Default('') String recipeName,
     @Default('') String description,
     @Default('') String instruction,

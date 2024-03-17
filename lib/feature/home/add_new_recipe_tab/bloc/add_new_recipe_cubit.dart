@@ -11,8 +11,6 @@ class AddNewRecipeCubit extends Cubit<AddNewRecipeState> {
 
   final AddNewRecipeRepository addNewRecipeRepository;
 
-  // void setEmail(String email) => emit(state.copyWith(email: email));
-
   void setRecipeName({required String recipeName}) =>
       emit(state.copyWith(recipeName: recipeName));
   void setDescription({required String description}) =>
@@ -83,7 +81,7 @@ class AddNewRecipeCubit extends Cubit<AddNewRecipeState> {
           description: '',
           instruction: '',
           recipeImage: '',
-          ingredientList: [],
+          ingredientList: [const Ingredient(ingredientName: '', quantity: '')],
           uploadRecipeStatus: UploadRecipeStatus.success,
         ),
       ),

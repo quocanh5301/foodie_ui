@@ -21,8 +21,10 @@ class AddNewRecipeTab extends StatelessWidget {
 
   final _formKey = GlobalKey<FormState>();
   final TextEditingController nameTextController = TextEditingController();
-  final TextEditingController descriptionTextController = TextEditingController();
-  final TextEditingController instructionTextController = TextEditingController();
+  final TextEditingController descriptionTextController =
+      TextEditingController();
+  final TextEditingController instructionTextController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +53,6 @@ class AddNewRecipeTab extends StatelessWidget {
             nameTextController.text = state.recipeName;
             descriptionTextController.text = state.description;
             instructionTextController.text = state.instruction;
-            
             List<Widget> ingredientList = [];
             for (var i = 0; i < state.ingredientList.length; i++) {
               ingredientList.add(AddIngredientField(
@@ -200,13 +201,6 @@ class AddNewRecipeTab extends StatelessWidget {
                             ),
                             onTapOutside: (event) =>
                                 FocusManager.instance.primaryFocus?.unfocus(),
-                            // validator: FormBuilderValidators.compose(
-                            //   [
-                            //     FormBuilderValidators.required(
-                            //       errorText: 'Enter your recipe description',
-                            //     ),
-                            //   ],
-                            // ),
                             onChanged: (value) => context
                                 .read<AddNewRecipeCubit>()
                                 .setDescription(
@@ -239,13 +233,6 @@ class AddNewRecipeTab extends StatelessWidget {
                             ),
                             onTapOutside: (event) =>
                                 FocusManager.instance.primaryFocus?.unfocus(),
-                            // validator: FormBuilderValidators.compose(
-                            //   [
-                            //     FormBuilderValidators.required(
-                            //       errorText: 'Enter your recipe instruction',
-                            //     ),
-                            //   ],
-                            // ),
                             onChanged: (value) => context
                                 .read<AddNewRecipeCubit>()
                                 .setInstruction(

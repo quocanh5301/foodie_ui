@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:foodie/core/router/router.dart';
 import 'package:foodie/core/data/share_pref.dart';
 
@@ -38,9 +38,21 @@ class Token {
 }
 
 void configInterceptor(Dio apiRequest) {
-  var interceptor = InterceptorsWrapper(
+  final interceptor = InterceptorsWrapper(
+    onRequest: (options, handler) {
+      debugPrint('ON REQUEST PATH ${options.path}');
+      debugPrint('ON REQUEST DATA ${options.data.toString()}');
+      debugPrint('ON REQUEST EXTRA ${options.extra}');
+      debugPrint('ON REQUEST METHOD ${options.method}');
+      debugPrint('ON REQUEST HEADER ${options.headers}');
+      return handler.next(options);
+    },
+    onResponse: (response, handler) {
+      debugPrint('ON RESPONSE $response');
+      return handler.next(response);
+    },
     onError: (error, handler) {
-      debugPrint('ON ERROR ${error}');
+      debugPrint('ON ERROR $error');
       if (error.response?.statusCode == 401 ||
           error.response?.data['code'] == 401) {
         apiRequest.post(Endpoints.refreshToken, data: {
@@ -54,7 +66,7 @@ void configInterceptor(Dio apiRequest) {
               await SharedPref.setRefreshToken(
                   response.data['data']['refreshToken']);
               apiRequest.options.headers['Authorization'] =
-                  'Bearer ${SharedPref.getAccessToken()}';
+                  'Bearer ${response.data['data']['accessToken']}';
             } else {
               final context = rootNavigatorKey.currentContext;
               if (context != null) {
@@ -71,6 +83,7 @@ void configInterceptor(Dio apiRequest) {
   apiRequest.interceptors.clear();
   if (!apiRequest.interceptors
       .any((interceptor) => interceptor is InterceptorsWrapper)) {
+    debugPrint('INTERCEPTOR ADDED');
     apiRequest.interceptors.clear();
     apiRequest.interceptors.add(interceptor);
   }

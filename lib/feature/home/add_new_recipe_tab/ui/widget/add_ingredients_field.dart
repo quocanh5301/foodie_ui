@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/add_new_recipe_tab/bloc/add_new_recipe_cubit.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 
 class AddIngredientField extends StatefulWidget {
   const AddIngredientField({
@@ -62,9 +63,12 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
         }
       },
       direction: DismissDirection.endToStart,
-      dismissThresholds: (const {
-        DismissDirection.endToStart: 0.5, // > 1 stop item from being dismiss
-      }),
+      dismissThresholds: ({
+        DismissDirection.endToStart:
+            (widget.index == 0 && cubit.state.ingredientList.length == 1)
+                ? 1
+                : 0.5, // > 1 stop item from being dismiss
+      }), //minimum 1 ingredient sent to backend
       child: AnimatedOpacity(
         opacity: fadeOpacity,
         duration: const Duration(milliseconds: 100),
@@ -96,6 +100,15 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
                 style: AppStyles.f14m().copyWith(
                   color: '#FF6B00'.toColor(),
                 ),
+                validator: (widget.index == 0)
+                    ? FormBuilderValidators.compose(
+                        [
+                          FormBuilderValidators.required(
+                            errorText: 'Enter your ingredient name',
+                          ),
+                        ],
+                      )
+                    : null,
                 onTapOutside: (event) =>
                     FocusManager.instance.primaryFocus?.unfocus(),
                 onChanged: (value) =>
@@ -131,6 +144,15 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
                 style: AppStyles.f13m().copyWith(
                   color: '#FF6B00'.toColor(),
                 ),
+                validator: (widget.index == 0)
+                    ? FormBuilderValidators.compose(
+                        [
+                          FormBuilderValidators.required(
+                            errorText: 'Enter your ingredient quantity',
+                          ),
+                        ],
+                      )
+                    : null,
                 onTapOutside: (event) =>
                     FocusManager.instance.primaryFocus?.unfocus(),
                 onChanged: (value) =>

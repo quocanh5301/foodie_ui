@@ -15,7 +15,7 @@ class Ingredient with _$Ingredient {
     // @Default('')
     // @JsonKey(name: 'ingredient_image') String? ingredientImage,
     // @Default('') 
-    @JsonKey(name: 'amount') String? quantity,
+    @JsonKey(name: 'quantity') String? quantity,
   }) = _Ingredient;
 
   factory Ingredient.fromJson(Map<String, dynamic> json) =>

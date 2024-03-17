@@ -79,6 +79,11 @@ class AddNewRecipeCubit extends Cubit<AddNewRecipeState> {
       ),
       (success) => emit(
         state.copyWith(
+          recipeName: '',
+          description: '',
+          instruction: '',
+          recipeImage: '',
+          ingredientList: [],
           uploadRecipeStatus: UploadRecipeStatus.success,
         ),
       ),

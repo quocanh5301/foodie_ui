@@ -23,8 +23,6 @@ mixin _$AddNewRecipeState {
   String get description => throw _privateConstructorUsedError;
   String get instruction => throw _privateConstructorUsedError;
   String get recipeImage => throw _privateConstructorUsedError; // file path
-  UpdateIngredientListStatus get updateIngredientListStatus =>
-      throw _privateConstructorUsedError;
   UploadRecipeStatus get uploadRecipeStatus =>
       throw _privateConstructorUsedError;
 
@@ -47,7 +45,6 @@ abstract class $AddNewRecipeStateCopyWith<$Res> {
       String description,
       String instruction,
       String recipeImage,
-      UpdateIngredientListStatus updateIngredientListStatus,
       UploadRecipeStatus uploadRecipeStatus});
 }
 
@@ -71,7 +68,6 @@ class _$AddNewRecipeStateCopyWithImpl<$Res, $Val extends AddNewRecipeState>
     Object? description = null,
     Object? instruction = null,
     Object? recipeImage = null,
-    Object? updateIngredientListStatus = null,
     Object? uploadRecipeStatus = null,
   }) {
     return _then(_value.copyWith(
@@ -103,10 +99,6 @@ class _$AddNewRecipeStateCopyWithImpl<$Res, $Val extends AddNewRecipeState>
           ? _value.recipeImage
           : recipeImage // ignore: cast_nullable_to_non_nullable
               as String,
-      updateIngredientListStatus: null == updateIngredientListStatus
-          ? _value.updateIngredientListStatus
-          : updateIngredientListStatus // ignore: cast_nullable_to_non_nullable
-              as UpdateIngredientListStatus,
       uploadRecipeStatus: null == uploadRecipeStatus
           ? _value.uploadRecipeStatus
           : uploadRecipeStatus // ignore: cast_nullable_to_non_nullable
@@ -131,7 +123,6 @@ abstract class _$$AddNewRecipeStateImplCopyWith<$Res>
       String description,
       String instruction,
       String recipeImage,
-      UpdateIngredientListStatus updateIngredientListStatus,
       UploadRecipeStatus uploadRecipeStatus});
 }
 
@@ -153,7 +144,6 @@ class __$$AddNewRecipeStateImplCopyWithImpl<$Res>
     Object? description = null,
     Object? instruction = null,
     Object? recipeImage = null,
-    Object? updateIngredientListStatus = null,
     Object? uploadRecipeStatus = null,
   }) {
     return _then(_$AddNewRecipeStateImpl(
@@ -185,10 +175,6 @@ class __$$AddNewRecipeStateImplCopyWithImpl<$Res>
           ? _value.recipeImage
           : recipeImage // ignore: cast_nullable_to_non_nullable
               as String,
-      updateIngredientListStatus: null == updateIngredientListStatus
-          ? _value.updateIngredientListStatus
-          : updateIngredientListStatus // ignore: cast_nullable_to_non_nullable
-              as UpdateIngredientListStatus,
       uploadRecipeStatus: null == uploadRecipeStatus
           ? _value.uploadRecipeStatus
           : uploadRecipeStatus // ignore: cast_nullable_to_non_nullable
@@ -208,7 +194,6 @@ class _$AddNewRecipeStateImpl implements _AddNewRecipeState {
       this.description = '',
       this.instruction = '',
       this.recipeImage = '',
-      this.updateIngredientListStatus = UpdateIngredientListStatus.initial,
       this.uploadRecipeStatus = UploadRecipeStatus.initial})
       : _ingredientList = ingredientList;
 
@@ -242,14 +227,11 @@ class _$AddNewRecipeStateImpl implements _AddNewRecipeState {
 // file path
   @override
   @JsonKey()
-  final UpdateIngredientListStatus updateIngredientListStatus;
-  @override
-  @JsonKey()
   final UploadRecipeStatus uploadRecipeStatus;
 
   @override
   String toString() {
-    return 'AddNewRecipeState(mess: $mess, code: $code, ingredientList: $ingredientList, recipeName: $recipeName, description: $description, instruction: $instruction, recipeImage: $recipeImage, updateIngredientListStatus: $updateIngredientListStatus, uploadRecipeStatus: $uploadRecipeStatus)';
+    return 'AddNewRecipeState(mess: $mess, code: $code, ingredientList: $ingredientList, recipeName: $recipeName, description: $description, instruction: $instruction, recipeImage: $recipeImage, uploadRecipeStatus: $uploadRecipeStatus)';
   }
 
   @override
@@ -269,10 +251,6 @@ class _$AddNewRecipeStateImpl implements _AddNewRecipeState {
                 other.instruction == instruction) &&
             (identical(other.recipeImage, recipeImage) ||
                 other.recipeImage == recipeImage) &&
-            (identical(other.updateIngredientListStatus,
-                    updateIngredientListStatus) ||
-                other.updateIngredientListStatus ==
-                    updateIngredientListStatus) &&
             (identical(other.uploadRecipeStatus, uploadRecipeStatus) ||
                 other.uploadRecipeStatus == uploadRecipeStatus));
   }
@@ -287,7 +265,6 @@ class _$AddNewRecipeStateImpl implements _AddNewRecipeState {
       description,
       instruction,
       recipeImage,
-      updateIngredientListStatus,
       uploadRecipeStatus);
 
   @JsonKey(ignore: true)
@@ -307,7 +284,6 @@ abstract class _AddNewRecipeState implements AddNewRecipeState {
       final String description,
       final String instruction,
       final String recipeImage,
-      final UpdateIngredientListStatus updateIngredientListStatus,
       final UploadRecipeStatus uploadRecipeStatus}) = _$AddNewRecipeStateImpl;
 
   @override
@@ -325,8 +301,6 @@ abstract class _AddNewRecipeState implements AddNewRecipeState {
   @override
   String get recipeImage;
   @override // file path
-  UpdateIngredientListStatus get updateIngredientListStatus;
-  @override
   UploadRecipeStatus get uploadRecipeStatus;
   @override
   @JsonKey(ignore: true)

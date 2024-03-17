@@ -20,6 +20,9 @@ class AddNewRecipeTab extends StatelessWidget {
   AddNewRecipeTab({super.key});
 
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController nameTextController = TextEditingController();
+  final TextEditingController descriptionTextController = TextEditingController();
+  final TextEditingController instructionTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +48,10 @@ class AddNewRecipeTab extends StatelessWidget {
               previous.recipeImage != current.recipeImage ||
               previous.uploadRecipeStatus != current.uploadRecipeStatus,
           builder: (context, state) {
-            debugPrint('QA test error: ${state.mess}');
+            nameTextController.text = state.recipeName;
+            descriptionTextController.text = state.description;
+            instructionTextController.text = state.instruction;
+            
             List<Widget> ingredientList = [];
             for (var i = 0; i < state.ingredientList.length; i++) {
               ingredientList.add(AddIngredientField(
@@ -53,7 +59,7 @@ class AddNewRecipeTab extends StatelessWidget {
                 dismissibleKey: ValueKey(uuid.v4()),
               ));
               ingredientList.add(const VerticalSpace(10));
-            } //!qa
+            }
             return SingleChildScrollView(
               child: Form(
                 key: _formKey,
@@ -132,42 +138,47 @@ class AddNewRecipeTab extends StatelessWidget {
                         children: [
                           const VerticalSpace(10),
                           FormBuilderTextField(
-                            name: 'recipeNameField',
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                              labelText: 'Recipe Name',
-                              hintText: 'Recipe Name',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide(
+                              name: 'recipeNameField',
+                              controller: nameTextController,
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                labelText: 'Recipe Name',
+                                hintText: 'Recipe Name',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                  borderSide: BorderSide(
+                                    color: '#FF6B00'.toColor(),
+                                  ),
+                                ),
+                                labelStyle: AppStyles.f14m().copyWith(
                                   color: '#FF6B00'.toColor(),
                                 ),
+                                hintStyle: AppStyles.f14m().copyWith(
+                                  color: Colors.white,
+                                ),
                               ),
-                              labelStyle: AppStyles.f14m().copyWith(
+                              style: AppStyles.f14m().copyWith(
                                 color: '#FF6B00'.toColor(),
                               ),
-                              hintStyle: AppStyles.f14m().copyWith(
-                                color: Colors.white,
+                              onTapOutside: (event) =>
+                                  FocusManager.instance.primaryFocus?.unfocus(),
+                              validator: FormBuilderValidators.compose(
+                                [
+                                  FormBuilderValidators.required(
+                                    errorText: 'Enter your recipe name',
+                                  ),
+                                ],
                               ),
-                            ),
-                            style: AppStyles.f14m().copyWith(
-                              color: '#FF6B00'.toColor(),
-                            ),
-                            onTapOutside: (event) =>
-                                FocusManager.instance.primaryFocus?.unfocus(),
-                            validator: FormBuilderValidators.compose(
-                              [
-                                FormBuilderValidators.required(
-                                  errorText: 'Enter your recipe name',
-                                ),
-                              ],
-                            ),
-                            onChanged: (email) => {},
-                          ),
+                              onChanged: (value) => context
+                                  .read<AddNewRecipeCubit>()
+                                  .setRecipeName(
+                                    recipeName: value ?? '',
+                                  )),
                           const VerticalSpace(10),
                           FormBuilderTextField(
                             name: 'recipeDescriptionField',
-                            keyboardType: TextInputType.emailAddress,
+                            controller: descriptionTextController,
+                            keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               labelText: 'Recipe Description',
                               hintText: 'Recipe Description',
@@ -205,6 +216,7 @@ class AddNewRecipeTab extends StatelessWidget {
                           const VerticalSpace(10),
                           FormBuilderTextField(
                             name: 'recipeInstructionField',
+                            controller: instructionTextController,
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               labelText: 'Recipe Instruction',

@@ -40,7 +40,7 @@ class Token {
 void configInterceptor(Dio apiRequest) {
   var interceptor = InterceptorsWrapper(
     onError: (error, handler) {
-      debugPrint('ON ERROR ${error.response}');
+      debugPrint('ON ERROR ${error}');
       if (error.response?.statusCode == 401 ||
           error.response?.data['code'] == 401) {
         apiRequest.post(Endpoints.refreshToken, data: {

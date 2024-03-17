@@ -13,9 +13,15 @@ class AddNewRecipeCubit extends Cubit<AddNewRecipeState> {
 
   // void setEmail(String email) => emit(state.copyWith(email: email));
 
-  // void setPassword(String password) => emit(state.copyWith(password: password));
+  void setRecipeName({required String recipeName}) =>
+      emit(state.copyWith(recipeName: recipeName));
+  void setDescription({required String description}) =>
+      emit(state.copyWith(description: description));
+  void setInstruction({required String instruction}) =>
+      emit(state.copyWith(instruction: instruction));
 
-  void setRecipeImage({required String imagePath}) => emit(state.copyWith(recipeImage: imagePath));
+  void setRecipeImage({required String imagePath}) =>
+      emit(state.copyWith(recipeImage: imagePath));
 
   void setIngredientName({required int index, required String ingredientName}) {
     List<Ingredient> currentIngredientList = [...state.ingredientList];
@@ -53,6 +59,8 @@ class AddNewRecipeCubit extends Cubit<AddNewRecipeState> {
       uploadRecipeStatus: UploadRecipeStatus.loading,
       mess: '',
     ));
+    _removeEmptyIngredient();
+
     final result = await addNewRecipeRepository
         .addNewRecipe(
           recipeName: state.recipeName,
@@ -75,5 +83,12 @@ class AddNewRecipeCubit extends Cubit<AddNewRecipeState> {
         ),
       ),
     );
+  }
+
+  void _removeEmptyIngredient() {
+    List<Ingredient> currentIngredientList = [...state.ingredientList];
+    currentIngredientList.removeWhere(
+        (element) => element.ingredientName == '' || element.quantity == '');
+    emit(state.copyWith(ingredientList: currentIngredientList));
   }
 }

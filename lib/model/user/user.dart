@@ -12,8 +12,8 @@ class User with _$User {
     @JsonKey(name: 'user_name') String? userName,
     @JsonKey(name: 'user_email') String? userEmail,
     @JsonKey(name: 'description') String? description,
-    @JsonKey(name: 'update_at') String? updateAt,
-    @JsonKey(name: 'join_at') String? joinAt,
+    @JsonKey(name: 'update_at') int? updateAt,
+    @JsonKey(name: 'join_at') int? joinAt,
     @JsonKey(name: 'user_image') String? userImage,
     @JsonKey(name: 'num_of_followers') int? numOfFollower,
   }) = _User;

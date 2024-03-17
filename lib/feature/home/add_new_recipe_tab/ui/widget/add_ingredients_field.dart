@@ -5,13 +5,16 @@ import 'package:flutter_svg/svg.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/add_new_recipe_tab/bloc/add_new_recipe_cubit.dart';
-import 'package:foodie/generated/l10n.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
 
 class AddIngredientField extends StatefulWidget {
-  const AddIngredientField({super.key, required this.index});
+  const AddIngredientField({
+    super.key,
+    required this.index,
+    required this.dismissibleKey,
+  });
 
   final int index;
+  final Key dismissibleKey;
 
   @override
   State<AddIngredientField> createState() => _AddIngredientFieldState();
@@ -24,10 +27,9 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
 
   @override
   Widget build(BuildContext context) {
-    final value = widget.index.toString();
-
+    AddNewRecipeCubit cubit = context.read<AddNewRecipeCubit>();
     return Dismissible(
-      key: ValueKey(value),
+      key: widget.dismissibleKey,
       background: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -53,7 +55,10 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
           context
               .read<AddNewRecipeCubit>()
               .deleteIngredient(index: widget.index);
-          setState(() {});
+          setState(() {
+            backGroundWidth = 0;
+            fadeOpacity = 1;
+          });
         }
       },
       direction: DismissDirection.endToStart,
@@ -70,6 +75,8 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
               child: FormBuilderTextField(
                 name: 'ingredientField',
                 keyboardType: TextInputType.text,
+                initialValue:
+                    cubit.state.ingredientList[widget.index].ingredientName,
                 decoration: InputDecoration(
                   labelText: 'Ingredient',
                   hintText: 'Ingredient',
@@ -91,16 +98,6 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
                 ),
                 onTapOutside: (event) =>
                     FocusManager.instance.primaryFocus?.unfocus(),
-                validator: FormBuilderValidators.compose(
-                  [
-                    FormBuilderValidators.required(
-                      errorText: S.of(context).emailEmpty,
-                    ),
-                    FormBuilderValidators.email(
-                      errorText: S.of(context).emailFormatError,
-                    )
-                  ],
-                ),
                 onChanged: (value) =>
                     context.read<AddNewRecipeCubit>().setIngredientName(
                           index: widget.index,
@@ -114,6 +111,7 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
               child: FormBuilderTextField(
                 name: 'quantityField',
                 keyboardType: TextInputType.number,
+                initialValue: cubit.state.ingredientList[widget.index].quantity,
                 decoration: InputDecoration(
                   labelText: 'Quantity',
                   hintText: 'Quantity',
@@ -135,18 +133,8 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
                 ),
                 onTapOutside: (event) =>
                     FocusManager.instance.primaryFocus?.unfocus(),
-                validator: FormBuilderValidators.compose(
-                  [
-                    FormBuilderValidators.required(
-                      errorText: "Please fill in this field",
-                    ),
-                    FormBuilderValidators.maxLength(
-                      2,
-                      errorText: 'Max length is 2',
-                    )
-                  ],
-                ),
-                onChanged: (value) => context.read<AddNewRecipeCubit>().setIngredientQuantity(
+                onChanged: (value) =>
+                    context.read<AddNewRecipeCubit>().setIngredientQuantity(
                           index: widget.index,
                           quantity: value ?? '0',
                         ),

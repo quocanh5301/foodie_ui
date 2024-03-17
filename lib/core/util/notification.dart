@@ -55,7 +55,7 @@ class NotificationHelper {
     await fcmToken.getToken().then((token) {
       // if (token != null) {
 
-      debugPrint('token $token');
+      // debugPrint('token $token');
       // }
     });
 

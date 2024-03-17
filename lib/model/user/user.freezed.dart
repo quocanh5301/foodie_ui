@@ -29,9 +29,9 @@ mixin _$User {
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'update_at')
-  String? get updateAt => throw _privateConstructorUsedError;
+  int? get updateAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'join_at')
-  String? get joinAt => throw _privateConstructorUsedError;
+  int? get joinAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_image')
   String? get userImage => throw _privateConstructorUsedError;
   @JsonKey(name: 'num_of_followers')
@@ -52,8 +52,8 @@ abstract class $UserCopyWith<$Res> {
       @JsonKey(name: 'user_name') String? userName,
       @JsonKey(name: 'user_email') String? userEmail,
       @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'update_at') String? updateAt,
-      @JsonKey(name: 'join_at') String? joinAt,
+      @JsonKey(name: 'update_at') int? updateAt,
+      @JsonKey(name: 'join_at') int? joinAt,
       @JsonKey(name: 'user_image') String? userImage,
       @JsonKey(name: 'num_of_followers') int? numOfFollower});
 }
@@ -100,11 +100,11 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       updateAt: freezed == updateAt
           ? _value.updateAt
           : updateAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       joinAt: freezed == joinAt
           ? _value.joinAt
           : joinAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       userImage: freezed == userImage
           ? _value.userImage
           : userImage // ignore: cast_nullable_to_non_nullable
@@ -129,8 +129,8 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       @JsonKey(name: 'user_name') String? userName,
       @JsonKey(name: 'user_email') String? userEmail,
       @JsonKey(name: 'description') String? description,
-      @JsonKey(name: 'update_at') String? updateAt,
-      @JsonKey(name: 'join_at') String? joinAt,
+      @JsonKey(name: 'update_at') int? updateAt,
+      @JsonKey(name: 'join_at') int? joinAt,
       @JsonKey(name: 'user_image') String? userImage,
       @JsonKey(name: 'num_of_followers') int? numOfFollower});
 }
@@ -174,11 +174,11 @@ class __$$UserImplCopyWithImpl<$Res>
       updateAt: freezed == updateAt
           ? _value.updateAt
           : updateAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       joinAt: freezed == joinAt
           ? _value.joinAt
           : joinAt // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       userImage: freezed == userImage
           ? _value.userImage
           : userImage // ignore: cast_nullable_to_non_nullable
@@ -221,10 +221,10 @@ class _$UserImpl implements _User {
   final String? description;
   @override
   @JsonKey(name: 'update_at')
-  final String? updateAt;
+  final int? updateAt;
   @override
   @JsonKey(name: 'join_at')
-  final String? joinAt;
+  final int? joinAt;
   @override
   @JsonKey(name: 'user_image')
   final String? userImage;
@@ -283,8 +283,8 @@ abstract class _User implements User {
           @JsonKey(name: 'user_name') final String? userName,
           @JsonKey(name: 'user_email') final String? userEmail,
           @JsonKey(name: 'description') final String? description,
-          @JsonKey(name: 'update_at') final String? updateAt,
-          @JsonKey(name: 'join_at') final String? joinAt,
+          @JsonKey(name: 'update_at') final int? updateAt,
+          @JsonKey(name: 'join_at') final int? joinAt,
           @JsonKey(name: 'user_image') final String? userImage,
           @JsonKey(name: 'num_of_followers') final int? numOfFollower}) =
       _$UserImpl;
@@ -305,10 +305,10 @@ abstract class _User implements User {
   String? get description;
   @override
   @JsonKey(name: 'update_at')
-  String? get updateAt;
+  int? get updateAt;
   @override
   @JsonKey(name: 'join_at')
-  String? get joinAt;
+  int? get joinAt;
   @override
   @JsonKey(name: 'user_image')
   String? get userImage;

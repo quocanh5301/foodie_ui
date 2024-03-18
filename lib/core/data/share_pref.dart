@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedPref {
   static SharedPreferences? prefs;
   static String accessTokenKey = 'kACCESSTOKEN';
-  static String refreshTokenKey = 'kACCESSTOKEN';
+  static String refreshTokenKey = 'kREFRESHTOKEN';
   static String userInfoKey = 'kUSERINFO';
   static String notificationSettingKey = 'kNOTIFICATIONSETTING';
   static String languageKey = 'kLANGUAGE';

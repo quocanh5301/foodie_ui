@@ -11,8 +11,8 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       userName: json['user_name'] as String?,
       userEmail: json['user_email'] as String?,
       description: json['description'] as String?,
-      updateAt: json['update_at'] as String?,
-      joinAt: json['join_at'] as String?,
+      updateAt: json['update_at'] as int?,
+      joinAt: json['join_at'] as int?,
       userImage: json['user_image'] as String?,
       numOfFollower: json['num_of_followers'] as int?,
     );

@@ -3,6 +3,7 @@ class AppImage {
   static const String loginImage = 'assets/images/img_login.png';
   static const String appIcon = 'assets/images/img_app_icon.png';
   static const String registerImage = 'assets/images/img_register.png';
+  static const String addNewRecipe = 'assets/images/img_add_new_recipe.png';
 
   // icon
   static const String icShowPass = 'assets/images/ic_show_pass.svg';
@@ -21,4 +22,8 @@ class AppImage {
   static const String icNotification = 'assets/images/ic_notification.svg';
 
   static const String icSearch = 'assets/images/ic_search.svg';
+
+  static const String icDismiss = 'assets/images/ic_dismiss.svg';
+  static const String icTwoDots = "assets/images/ic_two_dot.svg";
+
 }

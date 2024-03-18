@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-import 'package:foodie/core/api.dart';
+import 'package:foodie/core/data/api.dart';
 
 class LoginProvider {
   const LoginProvider({required this.apiRequest});
@@ -8,20 +7,14 @@ class LoginProvider {
   final APIRequest apiRequest;
 
   Future<Response> login(
-      {required String email, required String password}) async {
-    try {
-      return await apiRequest.post(
+          {required String email, required String password}) async =>
+      await apiRequest.post(
         endpoint: Endpoints.login,
         data: {
           'email': email,
           'password': password,
         },
       );
-    } catch (e) {
-      debugPrint('login error: $e');
-      throw e;
-    }
-  }
 
   // Future<Response> updateFirebaseMessagingToken(
   //         {required String firebaseToken}) async =>

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:foodie/core/images.dart';
-import 'package:foodie/core/styles.dart';
+import 'package:foodie/core/resource/images.dart';
+import 'package:foodie/core/resource/styles.dart';
+import 'package:foodie/feature/home/add_new_recipe_tab/ui/add_new_recipe_tab.dart';
+import 'package:foodie/feature/home/bookmark_tab/ui/bookmark_tab.dart';
 import 'package:foodie/feature/home/explore_tab/ui/explore_tab.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -51,9 +53,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Widget> testTabScreens = [
-      ExploreTab(),
-      const Text('Create Recipe'),
-      const Text('Bookmark'),
+      const ExploreTab(),
+      AddNewRecipeTab(),
+      const BookmarkRecipeTab(),
       const Text('Profile'),
     ].map((e) => e).toList();
 

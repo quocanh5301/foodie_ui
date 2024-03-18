@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:foodie/core/images.dart';
-import 'package:foodie/core/styles.dart';
+import 'package:foodie/core/resource/images.dart';
+import 'package:foodie/core/resource/styles.dart';
 
 class SquareRecipeItem extends StatelessWidget {
   const SquareRecipeItem({super.key});

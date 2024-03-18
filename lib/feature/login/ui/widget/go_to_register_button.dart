@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:foodie/core/router/router.dart';
-import 'package:foodie/core/styles.dart';
+import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/generated/l10n.dart';
 import 'package:go_router/go_router.dart';
 

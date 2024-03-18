@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:foodie/core/images.dart';
-import 'package:foodie/core/styles.dart';
+import 'package:foodie/core/resource/images.dart';
+import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/search_field.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/rectangle_recipe.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/square_recipe.dart';
@@ -104,7 +104,10 @@ class ExploreTab extends StatelessWidget {
                       itemCount: 10,
                       separatorBuilder: (context, index) =>
                           const HorizontalSpace(10),
-                      itemBuilder: (context, index) => RectangleRecipeItem(),
+                      itemBuilder: (context, index) => RectangleRecipeItem(
+                        cardWidth: AppStyles.screenW * 4 / 6,
+                        cardHeight: AppStyles.screenW / 2.5,
+                      ),
                     ),
                   ),
                   // (pastEvents.isNotEmpty)

@@ -4,12 +4,19 @@ import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
 
 class RectangleRecipeItem extends StatelessWidget {
-  const RectangleRecipeItem({super.key});
+  const RectangleRecipeItem({
+    super.key,
+    required this.cardWidth,
+    required this.cardHeight,
+  });
+
+  final double cardWidth;
+  final double cardHeight;
 
   @override
   Widget build(BuildContext context) {
-    double cardWidth = AppStyles.screenW * 4 / 6;
-    double cardHeight = AppStyles.screenW / 2.5;
+    // double cardWidth = AppStyles.screenW * 4 / 6;
+    // double cardHeight = AppStyles.screenW / 2.5;
     return Stack(
       children: [
         CachedNetworkImage(

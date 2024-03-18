@@ -9,15 +9,15 @@ part of 'recipe_basic.dart';
 _$RecipeBasicImpl _$$RecipeBasicImplFromJson(Map<String, dynamic> json) =>
     _$RecipeBasicImpl(
       id: json['id'] as int?,
-      userName: json['account_id'] as int?,
-      userEmail: json['recipe_name'] as String?,
+      userId: json['account_id'] as int?,
+      recipeName: json['recipe_name'] as String?,
       recipeImage: json['recipe_image'] as String?,
       updateAt: json['update_at'] as String?,
       createAt: json['create_at'] as String?,
       numOfFollower: json['num_of_followers'] as int?,
       numOfRating: json['num_of_rating'] as int?,
       numOfComment: json['num_of_comments'] as int?,
-      joinAt: (json['rating'] as num?)?.toDouble(),
+      rating: (json['rating'] as num?)?.toDouble(),
       owner: json['owner'] == null
           ? null
           : UserBasic.fromJson(json['owner'] as Map<String, dynamic>),
@@ -26,14 +26,14 @@ _$RecipeBasicImpl _$$RecipeBasicImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$RecipeBasicImplToJson(_$RecipeBasicImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'account_id': instance.userName,
-      'recipe_name': instance.userEmail,
+      'account_id': instance.userId,
+      'recipe_name': instance.recipeName,
       'recipe_image': instance.recipeImage,
       'update_at': instance.updateAt,
       'create_at': instance.createAt,
       'num_of_followers': instance.numOfFollower,
       'num_of_rating': instance.numOfRating,
       'num_of_comments': instance.numOfComment,
-      'rating': instance.joinAt,
+      'rating': instance.rating,
       'owner': instance.owner,
     };

@@ -1,7 +1,7 @@
 import 'dart:ui';
 
-import 'package:foodie/core/date_time.dart';
-import 'package:foodie/core/share_pref.dart';
+import 'package:foodie/core/util/date_time.dart';
+import 'package:foodie/core/data/share_pref.dart';
 import 'package:foodie/generated/l10n.dart';
 
 class AppProvider {

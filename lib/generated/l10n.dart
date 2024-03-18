@@ -279,6 +279,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Search`
+  String get searchAll {
+    return Intl.message(
+      'Search',
+      name: 'searchAll',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What would you like to cook today?`
+  String get explore {
+    return Intl.message(
+      'What would you like to cook today?',
+      name: 'explore',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

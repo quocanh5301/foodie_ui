@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:foodie/core/api.dart';
+import 'package:foodie/core/data/api.dart';
 
 class RegisterProvider {
   const RegisterProvider({required this.apiRequest});

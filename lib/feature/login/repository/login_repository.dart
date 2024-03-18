@@ -1,7 +1,7 @@
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:flutter/material.dart';
-import 'package:foodie/core/api.dart';
-import 'package:foodie/core/share_pref.dart';
+import 'package:foodie/core/data/api.dart';
+import 'package:foodie/core/data/share_pref.dart';
 import 'package:foodie/feature/login/provider/login_provider.dart';
 import 'package:foodie/model/user/user.dart';
 import 'package:fpdart/fpdart.dart';
@@ -23,14 +23,12 @@ class LoginRepository {
       final response =
           await loginProvider.login(email: email, password: password);
       if (response.data['mess'] == 'success') {
-        debugPrint('login success');
         String accessToken = response.data['data']['accessToken'];
         String refreshToken = response.data['data']['refreshToken'];
         try {
           // Verify a token (SecretKey for HMAC & PublicKey for all the others)
-          final jwt =
-              JWT.verify(accessToken, SecretKey(Token.accessTokenSecret));
-          debugPrint('Payload: ${jwt.payload}');
+
+          JWT.verify(accessToken, SecretKey(Token.accessTokenSecret));
           SharedPref.setAccessToken(accessToken);
           SharedPref.setRefreshToken(refreshToken);
 

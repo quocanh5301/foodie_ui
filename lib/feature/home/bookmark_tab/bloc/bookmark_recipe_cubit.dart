@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/feature/home/bookmark_tab/bloc/bookmark_recipe_state.dart';
 import 'package:foodie/feature/home/bookmark_tab/repository/bookmark_recipe_repository.dart';
@@ -28,20 +29,89 @@ class BookmarkRecipeCubit extends Cubit<BookmarkRecipeState> {
         ),
       ),
       (response) {
-        emit(
-          state.copyWith(
-            getBookmarkRecipeStatus: GetBookmarkRecipeStatus.success,
-            bookmarkRecipeList:
-                response.bookmarkRecipeList ?? state.bookmarkRecipeList,
-            filterBookmarkRecipeList:
-                response.bookmarkRecipeList ?? state.filterBookmarkRecipeList,
-            page: state.page + 1,
-          ),
-        );
+        debugPrint(response.recipeList.toString());
+        if (response.recipeList != null) {
+          if (response.recipeList!.length <
+              bookmarkRecipeRepository.bookmarkRecipeProvider.pageSize) {
+            emit(
+              state.copyWith(
+                getBookmarkRecipeStatus: GetBookmarkRecipeStatus.noMore,
+                bookmarkRecipeList: [
+                  ...state.bookmarkRecipeList,
+                  ...response.recipeList!,
+                ],
+                filterBookmarkRecipeList: [
+                  ...state.filterBookmarkRecipeList,
+                  ...response.recipeList!,
+                ],
+                page: state.page + 1,
+              ),
+            );
+          } else {
+            emit(
+              state.copyWith(
+                getBookmarkRecipeStatus: GetBookmarkRecipeStatus.success,
+                bookmarkRecipeList: [
+                  ...state.bookmarkRecipeList,
+                  ...response.recipeList!,
+                ],
+                filterBookmarkRecipeList: [
+                  ...state.filterBookmarkRecipeList,
+                  ...response.recipeList!,
+                ],
+                page: state.page + 1,
+              ),
+            );
+          }
+        } else {
+          emit(
+            state.copyWith(
+              getBookmarkRecipeStatus: GetBookmarkRecipeStatus.noMore,
+              page: state.page + 1,
+            ),
+          );
+        }
         filterRecipeList();
-        search();
+        // search();
       },
     );
+  }
+
+  Future<void> refreshBookmarkRecipe() async {
+    emit(
+      state.copyWith(
+        page: 0,
+        mess: '',
+      ),
+    );
+
+    await getBookmarkRecipe();
+    // final result =
+    //     await bookmarkRecipeRepository.getBookmarkRecipe(page: 0).run();
+
+    // result.match(
+    //   (error) => emit(
+    //     state.copyWith(
+    //       getBookmarkRecipeStatus: GetBookmarkRecipeStatus.failure,
+    //       mess: error,
+    //     ),
+    //   ),
+    //   (response) {
+    //     debugPrint('${response.recipeList}');
+    //     emit(
+    //       state.copyWith(
+    //         getBookmarkRecipeStatus: GetBookmarkRecipeStatus.success,
+    //         bookmarkRecipeList:
+    //             response.recipeList ?? state.bookmarkRecipeList,
+    //         filterBookmarkRecipeList:
+    //             response.recipeList ?? state.filterBookmarkRecipeList,
+    //         page: 1,
+    //       ),
+    //     );
+    //     filterRecipeList();
+    //     // search();
+    //   },
+    // );
   }
 
   void filterRecipeList() {
@@ -49,28 +119,29 @@ class BookmarkRecipeCubit extends Cubit<BookmarkRecipeState> {
       filterBookmarkRecipeStatus: FilterBookmarkRecipeStatus.start,
     ));
 
-    List<RecipeBasic> filterList = [...state.filterBookmarkRecipeList];
+    List<RecipeBasic> filterList = [...state.bookmarkRecipeList];
+
     if (state.filterRecipe == FilterMode.rating) {
-      filterList.sort((a, b) => (b.rating ?? 0).compareTo((a.rating ?? 0)));
+      filterList.sort(
+        (recipe, anotherRecipe) =>
+            (anotherRecipe.rating ?? 0).compareTo((recipe.rating ?? 0)),
+      );
     } else if (state.filterRecipe == FilterMode.comments) {
       filterList.sort(
-          (a, b) => (b.numOfComment ?? 0).compareTo((a.numOfComment ?? 0)));
+        (recipe, anotherRecipe) => (anotherRecipe.numOfComment ?? 0)
+            .compareTo((recipe.numOfComment ?? 0)),
+      );
     } else if (state.filterRecipe == FilterMode.bookmarkNum) {
       filterList.sort(
-          (a, b) => (b.numOfFollower ?? 0).compareTo((a.numOfFollower ?? 0)));
+        (recipe, anotherRecipe) => (anotherRecipe.numOfFollower ?? 0)
+            .compareTo((recipe.numOfFollower ?? 0)),
+      );
     } else {
       filterList = [...state.bookmarkRecipeList];
     }
 
     emit(state.copyWith(
       filterBookmarkRecipeList: filterList,
-      filterBookmarkRecipeStatus: FilterBookmarkRecipeStatus.finish,
-    ));
-  }
-
-  void search() {
-    emit(state.copyWith(
-      searchBookmarkRecipeStatus: SearchBookmarkRecipeStatus.start,
     ));
 
     List<RecipeBasic> searchList = (state.searchString != '')
@@ -85,20 +156,57 @@ class BookmarkRecipeCubit extends Cubit<BookmarkRecipeState> {
 
     emit(state.copyWith(
       filterBookmarkRecipeList: searchList,
+      filterBookmarkRecipeStatus: FilterBookmarkRecipeStatus.finish,
+    ));
+  }
+
+  void search() {
+    emit(state.copyWith(
+      searchBookmarkRecipeStatus: SearchBookmarkRecipeStatus.start,
+    ));
+
+    List<RecipeBasic> searchList = (state.searchString != '')
+        ? [
+            ...state.bookmarkRecipeList.where(
+              (recipe) => (recipe.recipeName ?? '').toLowerCase().contains(
+                    state.searchString.toLowerCase(),
+                  ),
+            )
+          ]
+        : [...state.bookmarkRecipeList];
+
+    emit(state.copyWith(
+      filterBookmarkRecipeList: searchList,
+    ));
+
+    List<RecipeBasic> filterList = [...state.filterBookmarkRecipeList];
+
+    if (state.filterRecipe == FilterMode.rating) {
+      filterList.sort(
+        (recipe, anotherRecipe) =>
+            (anotherRecipe.rating ?? 0).compareTo((recipe.rating ?? 0)),
+      );
+    } else if (state.filterRecipe == FilterMode.comments) {
+      filterList.sort(
+        (recipe, anotherRecipe) => (anotherRecipe.numOfComment ?? 0)
+            .compareTo((recipe.numOfComment ?? 0)),
+      );
+    } else if (state.filterRecipe == FilterMode.bookmarkNum) {
+      filterList.sort(
+        (recipe, anotherRecipe) => (anotherRecipe.numOfFollower ?? 0)
+            .compareTo((recipe.numOfFollower ?? 0)),
+      );
+    } else {
+      filterList = [...state.bookmarkRecipeList];
+    }
+
+    emit(state.copyWith(
+      filterBookmarkRecipeList: filterList,
       searchBookmarkRecipeStatus: SearchBookmarkRecipeStatus.finish,
     ));
   }
 
-  void resetFilter() {
-    emit(state.copyWith(
-      // filterRecipe: FilterMode.none,
-      filterBookmarkRecipeList: state.bookmarkRecipeList,
-      filterBookmarkRecipeStatus: FilterBookmarkRecipeStatus.initial,
-    ));
-    search();
-  }
-
-  void resetSearch(){
+  void resetSearch() {
     emit(state.copyWith(
       searchString: '',
       filterBookmarkRecipeList: state.bookmarkRecipeList,

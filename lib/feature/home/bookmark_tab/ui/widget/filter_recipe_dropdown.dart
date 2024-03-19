@@ -10,12 +10,13 @@ class FilterRecipeDropDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<FilterMode> listUnit = [
-      FilterMode.none,
-      FilterMode.rating,
-      FilterMode.comments,
-      FilterMode.bookmarkNum,
-    ];
+    Map<FilterMode, String> listUnit = {
+      FilterMode.none: 'All',
+      FilterMode.rating: 'Rating',
+      FilterMode.comments: 'Comments',
+      FilterMode.bookmarkNum: 'Bookmark'
+    };
+
     return BlocBuilder<BookmarkRecipeCubit, BookmarkRecipeState>(
       buildWhen: (previous, current) =>
           previous.filterRecipe != current.filterRecipe,
@@ -28,12 +29,6 @@ class FilterRecipeDropDown extends StatelessWidget {
               AppStyles.width(10),
               AppStyles.height(5),
             ),
-
-            // constraints: BoxConstraints.tight(
-            //   Size.fromHeight(
-            //     AppStyles.height(40),
-            //   ),
-            // ),
             filled: true,
             fillColor: '#2b2b2b'.toColor(),
             border: OutlineInputBorder(
@@ -72,17 +67,18 @@ class FilterRecipeDropDown extends StatelessWidget {
               color: '#FF6B00'.toColor(),
             ),
           ),
-          items: listUnit
+          items: listUnit.entries
               .map<DropdownMenuItem<FilterMode>>(
-                (FilterMode unit) => DropdownMenuItem<FilterMode>(
-                  value: unit,
+                (MapEntry<FilterMode, String> unit) =>
+                    DropdownMenuItem<FilterMode>(
+                  value: unit.key,
                   alignment: AlignmentDirectional.centerStart,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        unit.name,
+                        unit.value,
                         style: AppStyles.f12m().copyWith(
                           color: '#FF6B00'.toColor(),
                         ),

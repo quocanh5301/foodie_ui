@@ -11,7 +11,7 @@ class BookmarkRecipeProvider {
 
   Future<Response> getBookmarkRecipe({required int page}) async =>
       await apiRequest.post(
-        endpoint: Endpoints.login,
+        endpoint: Endpoints.getUserBookmarkRecipe,
         data: {
           'userId': SharedPref.getUserInfo().id,
           'page': page,

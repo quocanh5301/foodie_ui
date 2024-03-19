@@ -104,10 +104,12 @@ class ExploreTab extends StatelessWidget {
                       itemCount: 10,
                       separatorBuilder: (context, index) =>
                           const HorizontalSpace(10),
-                      itemBuilder: (context, index) => RectangleRecipeItem(
-                        cardWidth: AppStyles.screenW * 4 / 6,
-                        cardHeight: AppStyles.screenW / 2.5,
-                      ),
+                      itemBuilder: (context, index) => 
+                      // RectangleRecipeItem(
+                      //   cardWidth: AppStyles.screenW * 4 / 6,
+                      //   cardHeight: AppStyles.screenW / 2.5,
+                      // ),
+                      Text('data'),
                     ),
                   ),
                   // (pastEvents.isNotEmpty)

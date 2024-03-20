@@ -7,9 +7,10 @@ class ExploreProvider {
 
   final APIRequest apiRequest;
 
-  final int pageSize = 10;
-
-  Future<Response> getTopRecipe({required int page}) async =>
+  Future<Response> getTopRecipe({
+    required int page,
+    required int pageSize,
+  }) async =>
       await apiRequest.post(
         endpoint: Endpoints.getTopRecipe,
         data: {
@@ -18,7 +19,10 @@ class ExploreProvider {
         },
       );
 
-  Future<Response> getNewRecipe({required int page}) async =>
+  Future<Response> getNewRecipe({
+    required int page,
+    required int pageSize,
+  }) async =>
       await apiRequest.post(
         endpoint: Endpoints.getNewRecipe,
         data: {
@@ -29,6 +33,7 @@ class ExploreProvider {
 
   Future<Response> searchAll({
     required int page,
+    required int pageSize,
     required String searchKey,
   }) async =>
       await apiRequest.post(
@@ -42,6 +47,7 @@ class ExploreProvider {
 
   Future<Response> getFollowedUserNewRecipe({
     required int page,
+    required int pageSize,
   }) async =>
       await apiRequest.post(
         endpoint: Endpoints.getFollowedUserNewRecipe,

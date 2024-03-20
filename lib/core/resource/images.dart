@@ -5,8 +5,8 @@ class AppImage {
   static const String registerImage = 'assets/images/img_register.png';
   static const String addNewRecipe = 'assets/images/img_add_new_recipe.png';
   static const String emptyImageRecipe =
-      'assets/images/ic_empty_image_recipe.png';
-      static const String defaultAvatar = 'assets/images/img_default_avatar.png';
+      'assets/images/empty_image_recipe.png';
+  static const String defaultAvatar = 'assets/images/img_default_avatar.png';
 
   // icon
   static const String icShowPass = 'assets/images/ic_show_pass.svg';

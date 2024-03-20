@@ -14,7 +14,6 @@ class ExploreState with _$ExploreState {
     @Default(0) int topRecipePage,
     @Default(0) int newRecipePage,
     @Default(0) int followUserRecipePage,
-    
     @Default(GetTopRecipeStatus.initial) GetTopRecipeStatus getTopRecipeStatus,
     @Default(GetNewRecipeStatus.initial) GetNewRecipeStatus getNewRecipeStatus,
     @Default(GetFollowUserRecipeStatus.initial)
@@ -22,8 +21,8 @@ class ExploreState with _$ExploreState {
   }) = _ExploreState;
 }
 
-enum GetTopRecipeStatus { initial, loading, noMore, success, failure }
+enum GetTopRecipeStatus { initial, loading, onRefresh, noMore, success, failure }
 
-enum GetNewRecipeStatus { initial, loading, noMore, success, failure }
+enum GetNewRecipeStatus { initial, loading, onRefresh, noMore, success, failure }
 
-enum GetFollowUserRecipeStatus { initial, loading, noMore, success, failure }
+enum GetFollowUserRecipeStatus { initial, loading, onRefresh, noMore, success, failure }

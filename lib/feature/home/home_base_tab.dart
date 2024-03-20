@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          activeColorPrimary: '#E23E3E'.toColor(),
+          activeColorPrimary: '#8f1d2e'.toColor(),
           activeColorSecondary: Colors.white,
           inactiveColorSecondary: '#08357C'.toColor(),
           title: item.$1,

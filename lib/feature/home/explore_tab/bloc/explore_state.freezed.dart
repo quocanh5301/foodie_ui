@@ -234,9 +234,9 @@ class _$ExploreStateImpl implements _ExploreState {
       final List<RecipeBasic> topRecipeList = const [],
       final List<RecipeBasic> newRecipeList = const [],
       final List<RecipeBasic> followUserRecipeList = const [],
-      this.topRecipePage = 1,
-      this.newRecipePage = 1,
-      this.followUserRecipePage = 1,
+      this.topRecipePage = 0,
+      this.newRecipePage = 0,
+      this.followUserRecipePage = 0,
       this.getTopRecipeStatus = GetTopRecipeStatus.initial,
       this.getNewRecipeStatus = GetNewRecipeStatus.initial,
       this.getFollowUserRecipeStatus = GetFollowUserRecipeStatus.initial})

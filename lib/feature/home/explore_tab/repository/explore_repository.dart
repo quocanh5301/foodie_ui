@@ -11,11 +11,14 @@ class ExploreRepository {
 
   TaskEither<String, GetBasicRecipeResponse> getFollowedUserNewRecipe({
     required int page,
+    required int pageSize,
   }) {
     return TaskEither.tryCatch(() async {
-      final response =
-          await exploreProvider.getFollowedUserNewRecipe(page: page);
-      if (response.data['code'] == 'success') {
+      final response = await exploreProvider.getFollowedUserNewRecipe(
+        page: page,
+        pageSize: pageSize,
+      );
+      if (response.data['mess'] == 'success') {
         try {
           return GetBasicRecipeResponse.fromJson(response.data);
         } catch (e) {
@@ -29,11 +32,14 @@ class ExploreRepository {
 
   TaskEither<String, GetBasicRecipeResponse> getTopRecipe({
     required int page,
+    required int pageSize,
   }) {
     return TaskEither.tryCatch(() async {
-      final response =
-          await exploreProvider.getTopRecipe(page: page);
-      if (response.data['code'] == 'success') {
+      final response = await exploreProvider.getTopRecipe(
+        page: page,
+        pageSize: pageSize,
+      );
+      if (response.data['mess'] == 'success') {
         try {
           return GetBasicRecipeResponse.fromJson(response.data);
         } catch (e) {
@@ -47,11 +53,14 @@ class ExploreRepository {
 
   TaskEither<String, GetBasicRecipeResponse> getNewRecipe({
     required int page,
+    required int pageSize,
   }) {
     return TaskEither.tryCatch(() async {
-      final response =
-          await exploreProvider.getNewRecipe(page: page);
-      if (response.data['code'] == 'success') {
+      final response = await exploreProvider.getNewRecipe(
+        page: page,
+        pageSize: pageSize,
+      );
+      if (response.data['mess'] == 'success') {
         try {
           return GetBasicRecipeResponse.fromJson(response.data);
         } catch (e) {

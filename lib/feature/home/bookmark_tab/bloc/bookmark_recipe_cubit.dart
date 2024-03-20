@@ -86,32 +86,6 @@ class BookmarkRecipeCubit extends Cubit<BookmarkRecipeState> {
     );
 
     await getBookmarkRecipe();
-    // final result =
-    //     await bookmarkRecipeRepository.getBookmarkRecipe(page: 0).run();
-
-    // result.match(
-    //   (error) => emit(
-    //     state.copyWith(
-    //       getBookmarkRecipeStatus: GetBookmarkRecipeStatus.failure,
-    //       mess: error,
-    //     ),
-    //   ),
-    //   (response) {
-    //     debugPrint('${response.recipeList}');
-    //     emit(
-    //       state.copyWith(
-    //         getBookmarkRecipeStatus: GetBookmarkRecipeStatus.success,
-    //         bookmarkRecipeList:
-    //             response.recipeList ?? state.bookmarkRecipeList,
-    //         filterBookmarkRecipeList:
-    //             response.recipeList ?? state.filterBookmarkRecipeList,
-    //         page: 1,
-    //       ),
-    //     );
-    //     filterRecipeList();
-    //     // search();
-    //   },
-    // );
   }
 
   void filterRecipeList() {

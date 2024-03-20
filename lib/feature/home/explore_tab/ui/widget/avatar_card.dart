@@ -2,13 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
+import 'package:foodie/feature/home/explore_tab/ui/widget/firebase_image.dart';
 
 class AvatarCard extends StatelessWidget {
   final Function? onTap;
-  final Widget? child;
+  final String imagePath;
   final double? height;
 
-  const AvatarCard({super.key, this.onTap, this.child, this.height});
+  const AvatarCard({
+    super.key,
+    this.onTap,
+    this.height,
+    required this.imagePath,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +34,12 @@ class AvatarCard extends StatelessWidget {
               color: '#FF6B00'.toColor(),
             ),
             clipBehavior: Clip.hardEdge,
-            child: child ??
-                Image.asset(
-                  AppImage.defaultAvatar,
-                  width: AppStyles.width(217),
-                  height: AppStyles.height(86),
-                ),
+            child: FirebaseImage(
+              imagePath: imagePath,
+              emptyImagePath: AppImage.defaultAvatar,
+              cardHeight: height ?? AppStyles.height(30),
+              cardWidth: height ?? AppStyles.height(30),
+            ),
           ),
           onTap != null
               ? Positioned(

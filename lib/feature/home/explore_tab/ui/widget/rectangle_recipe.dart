@@ -1,10 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/core/util/date_time.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/avatar_card.dart';
+import 'package:foodie/feature/home/explore_tab/ui/widget/firebase_image.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/star_rating.dart';
 import 'package:foodie/model/recipe/recipe_basic.dart';
 
@@ -24,42 +24,30 @@ class RectangleRecipeItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        recipeBasic.recipeImage == null
-            ? Stack(
-                children: [
-                  Positioned.fill(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: '#FF6B00'.toColor().withOpacity(0.3),
-                      ),
-                    ),
-                  ),
-                  Image.asset(
-                    AppImage.emptyImageRecipe,
-                    width: cardWidth,
-                    height: cardHeight,
-                  ),
-                ],
-              )
-            : CachedNetworkImage(
-                width: cardWidth,
-                height: cardHeight,
-                imageUrl: recipeBasic.recipeImage ??
-                    'https://via.placeholder.com/150',
-                imageBuilder: (context, imageProvider) => Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    image: DecorationImage(
-                        image: imageProvider, fit: BoxFit.cover),
-                  ),
+        Stack(
+          children: [
+            Positioned.fill(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: '#FF6B00'.toColor().withOpacity(0.3),
                 ),
-                placeholder: (context, url) => const Center(
-                  child: CircularProgressIndicator.adaptive(),
-                ),
-                errorWidget: (context, url, error) =>
-                    Image.asset(AppImage.icHome),
               ),
+            ),
+            Container(
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: FirebaseImage(
+                imagePath: recipeBasic.recipeImage ?? '',
+                emptyImagePath: AppImage.emptyImageRecipe,
+                cardHeight: cardHeight,
+                cardWidth: cardWidth,
+              ),
+            ),
+          ],
+        ),
         Positioned(
           bottom: AppStyles.height(8),
           child: Container(
@@ -107,8 +95,20 @@ class RectangleRecipeItem extends StatelessWidget {
                               children: [
                                 StarRating(
                                   initialRating: recipeBasic.rating ?? 0,
-                                  isDisable: false,
+                                  isDisable: true,
                                   allowHalfRating: true,
+                                ),
+                                const HorizontalSpace(8),
+                                SizedBox(
+                                  width: AppStyles.height(20),
+                                  height: AppStyles.height(20),
+                                  child: SvgPicture.asset(
+                                    AppImage.icProfile,
+                                    colorFilter: const ColorFilter.mode(
+                                      Colors.white,
+                                      BlendMode.srcIn,
+                                    ),
+                                  ),
                                 ),
                                 const HorizontalSpace(8),
                                 Text(
@@ -150,20 +150,7 @@ class RectangleRecipeItem extends StatelessWidget {
                         children: [
                           AvatarCard(
                             height: AppStyles.height(30),
-                            child: recipeBasic.owner != null &&
-                                    recipeBasic.owner?.userImage != null
-                                ? Image.network(
-                                    recipeBasic.owner!.userImage!,
-                                    fit: BoxFit.cover,
-                                    height: AppStyles.height(40),
-                                    width: AppStyles.height(40),
-                                  )
-                                : Image.asset(
-                                    AppImage.defaultAvatar,
-                                    fit: BoxFit.cover,
-                                    height: AppStyles.height(40),
-                                    width: AppStyles.height(40),
-                                  ),
+                            imagePath: recipeBasic.owner?.userImage ?? '',
                           ),
                           const HorizontalSpace(8),
                           Expanded(

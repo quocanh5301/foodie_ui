@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'get_bookmark_recipe_response.dart';
+part of 'get_basic_recipe_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,44 +14,43 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-GetBookmarkRecipeResponse _$GetBookmarkRecipeResponseFromJson(
+GetBasicRecipeResponse _$GetBasicRecipeResponseFromJson(
     Map<String, dynamic> json) {
-  return _GetBookmarkRecipeResponse.fromJson(json);
+  return _GetBasicRecipeResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$GetBookmarkRecipeResponse {
+mixin _$GetBasicRecipeResponse {
   @JsonKey(name: 'code')
   int? get code => throw _privateConstructorUsedError;
   @JsonKey(name: 'mess')
   String? get mess => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
-  List<RecipeBasic>? get bookmarkRecipeList =>
-      throw _privateConstructorUsedError;
+  List<RecipeBasic>? get recipeList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $GetBookmarkRecipeResponseCopyWith<GetBookmarkRecipeResponse> get copyWith =>
+  $GetBasicRecipeResponseCopyWith<GetBasicRecipeResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GetBookmarkRecipeResponseCopyWith<$Res> {
-  factory $GetBookmarkRecipeResponseCopyWith(GetBookmarkRecipeResponse value,
-          $Res Function(GetBookmarkRecipeResponse) then) =
-      _$GetBookmarkRecipeResponseCopyWithImpl<$Res, GetBookmarkRecipeResponse>;
+abstract class $GetBasicRecipeResponseCopyWith<$Res> {
+  factory $GetBasicRecipeResponseCopyWith(GetBasicRecipeResponse value,
+          $Res Function(GetBasicRecipeResponse) then) =
+      _$GetBasicRecipeResponseCopyWithImpl<$Res, GetBasicRecipeResponse>;
   @useResult
   $Res call(
       {@JsonKey(name: 'code') int? code,
       @JsonKey(name: 'mess') String? mess,
-      @JsonKey(name: 'data') List<RecipeBasic>? bookmarkRecipeList});
+      @JsonKey(name: 'data') List<RecipeBasic>? recipeList});
 }
 
 /// @nodoc
-class _$GetBookmarkRecipeResponseCopyWithImpl<$Res,
-        $Val extends GetBookmarkRecipeResponse>
-    implements $GetBookmarkRecipeResponseCopyWith<$Res> {
-  _$GetBookmarkRecipeResponseCopyWithImpl(this._value, this._then);
+class _$GetBasicRecipeResponseCopyWithImpl<$Res,
+        $Val extends GetBasicRecipeResponse>
+    implements $GetBasicRecipeResponseCopyWith<$Res> {
+  _$GetBasicRecipeResponseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -63,7 +62,7 @@ class _$GetBookmarkRecipeResponseCopyWithImpl<$Res,
   $Res call({
     Object? code = freezed,
     Object? mess = freezed,
-    Object? bookmarkRecipeList = freezed,
+    Object? recipeList = freezed,
   }) {
     return _then(_value.copyWith(
       code: freezed == code
@@ -74,37 +73,37 @@ class _$GetBookmarkRecipeResponseCopyWithImpl<$Res,
           ? _value.mess
           : mess // ignore: cast_nullable_to_non_nullable
               as String?,
-      bookmarkRecipeList: freezed == bookmarkRecipeList
-          ? _value.bookmarkRecipeList
-          : bookmarkRecipeList // ignore: cast_nullable_to_non_nullable
+      recipeList: freezed == recipeList
+          ? _value.recipeList
+          : recipeList // ignore: cast_nullable_to_non_nullable
               as List<RecipeBasic>?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$GetBookmarkRecipeResponseImplCopyWith<$Res>
-    implements $GetBookmarkRecipeResponseCopyWith<$Res> {
-  factory _$$GetBookmarkRecipeResponseImplCopyWith(
-          _$GetBookmarkRecipeResponseImpl value,
-          $Res Function(_$GetBookmarkRecipeResponseImpl) then) =
-      __$$GetBookmarkRecipeResponseImplCopyWithImpl<$Res>;
+abstract class _$$GetBasicRecipeResponseImplCopyWith<$Res>
+    implements $GetBasicRecipeResponseCopyWith<$Res> {
+  factory _$$GetBasicRecipeResponseImplCopyWith(
+          _$GetBasicRecipeResponseImpl value,
+          $Res Function(_$GetBasicRecipeResponseImpl) then) =
+      __$$GetBasicRecipeResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(name: 'code') int? code,
       @JsonKey(name: 'mess') String? mess,
-      @JsonKey(name: 'data') List<RecipeBasic>? bookmarkRecipeList});
+      @JsonKey(name: 'data') List<RecipeBasic>? recipeList});
 }
 
 /// @nodoc
-class __$$GetBookmarkRecipeResponseImplCopyWithImpl<$Res>
-    extends _$GetBookmarkRecipeResponseCopyWithImpl<$Res,
-        _$GetBookmarkRecipeResponseImpl>
-    implements _$$GetBookmarkRecipeResponseImplCopyWith<$Res> {
-  __$$GetBookmarkRecipeResponseImplCopyWithImpl(
-      _$GetBookmarkRecipeResponseImpl _value,
-      $Res Function(_$GetBookmarkRecipeResponseImpl) _then)
+class __$$GetBasicRecipeResponseImplCopyWithImpl<$Res>
+    extends _$GetBasicRecipeResponseCopyWithImpl<$Res,
+        _$GetBasicRecipeResponseImpl>
+    implements _$$GetBasicRecipeResponseImplCopyWith<$Res> {
+  __$$GetBasicRecipeResponseImplCopyWithImpl(
+      _$GetBasicRecipeResponseImpl _value,
+      $Res Function(_$GetBasicRecipeResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,9 +111,9 @@ class __$$GetBookmarkRecipeResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? code = freezed,
     Object? mess = freezed,
-    Object? bookmarkRecipeList = freezed,
+    Object? recipeList = freezed,
   }) {
-    return _then(_$GetBookmarkRecipeResponseImpl(
+    return _then(_$GetBasicRecipeResponseImpl(
       code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -123,9 +122,9 @@ class __$$GetBookmarkRecipeResponseImplCopyWithImpl<$Res>
           ? _value.mess
           : mess // ignore: cast_nullable_to_non_nullable
               as String?,
-      bookmarkRecipeList: freezed == bookmarkRecipeList
-          ? _value._bookmarkRecipeList
-          : bookmarkRecipeList // ignore: cast_nullable_to_non_nullable
+      recipeList: freezed == recipeList
+          ? _value._recipeList
+          : recipeList // ignore: cast_nullable_to_non_nullable
               as List<RecipeBasic>?,
     ));
   }
@@ -133,15 +132,15 @@ class __$$GetBookmarkRecipeResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GetBookmarkRecipeResponseImpl implements _GetBookmarkRecipeResponse {
-  const _$GetBookmarkRecipeResponseImpl(
+class _$GetBasicRecipeResponseImpl implements _GetBasicRecipeResponse {
+  const _$GetBasicRecipeResponseImpl(
       {@JsonKey(name: 'code') this.code,
       @JsonKey(name: 'mess') this.mess,
-      @JsonKey(name: 'data') final List<RecipeBasic>? bookmarkRecipeList})
-      : _bookmarkRecipeList = bookmarkRecipeList;
+      @JsonKey(name: 'data') final List<RecipeBasic>? recipeList})
+      : _recipeList = recipeList;
 
-  factory _$GetBookmarkRecipeResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$GetBookmarkRecipeResponseImplFromJson(json);
+  factory _$GetBasicRecipeResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetBasicRecipeResponseImplFromJson(json);
 
   @override
   @JsonKey(name: 'code')
@@ -149,63 +148,62 @@ class _$GetBookmarkRecipeResponseImpl implements _GetBookmarkRecipeResponse {
   @override
   @JsonKey(name: 'mess')
   final String? mess;
-  final List<RecipeBasic>? _bookmarkRecipeList;
+  final List<RecipeBasic>? _recipeList;
   @override
   @JsonKey(name: 'data')
-  List<RecipeBasic>? get bookmarkRecipeList {
-    final value = _bookmarkRecipeList;
+  List<RecipeBasic>? get recipeList {
+    final value = _recipeList;
     if (value == null) return null;
-    if (_bookmarkRecipeList is EqualUnmodifiableListView)
-      return _bookmarkRecipeList;
+    if (_recipeList is EqualUnmodifiableListView) return _recipeList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
 
   @override
   String toString() {
-    return 'GetBookmarkRecipeResponse(code: $code, mess: $mess, bookmarkRecipeList: $bookmarkRecipeList)';
+    return 'GetBasicRecipeResponse(code: $code, mess: $mess, recipeList: $recipeList)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetBookmarkRecipeResponseImpl &&
+            other is _$GetBasicRecipeResponseImpl &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.mess, mess) || other.mess == mess) &&
             const DeepCollectionEquality()
-                .equals(other._bookmarkRecipeList, _bookmarkRecipeList));
+                .equals(other._recipeList, _recipeList));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, code, mess,
-      const DeepCollectionEquality().hash(_bookmarkRecipeList));
+      const DeepCollectionEquality().hash(_recipeList));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetBookmarkRecipeResponseImplCopyWith<_$GetBookmarkRecipeResponseImpl>
-      get copyWith => __$$GetBookmarkRecipeResponseImplCopyWithImpl<
-          _$GetBookmarkRecipeResponseImpl>(this, _$identity);
+  _$$GetBasicRecipeResponseImplCopyWith<_$GetBasicRecipeResponseImpl>
+      get copyWith => __$$GetBasicRecipeResponseImplCopyWithImpl<
+          _$GetBasicRecipeResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$GetBookmarkRecipeResponseImplToJson(
+    return _$$GetBasicRecipeResponseImplToJson(
       this,
     );
   }
 }
 
-abstract class _GetBookmarkRecipeResponse implements GetBookmarkRecipeResponse {
-  const factory _GetBookmarkRecipeResponse(
+abstract class _GetBasicRecipeResponse implements GetBasicRecipeResponse {
+  const factory _GetBasicRecipeResponse(
           {@JsonKey(name: 'code') final int? code,
           @JsonKey(name: 'mess') final String? mess,
-          @JsonKey(name: 'data') final List<RecipeBasic>? bookmarkRecipeList}) =
-      _$GetBookmarkRecipeResponseImpl;
+          @JsonKey(name: 'data') final List<RecipeBasic>? recipeList}) =
+      _$GetBasicRecipeResponseImpl;
 
-  factory _GetBookmarkRecipeResponse.fromJson(Map<String, dynamic> json) =
-      _$GetBookmarkRecipeResponseImpl.fromJson;
+  factory _GetBasicRecipeResponse.fromJson(Map<String, dynamic> json) =
+      _$GetBasicRecipeResponseImpl.fromJson;
 
   @override
   @JsonKey(name: 'code')
@@ -215,9 +213,9 @@ abstract class _GetBookmarkRecipeResponse implements GetBookmarkRecipeResponse {
   String? get mess;
   @override
   @JsonKey(name: 'data')
-  List<RecipeBasic>? get bookmarkRecipeList;
+  List<RecipeBasic>? get recipeList;
   @override
   @JsonKey(ignore: true)
-  _$$GetBookmarkRecipeResponseImplCopyWith<_$GetBookmarkRecipeResponseImpl>
+  _$$GetBasicRecipeResponseImplCopyWith<_$GetBasicRecipeResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

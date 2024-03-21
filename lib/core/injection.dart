@@ -8,6 +8,9 @@ import 'package:foodie/feature/home/add_new_recipe_tab/repository/add_new_recipe
 import 'package:foodie/feature/home/bookmark_tab/bloc/bookmark_recipe_cubit.dart';
 import 'package:foodie/feature/home/bookmark_tab/provider/bookmark_recipe_provider.dart';
 import 'package:foodie/feature/home/bookmark_tab/repository/bookmark_recipe_repository.dart';
+import 'package:foodie/feature/home/explore_tab/bloc/explore_cubit.dart';
+import 'package:foodie/feature/home/explore_tab/provider/explore_provider.dart';
+import 'package:foodie/feature/home/explore_tab/repository/explore_repository.dart';
 import 'package:foodie/feature/login/bloc/login_cubit.dart';
 import 'package:foodie/feature/login/provider/login_provider.dart';
 import 'package:foodie/feature/login/repository/login_repository.dart';
@@ -22,6 +25,7 @@ Future<void> init() async {
   initLogin();
   initRegister();
   initAppSetting();
+  initExplore(); 
   initAddNewRecipe();
   initBookmarkRecipe();
 }
@@ -55,4 +59,10 @@ void initBookmarkRecipe() async {
   sl.registerFactory(
       () => BookmarkRecipeRepository(bookmarkRecipeProvider: sl()));
   sl.registerFactory(() => BookmarkRecipeProvider(apiRequest: APIRequest()));
+}
+
+void initExplore() async {
+  sl.registerFactory(() => ExploreCubit(exploreRepository: sl()));
+  sl.registerFactory(() => ExploreRepository(exploreProvider: sl()));
+  sl.registerFactory(() => ExploreProvider(apiRequest: APIRequest()));
 }

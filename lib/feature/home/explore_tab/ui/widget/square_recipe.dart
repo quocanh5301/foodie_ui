@@ -1,95 +1,136 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
+import 'package:foodie/feature/home/explore_tab/ui/widget/avatar_card.dart';
+import 'package:foodie/feature/home/explore_tab/ui/widget/firebase_image.dart';
+import 'package:foodie/feature/home/explore_tab/ui/widget/star_rating.dart';
+import 'package:foodie/model/recipe/recipe_basic.dart';
 
 class SquareRecipeItem extends StatelessWidget {
-  const SquareRecipeItem({super.key});
+  const SquareRecipeItem({
+    super.key,
+    required this.recipeBasic,
+    required this.cardWidth,
+    required this.cardHeight,
+  });
+
+  final double cardWidth;
+  final double cardHeight;
+  final RecipeBasic recipeBasic;
 
   @override
   Widget build(BuildContext context) {
-    double imageHeight = (AppStyles.screenW - AppStyles.width(60)) * 3 / 10;
-    return Card(
-      surfaceTintColor: Colors.white,
-      child: Container(
-        width: AppStyles.screenW / 2,
-        padding: EdgeInsets.all(AppStyles.width(8)),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: '#FF6B00'.toColor().withOpacity(0.3),
+      ),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppStyles.width(15),
+        vertical: AppStyles.height(10),
+      ),
+      child: IntrinsicHeight(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CachedNetworkImage(
-              height: imageHeight,
-              width: AppStyles.screenW / 2,
-              imageUrl:
-                  'https://preview.redd.it/r3lcc7gf64791.png?width=540&format=png&auto=webp&s=9d32ec46f884486fd59dfd01453bf5d07bf30d75',
-              imageBuilder: (context, imageProvider) => Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  image: DecorationImage(
-                    image: imageProvider,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+            Container(
+              height: cardHeight / 2,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: '#802D264f'.toColor(),
               ),
-              placeholder: (context, url) => const Center(
-                child: CircularProgressIndicator.adaptive(),
+              padding: EdgeInsets.all(
+                AppStyles.width(10),
               ),
-              errorWidget: (context, url, error) => Image.asset(
-                AppImage.icHome,
+              child: FirebaseImage(
+                imagePath: recipeBasic.recipeImage ?? '',
+                emptyImagePath: AppImage.emptyImageRecipe,
+                cardHeight: cardHeight / 3,
+                cardWidth: cardWidth,
               ),
             ),
-            const VerticalSpace(4),
+            const VerticalSpace(10),
             Text(
-              'hehe',
-              style: AppStyles.f10sb(),
+              recipeBasic.recipeName ?? 'No name recipe',
+              style: AppStyles.f10sb().copyWith(
+                color: Colors.white,
+              ),
               overflow: TextOverflow.ellipsis,
             ),
-            Row(
-              children: [
-                SvgPicture.asset(
-                  AppImage.icHome,
-                  height: AppStyles.width(12),
-                  width: AppStyles.width(12),
-                  colorFilter: ColorFilter.mode(
-                    '#4D2D264B'.toColor(),
-                    BlendMode.srcIn,
+            const VerticalSpace(10),
+            IntrinsicWidth(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  AvatarCard(
+                    height: AppStyles.height(20),
+                    imagePath: recipeBasic.owner?.userImage ?? '',
                   ),
-                ),
-                const HorizontalSpace(8),
-                Expanded(
-                  child: Text(
-                    'hehe',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppStyles.f10r(),
-                  ),
-                ),
-              ],
+                  const HorizontalSpace(8),
+                  Expanded(
+                    child: Text(
+                      recipeBasic.owner?.userName ?? 'no name',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppStyles.f12r().copyWith(color: Colors.white),
+                    ),
+                  )
+                ],
+              ),
             ),
-            Row(
-              children: [
-                SvgPicture.asset(
-                  AppImage.icHome,
-                  height: AppStyles.width(12),
-                  width: AppStyles.width(12),
-                  colorFilter: ColorFilter.mode(
-                    '#4D2D264B'.toColor(),
-                    BlendMode.srcIn,
+            const VerticalSpace(10),
+            IntrinsicWidth(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IntrinsicWidth(
+                    child: Row(
+                      children: [
+                        StarRating(
+                          initialRating: recipeBasic.rating ?? 0,
+                          isDisable: true,
+                          allowHalfRating: true,
+                        ),
+                        const HorizontalSpace(8),
+                        Text(
+                          (recipeBasic.numOfRating ?? 0).toString(),
+                          style: AppStyles.f12m().copyWith(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const HorizontalSpace(8),
-                Expanded(
-                  child: Text(
-                    'hehe',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppStyles.f10r(),
+                  const HorizontalSpace(15),
+                  IntrinsicWidth(
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: AppStyles.width(20),
+                          height: AppStyles.width(20),
+                          child: SvgPicture.asset(
+                            AppImage.icComment,
+                            colorFilter: const ColorFilter.mode(
+                              Colors.white,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                        ),
+                        const HorizontalSpace(8),
+                        Text(
+                          (recipeBasic.numOfComment ?? 0).toString(),
+                          style: AppStyles.f12m().copyWith(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                )
-              ],
+                ],
+              ),
             ),
           ],
         ),

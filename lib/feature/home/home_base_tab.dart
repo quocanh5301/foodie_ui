@@ -5,6 +5,7 @@ import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/add_new_recipe_tab/ui/add_new_recipe_tab.dart';
 import 'package:foodie/feature/home/bookmark_tab/ui/bookmark_tab.dart';
 import 'package:foodie/feature/home/explore_tab/ui/explore_tab.dart';
+import 'package:foodie/feature/home/profile_tab/ui/widget/profile_tab.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -40,7 +41,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          activeColorPrimary: '#E23E3E'.toColor(),
+          activeColorPrimary: '#8f1d2e'.toColor(),
           activeColorSecondary: Colors.white,
           inactiveColorSecondary: '#08357C'.toColor(),
           title: item.$1,
@@ -56,7 +57,7 @@ class HomeScreen extends StatelessWidget {
       const ExploreTab(),
       AddNewRecipeTab(),
       const BookmarkRecipeTab(),
-      const Text('Profile'),
+      const ProfileTab(),
     ].map((e) => e).toList();
 
     return PersistentTabView(

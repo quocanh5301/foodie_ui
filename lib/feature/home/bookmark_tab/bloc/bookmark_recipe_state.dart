@@ -10,7 +10,7 @@ class BookmarkRecipeState with _$BookmarkRecipeState {
     @Default(200) int code,
     @Default([]) List<RecipeBasic> bookmarkRecipeList,
     @Default([]) List<RecipeBasic> filterBookmarkRecipeList,
-    @Default(1) int page,
+    @Default(0) int page,
     @Default('') String searchString,
     @Default(FilterMode.none) FilterMode filterRecipe,
     @Default(GetBookmarkRecipeStatus.initial)
@@ -22,7 +22,7 @@ class BookmarkRecipeState with _$BookmarkRecipeState {
   }) = _BookmarkRecipeState;
 }
 
-enum GetBookmarkRecipeStatus { initial, loading, success, failure }
+enum GetBookmarkRecipeStatus { initial, loading, noMore, success, failure }
 
 enum FilterBookmarkRecipeStatus { initial, start, finish }
 

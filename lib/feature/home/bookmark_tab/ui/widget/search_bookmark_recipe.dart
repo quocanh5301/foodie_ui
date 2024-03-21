@@ -43,6 +43,13 @@ class SearchBookmarkRecipeField extends StatelessWidget {
               padding: const EdgeInsets.all(14.0),
               child: SvgPicture.asset(AppImage.icSearch),
             ),
+            suffixIcon: (state.searchString != '')
+                ? IconButton(
+                    icon: const Icon(Icons.clear),
+                    onPressed: () =>
+                        context.read<BookmarkRecipeCubit>().resetSearch(),
+                  )
+                : null,
           ),
           onFieldSubmitted: (_) => context.read<BookmarkRecipeCubit>().search(),
           onChanged: (value) =>

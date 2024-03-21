@@ -6,6 +6,7 @@ class DateTimeHelper {
   static const String dateFormat1 = "yyyy-MM-dd HH:mm:ss";
   static const String dateFormat2 = "yyyy-MM-dd";
   static const String dateFormat3 = "HH:mm dd/MM/yyyy";
+  static const String dateFormat4 = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
   static String formatToHHMM(String dateTime, String dateFormat) {
     if (dateTime == '') {
@@ -40,6 +41,16 @@ class DateTimeHelper {
     } catch (e) {
       throw Exception(e);
     }
+  }
+
+  int dateStringToEpoch(String dateString) {
+    // Parse the date string into a DateTime object
+    DateTime dateTime = DateFormat(dateFormat4).parse(dateString);
+
+    // Convert the DateTime object to milliseconds since Unix epoch
+    int millisecondsSinceEpoch = dateTime.millisecondsSinceEpoch;
+
+    return millisecondsSinceEpoch;
   }
 
   static void setMessage(String locale) {

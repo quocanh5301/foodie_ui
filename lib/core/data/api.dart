@@ -1,10 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:foodie/core/router/router.dart';
 import 'package:foodie/core/data/share_pref.dart';
 
 final apiRequest = Dio(BaseOptions(
-  baseUrl: 'http://10.130.171.40:3000/',
+  baseUrl: 'http://192.168.225.1:3000/',
   connectTimeout: const Duration(minutes: 1),
   receiveTimeout: const Duration(minutes: 1),
   headers: {
@@ -30,6 +29,8 @@ class Endpoints {
   static String bookmarkRecipe = 'recipe/bookmarkRecipe';
   static String followUser = 'user/followUser';
   static String setFirebaseToken = 'user/setFirebaseToken';
+  static String searchAll = 'recipe/searchRecipeAndUser';
+  static String getFollowedUserNewRecipe = 'recipe/getUserFollowingNewRecipe';
 }
 
 class Token {
@@ -40,19 +41,19 @@ class Token {
 void configInterceptor(Dio apiRequest) {
   final interceptor = InterceptorsWrapper(
     onRequest: (options, handler) {
-      debugPrint('ON REQUEST PATH ${options.path}');
-      debugPrint('ON REQUEST DATA ${options.data.toString()}');
-      debugPrint('ON REQUEST EXTRA ${options.extra}');
-      debugPrint('ON REQUEST METHOD ${options.method}');
-      debugPrint('ON REQUEST HEADER ${options.headers}');
+      // debugPrint('ON REQUEST PATH ${options.path}');
+      // debugPrint('ON REQUEST DATA ${options.data.toString()}');
+      // debugPrint('ON REQUEST EXTRA ${options.extra}');
+      // debugPrint('ON REQUEST METHOD ${options.method}');
+      // debugPrint('ON REQUEST HEADER ${options.headers}');
       return handler.next(options);
     },
     onResponse: (response, handler) {
-      debugPrint('ON RESPONSE $response');
+      // debugPrint('ON RESPONSE $response');
       return handler.next(response);
     },
     onError: (error, handler) {
-      debugPrint('ON ERROR $error');
+      // debugPrint('ON ERROR $error');
       if (error.response?.statusCode == 401 ||
           error.response?.data['code'] == 401) {
         apiRequest.post(Endpoints.refreshToken, data: {
@@ -83,7 +84,7 @@ void configInterceptor(Dio apiRequest) {
   apiRequest.interceptors.clear();
   if (!apiRequest.interceptors
       .any((interceptor) => interceptor is InterceptorsWrapper)) {
-    debugPrint('INTERCEPTOR ADDED');
+    // debugPrint('INTERCEPTOR ADDED');
     apiRequest.interceptors.clear();
     apiRequest.interceptors.add(interceptor);
   }

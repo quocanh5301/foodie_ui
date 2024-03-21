@@ -221,7 +221,7 @@ class _$BookmarkRecipeStateImpl implements _BookmarkRecipeState {
       this.code = 200,
       final List<RecipeBasic> bookmarkRecipeList = const [],
       final List<RecipeBasic> filterBookmarkRecipeList = const [],
-      this.page = 1,
+      this.page = 0,
       this.searchString = '',
       this.filterRecipe = FilterMode.none,
       this.getBookmarkRecipeStatus = GetBookmarkRecipeStatus.initial,

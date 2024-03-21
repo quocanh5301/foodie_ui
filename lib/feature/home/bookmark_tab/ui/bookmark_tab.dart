@@ -64,7 +64,7 @@ class BookmarkRecipeTab extends StatelessWidget {
                       children: [
                         Container(
                           color: const Color.fromARGB(255, 148, 138, 138),
-                          height: AppStyles.height(400),
+                          height: AppStyles.height(280),
                           padding: EdgeInsets.fromLTRB(
                             AppStyles.width(15),
                             AppStyles.width(15),
@@ -88,6 +88,12 @@ class BookmarkRecipeTab extends StatelessWidget {
                                   topLeft: Radius.circular(25),
                                   topRight: Radius.circular(25),
                                 ),
+                                border: BorderDirectional(
+                                  top: BorderSide(
+                                    color: '#FF6B00'.toColor(),
+                                    width: 2,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
@@ -97,7 +103,8 @@ class BookmarkRecipeTab extends StatelessWidget {
                             padding: EdgeInsets.only(
                               top: AppBar().preferredSize.height +
                                   MediaQuery.paddingOf(context).top -
-                                  AppStyles.height(50),
+                                  AppStyles.height(60),
+                              bottom: AppStyles.height(15),
                             ),
                             child: Center(
                               child: Padding(
@@ -142,7 +149,7 @@ class BookmarkRecipeTab extends StatelessWidget {
                                   const VerticalSpace(20),
                             )
                           : SizedBox(
-                              height: AppStyles.screenH / 2.3,
+                              height: AppStyles.screenH / 2,
                               child: Center(
                                 child: Text(
                                   'No recipe found',

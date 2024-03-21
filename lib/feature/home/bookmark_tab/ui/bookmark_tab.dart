@@ -124,19 +124,34 @@ class BookmarkRecipeTab extends StatelessWidget {
                         horizontal: AppStyles.width(15),
                         vertical: AppStyles.width(10),
                       ),
-                      child: ListView.separated(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: state.filterBookmarkRecipeList.length,
-                        padding: EdgeInsets.zero,
-                        itemBuilder: (context, index) => RectangleRecipeItem(
-                          cardWidth: AppStyles.screenW - AppStyles.width(30),
-                          cardHeight: AppStyles.screenW / 1.7,
-                          recipeBasic: state.filterBookmarkRecipeList[index],
-                        ),
-                        separatorBuilder: (context, index) =>
-                            const VerticalSpace(20),
-                      ),
+                      child: state.filterBookmarkRecipeList.isNotEmpty
+                          ? ListView.separated(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: state.filterBookmarkRecipeList.length,
+                              padding: EdgeInsets.zero,
+                              itemBuilder: (context, index) =>
+                                  RectangleRecipeItem(
+                                cardWidth:
+                                    AppStyles.screenW - AppStyles.width(30),
+                                cardHeight: AppStyles.screenW / 1.7,
+                                recipeBasic:
+                                    state.filterBookmarkRecipeList[index],
+                              ),
+                              separatorBuilder: (context, index) =>
+                                  const VerticalSpace(20),
+                            )
+                          : SizedBox(
+                              height: AppStyles.screenH / 2.3,
+                              child: Center(
+                                child: Text(
+                                  'No recipe found',
+                                  style: AppStyles.f16sb().copyWith(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
                     ),
                   ],
                 ),

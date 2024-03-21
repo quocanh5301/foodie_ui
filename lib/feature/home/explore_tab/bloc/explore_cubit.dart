@@ -12,7 +12,6 @@ class ExploreCubit extends Cubit<ExploreState> {
   final int newPageSize = 10;
 
   Future<void> getTopRecipe() async {
-    debugPrint('getTopRecipe');
     emit(
       state.copyWith(
         getTopRecipeStatus: GetTopRecipeStatus.loading,

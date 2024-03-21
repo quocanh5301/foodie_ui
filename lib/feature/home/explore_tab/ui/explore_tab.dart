@@ -7,9 +7,10 @@ import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/explore_tab/bloc/explore_cubit.dart';
 import 'package:foodie/feature/home/explore_tab/bloc/explore_state.dart';
-import 'package:foodie/feature/home/explore_tab/ui/widget/rectangle_recipe.dart';
+import 'package:foodie/feature/home/explore_tab/ui/widget/list_follow_user_recipe.dart';
+import 'package:foodie/feature/home/explore_tab/ui/widget/list_new_recipe.dart';
+import 'package:foodie/feature/home/explore_tab/ui/widget/list_top_recipe.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/search_field.dart';
-import 'package:foodie/feature/home/explore_tab/ui/widget/square_recipe.dart';
 import 'package:foodie/generated/l10n.dart';
 
 class ExploreTab extends StatelessWidget {
@@ -115,130 +116,11 @@ class ExploreTab extends StatelessWidget {
                           const VerticalSpace(10),
                           const SearchField(),
                           const VerticalSpace(10),
-                          BlocBuilder<ExploreCubit, ExploreState>(
-                            buildWhen: (previous, current) =>
-                                previous.getTopRecipeStatus !=
-                                current.getTopRecipeStatus,
-                            builder: (context, state) {
-                              return EasyRefresh(
-                                triggerAxis: Axis.horizontal,
-                                canLoadAfterNoMore: false,
-                                footer: const MaterialFooter(
-                                  color: Colors.white,
-                                ),
-                                onLoad: () async {
-                                  await context
-                                      .read<ExploreCubit>()
-                                      .getTopRecipe();
-                                  if (state.getTopRecipeStatus ==
-                                      GetTopRecipeStatus.noMore) {
-                                    return IndicatorResult.noMore;
-                                  }
-                                },
-                                child: Container(
-                                  padding: EdgeInsets.only(
-                                      left: AppStyles.width(15)),
-                                  height: AppStyles.screenW / 2,
-                                  child: ListView.separated(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: state.topRecipeList.length,
-                                    separatorBuilder: (context, index) =>
-                                        const HorizontalSpace(10),
-                                    itemBuilder: (context, index) =>
-                                        RectangleRecipeItem(
-                                      recipeBasic: state.topRecipeList[index],
-                                      cardWidth: AppStyles.screenW * 5 / 6,
-                                      cardHeight: AppStyles.screenW / 2,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
+                          const TopRecipeList(),
                           const VerticalSpace(15),
-                          BlocBuilder<ExploreCubit, ExploreState>(
-                            buildWhen: (previous, current) =>
-                                previous.getFollowUserRecipeStatus !=
-                                current.getFollowUserRecipeStatus,
-                            builder: (context, state) {
-                              return EasyRefresh(
-                                triggerAxis: Axis.horizontal,
-                                canLoadAfterNoMore: false,
-                                footer: const MaterialFooter(
-                                  color: Colors.white,
-                                ),
-                                onLoad: () async {
-                                  await context
-                                      .read<ExploreCubit>()
-                                      .getFollowedUserNewRecipe();
-                                  if (state.getFollowUserRecipeStatus ==
-                                      GetFollowUserRecipeStatus.noMore) {
-                                    return IndicatorResult.noMore;
-                                  }
-                                },
-                                child: Container(
-                                  padding: EdgeInsets.only(
-                                      left: AppStyles.width(15)),
-                                  height: AppStyles.screenW / 1.8,
-                                  child: ListView.separated(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount:
-                                        state.followUserRecipeList.length,
-                                    separatorBuilder: (context, index) =>
-                                        const HorizontalSpace(10),
-                                    itemBuilder: (context, index) =>
-                                        SquareRecipeItem(
-                                      cardWidth: AppStyles.screenW / 2.6,
-                                      cardHeight: AppStyles.screenW / 1.8,
-                                      recipeBasic:
-                                          state.followUserRecipeList[index],
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
+                          const FollowUserRecipeList(),
                           const VerticalSpace(15),
-                          BlocBuilder<ExploreCubit, ExploreState>(
-                            buildWhen: (previous, current) =>
-                                previous.getNewRecipeStatus !=
-                                current.getNewRecipeStatus,
-                            builder: (context, state) {
-                              return EasyRefresh(
-                                triggerAxis: Axis.horizontal,
-                                canLoadAfterNoMore: false,
-                                footer: const MaterialFooter(
-                                  color: Colors.white,
-                                ),
-                                onLoad: () async {
-                                  await context
-                                      .read<ExploreCubit>()
-                                      .getNewRecipe();
-                                  if (state.getNewRecipeStatus ==
-                                      GetNewRecipeStatus.noMore) {
-                                    return IndicatorResult.noMore;
-                                  }
-                                },
-                                child: Container(
-                                  padding: EdgeInsets.only(
-                                      left: AppStyles.width(15)),
-                                  height: AppStyles.screenW / 1.8,
-                                  child: ListView.separated(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: state.newRecipeList.length,
-                                    separatorBuilder: (context, index) =>
-                                        const HorizontalSpace(10),
-                                    itemBuilder: (context, index) =>
-                                        SquareRecipeItem(
-                                      cardWidth: AppStyles.screenW / 2.6,
-                                      cardHeight: AppStyles.screenW / 1.8,
-                                      recipeBasic: state.newRecipeList[index],
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
+                          const NewRecipeList(),
                         ],
                       ),
                     ),

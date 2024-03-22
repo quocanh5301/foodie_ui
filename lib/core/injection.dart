@@ -11,6 +11,9 @@ import 'package:foodie/feature/home/bookmark_tab/repository/bookmark_recipe_repo
 import 'package:foodie/feature/home/explore_tab/bloc/explore_cubit.dart';
 import 'package:foodie/feature/home/explore_tab/provider/explore_provider.dart';
 import 'package:foodie/feature/home/explore_tab/repository/explore_repository.dart';
+import 'package:foodie/feature/home/profile_tab/bloc/profile_cubit.dart';
+import 'package:foodie/feature/home/profile_tab/provider/profile_provider.dart';
+import 'package:foodie/feature/home/profile_tab/repository/profile_repository.dart';
 import 'package:foodie/feature/login/bloc/login_cubit.dart';
 import 'package:foodie/feature/login/provider/login_provider.dart';
 import 'package:foodie/feature/login/repository/login_repository.dart';
@@ -28,6 +31,7 @@ Future<void> init() async {
   initExplore(); 
   initAddNewRecipe();
   initBookmarkRecipe();
+  initProfile(); 
 }
 
 void initLogin() async {
@@ -65,4 +69,10 @@ void initExplore() async {
   sl.registerFactory(() => ExploreCubit(exploreRepository: sl()));
   sl.registerFactory(() => ExploreRepository(exploreProvider: sl()));
   sl.registerFactory(() => ExploreProvider(apiRequest: APIRequest()));
+}
+
+void initProfile() async {
+  sl.registerFactory(() => ProfileCubit(profileRepository: sl()));
+  sl.registerFactory(() => ProfileRepository(profileProvider: sl()));
+  sl.registerFactory(() => ProfileProvider(apiRequest: APIRequest()));
 }

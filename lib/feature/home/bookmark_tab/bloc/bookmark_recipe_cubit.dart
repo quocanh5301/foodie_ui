@@ -81,6 +81,9 @@ class BookmarkRecipeCubit extends Cubit<BookmarkRecipeState> {
     emit(
       state.copyWith(
         page: 0,
+        bookmarkRecipeList: [],
+        filterBookmarkRecipeList: [],
+        getBookmarkRecipeStatus: GetBookmarkRecipeStatus.initial,
         mess: '',
       ),
     );

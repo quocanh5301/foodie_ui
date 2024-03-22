@@ -190,12 +190,17 @@ class ExploreCubit extends Cubit<ExploreState> {
   }
 
   Future<void> refreshRecipe() async {
-    debugPrint('refreshRecipe');
     emit(
       state.copyWith(
         topRecipePage: 0,
         newRecipePage: 0,
         followUserRecipePage: 0,
+        topRecipeList: [],
+        newRecipeList: [],
+        followUserRecipeList: [],
+        getTopRecipeStatus: GetTopRecipeStatus.initial,
+        getNewRecipeStatus: GetNewRecipeStatus.initial,
+        getFollowUserRecipeStatus: GetFollowUserRecipeStatus.initial,
         mess: '',
       ),
     );

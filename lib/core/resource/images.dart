@@ -7,6 +7,7 @@ class AppImage {
   static const String emptyImageRecipe =
       'assets/images/empty_image_recipe.png';
   static const String defaultAvatar = 'assets/images/img_default_avatar.png';
+  static const String profileBackground = 'assets/images/img_profile_background.png';
 
   // icon
   static const String icShowPass = 'assets/images/ic_show_pass.svg';

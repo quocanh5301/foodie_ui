@@ -17,9 +17,14 @@ class NewRecipeList extends StatelessWidget {
           previous.getNewRecipeStatus != current.getNewRecipeStatus,
       builder: (context, state) {
         return EasyRefresh(
+          header: MaterialHeader(
+            backgroundColor: '#FF6B00'.toColor(),
+            color: Colors.white,
+          ),
           triggerAxis: Axis.horizontal,
           canLoadAfterNoMore: false,
-          footer: const MaterialFooter(
+          footer: MaterialFooter(
+            backgroundColor: '#FF6B00'.toColor(),
             color: Colors.white,
           ),
           onLoad: () async {

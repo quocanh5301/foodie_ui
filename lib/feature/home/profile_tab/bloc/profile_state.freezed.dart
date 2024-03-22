@@ -19,9 +19,13 @@ mixin _$ProfileState {
   int get code => throw _privateConstructorUsedError;
   String get mess => throw _privateConstructorUsedError;
   List<RecipeBasic> get userRecipeList => throw _privateConstructorUsedError;
+  List<Review> get userReviewList => throw _privateConstructorUsedError;
   int get userRecipePage => throw _privateConstructorUsedError;
+  int get userReviewPage => throw _privateConstructorUsedError;
   int get currentTab => throw _privateConstructorUsedError;
   GetUserRecipeStatus get getUserRecipeStatus =>
+      throw _privateConstructorUsedError;
+  GetUserReviewStatus get getUserReviewStatus =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -39,9 +43,12 @@ abstract class $ProfileStateCopyWith<$Res> {
       {int code,
       String mess,
       List<RecipeBasic> userRecipeList,
+      List<Review> userReviewList,
       int userRecipePage,
+      int userReviewPage,
       int currentTab,
-      GetUserRecipeStatus getUserRecipeStatus});
+      GetUserRecipeStatus getUserRecipeStatus,
+      GetUserReviewStatus getUserReviewStatus});
 }
 
 /// @nodoc
@@ -60,9 +67,12 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
     Object? code = null,
     Object? mess = null,
     Object? userRecipeList = null,
+    Object? userReviewList = null,
     Object? userRecipePage = null,
+    Object? userReviewPage = null,
     Object? currentTab = null,
     Object? getUserRecipeStatus = null,
+    Object? getUserReviewStatus = null,
   }) {
     return _then(_value.copyWith(
       code: null == code
@@ -77,9 +87,17 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
           ? _value.userRecipeList
           : userRecipeList // ignore: cast_nullable_to_non_nullable
               as List<RecipeBasic>,
+      userReviewList: null == userReviewList
+          ? _value.userReviewList
+          : userReviewList // ignore: cast_nullable_to_non_nullable
+              as List<Review>,
       userRecipePage: null == userRecipePage
           ? _value.userRecipePage
           : userRecipePage // ignore: cast_nullable_to_non_nullable
+              as int,
+      userReviewPage: null == userReviewPage
+          ? _value.userReviewPage
+          : userReviewPage // ignore: cast_nullable_to_non_nullable
               as int,
       currentTab: null == currentTab
           ? _value.currentTab
@@ -89,6 +107,10 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
           ? _value.getUserRecipeStatus
           : getUserRecipeStatus // ignore: cast_nullable_to_non_nullable
               as GetUserRecipeStatus,
+      getUserReviewStatus: null == getUserReviewStatus
+          ? _value.getUserReviewStatus
+          : getUserReviewStatus // ignore: cast_nullable_to_non_nullable
+              as GetUserReviewStatus,
     ) as $Val);
   }
 }
@@ -105,9 +127,12 @@ abstract class _$$ProfileStateImplCopyWith<$Res>
       {int code,
       String mess,
       List<RecipeBasic> userRecipeList,
+      List<Review> userReviewList,
       int userRecipePage,
+      int userReviewPage,
       int currentTab,
-      GetUserRecipeStatus getUserRecipeStatus});
+      GetUserRecipeStatus getUserRecipeStatus,
+      GetUserReviewStatus getUserReviewStatus});
 }
 
 /// @nodoc
@@ -124,9 +149,12 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
     Object? code = null,
     Object? mess = null,
     Object? userRecipeList = null,
+    Object? userReviewList = null,
     Object? userRecipePage = null,
+    Object? userReviewPage = null,
     Object? currentTab = null,
     Object? getUserRecipeStatus = null,
+    Object? getUserReviewStatus = null,
   }) {
     return _then(_$ProfileStateImpl(
       code: null == code
@@ -141,9 +169,17 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
           ? _value._userRecipeList
           : userRecipeList // ignore: cast_nullable_to_non_nullable
               as List<RecipeBasic>,
+      userReviewList: null == userReviewList
+          ? _value._userReviewList
+          : userReviewList // ignore: cast_nullable_to_non_nullable
+              as List<Review>,
       userRecipePage: null == userRecipePage
           ? _value.userRecipePage
           : userRecipePage // ignore: cast_nullable_to_non_nullable
+              as int,
+      userReviewPage: null == userReviewPage
+          ? _value.userReviewPage
+          : userReviewPage // ignore: cast_nullable_to_non_nullable
               as int,
       currentTab: null == currentTab
           ? _value.currentTab
@@ -153,6 +189,10 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
           ? _value.getUserRecipeStatus
           : getUserRecipeStatus // ignore: cast_nullable_to_non_nullable
               as GetUserRecipeStatus,
+      getUserReviewStatus: null == getUserReviewStatus
+          ? _value.getUserReviewStatus
+          : getUserReviewStatus // ignore: cast_nullable_to_non_nullable
+              as GetUserReviewStatus,
     ));
   }
 }
@@ -164,10 +204,14 @@ class _$ProfileStateImpl implements _ProfileState {
       {this.code = 200,
       this.mess = '',
       final List<RecipeBasic> userRecipeList = const [],
+      final List<Review> userReviewList = const [],
       this.userRecipePage = 0,
+      this.userReviewPage = 0,
       this.currentTab = 0,
-      this.getUserRecipeStatus = GetUserRecipeStatus.initial})
-      : _userRecipeList = userRecipeList;
+      this.getUserRecipeStatus = GetUserRecipeStatus.initial,
+      this.getUserReviewStatus = GetUserReviewStatus.initial})
+      : _userRecipeList = userRecipeList,
+        _userReviewList = userReviewList;
 
   @override
   @JsonKey()
@@ -184,19 +228,34 @@ class _$ProfileStateImpl implements _ProfileState {
     return EqualUnmodifiableListView(_userRecipeList);
   }
 
+  final List<Review> _userReviewList;
+  @override
+  @JsonKey()
+  List<Review> get userReviewList {
+    if (_userReviewList is EqualUnmodifiableListView) return _userReviewList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_userReviewList);
+  }
+
   @override
   @JsonKey()
   final int userRecipePage;
+  @override
+  @JsonKey()
+  final int userReviewPage;
   @override
   @JsonKey()
   final int currentTab;
   @override
   @JsonKey()
   final GetUserRecipeStatus getUserRecipeStatus;
+  @override
+  @JsonKey()
+  final GetUserReviewStatus getUserReviewStatus;
 
   @override
   String toString() {
-    return 'ProfileState(code: $code, mess: $mess, userRecipeList: $userRecipeList, userRecipePage: $userRecipePage, currentTab: $currentTab, getUserRecipeStatus: $getUserRecipeStatus)';
+    return 'ProfileState(code: $code, mess: $mess, userRecipeList: $userRecipeList, userReviewList: $userReviewList, userRecipePage: $userRecipePage, userReviewPage: $userReviewPage, currentTab: $currentTab, getUserRecipeStatus: $getUserRecipeStatus, getUserReviewStatus: $getUserReviewStatus)';
   }
 
   @override
@@ -208,12 +267,18 @@ class _$ProfileStateImpl implements _ProfileState {
             (identical(other.mess, mess) || other.mess == mess) &&
             const DeepCollectionEquality()
                 .equals(other._userRecipeList, _userRecipeList) &&
+            const DeepCollectionEquality()
+                .equals(other._userReviewList, _userReviewList) &&
             (identical(other.userRecipePage, userRecipePage) ||
                 other.userRecipePage == userRecipePage) &&
+            (identical(other.userReviewPage, userReviewPage) ||
+                other.userReviewPage == userReviewPage) &&
             (identical(other.currentTab, currentTab) ||
                 other.currentTab == currentTab) &&
             (identical(other.getUserRecipeStatus, getUserRecipeStatus) ||
-                other.getUserRecipeStatus == getUserRecipeStatus));
+                other.getUserRecipeStatus == getUserRecipeStatus) &&
+            (identical(other.getUserReviewStatus, getUserReviewStatus) ||
+                other.getUserReviewStatus == getUserReviewStatus));
   }
 
   @override
@@ -222,9 +287,12 @@ class _$ProfileStateImpl implements _ProfileState {
       code,
       mess,
       const DeepCollectionEquality().hash(_userRecipeList),
+      const DeepCollectionEquality().hash(_userReviewList),
       userRecipePage,
+      userReviewPage,
       currentTab,
-      getUserRecipeStatus);
+      getUserRecipeStatus,
+      getUserReviewStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -238,9 +306,12 @@ abstract class _ProfileState implements ProfileState {
       {final int code,
       final String mess,
       final List<RecipeBasic> userRecipeList,
+      final List<Review> userReviewList,
       final int userRecipePage,
+      final int userReviewPage,
       final int currentTab,
-      final GetUserRecipeStatus getUserRecipeStatus}) = _$ProfileStateImpl;
+      final GetUserRecipeStatus getUserRecipeStatus,
+      final GetUserReviewStatus getUserReviewStatus}) = _$ProfileStateImpl;
 
   @override
   int get code;
@@ -249,11 +320,17 @@ abstract class _ProfileState implements ProfileState {
   @override
   List<RecipeBasic> get userRecipeList;
   @override
+  List<Review> get userReviewList;
+  @override
   int get userRecipePage;
+  @override
+  int get userReviewPage;
   @override
   int get currentTab;
   @override
   GetUserRecipeStatus get getUserRecipeStatus;
+  @override
+  GetUserReviewStatus get getUserReviewStatus;
   @override
   @JsonKey(ignore: true)
   _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>

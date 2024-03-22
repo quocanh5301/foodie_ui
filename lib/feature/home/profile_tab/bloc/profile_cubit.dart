@@ -7,6 +7,73 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   final ProfileRepository profileRepository;
 
+  Future<void> getReviewOfUserRecipe() async {
+    emit(
+      state.copyWith(
+        getUserReviewStatus: GetUserReviewStatus.loading,
+        mess: '',
+      ),
+    );
+    final result = await profileRepository
+        .getReviewOfUserRecipe(page: state.userReviewPage)
+        .run();
+    result.match(
+      (error) => emit(
+        state.copyWith(
+          getUserReviewStatus: GetUserReviewStatus.failure,
+          mess: error,
+        ),
+      ),
+      (success) {
+        if (success.reviewList != null) {
+          if (success.reviewList!.length <
+              profileRepository.profileProvider.pageSize) {
+            emit(
+              state.copyWith(
+                getUserReviewStatus: GetUserReviewStatus.noMore,
+                userReviewList: [
+                  ...state.userReviewList,
+                  ...success.reviewList!,
+                ],
+                userReviewPage: state.userReviewPage + 1,
+              ),
+            );
+          } else {
+            emit(
+              state.copyWith(
+                getUserReviewStatus: GetUserReviewStatus.success,
+                userReviewList: [
+                  ...state.userReviewList,
+                  ...success.reviewList!,
+                ],
+                userReviewPage: state.userReviewPage + 1,
+              ),
+            );
+          }
+        } else {
+          emit(
+            state.copyWith(
+              getUserReviewStatus: GetUserReviewStatus.failure,
+              mess: 'userReviewList is null',
+            ),
+          );
+        }
+      },
+    );
+  }
+
+  Future<void> refreshReview() async {
+    emit(
+      state.copyWith(
+        userReviewPage: 0,
+        userReviewList: [],
+        getUserReviewStatus: GetUserReviewStatus.initial,
+        mess: '',
+      ),
+    );
+    await getReviewOfUserRecipe();
+  }
+
   Future<void> getRecipeOfUser() async {
     emit(
       state.copyWith(
@@ -26,7 +93,8 @@ class ProfileCubit extends Cubit<ProfileState> {
       ),
       (success) {
         if (success.recipeList != null) {
-          if (success.recipeList!.length < profileRepository.profileProvider.pageSize) {
+          if (success.recipeList!.length <
+              profileRepository.profileProvider.pageSize) {
             emit(
               state.copyWith(
                 getUserRecipeStatus: GetUserRecipeStatus.noMore,
@@ -59,6 +127,18 @@ class ProfileCubit extends Cubit<ProfileState> {
         }
       },
     );
+  }
+
+  Future<void> refreshUserRecipe() async {
+    emit(
+      state.copyWith(
+        userRecipePage: 0,
+        userRecipeList: [],
+        getUserRecipeStatus: GetUserRecipeStatus.initial,
+        mess: '',
+      ),
+    );
+    await getRecipeOfUser();
   }
 
   void setCurrentTab(int newTab) => emit(state.copyWith(currentTab: newTab));

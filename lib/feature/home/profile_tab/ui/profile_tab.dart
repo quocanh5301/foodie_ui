@@ -1,3 +1,4 @@
+import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/core/data/share_pref.dart';
@@ -28,145 +29,180 @@ class ProfileTab extends StatelessWidget {
         centerTitle: true,
       ),
       body: BlocProvider<ProfileCubit>(
-        create: (context) => sl<ProfileCubit>()..getRecipeOfUser(),
+        create: (context) => sl<ProfileCubit>(),
         child: BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {
-            return SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Stack(
-                    children: [
-                      Container(
-                        width: AppStyles.screenW,
-                        color: Colors.grey,
-                        height: AppStyles.height(300),
-                        child: Image.asset(
-                          AppImage.profileBackground,
-                          fit: BoxFit.cover,
+            return EasyRefresh(
+              header: MaterialHeader(
+                backgroundColor: '#FF6B00'.toColor(),
+                color: Colors.white,
+              ),
+              triggerAxis: Axis.vertical,
+              footer: MaterialFooter(
+                backgroundColor: '#FF6B00'.toColor(),
+                color: Colors.white,
+              ),
+              onLoad: () async {
+                if (state.currentTab == 0) {
+                  if (state.getUserRecipeStatus == GetUserRecipeStatus.noMore) {
+                    return IndicatorResult.noMore;
+                  }
+                  await context.read<ProfileCubit>().getRecipeOfUser();
+                } else {
+                  if (state.getUserReviewStatus == GetUserReviewStatus.noMore) {
+                    return IndicatorResult.noMore;
+                  }
+                  await context.read<ProfileCubit>().getReviewOfUserRecipe();
+                }
+              },
+              onRefresh: () {
+                if (state.currentTab == 0) {
+                  context.read<ProfileCubit>().refreshUserRecipe();
+                } else {
+                  context.read<ProfileCubit>().refreshReview();
+                }
+              },
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Stack(
+                      children: [
+                        Container(
+                          width: AppStyles.screenW,
+                          color: Colors.grey,
+                          height: AppStyles.height(300),
+                          child: Image.asset(
+                            AppImage.profileBackground,
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                      Positioned.fill(
-                        child: Align(
-                          alignment: Alignment.bottomCenter,
-                          child: SizedBox(
-                            width: AppStyles.screenW,
-                            child: Stack(
-                              children: [
-                                Positioned.fill(
-                                  child: Align(
-                                    alignment: Alignment.bottomCenter,
-                                    child: Container(
-                                      height: AppStyles.height(50),
-                                      decoration: BoxDecoration(
-                                        color: '#2b2b2b'.toColor(),
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(25),
-                                          topRight: Radius.circular(25),
-                                        ),
-                                        border: BorderDirectional(
-                                          top: BorderSide(
-                                            color: '#FF6B00'.toColor(),
-                                            width: 2,
+                        Positioned.fill(
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: SizedBox(
+                              width: AppStyles.screenW,
+                              child: Stack(
+                                children: [
+                                  Positioned.fill(
+                                    child: Align(
+                                      alignment: Alignment.bottomCenter,
+                                      child: Container(
+                                        height: AppStyles.height(50),
+                                        decoration: BoxDecoration(
+                                          color: '#2b2b2b'.toColor(),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(25),
+                                            topRight: Radius.circular(25),
+                                          ),
+                                          border: BorderDirectional(
+                                            top: BorderSide(
+                                              color: '#FF6B00'.toColor(),
+                                              width: 2,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const HorizontalSpace(35),
-                                    Container(
-                                      clipBehavior: Clip.hardEdge,
-                                      decoration: BoxDecoration(
-                                        color: const Color.fromARGB(
-                                            255, 128, 122, 122),
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(
-                                          color: '#FF6B00'.toColor(),
-                                          width: 2,
-                                        ),
-                                      ),
-                                      child: FirebaseImage(
-                                        imagePath: '',
-                                        emptyImagePath: AppImage.defaultAvatar,
-                                        cardHeight: AppStyles.height(100),
-                                        cardWidth: AppStyles.height(100),
-                                      ),
-                                    ),
-                                    const HorizontalSpace(20),
-                                    Expanded(
-                                      child: Container(
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const HorizontalSpace(35),
+                                      Container(
+                                        clipBehavior: Clip.hardEdge,
                                         decoration: BoxDecoration(
                                           color: const Color.fromARGB(
                                               255, 128, 122, 122),
-                                          borderRadius: const BorderRadius.all(
-                                            Radius.circular(25),
-                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                           border: Border.all(
                                             color: '#FF6B00'.toColor(),
                                             width: 2,
                                           ),
                                         ),
-                                        padding: EdgeInsets.symmetric(
-                                          vertical: AppStyles.width(8),
-                                          horizontal: AppStyles.width(12),
-                                        ),
-                                        child: Text(
-                                          SharedPref.getUserInfo().userName ??
-                                              'No name user',
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 1,
-                                          style: AppStyles.f16sb()
-                                              .copyWith(color: Colors.white),
+                                        child: FirebaseImage(
+                                          imagePath: '',
+                                          emptyImagePath:
+                                              AppImage.defaultAvatar,
+                                          cardHeight: AppStyles.height(100),
+                                          cardWidth: AppStyles.height(100),
                                         ),
                                       ),
-                                    ),
-                                    const HorizontalSpace(35),
-                                  ],
+                                      const HorizontalSpace(20),
+                                      Expanded(
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: const Color.fromARGB(
+                                                255, 128, 122, 122),
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                              Radius.circular(25),
+                                            ),
+                                            border: Border.all(
+                                              color: '#FF6B00'.toColor(),
+                                              width: 2,
+                                            ),
+                                          ),
+                                          padding: EdgeInsets.symmetric(
+                                            vertical: AppStyles.width(8),
+                                            horizontal: AppStyles.width(12),
+                                          ),
+                                          child: Text(
+                                            SharedPref.getUserInfo().userName ??
+                                                'No name user',
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 1,
+                                            style: AppStyles.f16sb()
+                                                .copyWith(color: Colors.white),
+                                          ),
+                                        ),
+                                      ),
+                                      const HorizontalSpace(35),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    // const VerticalSpace(15),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.all(AppStyles.width(15)),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  SharedPref.getUserInfo().userEmail ??
+                                      'No email user',
+                                  style: AppStyles.f16sb().copyWith(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                const VerticalSpace(15),
+                                Text(
+                                  SharedPref.getUserInfo().description ??
+                                      'No user description',
+                                  style: AppStyles.f16sb().copyWith(
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ],
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  // const VerticalSpace(15),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.all(AppStyles.width(15)),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                SharedPref.getUserInfo().userEmail ??
-                                    'No email user',
-                                style: AppStyles.f16sb().copyWith(
-                                  color: Colors.white,
-                                ),
-                              ),
-                              const VerticalSpace(15),
-                              Text(
-                                SharedPref.getUserInfo().description ??
-                                    'No user description',
-                                style: AppStyles.f16sb().copyWith(
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const VerticalSpace(15),
-                  const ProfileTabWidget(),
-                ],
+                      ],
+                    ),
+                    const VerticalSpace(15),
+                    const ProfileTabWidget(),
+                  ],
+                ),
               ),
             );
           },

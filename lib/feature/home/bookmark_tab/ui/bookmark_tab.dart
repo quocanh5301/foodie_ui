@@ -42,10 +42,14 @@ class BookmarkRecipeTab extends StatelessWidget {
           builder: (context, state) {
             debugPrint('mess: ${state.mess}');
             return EasyRefresh(
-              header: const MaterialHeader(),
+              header: MaterialHeader(
+                backgroundColor: '#FF6B00'.toColor(),
+                color: Colors.white,
+              ),
               triggerAxis: Axis.vertical,
               canLoadAfterNoMore: false,
-              footer: const MaterialFooter(
+              footer: MaterialFooter(
+                backgroundColor: '#FF6B00'.toColor(),
                 color: Colors.white,
               ),
               onLoad: () async {

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/profile_tab/bloc/profile_cubit.dart';
 import 'package:foodie/feature/home/profile_tab/bloc/profile_state.dart';
-import 'package:foodie/feature/home/profile_tab/ui/widget/tab_bar/following_tab.dart';
+import 'package:foodie/feature/home/profile_tab/ui/widget/tab_bar/review_tab.dart';
 import 'package:foodie/feature/home/profile_tab/ui/widget/tab_bar/my_recipe.dart';
 
 class ProfileTabWidget extends StatelessWidget {
@@ -37,7 +37,9 @@ class ProfileTabWidget extends StatelessWidget {
                     child: Container(
                       width: AppStyles.screenW / 2.5,
                       decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 128, 122, 122),
+                        color: state.currentTab != 0
+                            ? const Color.fromARGB(255, 128, 122, 122)
+                            : '#8f1d2e'.toColor(),
                         borderRadius: const BorderRadius.all(
                           Radius.circular(25),
                         ),
@@ -54,7 +56,7 @@ class ProfileTabWidget extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          'Your recipe',
+                          'Your recipes',
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                           style:
@@ -68,7 +70,9 @@ class ProfileTabWidget extends StatelessWidget {
                     child: Container(
                       width: AppStyles.screenW / 2.5,
                       decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 128, 122, 122),
+                        color: state.currentTab != 1
+                            ? const Color.fromARGB(255, 128, 122, 122)
+                            : '#8f1d2e'.toColor(),
                         borderRadius: const BorderRadius.all(
                           Radius.circular(25),
                         ),
@@ -85,7 +89,7 @@ class ProfileTabWidget extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          'Following',
+                          'Reviews',
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                           style:
@@ -99,7 +103,7 @@ class ProfileTabWidget extends StatelessWidget {
                   // ),
                 ],
               ),
-              _buildTabContent(state.currentTab),
+              _buildTabContent(state.currentTab, context.read<ProfileCubit>()),
             ],
           ),
         );
@@ -107,12 +111,12 @@ class ProfileTabWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildTabContent(int index) {
+  Widget _buildTabContent(int index, ProfileCubit cubit) {
     switch (index) {
       case 0:
-        return const MyRecipe();
+        return MyRecipe(cubit: cubit);
       case 1:
-        return const FollowingTab();
+        return MyReviewTab(cubit: cubit);
       // case 2:
       //   return const DocumentTab();
       default:

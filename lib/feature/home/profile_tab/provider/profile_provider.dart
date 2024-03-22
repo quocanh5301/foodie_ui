@@ -6,7 +6,7 @@ class ProfileProvider {
   const ProfileProvider({required this.apiRequest});
 
   final APIRequest apiRequest;
-  final int pageSize = 10;
+  final int pageSize = 5;
 
   Future<Response> getRecipeOfUser({required int page}) async =>
       await apiRequest.post(
@@ -18,5 +18,13 @@ class ProfileProvider {
         },
       );
 
-
+  Future<Response> getReviewOfUserRecipe({required int page}) async =>
+      await apiRequest.post(
+        endpoint: Endpoints.getReviewOfUserRecipe,
+        data: {
+          'userId': SharedPref.getUserInfo().id,
+          'page': page,
+          'pageSize': pageSize,
+        },
+      );
 }

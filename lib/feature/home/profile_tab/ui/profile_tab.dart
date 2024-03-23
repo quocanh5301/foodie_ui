@@ -9,6 +9,7 @@ import 'package:foodie/feature/home/explore_tab/ui/widget/firebase_image.dart';
 import 'package:foodie/feature/home/profile_tab/bloc/profile_cubit.dart';
 import 'package:foodie/feature/home/profile_tab/bloc/profile_state.dart';
 import 'package:foodie/feature/home/profile_tab/ui/widget/profile_tabbar.dart';
+import 'package:foodie/generated/l10n.dart';
 
 class ProfileTab extends StatelessWidget {
   const ProfileTab({super.key});
@@ -21,7 +22,7 @@ class ProfileTab extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(100, 0, 0, 0),
         title: Text(
-          'Your Profile',
+          S.of(context).yourProfile,
           style: AppStyles.f16sb().copyWith(
             color: '#FF6B00'.toColor(),
           ),
@@ -151,7 +152,7 @@ class ProfileTab extends StatelessWidget {
                                           ),
                                           child: Text(
                                             SharedPref.getUserInfo().userName ??
-                                                'No name user',
+                                                S.of(context).noNameUser,
                                             overflow: TextOverflow.ellipsis,
                                             maxLines: 1,
                                             style: AppStyles.f16sb()
@@ -180,7 +181,7 @@ class ProfileTab extends StatelessWidget {
                               children: [
                                 Text(
                                   SharedPref.getUserInfo().userEmail ??
-                                      'No email user',
+                                      S.of(context).noEmail,
                                   style: AppStyles.f16sb().copyWith(
                                     color: Colors.white,
                                   ),
@@ -188,7 +189,7 @@ class ProfileTab extends StatelessWidget {
                                 const VerticalSpace(15),
                                 Text(
                                   SharedPref.getUserInfo().description ??
-                                      'No user description',
+                                      S.of(context).noDescription,
                                   style: AppStyles.f16sb().copyWith(
                                     color: Colors.white,
                                   ),

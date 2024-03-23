@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/add_new_recipe_tab/bloc/add_new_recipe_cubit.dart';
+import 'package:foodie/generated/l10n.dart';
 
 class AddIngredientButton extends StatelessWidget {
   const AddIngredientButton({super.key});
@@ -38,7 +39,7 @@ class AddIngredientButton extends StatelessWidget {
                 ),
                 const HorizontalSpace(10),
                 Text(
-                  'Add Ingredient',
+                  S.of(context).addIngredientButton,
                   style: AppStyles.f12m().copyWith(
                     color: Colors.white,
                   ),

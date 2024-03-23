@@ -6,6 +6,7 @@ import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/explore_tab/bloc/explore_cubit.dart';
 import 'package:foodie/feature/home/explore_tab/bloc/explore_state.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/square_recipe.dart';
+import 'package:foodie/generated/l10n.dart';
 
 class NewRecipeList extends StatelessWidget {
   const NewRecipeList({super.key});
@@ -39,7 +40,7 @@ class NewRecipeList extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'New Recipe',
+                  S.of(context).recipeNew,
                   style: AppStyles.f16sb().copyWith(color: Colors.white),
                 ),
                 const VerticalSpace(10),

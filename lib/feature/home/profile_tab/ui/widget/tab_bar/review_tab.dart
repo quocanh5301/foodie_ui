@@ -4,6 +4,7 @@ import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/profile_tab/bloc/profile_cubit.dart';
 import 'package:foodie/feature/home/profile_tab/bloc/profile_state.dart';
 import 'package:foodie/feature/home/profile_tab/ui/widget/review_card.dart';
+import 'package:foodie/generated/l10n.dart';
 
 class MyReviewTab extends StatelessWidget {
   MyReviewTab({super.key, required this.cubit}) {
@@ -40,7 +41,7 @@ class MyReviewTab extends StatelessWidget {
                   height: AppStyles.screenH / 2,
                   child: Center(
                     child: Text(
-                      'No recipe found',
+                      S.of(context).emptyReview,
                       style: AppStyles.f16sb().copyWith(
                         color: Colors.white,
                       ),

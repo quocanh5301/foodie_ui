@@ -90,20 +90,20 @@ class S {
     );
   }
 
-  /// `Email không được để trống`
+  /// `Email must not empty`
   String get emailEmpty {
     return Intl.message(
-      'Email không được để trống',
+      'Email must not empty',
       name: 'emailEmpty',
       desc: '',
       args: [],
     );
   }
 
-  /// `Email không hợp lệ`
+  /// `Email is not valid`
   String get emailFormatError {
     return Intl.message(
-      'Email không hợp lệ',
+      'Email is not valid',
       name: 'emailFormatError',
       desc: '',
       args: [],
@@ -130,10 +130,10 @@ class S {
     );
   }
 
-  /// `Password không được để trống`
+  /// `Password must not empty`
   String get passwordEmpty {
     return Intl.message(
-      'Password không được để trống',
+      'Password must not empty',
       name: 'passwordEmpty',
       desc: '',
       args: [],
@@ -150,40 +150,40 @@ class S {
     );
   }
 
-  /// `Bạn chưa có tài khoản? `
+  /// `Don't have an account? `
   String get registerText1 {
     return Intl.message(
-      'Bạn chưa có tài khoản? ',
+      'Don\'t have an account? ',
       name: 'registerText1',
       desc: '',
       args: [],
     );
   }
 
-  /// `Tạo tài khoản`
+  /// `Create one`
   String get registerText2 {
     return Intl.message(
-      'Tạo tài khoản',
+      'Create one',
       name: 'registerText2',
       desc: '',
       args: [],
     );
   }
 
-  /// `Tạo tài khoản`
+  /// `Create Account`
   String get registerTitle1 {
     return Intl.message(
-      'Tạo tài khoản',
+      'Create Account',
       name: 'registerTitle1',
       desc: '',
       args: [],
     );
   }
 
-  /// `Khám phá các món ăn mới chúng tôi ngay hôm nay`
+  /// `Explore new recipe with us today !!!`
   String get registerTitle2 {
     return Intl.message(
-      'Khám phá các món ăn mới chúng tôi ngay hôm nay',
+      'Explore new recipe with us today !!!',
       name: 'registerTitle2',
       desc: '',
       args: [],
@@ -295,6 +295,456 @@ class S {
     return Intl.message(
       'What would you like to cook today?',
       name: 'explore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Explore`
+  String get homeExplore {
+    return Intl.message(
+      'Explore',
+      name: 'homeExplore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Recipe`
+  String get homeCreateRecipe {
+    return Intl.message(
+      'Create Recipe',
+      name: 'homeCreateRecipe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bookmark`
+  String get homeBookmarkRecipe {
+    return Intl.message(
+      'Bookmark',
+      name: 'homeBookmarkRecipe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get homeProfile {
+    return Intl.message(
+      'Profile',
+      name: 'homeProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Recipe From Your Followed User`
+  String get recipeNewFollow {
+    return Intl.message(
+      'New Recipe From Your Followed User',
+      name: 'recipeNewFollow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No new recipe from your followed user`
+  String get recipeNewFollowNo {
+    return Intl.message(
+      'No new recipe from your followed user',
+      name: 'recipeNewFollowNo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Recipe`
+  String get recipeNew {
+    return Intl.message(
+      'New Recipe',
+      name: 'recipeNew',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Top Recipe`
+  String get topRecipe {
+    return Intl.message(
+      'Top Recipe',
+      name: 'topRecipe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add New Recipe`
+  String get addRecipe {
+    return Intl.message(
+      'Add New Recipe',
+      name: 'addRecipe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recipe Name`
+  String get recipeLableField {
+    return Intl.message(
+      'Recipe Name',
+      name: 'recipeLableField',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recipe Name`
+  String get recipeHintField {
+    return Intl.message(
+      'Recipe Name',
+      name: 'recipeHintField',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recipe Name must not empty`
+  String get recipeErrorField {
+    return Intl.message(
+      'Recipe Name must not empty',
+      name: 'recipeErrorField',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recipe Description`
+  String get recipeDescriptionLabel {
+    return Intl.message(
+      'Recipe Description',
+      name: 'recipeDescriptionLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recipe Description`
+  String get recipeDescriptionHint {
+    return Intl.message(
+      'Recipe Description',
+      name: 'recipeDescriptionHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recipe Instruction`
+  String get recipeInstuctionLabel {
+    return Intl.message(
+      'Recipe Instruction',
+      name: 'recipeInstuctionLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recipe Instruction`
+  String get recipeInstuctionHint {
+    return Intl.message(
+      'Recipe Instruction',
+      name: 'recipeInstuctionHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ingredient`
+  String get ingredientLabel {
+    return Intl.message(
+      'Ingredient',
+      name: 'ingredientLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ingredient`
+  String get ingredientHint {
+    return Intl.message(
+      'Ingredient',
+      name: 'ingredientHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ingredient must not empty`
+  String get ingredientError {
+    return Intl.message(
+      'Ingredient must not empty',
+      name: 'ingredientError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quantity`
+  String get quantityLabel {
+    return Intl.message(
+      'Quantity',
+      name: 'quantityLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quantity`
+  String get quantityHint {
+    return Intl.message(
+      'Quantity',
+      name: 'quantityHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quantity must not empty`
+  String get quantityError {
+    return Intl.message(
+      'Quantity must not empty',
+      name: 'quantityError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Ingredient`
+  String get addIngredientButton {
+    return Intl.message(
+      'Add Ingredient',
+      name: 'addIngredientButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create New Recipe !!!`
+  String get createNewRecipe {
+    return Intl.message(
+      'Create New Recipe !!!',
+      name: 'createNewRecipe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `'Remove Photo'`
+  String get removePhotoButton {
+    return Intl.message(
+      '\'Remove Photo\'',
+      name: 'removePhotoButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Photo`
+  String get addPhotoButton {
+    return Intl.message(
+      'Add Photo',
+      name: 'addPhotoButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose Another Photo`
+  String get chooseAnotherPhotoButton {
+    return Intl.message(
+      'Choose Another Photo',
+      name: 'chooseAnotherPhotoButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Camera`
+  String get camera {
+    return Intl.message(
+      'Camera',
+      name: 'camera',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gallery`
+  String get gallery {
+    return Intl.message(
+      'Gallery',
+      name: 'gallery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Bookmark Recipe`
+  String get bookmarkTab {
+    return Intl.message(
+      'Your Bookmark Recipe',
+      name: 'bookmarkTab',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Bookmark Recipe Found`
+  String get noBookmarkRecipefound {
+    return Intl.message(
+      'No Bookmark Recipe Found',
+      name: 'noBookmarkRecipefound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get allFilter {
+    return Intl.message(
+      'All',
+      name: 'allFilter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rating`
+  String get ratingFilter {
+    return Intl.message(
+      'Rating',
+      name: 'ratingFilter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comments`
+  String get commentsFilter {
+    return Intl.message(
+      'Comments',
+      name: 'commentsFilter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bookmark`
+  String get bookmarkNumFilter {
+    return Intl.message(
+      'Bookmark',
+      name: 'bookmarkNumFilter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Name Recipe`
+  String get noNameRecipe {
+    return Intl.message(
+      'No Name Recipe',
+      name: 'noNameRecipe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Name User`
+  String get noNameUser {
+    return Intl.message(
+      'No Name User',
+      name: 'noNameUser',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Review`
+  String get noReviewText {
+    return Intl.message(
+      'No Review',
+      name: 'noReviewText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `'Your recipes'`
+  String get yourRecipeTab {
+    return Intl.message(
+      '\'Your recipes\'',
+      name: 'yourRecipeTab',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reviews`
+  String get yourReviews {
+    return Intl.message(
+      'Reviews',
+      name: 'yourReviews',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Recipe Found`
+  String get emptyRecipe {
+    return Intl.message(
+      'No Recipe Found',
+      name: 'emptyRecipe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Review Found`
+  String get emptyReview {
+    return Intl.message(
+      'No Review Found',
+      name: 'emptyReview',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Profile`
+  String get yourProfile {
+    return Intl.message(
+      'Your Profile',
+      name: 'yourProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User don't have an Email`
+  String get noEmail {
+    return Intl.message(
+      'User don\'t have an Email',
+      name: 'noEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User don't have a Description`
+  String get noDescription {
+    return Intl.message(
+      'User don\'t have a Description',
+      name: 'noDescription',
       desc: '',
       args: [],
     );

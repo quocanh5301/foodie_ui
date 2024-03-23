@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/add_new_recipe_tab/bloc/add_new_recipe_cubit.dart';
 import 'package:foodie/feature/home/add_new_recipe_tab/bloc/add_new_recipe_state.dart';
+import 'package:foodie/generated/l10n.dart';
 
 class SubmitRecipeButton extends StatelessWidget {
   const SubmitRecipeButton({super.key, required this.formKey});
@@ -35,7 +36,7 @@ class SubmitRecipeButton extends StatelessWidget {
                     : const SizedBox.shrink(),
                 Center(
                   child: Text(
-                    'Create New Recipe !!!',
+                    S.of(context).createNewRecipe,
                     style: AppStyles.f16m().copyWith(color: Colors.white),
                   ),
                 ),

@@ -4,6 +4,7 @@ import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/rectangle_recipe.dart';
 import 'package:foodie/feature/home/profile_tab/bloc/profile_cubit.dart';
 import 'package:foodie/feature/home/profile_tab/bloc/profile_state.dart';
+import 'package:foodie/generated/l10n.dart';
 
 class MyRecipe extends StatelessWidget {
   MyRecipe({super.key, required this.cubit}) {
@@ -43,7 +44,7 @@ class MyRecipe extends StatelessWidget {
                   height: AppStyles.screenH / 2,
                   child: Center(
                     child: Text(
-                      'No recipe found',
+                      S.of(context).emptyRecipe,
                       style: AppStyles.f16sb().copyWith(
                         color: Colors.white,
                       ),

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:foodie/core/resource/my_image_picker.dart';
 import 'package:foodie/core/resource/styles.dart';
+import 'package:foodie/generated/l10n.dart';
 
 class RecipeImagePicker extends StatelessWidget {
   RecipeImagePicker({super.key});
@@ -45,7 +46,7 @@ class RecipeImagePicker extends StatelessWidget {
                   ),
                   const HorizontalSpace(10),
                   Text(
-                    'Camera',
+                    S.of(context).camera,
                     style: AppStyles.f16m().copyWith(
                       color: 'FF6B00'.toColor(),
                     ),
@@ -72,7 +73,7 @@ class RecipeImagePicker extends StatelessWidget {
                   ),
                   const HorizontalSpace(10),
                   Text(
-                    "Gallery",
+                    S.of(context).gallery,
                     style: AppStyles.f16m().copyWith(
                       color: 'FF6B00'.toColor(),
                     ),

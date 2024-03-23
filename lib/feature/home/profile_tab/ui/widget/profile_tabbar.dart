@@ -6,6 +6,7 @@ import 'package:foodie/feature/home/profile_tab/bloc/profile_cubit.dart';
 import 'package:foodie/feature/home/profile_tab/bloc/profile_state.dart';
 import 'package:foodie/feature/home/profile_tab/ui/widget/tab_bar/review_tab.dart';
 import 'package:foodie/feature/home/profile_tab/ui/widget/tab_bar/my_recipe.dart';
+import 'package:foodie/generated/l10n.dart';
 
 class ProfileTabWidget extends StatelessWidget {
   const ProfileTabWidget({
@@ -56,7 +57,7 @@ class ProfileTabWidget extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          'Your recipes',
+                          S.of(context).yourRecipeTab,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                           style:
@@ -89,7 +90,7 @@ class ProfileTabWidget extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          'Reviews',
+                          S.of(context).yourReviews,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                           style:

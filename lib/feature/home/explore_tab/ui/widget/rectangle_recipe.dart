@@ -6,6 +6,7 @@ import 'package:foodie/core/util/date_time.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/avatar_card.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/firebase_image.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/star_rating.dart';
+import 'package:foodie/generated/l10n.dart';
 import 'package:foodie/model/recipe/recipe_basic.dart';
 
 class RectangleRecipeItem extends StatelessWidget {
@@ -70,7 +71,7 @@ class RectangleRecipeItem extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            recipeBasic.recipeName ?? 'no name recipe',
+                            recipeBasic.recipeName ?? S.of(context).noNameRecipe,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style:
@@ -155,7 +156,7 @@ class RectangleRecipeItem extends StatelessWidget {
                           const HorizontalSpace(8),
                           Expanded(
                             child: Text(
-                              recipeBasic.owner?.userName ?? 'no name',
+                              recipeBasic.owner?.userName ?? S.of(context).noNameUser,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: AppStyles.f12r()

@@ -7,6 +7,7 @@ import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/avatar_card.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/firebase_image.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/star_rating.dart';
+import 'package:foodie/generated/l10n.dart';
 import 'package:foodie/model/recipe/recipe_basic.dart';
 
 class SquareRecipeItem extends StatelessWidget {
@@ -54,7 +55,7 @@ class SquareRecipeItem extends StatelessWidget {
             ),
             const VerticalSpace(10),
             Text(
-              recipeBasic.recipeName ?? 'No name recipe',
+              recipeBasic.recipeName ?? S.of(context).noNameRecipe,
               style: AppStyles.f10sb().copyWith(
                 color: Colors.white,
               ),
@@ -72,7 +73,7 @@ class SquareRecipeItem extends StatelessWidget {
                   const HorizontalSpace(8),
                   Expanded(
                     child: Text(
-                      recipeBasic.owner?.userName ?? 'no name',
+                      recipeBasic.owner?.userName ?? S.of(context).noNameUser,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: AppStyles.f12r().copyWith(color: Colors.white),

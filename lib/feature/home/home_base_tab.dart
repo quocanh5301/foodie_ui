@@ -6,53 +6,53 @@ import 'package:foodie/feature/home/add_new_recipe_tab/ui/add_new_recipe_tab.dar
 import 'package:foodie/feature/home/bookmark_tab/ui/bookmark_tab.dart';
 import 'package:foodie/feature/home/explore_tab/ui/explore_tab.dart';
 import 'package:foodie/feature/home/profile_tab/ui/profile_tab.dart';
+import 'package:foodie/generated/l10n.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
-
-  final List<PersistentBottomNavBarItem> testTabItems = [
-    ('Explore', AppImage.icHome),
-    ('Create Recipe', AppImage.icAddRecipe),
-    ('Bookmark', AppImage.icBookmark),
-    ('Profile', AppImage.icProfile),
-  ]
-      .map(
-        (item) => PersistentBottomNavBarItem(
-          icon: SizedBox(
-            width: AppStyles.height(12),
-            height: AppStyles.height(12),
-            child: SvgPicture.asset(
-              item.$2,
-              colorFilter: const ColorFilter.mode(
-                Colors.white,
-                BlendMode.srcIn,
-              ),
-            ),
-          ),
-          inactiveIcon: SizedBox(
-            width: AppStyles.height(12),
-            height: AppStyles.height(12),
-            child: SvgPicture.asset(
-              item.$2,
-              colorFilter: const ColorFilter.mode(
-                Colors.white,
-                BlendMode.srcIn,
-              ),
-            ),
-          ),
-          activeColorPrimary: '#8f1d2e'.toColor(),
-          activeColorSecondary: Colors.white,
-          inactiveColorSecondary: '#08357C'.toColor(),
-          title: item.$1,
-        ),
-      )
-      .toList();
-  final PersistentTabController controller =
-      PersistentTabController(initialIndex: 0);
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final List<PersistentBottomNavBarItem> testTabItems = [
+      (S.of(context).homeExplore, AppImage.icHome),
+      (S.of(context).homeCreateRecipe, AppImage.icAddRecipe),
+      (S.of(context).homeBookmarkRecipe, AppImage.icBookmark),
+      (S.of(context).homeProfile, AppImage.icProfile),
+    ]
+        .map(
+          (item) => PersistentBottomNavBarItem(
+            icon: SizedBox(
+              width: AppStyles.height(12),
+              height: AppStyles.height(12),
+              child: SvgPicture.asset(
+                item.$2,
+                colorFilter: const ColorFilter.mode(
+                  Colors.white,
+                  BlendMode.srcIn,
+                ),
+              ),
+            ),
+            inactiveIcon: SizedBox(
+              width: AppStyles.height(12),
+              height: AppStyles.height(12),
+              child: SvgPicture.asset(
+                item.$2,
+                colorFilter: const ColorFilter.mode(
+                  Colors.white,
+                  BlendMode.srcIn,
+                ),
+              ),
+            ),
+            activeColorPrimary: '#8f1d2e'.toColor(),
+            activeColorSecondary: Colors.white,
+            inactiveColorSecondary: '#08357C'.toColor(),
+            title: item.$1,
+          ),
+        )
+        .toList();
+    final PersistentTabController controller =
+        PersistentTabController(initialIndex: 0);
     final List<Widget> testTabScreens = [
       const ExploreTab(),
       AddNewRecipeTab(),

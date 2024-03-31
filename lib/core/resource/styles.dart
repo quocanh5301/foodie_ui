@@ -97,6 +97,22 @@ class HorizontalSpace extends StatelessWidget {
   }
 }
 
+class CustomPath extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+    path.lineTo(size.width / 10, 0);
+    path.lineTo(size.width / 5, size.height);
+    path.lineTo(0, size.height);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper oldClipper) {
+    return true;
+  }
+}
 
 //E23E3E, FF6B00
 extension ColorExtension on String {

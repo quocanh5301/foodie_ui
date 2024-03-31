@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:foodie/core/data/share_pref.dart';
 import 'package:foodie/feature/home/home_base_tab.dart';
 import 'package:foodie/feature/login/ui/login_screen.dart';
+import 'package:foodie/feature/recipe_detail/ui/recipe_detail_screen.dart';
 import 'package:foodie/feature/register/ui/register_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -39,7 +40,18 @@ class HomeRoute extends GoRouteData {
   const HomeRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => HomeScreen();
+  Widget build(BuildContext context, GoRouterState state) => const HomeScreen();
+}
+
+@TypedGoRoute<RecipeDetailRoute>(path: Routes.recipeDetail)
+class RecipeDetailRoute extends GoRouteData {
+  const RecipeDetailRoute({required this.recipeId});
+
+  final int recipeId;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      RecipeDetailScreen(recipeId: recipeId);
 }
 
 class Routes {
@@ -47,4 +59,5 @@ class Routes {
   static const String register = '/register';
   static const String forgetPass = '/forget_pass';
   static const String home = '/home';
+  static const String recipeDetail = '/recipe_detail';
 }

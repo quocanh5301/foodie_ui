@@ -9,11 +9,11 @@ part of 'recipe_detail.dart';
 _$RecipeDetailImpl _$$RecipeDetailImplFromJson(Map<String, dynamic> json) =>
     _$RecipeDetailImpl(
       id: json['id'] as int?,
-      userName: json['account_id'] as int?,
-      userEmail: json['recipe_name'] as String?,
+      userId: json['account_id'] as int?,
+      recipeName: json['recipe_name'] as String?,
       description: json['description'] as String?,
       instruction: json['instruction'] as String?,
-      joinAt: (json['rating'] as num?)?.toDouble(),
+      rating: (json['rating'] as num?)?.toDouble(),
       numOfFollower: json['num_of_followers'] as int?,
       numOfRating: json['num_of_rating'] as int?,
       numOfComment: json['num_of_comments'] as int?,
@@ -26,17 +26,17 @@ _$RecipeDetailImpl _$$RecipeDetailImplFromJson(Map<String, dynamic> json) =>
           .toList(),
       owner: json['owner'] == null
           ? null
-          : User.fromJson(json['owner'] as Map<String, dynamic>),
+          : UserDetail.fromJson(json['owner'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$RecipeDetailImplToJson(_$RecipeDetailImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'account_id': instance.userName,
-      'recipe_name': instance.userEmail,
+      'account_id': instance.userId,
+      'recipe_name': instance.recipeName,
       'description': instance.description,
       'instruction': instance.instruction,
-      'rating': instance.joinAt,
+      'rating': instance.rating,
       'num_of_followers': instance.numOfFollower,
       'num_of_rating': instance.numOfRating,
       'num_of_comments': instance.numOfComment,

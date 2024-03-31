@@ -27,21 +27,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "addPhotoButton": MessageLookupByLibrary.simpleMessage("Add Photo"),
         "addRecipe": MessageLookupByLibrary.simpleMessage("Add New Recipe"),
         "allFilter": MessageLookupByLibrary.simpleMessage("All"),
+        "author": MessageLookupByLibrary.simpleMessage("Author"),
         "bookmarkNumFilter": MessageLookupByLibrary.simpleMessage("Bookmark"),
         "bookmarkTab":
             MessageLookupByLibrary.simpleMessage("Your Bookmark Recipe"),
         "camera": MessageLookupByLibrary.simpleMessage("Camera"),
         "chooseAnotherPhotoButton":
             MessageLookupByLibrary.simpleMessage("Choose Another Photo"),
+        "comment": MessageLookupByLibrary.simpleMessage("Comments"),
         "commentsFilter": MessageLookupByLibrary.simpleMessage("Comments"),
         "createNewRecipe":
             MessageLookupByLibrary.simpleMessage("Create New Recipe !!!"),
+        "detail": MessageLookupByLibrary.simpleMessage("Detail"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailEmpty":
             MessageLookupByLibrary.simpleMessage("Email must not empty"),
         "emailFormatError":
             MessageLookupByLibrary.simpleMessage("Email is not valid"),
         "emailHint": MessageLookupByLibrary.simpleMessage("Email"),
+        "empty": MessageLookupByLibrary.simpleMessage("Empty"),
+        "emptyIngrdients":
+            MessageLookupByLibrary.simpleMessage("Empty Ingredient"),
         "emptyRecipe": MessageLookupByLibrary.simpleMessage("No Recipe Found"),
         "emptyReview": MessageLookupByLibrary.simpleMessage("No Review Found"),
         "explore": MessageLookupByLibrary.simpleMessage(
@@ -62,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ingredientLabel": MessageLookupByLibrary.simpleMessage("Ingredient"),
         "intro": MessageLookupByLibrary.simpleMessage(
             "Chúng tôi là cộng đồng chia sẻ công thức nấu ăn lớn nhất Việt Nam"),
+        "joinSince": MessageLookupByLibrary.simpleMessage("Join Since"),
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "loginText1":
             MessageLookupByLibrary.simpleMessage("Bạn đã có tài khoản? "),
@@ -73,11 +80,19 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No Bookmark Recipe Found"),
         "noDescription": MessageLookupByLibrary.simpleMessage(
             "User don\'t have a Description"),
+        "noDescriptionAuthor":
+            MessageLookupByLibrary.simpleMessage("No Description Author"),
+        "noDescriptionRecipe":
+            MessageLookupByLibrary.simpleMessage("No Description Recipe"),
         "noEmail":
             MessageLookupByLibrary.simpleMessage("User don\'t have an Email"),
+        "noInstructionRecipe": MessageLookupByLibrary.simpleMessage(
+            "This recipe has no instruction !"),
         "noNameRecipe": MessageLookupByLibrary.simpleMessage("No Name Recipe"),
         "noNameUser": MessageLookupByLibrary.simpleMessage("No Name User"),
         "noReviewText": MessageLookupByLibrary.simpleMessage("No Review"),
+        "numOfFollower": MessageLookupByLibrary.simpleMessage("Follwers"),
+        "numOfIngredients": MessageLookupByLibrary.simpleMessage("Ingredients"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordEmpty":
@@ -87,7 +102,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Quantity must not empty"),
         "quantityHint": MessageLookupByLibrary.simpleMessage("Quantity"),
         "quantityLabel": MessageLookupByLibrary.simpleMessage("Quantity"),
+        "rateThisRecipe":
+            MessageLookupByLibrary.simpleMessage("Rate For This Recipe"),
         "ratingFilter": MessageLookupByLibrary.simpleMessage("Rating"),
+        "recipe": MessageLookupByLibrary.simpleMessage("Recipe"),
         "recipeDescriptionHint":
             MessageLookupByLibrary.simpleMessage("Recipe Description"),
         "recipeDescriptionLabel":
@@ -95,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "recipeErrorField":
             MessageLookupByLibrary.simpleMessage("Recipe Name must not empty"),
         "recipeHintField": MessageLookupByLibrary.simpleMessage("Recipe Name"),
+        "recipeInfo": MessageLookupByLibrary.simpleMessage("Recipe Infomation"),
         "recipeInstuctionHint":
             MessageLookupByLibrary.simpleMessage("Recipe Instruction"),
         "recipeInstuctionLabel":
@@ -117,11 +136,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Explore new recipe with us today !!!"),
         "removePhotoButton":
             MessageLookupByLibrary.simpleMessage("\'Remove Photo\'"),
+        "review": MessageLookupByLibrary.simpleMessage("Reviews"),
         "searchAll": MessageLookupByLibrary.simpleMessage("Search"),
         "topRecipe": MessageLookupByLibrary.simpleMessage("Top Recipe"),
+        "updateAt": MessageLookupByLibrary.simpleMessage("Update At"),
         "yourProfile": MessageLookupByLibrary.simpleMessage("Your Profile"),
-        "yourRecipeTab":
-            MessageLookupByLibrary.simpleMessage("\'Your recipes\'"),
+        "yourRecipeTab": MessageLookupByLibrary.simpleMessage("Your recipes"),
         "yourReviews": MessageLookupByLibrary.simpleMessage("Reviews")
       };
 }

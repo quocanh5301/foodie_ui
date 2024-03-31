@@ -23,23 +23,23 @@ mixin _$RecipeDetail {
   @JsonKey(name: 'id')
   int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'account_id')
-  int? get userName => throw _privateConstructorUsedError;
+  int? get userId => throw _privateConstructorUsedError;
   @JsonKey(name: 'recipe_name')
-  String? get userEmail => throw _privateConstructorUsedError;
+  String? get recipeName => throw _privateConstructorUsedError;
   @JsonKey(name: 'description')
-  String? get description => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError; //
   @JsonKey(name: 'instruction')
   String? get instruction => throw _privateConstructorUsedError;
   @JsonKey(name: 'rating')
-  double? get joinAt => throw _privateConstructorUsedError;
+  double? get rating => throw _privateConstructorUsedError; //
   @JsonKey(name: 'num_of_followers')
-  int? get numOfFollower => throw _privateConstructorUsedError;
+  int? get numOfFollower => throw _privateConstructorUsedError; //
   @JsonKey(name: 'num_of_rating')
-  int? get numOfRating => throw _privateConstructorUsedError;
+  int? get numOfRating => throw _privateConstructorUsedError; //
   @JsonKey(name: 'num_of_comments')
   int? get numOfComment => throw _privateConstructorUsedError;
   @JsonKey(name: 'update_at')
-  String? get updateAt => throw _privateConstructorUsedError;
+  String? get updateAt => throw _privateConstructorUsedError; //
   @JsonKey(name: 'create_at')
   String? get createAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'recipe_image')
@@ -49,7 +49,7 @@ mixin _$RecipeDetail {
   @JsonKey(name: 'ingredients')
   List<Ingredient>? get ingredients => throw _privateConstructorUsedError;
   @JsonKey(name: 'owner')
-  User? get owner => throw _privateConstructorUsedError;
+  UserDetail? get owner => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -65,11 +65,11 @@ abstract class $RecipeDetailCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'id') int? id,
-      @JsonKey(name: 'account_id') int? userName,
-      @JsonKey(name: 'recipe_name') String? userEmail,
+      @JsonKey(name: 'account_id') int? userId,
+      @JsonKey(name: 'recipe_name') String? recipeName,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'instruction') String? instruction,
-      @JsonKey(name: 'rating') double? joinAt,
+      @JsonKey(name: 'rating') double? rating,
       @JsonKey(name: 'num_of_followers') int? numOfFollower,
       @JsonKey(name: 'num_of_rating') int? numOfRating,
       @JsonKey(name: 'num_of_comments') int? numOfComment,
@@ -78,9 +78,9 @@ abstract class $RecipeDetailCopyWith<$Res> {
       @JsonKey(name: 'recipe_image') String? recipeImage,
       @JsonKey(name: 'isBookmark') int? isBookmark,
       @JsonKey(name: 'ingredients') List<Ingredient>? ingredients,
-      @JsonKey(name: 'owner') User? owner});
+      @JsonKey(name: 'owner') UserDetail? owner});
 
-  $UserCopyWith<$Res>? get owner;
+  $UserDetailCopyWith<$Res>? get owner;
 }
 
 /// @nodoc
@@ -97,11 +97,11 @@ class _$RecipeDetailCopyWithImpl<$Res, $Val extends RecipeDetail>
   @override
   $Res call({
     Object? id = freezed,
-    Object? userName = freezed,
-    Object? userEmail = freezed,
+    Object? userId = freezed,
+    Object? recipeName = freezed,
     Object? description = freezed,
     Object? instruction = freezed,
-    Object? joinAt = freezed,
+    Object? rating = freezed,
     Object? numOfFollower = freezed,
     Object? numOfRating = freezed,
     Object? numOfComment = freezed,
@@ -117,13 +117,13 @@ class _$RecipeDetailCopyWithImpl<$Res, $Val extends RecipeDetail>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      userName: freezed == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as int?,
-      userEmail: freezed == userEmail
-          ? _value.userEmail
-          : userEmail // ignore: cast_nullable_to_non_nullable
+      recipeName: freezed == recipeName
+          ? _value.recipeName
+          : recipeName // ignore: cast_nullable_to_non_nullable
               as String?,
       description: freezed == description
           ? _value.description
@@ -133,9 +133,9 @@ class _$RecipeDetailCopyWithImpl<$Res, $Val extends RecipeDetail>
           ? _value.instruction
           : instruction // ignore: cast_nullable_to_non_nullable
               as String?,
-      joinAt: freezed == joinAt
-          ? _value.joinAt
-          : joinAt // ignore: cast_nullable_to_non_nullable
+      rating: freezed == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
               as double?,
       numOfFollower: freezed == numOfFollower
           ? _value.numOfFollower
@@ -172,18 +172,18 @@ class _$RecipeDetailCopyWithImpl<$Res, $Val extends RecipeDetail>
       owner: freezed == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as UserDetail?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res>? get owner {
+  $UserDetailCopyWith<$Res>? get owner {
     if (_value.owner == null) {
       return null;
     }
 
-    return $UserCopyWith<$Res>(_value.owner!, (value) {
+    return $UserDetailCopyWith<$Res>(_value.owner!, (value) {
       return _then(_value.copyWith(owner: value) as $Val);
     });
   }
@@ -199,11 +199,11 @@ abstract class _$$RecipeDetailImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'id') int? id,
-      @JsonKey(name: 'account_id') int? userName,
-      @JsonKey(name: 'recipe_name') String? userEmail,
+      @JsonKey(name: 'account_id') int? userId,
+      @JsonKey(name: 'recipe_name') String? recipeName,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'instruction') String? instruction,
-      @JsonKey(name: 'rating') double? joinAt,
+      @JsonKey(name: 'rating') double? rating,
       @JsonKey(name: 'num_of_followers') int? numOfFollower,
       @JsonKey(name: 'num_of_rating') int? numOfRating,
       @JsonKey(name: 'num_of_comments') int? numOfComment,
@@ -212,10 +212,10 @@ abstract class _$$RecipeDetailImplCopyWith<$Res>
       @JsonKey(name: 'recipe_image') String? recipeImage,
       @JsonKey(name: 'isBookmark') int? isBookmark,
       @JsonKey(name: 'ingredients') List<Ingredient>? ingredients,
-      @JsonKey(name: 'owner') User? owner});
+      @JsonKey(name: 'owner') UserDetail? owner});
 
   @override
-  $UserCopyWith<$Res>? get owner;
+  $UserDetailCopyWith<$Res>? get owner;
 }
 
 /// @nodoc
@@ -230,11 +230,11 @@ class __$$RecipeDetailImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? userName = freezed,
-    Object? userEmail = freezed,
+    Object? userId = freezed,
+    Object? recipeName = freezed,
     Object? description = freezed,
     Object? instruction = freezed,
-    Object? joinAt = freezed,
+    Object? rating = freezed,
     Object? numOfFollower = freezed,
     Object? numOfRating = freezed,
     Object? numOfComment = freezed,
@@ -250,13 +250,13 @@ class __$$RecipeDetailImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      userName: freezed == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as int?,
-      userEmail: freezed == userEmail
-          ? _value.userEmail
-          : userEmail // ignore: cast_nullable_to_non_nullable
+      recipeName: freezed == recipeName
+          ? _value.recipeName
+          : recipeName // ignore: cast_nullable_to_non_nullable
               as String?,
       description: freezed == description
           ? _value.description
@@ -266,9 +266,9 @@ class __$$RecipeDetailImplCopyWithImpl<$Res>
           ? _value.instruction
           : instruction // ignore: cast_nullable_to_non_nullable
               as String?,
-      joinAt: freezed == joinAt
-          ? _value.joinAt
-          : joinAt // ignore: cast_nullable_to_non_nullable
+      rating: freezed == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
               as double?,
       numOfFollower: freezed == numOfFollower
           ? _value.numOfFollower
@@ -305,7 +305,7 @@ class __$$RecipeDetailImplCopyWithImpl<$Res>
       owner: freezed == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as UserDetail?,
     ));
   }
 }
@@ -315,11 +315,11 @@ class __$$RecipeDetailImplCopyWithImpl<$Res>
 class _$RecipeDetailImpl implements _RecipeDetail {
   const _$RecipeDetailImpl(
       {@JsonKey(name: 'id') this.id,
-      @JsonKey(name: 'account_id') this.userName,
-      @JsonKey(name: 'recipe_name') this.userEmail,
+      @JsonKey(name: 'account_id') this.userId,
+      @JsonKey(name: 'recipe_name') this.recipeName,
       @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'instruction') this.instruction,
-      @JsonKey(name: 'rating') this.joinAt,
+      @JsonKey(name: 'rating') this.rating,
       @JsonKey(name: 'num_of_followers') this.numOfFollower,
       @JsonKey(name: 'num_of_rating') this.numOfRating,
       @JsonKey(name: 'num_of_comments') this.numOfComment,
@@ -339,31 +339,36 @@ class _$RecipeDetailImpl implements _RecipeDetail {
   final int? id;
   @override
   @JsonKey(name: 'account_id')
-  final int? userName;
+  final int? userId;
   @override
   @JsonKey(name: 'recipe_name')
-  final String? userEmail;
+  final String? recipeName;
   @override
   @JsonKey(name: 'description')
   final String? description;
+//
   @override
   @JsonKey(name: 'instruction')
   final String? instruction;
   @override
   @JsonKey(name: 'rating')
-  final double? joinAt;
+  final double? rating;
+//
   @override
   @JsonKey(name: 'num_of_followers')
   final int? numOfFollower;
+//
   @override
   @JsonKey(name: 'num_of_rating')
   final int? numOfRating;
+//
   @override
   @JsonKey(name: 'num_of_comments')
   final int? numOfComment;
   @override
   @JsonKey(name: 'update_at')
   final String? updateAt;
+//
   @override
   @JsonKey(name: 'create_at')
   final String? createAt;
@@ -386,11 +391,11 @@ class _$RecipeDetailImpl implements _RecipeDetail {
 
   @override
   @JsonKey(name: 'owner')
-  final User? owner;
+  final UserDetail? owner;
 
   @override
   String toString() {
-    return 'RecipeDetail(id: $id, userName: $userName, userEmail: $userEmail, description: $description, instruction: $instruction, joinAt: $joinAt, numOfFollower: $numOfFollower, numOfRating: $numOfRating, numOfComment: $numOfComment, updateAt: $updateAt, createAt: $createAt, recipeImage: $recipeImage, isBookmark: $isBookmark, ingredients: $ingredients, owner: $owner)';
+    return 'RecipeDetail(id: $id, userId: $userId, recipeName: $recipeName, description: $description, instruction: $instruction, rating: $rating, numOfFollower: $numOfFollower, numOfRating: $numOfRating, numOfComment: $numOfComment, updateAt: $updateAt, createAt: $createAt, recipeImage: $recipeImage, isBookmark: $isBookmark, ingredients: $ingredients, owner: $owner)';
   }
 
   @override
@@ -399,15 +404,14 @@ class _$RecipeDetailImpl implements _RecipeDetail {
         (other.runtimeType == runtimeType &&
             other is _$RecipeDetailImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.userName, userName) ||
-                other.userName == userName) &&
-            (identical(other.userEmail, userEmail) ||
-                other.userEmail == userEmail) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.recipeName, recipeName) ||
+                other.recipeName == recipeName) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.instruction, instruction) ||
                 other.instruction == instruction) &&
-            (identical(other.joinAt, joinAt) || other.joinAt == joinAt) &&
+            (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.numOfFollower, numOfFollower) ||
                 other.numOfFollower == numOfFollower) &&
             (identical(other.numOfRating, numOfRating) ||
@@ -432,11 +436,11 @@ class _$RecipeDetailImpl implements _RecipeDetail {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      userName,
-      userEmail,
+      userId,
+      recipeName,
       description,
       instruction,
-      joinAt,
+      rating,
       numOfFollower,
       numOfRating,
       numOfComment,
@@ -464,11 +468,11 @@ class _$RecipeDetailImpl implements _RecipeDetail {
 abstract class _RecipeDetail implements RecipeDetail {
   const factory _RecipeDetail(
       {@JsonKey(name: 'id') final int? id,
-      @JsonKey(name: 'account_id') final int? userName,
-      @JsonKey(name: 'recipe_name') final String? userEmail,
+      @JsonKey(name: 'account_id') final int? userId,
+      @JsonKey(name: 'recipe_name') final String? recipeName,
       @JsonKey(name: 'description') final String? description,
       @JsonKey(name: 'instruction') final String? instruction,
-      @JsonKey(name: 'rating') final double? joinAt,
+      @JsonKey(name: 'rating') final double? rating,
       @JsonKey(name: 'num_of_followers') final int? numOfFollower,
       @JsonKey(name: 'num_of_rating') final int? numOfRating,
       @JsonKey(name: 'num_of_comments') final int? numOfComment,
@@ -477,7 +481,7 @@ abstract class _RecipeDetail implements RecipeDetail {
       @JsonKey(name: 'recipe_image') final String? recipeImage,
       @JsonKey(name: 'isBookmark') final int? isBookmark,
       @JsonKey(name: 'ingredients') final List<Ingredient>? ingredients,
-      @JsonKey(name: 'owner') final User? owner}) = _$RecipeDetailImpl;
+      @JsonKey(name: 'owner') final UserDetail? owner}) = _$RecipeDetailImpl;
 
   factory _RecipeDetail.fromJson(Map<String, dynamic> json) =
       _$RecipeDetailImpl.fromJson;
@@ -487,32 +491,32 @@ abstract class _RecipeDetail implements RecipeDetail {
   int? get id;
   @override
   @JsonKey(name: 'account_id')
-  int? get userName;
+  int? get userId;
   @override
   @JsonKey(name: 'recipe_name')
-  String? get userEmail;
+  String? get recipeName;
   @override
   @JsonKey(name: 'description')
   String? get description;
-  @override
+  @override //
   @JsonKey(name: 'instruction')
   String? get instruction;
   @override
   @JsonKey(name: 'rating')
-  double? get joinAt;
-  @override
+  double? get rating;
+  @override //
   @JsonKey(name: 'num_of_followers')
   int? get numOfFollower;
-  @override
+  @override //
   @JsonKey(name: 'num_of_rating')
   int? get numOfRating;
-  @override
+  @override //
   @JsonKey(name: 'num_of_comments')
   int? get numOfComment;
   @override
   @JsonKey(name: 'update_at')
   String? get updateAt;
-  @override
+  @override //
   @JsonKey(name: 'create_at')
   String? get createAt;
   @override
@@ -526,7 +530,7 @@ abstract class _RecipeDetail implements RecipeDetail {
   List<Ingredient>? get ingredients;
   @override
   @JsonKey(name: 'owner')
-  User? get owner;
+  UserDetail? get owner;
   @override
   @JsonKey(ignore: true)
   _$$RecipeDetailImplCopyWith<_$RecipeDetailImpl> get copyWith =>

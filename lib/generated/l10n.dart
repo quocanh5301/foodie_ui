@@ -680,10 +680,10 @@ class S {
     );
   }
 
-  /// `'Your recipes'`
+  /// `Your recipes`
   String get yourRecipeTab {
     return Intl.message(
-      '\'Your recipes\'',
+      'Your recipes',
       name: 'yourRecipeTab',
       desc: '',
       args: [],
@@ -745,6 +745,186 @@ class S {
     return Intl.message(
       'User don\'t have a Description',
       name: 'noDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Author`
+  String get author {
+    return Intl.message(
+      'Author',
+      name: 'author',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Join Since`
+  String get joinSince {
+    return Intl.message(
+      'Join Since',
+      name: 'joinSince',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update At`
+  String get updateAt {
+    return Intl.message(
+      'Update At',
+      name: 'updateAt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Follwers`
+  String get numOfFollower {
+    return Intl.message(
+      'Follwers',
+      name: 'numOfFollower',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Empty`
+  String get empty {
+    return Intl.message(
+      'Empty',
+      name: 'empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Description Author`
+  String get noDescriptionAuthor {
+    return Intl.message(
+      'No Description Author',
+      name: 'noDescriptionAuthor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Description Recipe`
+  String get noDescriptionRecipe {
+    return Intl.message(
+      'No Description Recipe',
+      name: 'noDescriptionRecipe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ingredients`
+  String get numOfIngredients {
+    return Intl.message(
+      'Ingredients',
+      name: 'numOfIngredients',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Detail`
+  String get detail {
+    return Intl.message(
+      'Detail',
+      name: 'detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reviews`
+  String get review {
+    return Intl.message(
+      'Reviews',
+      name: 'review',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comments`
+  String get comment {
+    return Intl.message(
+      'Comments',
+      name: 'comment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recipe Infomation`
+  String get recipeInfo {
+    return Intl.message(
+      'Recipe Infomation',
+      name: 'recipeInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recipe`
+  String get recipe {
+    return Intl.message(
+      'Recipe',
+      name: 'recipe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Empty Ingredient`
+  String get emptyIngrdients {
+    return Intl.message(
+      'Empty Ingredient',
+      name: 'emptyIngrdients',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Ingredient Name`
+  String get noIngredientName {
+    return Intl.message(
+      'No Ingredient Name',
+      name: 'noIngredientName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Ingredient Amount Specified`
+  String get noIngredientAmount {
+    return Intl.message(
+      'No Ingredient Amount Specified',
+      name: 'noIngredientAmount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This recipe has no instruction !`
+  String get noInstructionRecipe {
+    return Intl.message(
+      'This recipe has no instruction !',
+      name: 'noInstructionRecipe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rate For This Recipe`
+  String get rateThisRecipe {
+    return Intl.message(
+      'Rate For This Recipe',
+      name: 'rateThisRecipe',
       desc: '',
       args: [],
     );

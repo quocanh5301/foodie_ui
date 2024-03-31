@@ -13,7 +13,7 @@ class Ingredient with _$Ingredient {
     // @Default('') 
     @JsonKey(name: 'ingredient_name') String? ingredientName,
     // @Default('')
-    // @JsonKey(name: 'ingredient_image') String? ingredientImage,
+    @JsonKey(name: 'ingredient_image') String? ingredientImage,
     // @Default('') 
     @JsonKey(name: 'quantity') String? quantity,
   }) = _Ingredient;

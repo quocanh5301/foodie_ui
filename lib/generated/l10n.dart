@@ -870,10 +870,10 @@ class S {
     );
   }
 
-  /// `Recipe`
+  /// `Recipe Detail`
   String get recipe {
     return Intl.message(
-      'Recipe',
+      'Recipe Detail',
       name: 'recipe',
       desc: '',
       args: [],
@@ -925,6 +925,66 @@ class S {
     return Intl.message(
       'Rate For This Recipe',
       name: 'rateThisRecipe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm`
+  String get confirm {
+    return Intl.message(
+      'Confirm',
+      name: 'confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write a review for this recipe`
+  String get writeReview {
+    return Intl.message(
+      'Write a review for this recipe',
+      name: 'writeReview',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your review here...`
+  String get enterReview {
+    return Intl.message(
+      'Enter your review here...',
+      name: 'enterReview',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rate this recipe`
+  String get rateRecipe {
+    return Intl.message(
+      'Rate this recipe',
+      name: 'rateRecipe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `YOUR REVIEW`
+  String get yourReview {
+    return Intl.message(
+      'YOUR REVIEW',
+      name: 'yourReview',
       desc: '',
       args: [],
     );

@@ -18,6 +18,7 @@ import 'package:foodie/feature/login/bloc/login_cubit.dart';
 import 'package:foodie/feature/login/provider/login_provider.dart';
 import 'package:foodie/feature/login/repository/login_repository.dart';
 import 'package:foodie/feature/recipe_detail/bloc/detail/recipe_detail_cubit.dart';
+import 'package:foodie/feature/recipe_detail/bloc/review/recipe_review_cubit.dart';
 import 'package:foodie/feature/recipe_detail/provider/recipe_detail_provider.dart';
 import 'package:foodie/feature/recipe_detail/repository/recipe_detail_repository.dart';
 import 'package:foodie/feature/register/bloc/register_cubit.dart';
@@ -83,6 +84,7 @@ void initProfile() async {
 
 void initRecipeDetail() async {
   sl.registerFactory(() => RecipeDetailCubit(recipeDetailRepository: sl()));
+  sl.registerFactory(() => RecipeReviewCubit(recipeDetailRepository: sl()));
   sl.registerFactory(() => RecipeDetailRepository(recipeDetailProvider: sl()));
   sl.registerFactory(() => RecipeDetailProvider(apiRequest: APIRequest()));
 }

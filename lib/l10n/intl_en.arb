@@ -86,10 +86,16 @@
     "review": "Reviews",
     "comment": "Comments",
     "recipeInfo": "Recipe Infomation",
-    "recipe": "Recipe",
+    "recipe": "Recipe Detail",
     "emptyIngrdients": "Empty Ingredient",
     "noIngredientName": "No Ingredient Name",
     "noIngredientAmount": "No Ingredient Amount Specified",
     "noInstructionRecipe": "This recipe has no instruction !",
-    "rateThisRecipe": "Rate For This Recipe"
+    "rateThisRecipe": "Rate For This Recipe",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "writeReview": "Write a review for this recipe",
+    "enterReview": "Enter your review here...",
+    "rateRecipe": "Rate this recipe",
+    "yourReview": "YOUR REVIEW"
 }

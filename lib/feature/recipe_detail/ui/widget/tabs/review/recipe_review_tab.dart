@@ -40,7 +40,7 @@ class RecipeReviewTab extends StatelessWidget {
                       ),
                     )
                   : SizedBox(
-                      height: AppStyles.screenH / 2,
+                      height: AppStyles.screenH / 4,
                       child: Center(
                         child: Text(
                           S.of(context).emptyReview,

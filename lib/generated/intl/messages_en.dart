@@ -32,10 +32,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "bookmarkTab":
             MessageLookupByLibrary.simpleMessage("Your Bookmark Recipe"),
         "camera": MessageLookupByLibrary.simpleMessage("Camera"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "chooseAnotherPhotoButton":
             MessageLookupByLibrary.simpleMessage("Choose Another Photo"),
         "comment": MessageLookupByLibrary.simpleMessage("Comments"),
         "commentsFilter": MessageLookupByLibrary.simpleMessage("Comments"),
+        "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "createNewRecipe":
             MessageLookupByLibrary.simpleMessage("Create New Recipe !!!"),
         "detail": MessageLookupByLibrary.simpleMessage("Detail"),
@@ -50,6 +52,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Empty Ingredient"),
         "emptyRecipe": MessageLookupByLibrary.simpleMessage("No Recipe Found"),
         "emptyReview": MessageLookupByLibrary.simpleMessage("No Review Found"),
+        "enterReview":
+            MessageLookupByLibrary.simpleMessage("Enter your review here..."),
         "explore": MessageLookupByLibrary.simpleMessage(
             "What would you like to cook today?"),
         "forgotPassword":
@@ -106,10 +110,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Quantity must not empty"),
         "quantityHint": MessageLookupByLibrary.simpleMessage("Quantity"),
         "quantityLabel": MessageLookupByLibrary.simpleMessage("Quantity"),
+        "rateRecipe": MessageLookupByLibrary.simpleMessage("Rate this recipe"),
         "rateThisRecipe":
             MessageLookupByLibrary.simpleMessage("Rate For This Recipe"),
         "ratingFilter": MessageLookupByLibrary.simpleMessage("Rating"),
-        "recipe": MessageLookupByLibrary.simpleMessage("Recipe"),
+        "recipe": MessageLookupByLibrary.simpleMessage("Recipe Detail"),
         "recipeDescriptionHint":
             MessageLookupByLibrary.simpleMessage("Recipe Description"),
         "recipeDescriptionLabel":
@@ -144,8 +149,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "searchAll": MessageLookupByLibrary.simpleMessage("Search"),
         "topRecipe": MessageLookupByLibrary.simpleMessage("Top Recipe"),
         "updateAt": MessageLookupByLibrary.simpleMessage("Update At"),
+        "writeReview": MessageLookupByLibrary.simpleMessage(
+            "Write a review for this recipe"),
         "yourProfile": MessageLookupByLibrary.simpleMessage("Your Profile"),
         "yourRecipeTab": MessageLookupByLibrary.simpleMessage("Your recipes"),
+        "yourReview": MessageLookupByLibrary.simpleMessage("YOUR REVIEW"),
         "yourReviews": MessageLookupByLibrary.simpleMessage("Reviews")
       };
 }

@@ -43,7 +43,7 @@ class RecipeDetailTab extends StatelessWidget {
                         const VerticalSpace(10),
                   )
                 : SizedBox(
-                    height: AppStyles.screenH / 2,
+                    height: AppStyles.screenH / 4,
                     child: Center(
                       child: Text(
                         S.of(context).emptyIngrdients,

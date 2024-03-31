@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:foodie/core/data/api.dart';
 import 'package:foodie/core/data/share_pref.dart';
@@ -31,9 +30,18 @@ class RecipeDetailProvider {
         },
       );
 
-  Future<Response> addNewRating({
+  Future<Response> getRecipePersonalReview({required int recipeId}) async =>
+      await apiRequest.post(
+        endpoint: Endpoints.getPersonalRatingForRecipe,
+        data: {
+          'userId': SharedPref.getUserInfo().id,
+          'recipeId': recipeId,
+        },
+      );
+
+  Future<Response> addNewReview({
     required int recipeId,
-    required int rating,
+    required double rating,
     required String review,
     required String? reviewRecipeImagePath,
   }) async {
@@ -44,7 +52,7 @@ class RecipeDetailProvider {
       "rating": rating,
     });
 
-    if (reviewRecipeImagePath != null) {
+    if (reviewRecipeImagePath != null && reviewRecipeImagePath != '') {
       MultipartFile multipartFile =
           await MultipartFile.fromFile(reviewRecipeImagePath);
       data.files.add(MapEntry(

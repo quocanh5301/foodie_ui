@@ -16,8 +16,8 @@ class RecipeReviewState with _$RecipeReviewState {
     @Default('') String reviewContent,
     @Default(0) double rating,
     //state controller
-    @Default(GetRecipeReviewStatus.initial)
-    GetRecipeReviewStatus getRecipeReviewStatus,
+    @Default(GetPersonalReviewStatus.initial)
+    GetPersonalReviewStatus getPersonalReviewStatus,
     @Default(AddRecipeReviewStatus.initial)
     AddRecipeReviewStatus addRecipeReviewStatus,
   }) = _RecipeReviewState;
@@ -25,4 +25,4 @@ class RecipeReviewState with _$RecipeReviewState {
 
 enum AddRecipeReviewStatus { initial, loading, success, failure }
 
-enum GetRecipeReviewStatus { initial, loading, success, failure }
+enum GetPersonalReviewStatus { initial, loading, success, failure }

@@ -28,7 +28,7 @@ class AddReviewDialog extends StatelessWidget {
           sl<RecipeReviewCubit>()..getRecipePersonalReview(recipeId: recipeId),
       child: BlocBuilder<RecipeReviewCubit, RecipeReviewState>(
         buildWhen: (previous, current) =>
-            previous.getRecipeReviewStatus != current.getRecipeReviewStatus ||
+            previous.getPersonalReviewStatus != current.getPersonalReviewStatus ||
             previous.reviewImagePath != current.reviewImagePath ||
             previous.reviewContent != current.reviewContent,
         builder: (context, state) {

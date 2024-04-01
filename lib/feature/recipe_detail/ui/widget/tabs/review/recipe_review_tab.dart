@@ -14,7 +14,7 @@ class RecipeReviewTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<RecipeDetailCubit, RecipeDetailState>(
       buildWhen: (previous, current) =>
-          previous.getUserReviewStatus != current.getUserReviewStatus,
+          previous.userReviewList.length != current.userReviewList.length,
       builder: (context, state) {
         return SingleChildScrollView(
           physics: const NeverScrollableScrollPhysics(),

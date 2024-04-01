@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/core/resource/styles.dart';
@@ -33,7 +32,9 @@ class AddNewReviewButton extends StatelessWidget {
               if (!change) {
                 return;
               }
-              context.read<RecipeDetailCubit>().getReviewOfRecipe();
+              context.read<RecipeDetailCubit>()
+                ..refreshReview()
+                ..getRecipeDetail(recipeId: state.recipeId);
             }),
             child: Container(
               width: AppStyles.screenW,

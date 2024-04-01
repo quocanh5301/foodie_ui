@@ -15,7 +15,7 @@ class RecipeBasicInfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<RecipeDetailCubit, RecipeDetailState>(
       buildWhen: (previous, current) =>
-          previous.userReviewList.length != current.userReviewList.length,
+          previous.getRecipeDetailStatus != current.getRecipeDetailStatus,
       builder: (context, state) {
         return Container(
           width: AppStyles.screenW,

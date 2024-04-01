@@ -13,7 +13,7 @@ class RecipeReviewCubit extends Cubit<RecipeReviewState> {
   Future<void> getRecipePersonalReview({required int recipeId}) async {
     emit(
       state.copyWith(
-        getRecipeReviewStatus: GetRecipeReviewStatus.loading,
+        getPersonalReviewStatus: GetPersonalReviewStatus.loading,
         mess: '',
         recipeId: recipeId,
       ),
@@ -24,14 +24,14 @@ class RecipeReviewCubit extends Cubit<RecipeReviewState> {
     result.match(
       (error) => emit(
         state.copyWith(
-          getRecipeReviewStatus: GetRecipeReviewStatus.failure,
+          getPersonalReviewStatus: GetPersonalReviewStatus.failure,
           mess: error,
         ),
       ),
       (success) {
         return emit(
           state.copyWith(
-            getRecipeReviewStatus: GetRecipeReviewStatus.success,
+            getPersonalReviewStatus: GetPersonalReviewStatus.success,
             personalReview: success.review ?? state.personalReview,
             rating: success.review?.rating ?? 0,
             reviewContent: success.review?.review ?? '',

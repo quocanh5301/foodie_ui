@@ -24,7 +24,7 @@ mixin _$RecipeReviewState {
   String get reviewImagePath => throw _privateConstructorUsedError;
   String get reviewContent => throw _privateConstructorUsedError;
   double get rating => throw _privateConstructorUsedError; //state controller
-  GetRecipeReviewStatus get getRecipeReviewStatus =>
+  GetPersonalReviewStatus get getPersonalReviewStatus =>
       throw _privateConstructorUsedError;
   AddRecipeReviewStatus get addRecipeReviewStatus =>
       throw _privateConstructorUsedError;
@@ -48,7 +48,7 @@ abstract class $RecipeReviewStateCopyWith<$Res> {
       String reviewImagePath,
       String reviewContent,
       double rating,
-      GetRecipeReviewStatus getRecipeReviewStatus,
+      GetPersonalReviewStatus getPersonalReviewStatus,
       AddRecipeReviewStatus addRecipeReviewStatus});
 
   $PersonalReviewCopyWith<$Res> get personalReview;
@@ -74,7 +74,7 @@ class _$RecipeReviewStateCopyWithImpl<$Res, $Val extends RecipeReviewState>
     Object? reviewImagePath = null,
     Object? reviewContent = null,
     Object? rating = null,
-    Object? getRecipeReviewStatus = null,
+    Object? getPersonalReviewStatus = null,
     Object? addRecipeReviewStatus = null,
   }) {
     return _then(_value.copyWith(
@@ -106,10 +106,10 @@ class _$RecipeReviewStateCopyWithImpl<$Res, $Val extends RecipeReviewState>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as double,
-      getRecipeReviewStatus: null == getRecipeReviewStatus
-          ? _value.getRecipeReviewStatus
-          : getRecipeReviewStatus // ignore: cast_nullable_to_non_nullable
-              as GetRecipeReviewStatus,
+      getPersonalReviewStatus: null == getPersonalReviewStatus
+          ? _value.getPersonalReviewStatus
+          : getPersonalReviewStatus // ignore: cast_nullable_to_non_nullable
+              as GetPersonalReviewStatus,
       addRecipeReviewStatus: null == addRecipeReviewStatus
           ? _value.addRecipeReviewStatus
           : addRecipeReviewStatus // ignore: cast_nullable_to_non_nullable
@@ -142,7 +142,7 @@ abstract class _$$RecipeReviewStateImplCopyWith<$Res>
       String reviewImagePath,
       String reviewContent,
       double rating,
-      GetRecipeReviewStatus getRecipeReviewStatus,
+      GetPersonalReviewStatus getPersonalReviewStatus,
       AddRecipeReviewStatus addRecipeReviewStatus});
 
   @override
@@ -167,7 +167,7 @@ class __$$RecipeReviewStateImplCopyWithImpl<$Res>
     Object? reviewImagePath = null,
     Object? reviewContent = null,
     Object? rating = null,
-    Object? getRecipeReviewStatus = null,
+    Object? getPersonalReviewStatus = null,
     Object? addRecipeReviewStatus = null,
   }) {
     return _then(_$RecipeReviewStateImpl(
@@ -199,10 +199,10 @@ class __$$RecipeReviewStateImplCopyWithImpl<$Res>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as double,
-      getRecipeReviewStatus: null == getRecipeReviewStatus
-          ? _value.getRecipeReviewStatus
-          : getRecipeReviewStatus // ignore: cast_nullable_to_non_nullable
-              as GetRecipeReviewStatus,
+      getPersonalReviewStatus: null == getPersonalReviewStatus
+          ? _value.getPersonalReviewStatus
+          : getPersonalReviewStatus // ignore: cast_nullable_to_non_nullable
+              as GetPersonalReviewStatus,
       addRecipeReviewStatus: null == addRecipeReviewStatus
           ? _value.addRecipeReviewStatus
           : addRecipeReviewStatus // ignore: cast_nullable_to_non_nullable
@@ -222,7 +222,7 @@ class _$RecipeReviewStateImpl implements _RecipeReviewState {
       this.reviewImagePath = '',
       this.reviewContent = '',
       this.rating = 0,
-      this.getRecipeReviewStatus = GetRecipeReviewStatus.initial,
+      this.getPersonalReviewStatus = GetPersonalReviewStatus.initial,
       this.addRecipeReviewStatus = AddRecipeReviewStatus.initial});
 
   @override
@@ -251,14 +251,14 @@ class _$RecipeReviewStateImpl implements _RecipeReviewState {
 //state controller
   @override
   @JsonKey()
-  final GetRecipeReviewStatus getRecipeReviewStatus;
+  final GetPersonalReviewStatus getPersonalReviewStatus;
   @override
   @JsonKey()
   final AddRecipeReviewStatus addRecipeReviewStatus;
 
   @override
   String toString() {
-    return 'RecipeReviewState(code: $code, mess: $mess, recipeId: $recipeId, personalReview: $personalReview, reviewImagePath: $reviewImagePath, reviewContent: $reviewContent, rating: $rating, getRecipeReviewStatus: $getRecipeReviewStatus, addRecipeReviewStatus: $addRecipeReviewStatus)';
+    return 'RecipeReviewState(code: $code, mess: $mess, recipeId: $recipeId, personalReview: $personalReview, reviewImagePath: $reviewImagePath, reviewContent: $reviewContent, rating: $rating, getPersonalReviewStatus: $getPersonalReviewStatus, addRecipeReviewStatus: $addRecipeReviewStatus)';
   }
 
   @override
@@ -277,8 +277,9 @@ class _$RecipeReviewStateImpl implements _RecipeReviewState {
             (identical(other.reviewContent, reviewContent) ||
                 other.reviewContent == reviewContent) &&
             (identical(other.rating, rating) || other.rating == rating) &&
-            (identical(other.getRecipeReviewStatus, getRecipeReviewStatus) ||
-                other.getRecipeReviewStatus == getRecipeReviewStatus) &&
+            (identical(
+                    other.getPersonalReviewStatus, getPersonalReviewStatus) ||
+                other.getPersonalReviewStatus == getPersonalReviewStatus) &&
             (identical(other.addRecipeReviewStatus, addRecipeReviewStatus) ||
                 other.addRecipeReviewStatus == addRecipeReviewStatus));
   }
@@ -293,7 +294,7 @@ class _$RecipeReviewStateImpl implements _RecipeReviewState {
       reviewImagePath,
       reviewContent,
       rating,
-      getRecipeReviewStatus,
+      getPersonalReviewStatus,
       addRecipeReviewStatus);
 
   @JsonKey(ignore: true)
@@ -313,7 +314,7 @@ abstract class _RecipeReviewState implements RecipeReviewState {
           final String reviewImagePath,
           final String reviewContent,
           final double rating,
-          final GetRecipeReviewStatus getRecipeReviewStatus,
+          final GetPersonalReviewStatus getPersonalReviewStatus,
           final AddRecipeReviewStatus addRecipeReviewStatus}) =
       _$RecipeReviewStateImpl;
 
@@ -332,7 +333,7 @@ abstract class _RecipeReviewState implements RecipeReviewState {
   @override
   double get rating;
   @override //state controller
-  GetRecipeReviewStatus get getRecipeReviewStatus;
+  GetPersonalReviewStatus get getPersonalReviewStatus;
   @override
   AddRecipeReviewStatus get addRecipeReviewStatus;
   @override

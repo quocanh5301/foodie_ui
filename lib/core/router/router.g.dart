@@ -11,6 +11,7 @@ List<RouteBase> get $appRoutes => [
       $registerRoute,
       $homeRoute,
       $recipeDetailRoute,
+      $userSettingRoute,
     ];
 
 RouteBase get $loginRoute => GoRouteData.$route(
@@ -94,6 +95,29 @@ extension $RecipeDetailRouteExtension on RecipeDetailRoute {
         queryParams: {
           'recipe-id': recipeId.toString(),
         },
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $userSettingRoute => GoRouteData.$route(
+      path: '/setting',
+      factory: $UserSettingRouteExtension._fromState,
+    );
+
+extension $UserSettingRouteExtension on UserSettingRoute {
+  static UserSettingRoute _fromState(GoRouterState state) =>
+      const UserSettingRoute();
+
+  String get location => GoRouteData.$location(
+        '/setting',
       );
 
   void go(BuildContext context) => context.go(location);

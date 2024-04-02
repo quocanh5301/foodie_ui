@@ -23,133 +23,153 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addIngredientButton":
-            MessageLookupByLibrary.simpleMessage("Add Ingredient"),
-        "addPhotoButton": MessageLookupByLibrary.simpleMessage("Add Photo"),
-        "addRecipe": MessageLookupByLibrary.simpleMessage("Add New Recipe"),
-        "allFilter": MessageLookupByLibrary.simpleMessage("All"),
-        "author": MessageLookupByLibrary.simpleMessage("Author"),
-        "bookmarkNumFilter": MessageLookupByLibrary.simpleMessage("Bookmark"),
+            MessageLookupByLibrary.simpleMessage("Thêm nguyên liệu"),
+        "addPhotoButton": MessageLookupByLibrary.simpleMessage("Thêm ảnh"),
+        "addRecipe": MessageLookupByLibrary.simpleMessage("Thêm công thức mới"),
+        "allFilter": MessageLookupByLibrary.simpleMessage("Tất cả"),
+        "author": MessageLookupByLibrary.simpleMessage("Tác giả"),
+        "bookmarkNumFilter":
+            MessageLookupByLibrary.simpleMessage("Đã đánh dấu"),
         "bookmarkTab":
-            MessageLookupByLibrary.simpleMessage("Your Bookmark Recipe"),
+            MessageLookupByLibrary.simpleMessage("Công thức bạn đã đánh dấu"),
         "camera": MessageLookupByLibrary.simpleMessage("Camera"),
-        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
         "chooseAnotherPhotoButton":
-            MessageLookupByLibrary.simpleMessage("Choose Another Photo"),
-        "comment": MessageLookupByLibrary.simpleMessage("Comments"),
-        "commentsFilter": MessageLookupByLibrary.simpleMessage("Comments"),
-        "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+            MessageLookupByLibrary.simpleMessage("Chọn ảnh khác"),
+        "comment": MessageLookupByLibrary.simpleMessage("Bình luận"),
+        "commentsFilter": MessageLookupByLibrary.simpleMessage("Bình luận"),
+        "confirm": MessageLookupByLibrary.simpleMessage("Xác nhận"),
         "createNewRecipe":
-            MessageLookupByLibrary.simpleMessage("Create New Recipe !!!"),
-        "detail": MessageLookupByLibrary.simpleMessage("Detail"),
+            MessageLookupByLibrary.simpleMessage("Tạo công thức mới !!!"),
+        "detail": MessageLookupByLibrary.simpleMessage("Chi tiết"),
+        "edit_profile": MessageLookupByLibrary.simpleMessage("Chỉnh sửa hồ sơ"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailEmpty":
-            MessageLookupByLibrary.simpleMessage("Email must not empty"),
+            MessageLookupByLibrary.simpleMessage("Email không được để trống"),
         "emailFormatError":
-            MessageLookupByLibrary.simpleMessage("Email is not valid"),
+            MessageLookupByLibrary.simpleMessage("Email không hợp lệ"),
         "emailHint": MessageLookupByLibrary.simpleMessage("Email"),
-        "empty": MessageLookupByLibrary.simpleMessage("Empty"),
+        "empty": MessageLookupByLibrary.simpleMessage("Trống"),
         "emptyIngrdients":
-            MessageLookupByLibrary.simpleMessage("Empty Ingredient"),
-        "emptyRecipe": MessageLookupByLibrary.simpleMessage("No Recipe Found"),
-        "emptyReview": MessageLookupByLibrary.simpleMessage("No Review Found"),
-        "enterReview":
-            MessageLookupByLibrary.simpleMessage("Enter your review here..."),
-        "explore": MessageLookupByLibrary.simpleMessage(
-            "What would you like to cook today?"),
+            MessageLookupByLibrary.simpleMessage("Không có nguyên liệu"),
+        "emptyRecipe":
+            MessageLookupByLibrary.simpleMessage("Không tìm thấy công thức"),
+        "emptyReview":
+            MessageLookupByLibrary.simpleMessage("Không tìm thấy bình luận"),
+        "enterReview": MessageLookupByLibrary.simpleMessage(
+            "Nhập bình luận của bạn ở đây..."),
+        "explore":
+            MessageLookupByLibrary.simpleMessage("Bạn muốn nấu gì hôm nay?"),
         "forgotPassword":
-            MessageLookupByLibrary.simpleMessage("Forgot Password?"),
+            MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
         "forgotPasswordSuccess": MessageLookupByLibrary.simpleMessage(
-            "Hãy kiểm tra email của bạn để lấy lại mật khẩu"),
-        "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
-        "homeBookmarkRecipe": MessageLookupByLibrary.simpleMessage("Bookmark"),
+            "Hãy kiểm tra email của bạn để đặt lại mật khẩu"),
+        "gallery": MessageLookupByLibrary.simpleMessage("Thư viện ảnh"),
+        "homeBookmarkRecipe": MessageLookupByLibrary.simpleMessage("Đánh dấu"),
         "homeCreateRecipe":
-            MessageLookupByLibrary.simpleMessage("Create Recipe"),
-        "homeExplore": MessageLookupByLibrary.simpleMessage("Explore"),
-        "homeProfile": MessageLookupByLibrary.simpleMessage("Profile"),
-        "ingredientError":
-            MessageLookupByLibrary.simpleMessage("Ingredient must not empty"),
-        "ingredientHint": MessageLookupByLibrary.simpleMessage("Ingredient"),
-        "ingredientLabel": MessageLookupByLibrary.simpleMessage("Ingredient"),
+            MessageLookupByLibrary.simpleMessage("Tạo công thức"),
+        "homeExplore": MessageLookupByLibrary.simpleMessage("Khám phá"),
+        "homeProfile": MessageLookupByLibrary.simpleMessage("Hồ sơ"),
+        "ingredientError": MessageLookupByLibrary.simpleMessage(
+            "Nguyên liệu không được để trống"),
+        "ingredientHint": MessageLookupByLibrary.simpleMessage("Nguyên liệu"),
+        "ingredientLabel": MessageLookupByLibrary.simpleMessage("Nguyên liệu"),
         "intro": MessageLookupByLibrary.simpleMessage(
             "Chúng tôi là cộng đồng chia sẻ công thức nấu ăn lớn nhất Việt Nam"),
-        "joinSince": MessageLookupByLibrary.simpleMessage("Join Since"),
+        "joinSince": MessageLookupByLibrary.simpleMessage("Tham gia từ"),
+        "lang": MessageLookupByLibrary.simpleMessage("Tiếng Việt"),
+        "language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "loginText1":
             MessageLookupByLibrary.simpleMessage("Bạn đã có tài khoản? "),
         "loginText2": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
-        "name": MessageLookupByLibrary.simpleMessage("Name"),
-        "nameError": MessageLookupByLibrary.simpleMessage("Please fill name"),
-        "nameHint": MessageLookupByLibrary.simpleMessage("Enter your Name"),
-        "noBookmarkRecipefound":
-            MessageLookupByLibrary.simpleMessage("No Bookmark Recipe Found"),
-        "noDescription": MessageLookupByLibrary.simpleMessage(
-            "User don\'t have a Description"),
+        "logout": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
+        "name": MessageLookupByLibrary.simpleMessage("Tên"),
+        "nameError": MessageLookupByLibrary.simpleMessage("Vui lòng điền tên"),
+        "nameHint": MessageLookupByLibrary.simpleMessage("Nhập tên của bạn"),
+        "noBookmarkRecipefound": MessageLookupByLibrary.simpleMessage(
+            "Không tìm thấy công thức đã đánh dấu"),
+        "noDescription":
+            MessageLookupByLibrary.simpleMessage("Người dùng không có mô tả"),
         "noDescriptionAuthor":
-            MessageLookupByLibrary.simpleMessage("No Description Author"),
-        "noDescriptionRecipe":
-            MessageLookupByLibrary.simpleMessage("No Description Recipe"),
+            MessageLookupByLibrary.simpleMessage("Không có mô tả cho tác giả"),
+        "noDescriptionRecipe": MessageLookupByLibrary.simpleMessage(
+            "Không có mô tả cho công thức"),
         "noEmail":
-            MessageLookupByLibrary.simpleMessage("User don\'t have an Email"),
+            MessageLookupByLibrary.simpleMessage("Người dùng không có email"),
+        "noIngredientAmount": MessageLookupByLibrary.simpleMessage(
+            "Không có số lượng nguyên liệu"),
+        "noIngredientName":
+            MessageLookupByLibrary.simpleMessage("Không có tên nguyên liệu"),
         "noInstructionRecipe": MessageLookupByLibrary.simpleMessage(
-            "This recipe has no instruction !"),
-        "noNameRecipe": MessageLookupByLibrary.simpleMessage("No Name Recipe"),
-        "noNameUser": MessageLookupByLibrary.simpleMessage("No Name User"),
-        "noReviewText": MessageLookupByLibrary.simpleMessage("No Review"),
-        "numOfFollower": MessageLookupByLibrary.simpleMessage("Follwers"),
-        "numOfIngredients": MessageLookupByLibrary.simpleMessage("Ingredients"),
+            "Công thức này không có hướng dẫn!"),
+        "noNameRecipe":
+            MessageLookupByLibrary.simpleMessage("Không có công thức nào"),
+        "noNameUser":
+            MessageLookupByLibrary.simpleMessage("Không có tên người dùng"),
+        "noReviewText":
+            MessageLookupByLibrary.simpleMessage("Không có bình luận"),
+        "notification": MessageLookupByLibrary.simpleMessage("Thông báo"),
+        "numOfFollower": MessageLookupByLibrary.simpleMessage("Người theo dõi"),
+        "numOfIngredients":
+            MessageLookupByLibrary.simpleMessage("Số lượng nguyên liệu"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
-        "password": MessageLookupByLibrary.simpleMessage("Password"),
-        "passwordEmpty":
-            MessageLookupByLibrary.simpleMessage("Password must not empty"),
-        "passwordHint": MessageLookupByLibrary.simpleMessage("Password"),
-        "quantityError":
-            MessageLookupByLibrary.simpleMessage("Quantity must not empty"),
-        "quantityHint": MessageLookupByLibrary.simpleMessage("Quantity"),
-        "quantityLabel": MessageLookupByLibrary.simpleMessage("Quantity"),
-        "rateRecipe": MessageLookupByLibrary.simpleMessage("Rate this recipe"),
+        "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
+        "passwordEmpty": MessageLookupByLibrary.simpleMessage(
+            "Mật khẩu không được để trống"),
+        "passwordHint": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
+        "quantityError": MessageLookupByLibrary.simpleMessage(
+            "Số lượng không được để trống"),
+        "quantityHint": MessageLookupByLibrary.simpleMessage("Số lượng"),
+        "quantityLabel": MessageLookupByLibrary.simpleMessage("Số lượng"),
+        "rateRecipe":
+            MessageLookupByLibrary.simpleMessage("Đánh giá công thức này"),
         "rateThisRecipe":
-            MessageLookupByLibrary.simpleMessage("Rate For This Recipe"),
-        "ratingFilter": MessageLookupByLibrary.simpleMessage("Rating"),
-        "recipe": MessageLookupByLibrary.simpleMessage("Recipe Detail"),
+            MessageLookupByLibrary.simpleMessage("Đánh giá công thức này"),
+        "ratingFilter": MessageLookupByLibrary.simpleMessage("Đánh giá"),
+        "recipe": MessageLookupByLibrary.simpleMessage("Chi tiết công thức"),
         "recipeDescriptionHint":
-            MessageLookupByLibrary.simpleMessage("Recipe Description"),
+            MessageLookupByLibrary.simpleMessage("Mô tả công thức"),
         "recipeDescriptionLabel":
-            MessageLookupByLibrary.simpleMessage("Recipe Description"),
-        "recipeErrorField":
-            MessageLookupByLibrary.simpleMessage("Recipe Name must not empty"),
-        "recipeHintField": MessageLookupByLibrary.simpleMessage("Recipe Name"),
-        "recipeInfo": MessageLookupByLibrary.simpleMessage("Recipe Infomation"),
+            MessageLookupByLibrary.simpleMessage("Mô tả công thức"),
+        "recipeErrorField": MessageLookupByLibrary.simpleMessage(
+            "Tên công thức không được để trống"),
+        "recipeHintField":
+            MessageLookupByLibrary.simpleMessage("Tên công thức"),
+        "recipeInfo":
+            MessageLookupByLibrary.simpleMessage("Thông tin công thức"),
         "recipeInstuctionHint":
-            MessageLookupByLibrary.simpleMessage("Recipe Instruction"),
+            MessageLookupByLibrary.simpleMessage("Hướng dẫn công thức"),
         "recipeInstuctionLabel":
-            MessageLookupByLibrary.simpleMessage("Recipe Instruction"),
-        "recipeLableField": MessageLookupByLibrary.simpleMessage("Recipe Name"),
-        "recipeNew": MessageLookupByLibrary.simpleMessage("New Recipe"),
+            MessageLookupByLibrary.simpleMessage("Hướng dẫn công thức"),
+        "recipeLableField":
+            MessageLookupByLibrary.simpleMessage("Tên công thức"),
+        "recipeNew": MessageLookupByLibrary.simpleMessage("Công thức mới"),
         "recipeNewFollow": MessageLookupByLibrary.simpleMessage(
-            "New Recipe From Your Followed User"),
+            "Công thức mới từ người dùng bạn theo dõi"),
         "recipeNewFollowNo": MessageLookupByLibrary.simpleMessage(
-            "No new recipe from your followed user"),
-        "register": MessageLookupByLibrary.simpleMessage("Register"),
+            "Không có công thức mới từ người dùng bạn theo dõi"),
+        "register": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "registerSuccess": MessageLookupByLibrary.simpleMessage(
-            "Đăng ký thành công, hãy kiểm tra email của bạn để xác nhận tài khoản"),
+            "Đăng ký thành công. Vui lòng kiểm tra email của bạn để xác nhận tài khoản"),
         "registerText1":
-            MessageLookupByLibrary.simpleMessage("Don\'t have an account? "),
-        "registerText2": MessageLookupByLibrary.simpleMessage("Create one"),
-        "registerTitle1":
-            MessageLookupByLibrary.simpleMessage("Create Account"),
+            MessageLookupByLibrary.simpleMessage("Bạn chưa có tài khoản? "),
+        "registerText2": MessageLookupByLibrary.simpleMessage("Tạo một"),
+        "registerTitle1": MessageLookupByLibrary.simpleMessage("Tạo tài khoản"),
         "registerTitle2": MessageLookupByLibrary.simpleMessage(
-            "Explore new recipe with us today !!!"),
+            "Khám phá công thức mới với chúng tôi ngay hôm nay !!!"),
         "removePhotoButton":
-            MessageLookupByLibrary.simpleMessage("\'Remove Photo\'"),
-        "review": MessageLookupByLibrary.simpleMessage("Reviews"),
-        "searchAll": MessageLookupByLibrary.simpleMessage("Search"),
-        "topRecipe": MessageLookupByLibrary.simpleMessage("Top Recipe"),
-        "updateAt": MessageLookupByLibrary.simpleMessage("Update At"),
+            MessageLookupByLibrary.simpleMessage("\'Xóa ảnh\'"),
+        "review": MessageLookupByLibrary.simpleMessage("Bình luận"),
+        "searchAll": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
+        "topRecipe": MessageLookupByLibrary.simpleMessage("Công thức hàng đầu"),
+        "updateAt": MessageLookupByLibrary.simpleMessage("Cập nhật lúc"),
         "writeReview": MessageLookupByLibrary.simpleMessage(
-            "Write a review for this recipe"),
-        "yourProfile": MessageLookupByLibrary.simpleMessage("Your Profile"),
-        "yourRecipeTab": MessageLookupByLibrary.simpleMessage("Your recipes"),
-        "yourReview": MessageLookupByLibrary.simpleMessage("YOUR REVIEW"),
-        "yourReviews": MessageLookupByLibrary.simpleMessage("Reviews")
+            "Viết bình luận cho công thức này"),
+        "yourProfile": MessageLookupByLibrary.simpleMessage("Hồ sơ của bạn"),
+        "yourRecipeTab":
+            MessageLookupByLibrary.simpleMessage("Công thức của bạn"),
+        "yourReview": MessageLookupByLibrary.simpleMessage("BÌNH LUẬN CỦA BẠN"),
+        "yourReviews": MessageLookupByLibrary.simpleMessage("Bình luận")
       };
 }

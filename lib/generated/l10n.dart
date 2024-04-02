@@ -50,10 +50,10 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Chúng tôi là cộng đồng chia sẻ công thức nấu ăn lớn nhất Việt Nam`
+  /// `We are the largest community sharing cooking recipes in Vietnam`
   String get intro {
     return Intl.message(
-      'Chúng tôi là cộng đồng chia sẻ công thức nấu ăn lớn nhất Việt Nam',
+      'We are the largest community sharing cooking recipes in Vietnam',
       name: 'intro',
       desc: '',
       args: [],
@@ -90,10 +90,10 @@ class S {
     );
   }
 
-  /// `Email must not empty`
+  /// `Email must not be empty`
   String get emailEmpty {
     return Intl.message(
-      'Email must not empty',
+      'Email must not be empty',
       name: 'emailEmpty',
       desc: '',
       args: [],
@@ -130,10 +130,10 @@ class S {
     );
   }
 
-  /// `Password must not empty`
+  /// `Password must not be empty`
   String get passwordEmpty {
     return Intl.message(
-      'Password must not empty',
+      'Password must not be empty',
       name: 'passwordEmpty',
       desc: '',
       args: [],
@@ -180,10 +180,10 @@ class S {
     );
   }
 
-  /// `Explore new recipe with us today !!!`
+  /// `Explore new recipes with us today !!!`
   String get registerTitle2 {
     return Intl.message(
-      'Explore new recipe with us today !!!',
+      'Explore new recipes with us today !!!',
       name: 'registerTitle2',
       desc: '',
       args: [],
@@ -200,40 +200,40 @@ class S {
     );
   }
 
-  /// `Hãy kiểm tra email của bạn để lấy lại mật khẩu`
+  /// `Please check your email to reset your password`
   String get forgotPasswordSuccess {
     return Intl.message(
-      'Hãy kiểm tra email của bạn để lấy lại mật khẩu',
+      'Please check your email to reset your password',
       name: 'forgotPasswordSuccess',
       desc: '',
       args: [],
     );
   }
 
-  /// `Đăng ký thành công, hãy kiểm tra email của bạn để xác nhận tài khoản`
+  /// `Registration successful. Please check your email to confirm your account`
   String get registerSuccess {
     return Intl.message(
-      'Đăng ký thành công, hãy kiểm tra email của bạn để xác nhận tài khoản',
+      'Registration successful. Please check your email to confirm your account',
       name: 'registerSuccess',
       desc: '',
       args: [],
     );
   }
 
-  /// `Bạn đã có tài khoản? `
+  /// `Already have an account? `
   String get loginText1 {
     return Intl.message(
-      'Bạn đã có tài khoản? ',
+      'Already have an account? ',
       name: 'loginText1',
       desc: '',
       args: [],
     );
   }
 
-  /// `Đăng nhập`
+  /// `Log in`
   String get loginText2 {
     return Intl.message(
-      'Đăng nhập',
+      'Log in',
       name: 'loginText2',
       desc: '',
       args: [],
@@ -260,10 +260,10 @@ class S {
     );
   }
 
-  /// `Please fill name`
+  /// `Please fill in your name`
   String get nameError {
     return Intl.message(
-      'Please fill name',
+      'Please fill in your name',
       name: 'nameError',
       desc: '',
       args: [],
@@ -985,6 +985,56 @@ class S {
     return Intl.message(
       'YOUR REVIEW',
       name: 'yourReview',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Profile`
+  String get edit_profile {
+    return Intl.message(
+      'Edit Profile',
+      name: 'edit_profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notifications`
+  String get notification {
+    return Intl.message(
+      'Notifications',
+      name: 'notification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get lang {
+    return Intl.message(
+      'English',
+      name: 'lang',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message(
+      'Logout',
+      name: 'logout',
       desc: '',
       args: [],
     );

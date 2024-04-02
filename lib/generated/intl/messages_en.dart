@@ -41,9 +41,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "createNewRecipe":
             MessageLookupByLibrary.simpleMessage("Create New Recipe !!!"),
         "detail": MessageLookupByLibrary.simpleMessage("Detail"),
+        "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailEmpty":
-            MessageLookupByLibrary.simpleMessage("Email must not empty"),
+            MessageLookupByLibrary.simpleMessage("Email must not be empty"),
         "emailFormatError":
             MessageLookupByLibrary.simpleMessage("Email is not valid"),
         "emailHint": MessageLookupByLibrary.simpleMessage("Email"),
@@ -59,7 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot Password?"),
         "forgotPasswordSuccess": MessageLookupByLibrary.simpleMessage(
-            "Hãy kiểm tra email của bạn để lấy lại mật khẩu"),
+            "Please check your email to reset your password"),
         "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
         "homeBookmarkRecipe": MessageLookupByLibrary.simpleMessage("Bookmark"),
         "homeCreateRecipe":
@@ -71,14 +72,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "ingredientHint": MessageLookupByLibrary.simpleMessage("Ingredient"),
         "ingredientLabel": MessageLookupByLibrary.simpleMessage("Ingredient"),
         "intro": MessageLookupByLibrary.simpleMessage(
-            "Chúng tôi là cộng đồng chia sẻ công thức nấu ăn lớn nhất Việt Nam"),
+            "We are the largest community sharing cooking recipes in Vietnam"),
         "joinSince": MessageLookupByLibrary.simpleMessage("Join Since"),
+        "lang": MessageLookupByLibrary.simpleMessage("English"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginText1":
-            MessageLookupByLibrary.simpleMessage("Bạn đã có tài khoản? "),
-        "loginText2": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
+            MessageLookupByLibrary.simpleMessage("Already have an account? "),
+        "loginText2": MessageLookupByLibrary.simpleMessage("Log in"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
-        "nameError": MessageLookupByLibrary.simpleMessage("Please fill name"),
+        "nameError":
+            MessageLookupByLibrary.simpleMessage("Please fill in your name"),
         "nameHint": MessageLookupByLibrary.simpleMessage("Enter your Name"),
         "noBookmarkRecipefound":
             MessageLookupByLibrary.simpleMessage("No Bookmark Recipe Found"),
@@ -99,12 +104,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "noNameRecipe": MessageLookupByLibrary.simpleMessage("No Name Recipe"),
         "noNameUser": MessageLookupByLibrary.simpleMessage("No Name User"),
         "noReviewText": MessageLookupByLibrary.simpleMessage("No Review"),
+        "notification": MessageLookupByLibrary.simpleMessage("Notifications"),
         "numOfFollower": MessageLookupByLibrary.simpleMessage("Follwers"),
         "numOfIngredients": MessageLookupByLibrary.simpleMessage("Ingredients"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordEmpty":
-            MessageLookupByLibrary.simpleMessage("Password must not empty"),
+            MessageLookupByLibrary.simpleMessage("Password must not be empty"),
         "passwordHint": MessageLookupByLibrary.simpleMessage("Password"),
         "quantityError":
             MessageLookupByLibrary.simpleMessage("Quantity must not empty"),
@@ -135,14 +141,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "No new recipe from your followed user"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "registerSuccess": MessageLookupByLibrary.simpleMessage(
-            "Đăng ký thành công, hãy kiểm tra email của bạn để xác nhận tài khoản"),
+            "Registration successful. Please check your email to confirm your account"),
         "registerText1":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account? "),
         "registerText2": MessageLookupByLibrary.simpleMessage("Create one"),
         "registerTitle1":
             MessageLookupByLibrary.simpleMessage("Create Account"),
         "registerTitle2": MessageLookupByLibrary.simpleMessage(
-            "Explore new recipe with us today !!!"),
+            "Explore new recipes with us today !!!"),
         "removePhotoButton":
             MessageLookupByLibrary.simpleMessage("\'Remove Photo\'"),
         "review": MessageLookupByLibrary.simpleMessage("Reviews"),

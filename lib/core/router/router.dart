@@ -5,6 +5,7 @@ import 'package:foodie/feature/home/home_base_tab.dart';
 import 'package:foodie/feature/login/ui/login_screen.dart';
 import 'package:foodie/feature/recipe_detail/ui/recipe_detail_screen.dart';
 import 'package:foodie/feature/register/ui/register_screen.dart';
+import 'package:foodie/feature/setting/ui/user_setting_screen.dart';
 import 'package:go_router/go_router.dart';
 
 part 'router.g.dart';
@@ -54,10 +55,20 @@ class RecipeDetailRoute extends GoRouteData {
       RecipeDetailScreen(recipeId: recipeId);
 }
 
+@TypedGoRoute<UserSettingRoute>(path: Routes.setting)
+class UserSettingRoute extends GoRouteData {
+  const UserSettingRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const UserSettingScreen();
+}
+
 class Routes {
   static const String login = '/login';
   static const String register = '/register';
   static const String forgetPass = '/forget_pass';
   static const String home = '/home';
   static const String recipeDetail = '/recipe_detail';
+  static const String setting = '/setting';
 }

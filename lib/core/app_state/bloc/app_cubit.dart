@@ -4,7 +4,6 @@ import 'package:foodie/core/app_state/bloc/app_state.dart';
 import 'package:foodie/core/app_state/repository/app_repository.dart';
 import 'package:fpdart/fpdart.dart';
 
-
 class AppCubit extends Cubit<AppState> {
   AppRepository appRepository;
 
@@ -33,4 +32,7 @@ class AppCubit extends Cubit<AppState> {
       (currLang) => emit(state.copyWith(languageCode: currLang)),
     );
   }
+
+  void switchNoti() =>
+      emit(state.copyWith(notificationOn: !(state.notificationOn)));
 }

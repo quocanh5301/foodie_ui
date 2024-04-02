@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:foodie/core/injection.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
+import 'package:foodie/core/router/router.dart';
 import 'package:foodie/feature/home/explore_tab/bloc/explore_cubit.dart';
 import 'package:foodie/feature/home/explore_tab/bloc/explore_state.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/list_follow_user_recipe.dart';
@@ -38,7 +39,8 @@ class ExploreTab extends StatelessWidget {
                       child: Row(
                         children: [
                           IconButton(
-                            onPressed: () => {},
+                            onPressed: () =>
+                                const UserSettingRoute().push(context),
                             icon: SvgPicture.asset(
                               AppImage.icProfile,
                               colorFilter: const ColorFilter.mode(
@@ -122,9 +124,9 @@ class ExploreTab extends StatelessWidget {
                           const VerticalSpace(10),
                           const TopRecipeList(),
                           const VerticalSpace(15),
-                          const FollowUserRecipeList(),
-                          const VerticalSpace(15),
                           const NewRecipeList(),
+                          const VerticalSpace(15),
+                          const FollowUserRecipeList(),
                         ],
                       ),
                     ),

@@ -10,6 +10,7 @@ import 'package:foodie/feature/home/bookmark_tab/bloc/bookmark_recipe_state.dart
 import 'package:foodie/feature/home/bookmark_tab/ui/widget/filter_recipe_dropdown.dart';
 import 'package:foodie/feature/home/bookmark_tab/ui/widget/search_bookmark_recipe.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/rectangle_recipe.dart';
+import 'package:foodie/generated/l10n.dart';
 
 class BookmarkRecipeTab extends StatelessWidget {
   const BookmarkRecipeTab({super.key});
@@ -22,7 +23,7 @@ class BookmarkRecipeTab extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(100, 0, 0, 0),
         title: Text(
-          'Your Bookmark Recipe',
+          S.of(context).bookmarkTab,
           style: AppStyles.f16sb().copyWith(
             color: '#FF6B00'.toColor(),
           ),
@@ -40,7 +41,6 @@ class BookmarkRecipeTab extends StatelessWidget {
               previous.searchBookmarkRecipeStatus !=
                   current.searchBookmarkRecipeStatus,
           builder: (context, state) {
-            debugPrint('mess: ${state.mess}');
             return EasyRefresh(
               header: MaterialHeader(
                 backgroundColor: '#FF6B00'.toColor(),
@@ -156,7 +156,7 @@ class BookmarkRecipeTab extends StatelessWidget {
                               height: AppStyles.screenH / 2,
                               child: Center(
                                 child: Text(
-                                  'No recipe found',
+                                  S.of(context).noBookmarkRecipefound,
                                   style: AppStyles.f16sb().copyWith(
                                     color: Colors.white,
                                   ),

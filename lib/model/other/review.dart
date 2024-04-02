@@ -12,6 +12,7 @@ class Review with _$Review {
     @JsonKey(name: 'account_id') int? userId,
     @JsonKey(name: 'recipe_name') String? recipeName,
     @JsonKey(name: 'recipe_image') String? recipeImage,
+    @JsonKey(name: 'review_recipe_image') String? reviewRecipeImage,
     @JsonKey(name: 'update_at') String? updateAt,
     @JsonKey(name: 'create_at') String? createAt,
     @JsonKey(name: 'user_image') String? userImage,

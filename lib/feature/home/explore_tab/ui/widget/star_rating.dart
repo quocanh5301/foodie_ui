@@ -11,7 +11,8 @@ class StarRating extends StatelessWidget {
     this.speakerId,
     required this.isDisable,
     required this.allowHalfRating,
-    this.itemSize,
+    this.itemSize, 
+    this.onRatingUpdate,
   });
 
   final double initialRating;
@@ -20,6 +21,7 @@ class StarRating extends StatelessWidget {
   final bool isDisable;
   final bool allowHalfRating;
   final double? itemSize;
+  final Function(double)? onRatingUpdate;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class StarRating extends StatelessWidget {
         Icons.star,
         color: '#DBA510'.toColor(),
       ),
-      onRatingUpdate: (rating) => {},
+      onRatingUpdate: onRatingUpdate ?? (rating) {},
     );
   }
 }

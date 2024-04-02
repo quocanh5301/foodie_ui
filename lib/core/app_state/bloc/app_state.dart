@@ -5,5 +5,8 @@ part 'app_state.freezed.dart';
 
 @freezed
 class AppState with _$AppState {
-  const factory AppState({@Default("vi") String languageCode}) = _AppState;
+  const factory AppState({
+    @Default("vi") String languageCode,
+    @Default(false) bool notificationOn,
+  }) = _AppState;
 }

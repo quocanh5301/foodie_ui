@@ -28,6 +28,8 @@ mixin _$Review {
   String? get recipeName => throw _privateConstructorUsedError;
   @JsonKey(name: 'recipe_image')
   String? get recipeImage => throw _privateConstructorUsedError;
+  @JsonKey(name: 'review_recipe_image')
+  String? get reviewRecipeImage => throw _privateConstructorUsedError;
   @JsonKey(name: 'update_at')
   String? get updateAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'create_at')
@@ -56,6 +58,7 @@ abstract class $ReviewCopyWith<$Res> {
       @JsonKey(name: 'account_id') int? userId,
       @JsonKey(name: 'recipe_name') String? recipeName,
       @JsonKey(name: 'recipe_image') String? recipeImage,
+      @JsonKey(name: 'review_recipe_image') String? reviewRecipeImage,
       @JsonKey(name: 'update_at') String? updateAt,
       @JsonKey(name: 'create_at') String? createAt,
       @JsonKey(name: 'user_image') String? userImage,
@@ -81,6 +84,7 @@ class _$ReviewCopyWithImpl<$Res, $Val extends Review>
     Object? userId = freezed,
     Object? recipeName = freezed,
     Object? recipeImage = freezed,
+    Object? reviewRecipeImage = freezed,
     Object? updateAt = freezed,
     Object? createAt = freezed,
     Object? userImage = freezed,
@@ -104,6 +108,10 @@ class _$ReviewCopyWithImpl<$Res, $Val extends Review>
       recipeImage: freezed == recipeImage
           ? _value.recipeImage
           : recipeImage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      reviewRecipeImage: freezed == reviewRecipeImage
+          ? _value.reviewRecipeImage
+          : reviewRecipeImage // ignore: cast_nullable_to_non_nullable
               as String?,
       updateAt: freezed == updateAt
           ? _value.updateAt
@@ -145,6 +153,7 @@ abstract class _$$ReviewImplCopyWith<$Res> implements $ReviewCopyWith<$Res> {
       @JsonKey(name: 'account_id') int? userId,
       @JsonKey(name: 'recipe_name') String? recipeName,
       @JsonKey(name: 'recipe_image') String? recipeImage,
+      @JsonKey(name: 'review_recipe_image') String? reviewRecipeImage,
       @JsonKey(name: 'update_at') String? updateAt,
       @JsonKey(name: 'create_at') String? createAt,
       @JsonKey(name: 'user_image') String? userImage,
@@ -168,6 +177,7 @@ class __$$ReviewImplCopyWithImpl<$Res>
     Object? userId = freezed,
     Object? recipeName = freezed,
     Object? recipeImage = freezed,
+    Object? reviewRecipeImage = freezed,
     Object? updateAt = freezed,
     Object? createAt = freezed,
     Object? userImage = freezed,
@@ -191,6 +201,10 @@ class __$$ReviewImplCopyWithImpl<$Res>
       recipeImage: freezed == recipeImage
           ? _value.recipeImage
           : recipeImage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      reviewRecipeImage: freezed == reviewRecipeImage
+          ? _value.reviewRecipeImage
+          : reviewRecipeImage // ignore: cast_nullable_to_non_nullable
               as String?,
       updateAt: freezed == updateAt
           ? _value.updateAt
@@ -228,6 +242,7 @@ class _$ReviewImpl implements _Review {
       @JsonKey(name: 'account_id') this.userId,
       @JsonKey(name: 'recipe_name') this.recipeName,
       @JsonKey(name: 'recipe_image') this.recipeImage,
+      @JsonKey(name: 'review_recipe_image') this.reviewRecipeImage,
       @JsonKey(name: 'update_at') this.updateAt,
       @JsonKey(name: 'create_at') this.createAt,
       @JsonKey(name: 'user_image') this.userImage,
@@ -251,6 +266,9 @@ class _$ReviewImpl implements _Review {
   @JsonKey(name: 'recipe_image')
   final String? recipeImage;
   @override
+  @JsonKey(name: 'review_recipe_image')
+  final String? reviewRecipeImage;
+  @override
   @JsonKey(name: 'update_at')
   final String? updateAt;
   @override
@@ -271,7 +289,7 @@ class _$ReviewImpl implements _Review {
 
   @override
   String toString() {
-    return 'Review(recipeId: $recipeId, userId: $userId, recipeName: $recipeName, recipeImage: $recipeImage, updateAt: $updateAt, createAt: $createAt, userImage: $userImage, userName: $userName, review: $review, rating: $rating)';
+    return 'Review(recipeId: $recipeId, userId: $userId, recipeName: $recipeName, recipeImage: $recipeImage, reviewRecipeImage: $reviewRecipeImage, updateAt: $updateAt, createAt: $createAt, userImage: $userImage, userName: $userName, review: $review, rating: $rating)';
   }
 
   @override
@@ -286,6 +304,8 @@ class _$ReviewImpl implements _Review {
                 other.recipeName == recipeName) &&
             (identical(other.recipeImage, recipeImage) ||
                 other.recipeImage == recipeImage) &&
+            (identical(other.reviewRecipeImage, reviewRecipeImage) ||
+                other.reviewRecipeImage == reviewRecipeImage) &&
             (identical(other.updateAt, updateAt) ||
                 other.updateAt == updateAt) &&
             (identical(other.createAt, createAt) ||
@@ -300,8 +320,19 @@ class _$ReviewImpl implements _Review {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, recipeId, userId, recipeName,
-      recipeImage, updateAt, createAt, userImage, userName, review, rating);
+  int get hashCode => Object.hash(
+      runtimeType,
+      recipeId,
+      userId,
+      recipeName,
+      recipeImage,
+      reviewRecipeImage,
+      updateAt,
+      createAt,
+      userImage,
+      userName,
+      review,
+      rating);
 
   @JsonKey(ignore: true)
   @override
@@ -323,6 +354,7 @@ abstract class _Review implements Review {
       @JsonKey(name: 'account_id') final int? userId,
       @JsonKey(name: 'recipe_name') final String? recipeName,
       @JsonKey(name: 'recipe_image') final String? recipeImage,
+      @JsonKey(name: 'review_recipe_image') final String? reviewRecipeImage,
       @JsonKey(name: 'update_at') final String? updateAt,
       @JsonKey(name: 'create_at') final String? createAt,
       @JsonKey(name: 'user_image') final String? userImage,
@@ -344,6 +376,9 @@ abstract class _Review implements Review {
   @override
   @JsonKey(name: 'recipe_image')
   String? get recipeImage;
+  @override
+  @JsonKey(name: 'review_recipe_image')
+  String? get reviewRecipeImage;
   @override
   @JsonKey(name: 'update_at')
   String? get updateAt;

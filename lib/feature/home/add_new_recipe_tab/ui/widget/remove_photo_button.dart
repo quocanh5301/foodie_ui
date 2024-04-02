@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/add_new_recipe_tab/bloc/add_new_recipe_cubit.dart';
+import 'package:foodie/generated/l10n.dart';
 
 class RemovePhotoButton extends StatelessWidget {
   const RemovePhotoButton({super.key});
@@ -43,7 +44,7 @@ class RemovePhotoButton extends StatelessWidget {
                   ),
                   const HorizontalSpace(10),
                   Text(
-                    'Remove Photo',
+                    S.of(context).removePhotoButton,
                     style: AppStyles.f12m().copyWith(
                       color: Colors.white,
                     ),

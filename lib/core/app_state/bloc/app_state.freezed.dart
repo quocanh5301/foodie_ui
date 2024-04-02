@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AppState {
   String get languageCode => throw _privateConstructorUsedError;
+  bool get notificationOn => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppStateCopyWith<AppState> get copyWith =>
@@ -28,7 +29,7 @@ abstract class $AppStateCopyWith<$Res> {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
       _$AppStateCopyWithImpl<$Res, AppState>;
   @useResult
-  $Res call({String languageCode});
+  $Res call({String languageCode, bool notificationOn});
 }
 
 /// @nodoc
@@ -45,12 +46,17 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
   @override
   $Res call({
     Object? languageCode = null,
+    Object? notificationOn = null,
   }) {
     return _then(_value.copyWith(
       languageCode: null == languageCode
           ? _value.languageCode
           : languageCode // ignore: cast_nullable_to_non_nullable
               as String,
+      notificationOn: null == notificationOn
+          ? _value.notificationOn
+          : notificationOn // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -63,7 +69,7 @@ abstract class _$$AppStateImplCopyWith<$Res>
       __$$AppStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String languageCode});
+  $Res call({String languageCode, bool notificationOn});
 }
 
 /// @nodoc
@@ -78,12 +84,17 @@ class __$$AppStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? languageCode = null,
+    Object? notificationOn = null,
   }) {
     return _then(_$AppStateImpl(
       languageCode: null == languageCode
           ? _value.languageCode
           : languageCode // ignore: cast_nullable_to_non_nullable
               as String,
+      notificationOn: null == notificationOn
+          ? _value.notificationOn
+          : notificationOn // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -91,15 +102,18 @@ class __$$AppStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
-  const _$AppStateImpl({this.languageCode = "vi"});
+  const _$AppStateImpl({this.languageCode = "vi", this.notificationOn = false});
 
   @override
   @JsonKey()
   final String languageCode;
+  @override
+  @JsonKey()
+  final bool notificationOn;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppState(languageCode: $languageCode)';
+    return 'AppState(languageCode: $languageCode, notificationOn: $notificationOn)';
   }
 
   @override
@@ -107,7 +121,8 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'AppState'))
-      ..add(DiagnosticsProperty('languageCode', languageCode));
+      ..add(DiagnosticsProperty('languageCode', languageCode))
+      ..add(DiagnosticsProperty('notificationOn', notificationOn));
   }
 
   @override
@@ -116,11 +131,13 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
         (other.runtimeType == runtimeType &&
             other is _$AppStateImpl &&
             (identical(other.languageCode, languageCode) ||
-                other.languageCode == languageCode));
+                other.languageCode == languageCode) &&
+            (identical(other.notificationOn, notificationOn) ||
+                other.notificationOn == notificationOn));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, languageCode);
+  int get hashCode => Object.hash(runtimeType, languageCode, notificationOn);
 
   @JsonKey(ignore: true)
   @override
@@ -130,10 +147,13 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
 }
 
 abstract class _AppState implements AppState {
-  const factory _AppState({final String languageCode}) = _$AppStateImpl;
+  const factory _AppState(
+      {final String languageCode, final bool notificationOn}) = _$AppStateImpl;
 
   @override
   String get languageCode;
+  @override
+  bool get notificationOn;
   @override
   @JsonKey(ignore: true)
   _$$AppStateImplCopyWith<_$AppStateImpl> get copyWith =>

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/bookmark_tab/bloc/bookmark_recipe_cubit.dart';
 import 'package:foodie/feature/home/bookmark_tab/bloc/bookmark_recipe_state.dart';
+import 'package:foodie/generated/l10n.dart';
 
 class FilterRecipeDropDown extends StatelessWidget {
   const FilterRecipeDropDown({super.key});
@@ -11,10 +12,10 @@ class FilterRecipeDropDown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Map<FilterMode, String> listUnit = {
-      FilterMode.none: 'All',
-      FilterMode.rating: 'Rating',
-      FilterMode.comments: 'Comments',
-      FilterMode.bookmarkNum: 'Bookmark'
+      FilterMode.none: S.of(context).allFilter,
+      FilterMode.rating: S.of(context).ratingFilter,
+      FilterMode.comments: S.of(context).commentsFilter,
+      FilterMode.bookmarkNum: S.of(context).bookmarkNumFilter,
     };
 
     return BlocBuilder<BookmarkRecipeCubit, BookmarkRecipeState>(

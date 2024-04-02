@@ -26,8 +26,9 @@ mixin _$Ingredient {
   @JsonKey(name: 'ingredient_name')
   String? get ingredientName =>
       throw _privateConstructorUsedError; // @Default('')
-// @JsonKey(name: 'ingredient_image') String? ingredientImage,
-// @Default('')
+  @JsonKey(name: 'ingredient_image')
+  String? get ingredientImage =>
+      throw _privateConstructorUsedError; // @Default('')
   @JsonKey(name: 'quantity')
   String? get quantity => throw _privateConstructorUsedError;
 
@@ -46,6 +47,7 @@ abstract class $IngredientCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'ingredient_id') int? id,
       @JsonKey(name: 'ingredient_name') String? ingredientName,
+      @JsonKey(name: 'ingredient_image') String? ingredientImage,
       @JsonKey(name: 'quantity') String? quantity});
 }
 
@@ -64,6 +66,7 @@ class _$IngredientCopyWithImpl<$Res, $Val extends Ingredient>
   $Res call({
     Object? id = freezed,
     Object? ingredientName = freezed,
+    Object? ingredientImage = freezed,
     Object? quantity = freezed,
   }) {
     return _then(_value.copyWith(
@@ -74,6 +77,10 @@ class _$IngredientCopyWithImpl<$Res, $Val extends Ingredient>
       ingredientName: freezed == ingredientName
           ? _value.ingredientName
           : ingredientName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ingredientImage: freezed == ingredientImage
+          ? _value.ingredientImage
+          : ingredientImage // ignore: cast_nullable_to_non_nullable
               as String?,
       quantity: freezed == quantity
           ? _value.quantity
@@ -94,6 +101,7 @@ abstract class _$$IngredientImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'ingredient_id') int? id,
       @JsonKey(name: 'ingredient_name') String? ingredientName,
+      @JsonKey(name: 'ingredient_image') String? ingredientImage,
       @JsonKey(name: 'quantity') String? quantity});
 }
 
@@ -110,6 +118,7 @@ class __$$IngredientImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? ingredientName = freezed,
+    Object? ingredientImage = freezed,
     Object? quantity = freezed,
   }) {
     return _then(_$IngredientImpl(
@@ -120,6 +129,10 @@ class __$$IngredientImplCopyWithImpl<$Res>
       ingredientName: freezed == ingredientName
           ? _value.ingredientName
           : ingredientName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ingredientImage: freezed == ingredientImage
+          ? _value.ingredientImage
+          : ingredientImage // ignore: cast_nullable_to_non_nullable
               as String?,
       quantity: freezed == quantity
           ? _value.quantity
@@ -135,6 +148,7 @@ class _$IngredientImpl implements _Ingredient {
   const _$IngredientImpl(
       {@JsonKey(name: 'ingredient_id') this.id,
       @JsonKey(name: 'ingredient_name') this.ingredientName,
+      @JsonKey(name: 'ingredient_image') this.ingredientImage,
       @JsonKey(name: 'quantity') this.quantity});
 
   factory _$IngredientImpl.fromJson(Map<String, dynamic> json) =>
@@ -149,7 +163,9 @@ class _$IngredientImpl implements _Ingredient {
   @JsonKey(name: 'ingredient_name')
   final String? ingredientName;
 // @Default('')
-// @JsonKey(name: 'ingredient_image') String? ingredientImage,
+  @override
+  @JsonKey(name: 'ingredient_image')
+  final String? ingredientImage;
 // @Default('')
   @override
   @JsonKey(name: 'quantity')
@@ -157,7 +173,7 @@ class _$IngredientImpl implements _Ingredient {
 
   @override
   String toString() {
-    return 'Ingredient(id: $id, ingredientName: $ingredientName, quantity: $quantity)';
+    return 'Ingredient(id: $id, ingredientName: $ingredientName, ingredientImage: $ingredientImage, quantity: $quantity)';
   }
 
   @override
@@ -168,13 +184,16 @@ class _$IngredientImpl implements _Ingredient {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.ingredientName, ingredientName) ||
                 other.ingredientName == ingredientName) &&
+            (identical(other.ingredientImage, ingredientImage) ||
+                other.ingredientImage == ingredientImage) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, ingredientName, quantity);
+  int get hashCode =>
+      Object.hash(runtimeType, id, ingredientName, ingredientImage, quantity);
 
   @JsonKey(ignore: true)
   @override
@@ -194,6 +213,7 @@ abstract class _Ingredient implements Ingredient {
   const factory _Ingredient(
       {@JsonKey(name: 'ingredient_id') final int? id,
       @JsonKey(name: 'ingredient_name') final String? ingredientName,
+      @JsonKey(name: 'ingredient_image') final String? ingredientImage,
       @JsonKey(name: 'quantity') final String? quantity}) = _$IngredientImpl;
 
   factory _Ingredient.fromJson(Map<String, dynamic> json) =
@@ -206,8 +226,9 @@ abstract class _Ingredient implements Ingredient {
   @JsonKey(name: 'ingredient_name')
   String? get ingredientName;
   @override // @Default('')
-// @JsonKey(name: 'ingredient_image') String? ingredientImage,
-// @Default('')
+  @JsonKey(name: 'ingredient_image')
+  String? get ingredientImage;
+  @override // @Default('')
   @JsonKey(name: 'quantity')
   String? get quantity;
   @override

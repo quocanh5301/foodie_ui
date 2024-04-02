@@ -4,10 +4,10 @@ class AppImage {
   static const String appIcon = 'assets/images/img_app_icon.png';
   static const String registerImage = 'assets/images/img_register.png';
   static const String addNewRecipe = 'assets/images/img_add_new_recipe.png';
-  static const String emptyImageRecipe =
-      'assets/images/empty_image_recipe.png';
+  static const String emptyImageRecipe = 'assets/images/empty_image_recipe.png';
   static const String defaultAvatar = 'assets/images/img_default_avatar.png';
-  static const String profileBackground = 'assets/images/img_profile_background.png';
+  static const String profileBackground =
+      'assets/images/img_profile_background.png';
 
   // icon
   static const String icShowPass = 'assets/images/ic_show_pass.svg';
@@ -30,4 +30,9 @@ class AppImage {
   static const String icDismiss = 'assets/images/ic_dismiss.svg';
   static const String icTwoDots = "assets/images/ic_two_dot.svg";
   static const String icEditAvatar = "assets/images/ic_edit_avatar.svg";
+
+  static const String icUserScreenCurve =
+      "assets/images/ic_user_screen_curve.svg";
+  static const String icEditProfile = "assets/images/ic_edit_profile.svg";
+  static const String icLanguage = "assets/images/ic_language.svg";
 }

@@ -32,6 +32,9 @@ class Endpoints {
   static String searchAll = 'recipe/searchRecipeAndUser';
   static String getFollowedUserNewRecipe = 'recipe/getUserFollowingNewRecipe';
   static String getReviewOfUserRecipe = 'user/getReviewsOnUserRecipe';
+  static String getReviewsOfRecipe = 'recipe/getReviewOnRecipe';
+  static String rateRecipe = 'recipe/rateRecipe';
+  static String getPersonalRatingForRecipe = 'recipe/getPersonalRatingForRecipe';
 }
 
 class Token {

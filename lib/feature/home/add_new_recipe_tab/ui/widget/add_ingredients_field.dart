@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/add_new_recipe_tab/bloc/add_new_recipe_cubit.dart';
+import 'package:foodie/generated/l10n.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 class AddIngredientField extends StatefulWidget {
@@ -42,7 +43,6 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
         ],
       ),
       onUpdate: (updateDetail) {
-        debugPrint('updateDetail: ${updateDetail.progress}');
         setState(() {
           backGroundWidth = basicCardWidth * updateDetail.progress;
           fadeOpacity = 1 - updateDetail.progress;
@@ -50,9 +50,6 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
       },
       onDismissed: (direction) {
         if (direction == DismissDirection.endToStart) {
-          //delete ingredient in state
-          debugPrint(
-              'delete ingredient ${context.read<AddNewRecipeCubit>().state.ingredientList}');
           context
               .read<AddNewRecipeCubit>()
               .deleteIngredient(index: widget.index);
@@ -82,8 +79,8 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
                 initialValue:
                     cubit.state.ingredientList[widget.index].ingredientName,
                 decoration: InputDecoration(
-                  labelText: 'Ingredient',
-                  hintText: 'Ingredient',
+                  labelText: S.of(context).ingredientLabel,
+                  hintText: S.of(context).ingredientHint,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                     borderSide: BorderSide(
@@ -104,7 +101,7 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
                     ? FormBuilderValidators.compose(
                         [
                           FormBuilderValidators.required(
-                            errorText: 'Enter your ingredient name',
+                            errorText: S.of(context).ingredientError,
                           ),
                         ],
                       )
@@ -126,8 +123,8 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
                 keyboardType: TextInputType.number,
                 initialValue: cubit.state.ingredientList[widget.index].quantity,
                 decoration: InputDecoration(
-                  labelText: 'Quantity',
-                  hintText: 'Quantity',
+                  labelText: S.of(context).quantityLabel,
+                  hintText: S.of(context).quantityHint,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                     borderSide: BorderSide(
@@ -148,7 +145,7 @@ class _AddIngredientFieldState extends State<AddIngredientField> {
                     ? FormBuilderValidators.compose(
                         [
                           FormBuilderValidators.required(
-                            errorText: 'Enter your ingredient quantity',
+                            errorText: S.of(context).quantityError,
                           ),
                         ],
                       )

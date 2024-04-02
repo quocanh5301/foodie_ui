@@ -6,6 +6,7 @@ import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/explore_tab/bloc/explore_cubit.dart';
 import 'package:foodie/feature/home/explore_tab/bloc/explore_state.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/square_recipe.dart';
+import 'package:foodie/generated/l10n.dart';
 
 class FollowUserRecipeList extends StatelessWidget {
   const FollowUserRecipeList({super.key});
@@ -42,7 +43,7 @@ class FollowUserRecipeList extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'New Recipe From Your Followed User',
+                        S.of(context).recipeNewFollow,
                         style: AppStyles.f16sb().copyWith(color: Colors.white),
                       ),
                       const VerticalSpace(10),
@@ -67,7 +68,7 @@ class FollowUserRecipeList extends StatelessWidget {
               : Padding(
                   padding: EdgeInsets.all(AppStyles.width(15)),
                   child: Text(
-                    'No new recipe from your followed user',
+                    S.of(context).recipeNewFollowNo,
                     style: AppStyles.f16sb().copyWith(color: Colors.white),
                   ),
                 ),

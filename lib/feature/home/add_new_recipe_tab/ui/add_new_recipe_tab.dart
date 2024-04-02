@@ -13,6 +13,7 @@ import 'package:foodie/feature/home/add_new_recipe_tab/ui/widget/add_ingredients
 import 'package:foodie/feature/home/add_new_recipe_tab/ui/widget/add_photo_button.dart';
 import 'package:foodie/feature/home/add_new_recipe_tab/ui/widget/remove_photo_button.dart';
 import 'package:foodie/feature/home/add_new_recipe_tab/ui/widget/submit_recipe_button.dart';
+import 'package:foodie/generated/l10n.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:uuid/uuid.dart';
 
@@ -35,7 +36,7 @@ class AddNewRecipeTab extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(100, 0, 0, 0),
         title: Text(
-          'Add New Recipe',
+          S.of(context).addRecipe,
           style: AppStyles.f16sb().copyWith(
             color: '#FF6B00'.toColor(),
           ),
@@ -143,8 +144,8 @@ class AddNewRecipeTab extends StatelessWidget {
                               controller: nameTextController,
                               keyboardType: TextInputType.text,
                               decoration: InputDecoration(
-                                labelText: 'Recipe Name',
-                                hintText: 'Recipe Name',
+                                labelText: S.of(context).recipeLableField,
+                                hintText: S.of(context).recipeHintField,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(8),
                                   borderSide: BorderSide(
@@ -166,7 +167,7 @@ class AddNewRecipeTab extends StatelessWidget {
                               validator: FormBuilderValidators.compose(
                                 [
                                   FormBuilderValidators.required(
-                                    errorText: 'Enter your recipe name',
+                                    errorText: S.of(context).recipeErrorField,
                                   ),
                                 ],
                               ),
@@ -181,8 +182,8 @@ class AddNewRecipeTab extends StatelessWidget {
                             controller: descriptionTextController,
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
-                              labelText: 'Recipe Description',
-                              hintText: 'Recipe Description',
+                              labelText: S.of(context).recipeDescriptionLabel,
+                              hintText: S.of(context).recipeDescriptionHint,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
                                 borderSide: BorderSide(
@@ -213,8 +214,8 @@ class AddNewRecipeTab extends StatelessWidget {
                             controller: instructionTextController,
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
-                              labelText: 'Recipe Instruction',
-                              hintText: 'Recipe Instruction',
+                              labelText: S.of(context).recipeInstuctionLabel,
+                              hintText: S.of(context).recipeInstuctionHint,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
                                 borderSide: BorderSide(
@@ -240,7 +241,7 @@ class AddNewRecipeTab extends StatelessWidget {
                                 ),
                           ),
                           const VerticalSpace(20),
-                          ...ingredientList, //!qa use id to identify each row, save in cubit state as map {id, ingredient, quantity}
+                          ...ingredientList, 
                           const VerticalSpace(20),
                           const AddIngredientButton(),
                           const VerticalSpace(30),

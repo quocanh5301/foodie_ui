@@ -8,6 +8,7 @@ import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/add_new_recipe_tab/bloc/add_new_recipe_cubit.dart';
 import 'package:foodie/feature/home/add_new_recipe_tab/bloc/add_new_recipe_state.dart';
 import 'package:foodie/feature/home/add_new_recipe_tab/ui/widget/recipe_image_bottomsheet.dart';
+import 'package:foodie/generated/l10n.dart';
 
 class AddPhotoButton extends StatelessWidget {
   const AddPhotoButton({super.key});
@@ -22,7 +23,6 @@ class AddPhotoButton extends StatelessWidget {
         return RecipeImagePicker();
       },
     ).then((chosenImg) async {
-      debugPrint('QA test file 4: ${chosenImg ?? 'null'}');
       if (chosenImg != null) {
         addNewRecipeCubit.setRecipeImage(imagePath: (chosenImg as File).path);
       }
@@ -71,8 +71,8 @@ class AddPhotoButton extends StatelessWidget {
                       const HorizontalSpace(10),
                       Text(
                         state.recipeImage == ''
-                            ? 'Add Photo'
-                            : 'Choose Another Photo',
+                            ? S.of(context).addPhotoButton
+                            : S.of(context).chooseAnotherPhotoButton,
                         style: AppStyles.f12m().copyWith(
                           color: state.recipeImage == ''
                               ? '#FF6B00'.toColor()

@@ -9,9 +9,15 @@ import 'package:foodie/feature/home/add_new_recipe_tab/ui/widget/recipe_image_bo
 import 'package:foodie/feature/recipe_detail/bloc/review/recipe_review_cubit.dart';
 import 'package:foodie/feature/recipe_detail/bloc/review/recipe_review_state.dart';
 import 'package:foodie/generated/l10n.dart';
+import 'package:foodie/model/other/personal_review.dart';
 
 class AddReviewImageButton extends StatelessWidget {
-  const AddReviewImageButton({super.key});
+  const AddReviewImageButton({
+    super.key,
+    required this.personalReview,
+  });
+
+  final PersonalReview personalReview;
 
   _showImagePickerChoices(
     BuildContext parrentContext,
@@ -50,7 +56,7 @@ class AddReviewImageButton extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   color: state.reviewImagePath == '' &&
-                          state.personalReview.reviewRecipeImage == ''
+                          personalReview.reviewRecipeImage == ''
                       ? '#2b2b2b'.toColor().withOpacity(0.6)
                       : '#FF6B00'.toColor().withOpacity(0.6),
                   borderRadius: const BorderRadius.all(
@@ -68,7 +74,7 @@ class AddReviewImageButton extends StatelessWidget {
                         AppImage.icAddRecipe,
                         colorFilter: ColorFilter.mode(
                           state.reviewImagePath == '' &&
-                                  state.personalReview.reviewRecipeImage == ''
+                                  personalReview.reviewRecipeImage == ''
                               ? '#FF6B00'.toColor()
                               : Colors.white,
                           BlendMode.srcIn,
@@ -77,12 +83,12 @@ class AddReviewImageButton extends StatelessWidget {
                       const HorizontalSpace(10),
                       Text(
                         state.reviewImagePath == '' &&
-                                state.personalReview.reviewRecipeImage == ''
+                                personalReview.reviewRecipeImage == ''
                             ? S.of(context).addPhotoButton
                             : S.of(context).chooseAnotherPhotoButton,
                         style: AppStyles.f12m().copyWith(
                           color: state.reviewImagePath == '' &&
-                                  state.personalReview.reviewRecipeImage == ''
+                                  personalReview.reviewRecipeImage == ''
                               ? '#FF6B00'.toColor()
                               : Colors.white,
                         ),

@@ -10,47 +10,17 @@ class RecipeReviewCubit extends Cubit<RecipeReviewState> {
 
   final RecipeDetailRepository recipeDetailRepository;
 
-  Future<void> getRecipePersonalReview({required int recipeId}) async {
-    emit(
-      state.copyWith(
-        getPersonalReviewStatus: GetPersonalReviewStatus.loading,
-        mess: '',
-        recipeId: recipeId,
-      ),
-    );
-    final result = await recipeDetailRepository
-        .getRecipePersonalReview(recipeId: recipeId)
-        .run();
-    result.match(
-      (error) => emit(
-        state.copyWith(
-          getPersonalReviewStatus: GetPersonalReviewStatus.failure,
-          mess: error,
-        ),
-      ),
-      (success) {
-        return emit(
-          state.copyWith(
-            getPersonalReviewStatus: GetPersonalReviewStatus.success,
-            personalReview: success.review ?? state.personalReview,
-            rating: success.review?.rating ?? 0,
-            reviewContent: success.review?.review ?? '',
-          ),
-        );
-      },
-    );
-  }
-
-  Future<bool> addNewReview() async {
+  Future<bool> addNewReview({required int recipeId}) async {
     emit(
       state.copyWith(
         addRecipeReviewStatus: AddRecipeReviewStatus.loading,
         mess: '',
       ),
     );
+    debugPrint('state.reviewContent ${state.reviewContent}');
     final result = await recipeDetailRepository
         .addNewReview(
-          recipeId: state.recipeId,
+          recipeId: recipeId,
           rating: state.rating,
           review: state.reviewContent,
           reviewImagePath: state.reviewImagePath,

@@ -26,6 +26,7 @@ class AddNewReviewButton extends StatelessWidget {
               builder: (dialogContext) {
                 return AddReviewDialog(
                   recipeId: state.recipeId,
+                  personalReview: state.personalReview,
                 );
               },
             ).then((change) {

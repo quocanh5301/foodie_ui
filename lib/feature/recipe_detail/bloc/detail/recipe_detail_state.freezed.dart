@@ -23,9 +23,12 @@ mixin _$RecipeDetailState {
   RecipeDetail get recipeDetail => throw _privateConstructorUsedError; //
   List<Review> get userReviewList => throw _privateConstructorUsedError;
   int get userReviewPage => throw _privateConstructorUsedError; //
+  PersonalReview get personalReview => throw _privateConstructorUsedError; //
   GetRecipeDetailStatus get getRecipeDetailStatus =>
       throw _privateConstructorUsedError;
   GetUserReviewStatus get getUserReviewStatus =>
+      throw _privateConstructorUsedError;
+  GetPersonalReviewStatus get getPersonalReviewStatus =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -47,10 +50,13 @@ abstract class $RecipeDetailStateCopyWith<$Res> {
       RecipeDetail recipeDetail,
       List<Review> userReviewList,
       int userReviewPage,
+      PersonalReview personalReview,
       GetRecipeDetailStatus getRecipeDetailStatus,
-      GetUserReviewStatus getUserReviewStatus});
+      GetUserReviewStatus getUserReviewStatus,
+      GetPersonalReviewStatus getPersonalReviewStatus});
 
   $RecipeDetailCopyWith<$Res> get recipeDetail;
+  $PersonalReviewCopyWith<$Res> get personalReview;
 }
 
 /// @nodoc
@@ -73,8 +79,10 @@ class _$RecipeDetailStateCopyWithImpl<$Res, $Val extends RecipeDetailState>
     Object? recipeDetail = null,
     Object? userReviewList = null,
     Object? userReviewPage = null,
+    Object? personalReview = null,
     Object? getRecipeDetailStatus = null,
     Object? getUserReviewStatus = null,
+    Object? getPersonalReviewStatus = null,
   }) {
     return _then(_value.copyWith(
       code: null == code
@@ -105,6 +113,10 @@ class _$RecipeDetailStateCopyWithImpl<$Res, $Val extends RecipeDetailState>
           ? _value.userReviewPage
           : userReviewPage // ignore: cast_nullable_to_non_nullable
               as int,
+      personalReview: null == personalReview
+          ? _value.personalReview
+          : personalReview // ignore: cast_nullable_to_non_nullable
+              as PersonalReview,
       getRecipeDetailStatus: null == getRecipeDetailStatus
           ? _value.getRecipeDetailStatus
           : getRecipeDetailStatus // ignore: cast_nullable_to_non_nullable
@@ -113,6 +125,10 @@ class _$RecipeDetailStateCopyWithImpl<$Res, $Val extends RecipeDetailState>
           ? _value.getUserReviewStatus
           : getUserReviewStatus // ignore: cast_nullable_to_non_nullable
               as GetUserReviewStatus,
+      getPersonalReviewStatus: null == getPersonalReviewStatus
+          ? _value.getPersonalReviewStatus
+          : getPersonalReviewStatus // ignore: cast_nullable_to_non_nullable
+              as GetPersonalReviewStatus,
     ) as $Val);
   }
 
@@ -121,6 +137,14 @@ class _$RecipeDetailStateCopyWithImpl<$Res, $Val extends RecipeDetailState>
   $RecipeDetailCopyWith<$Res> get recipeDetail {
     return $RecipeDetailCopyWith<$Res>(_value.recipeDetail, (value) {
       return _then(_value.copyWith(recipeDetail: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PersonalReviewCopyWith<$Res> get personalReview {
+    return $PersonalReviewCopyWith<$Res>(_value.personalReview, (value) {
+      return _then(_value.copyWith(personalReview: value) as $Val);
     });
   }
 }
@@ -141,11 +165,15 @@ abstract class _$$RecipeDetailStateImplCopyWith<$Res>
       RecipeDetail recipeDetail,
       List<Review> userReviewList,
       int userReviewPage,
+      PersonalReview personalReview,
       GetRecipeDetailStatus getRecipeDetailStatus,
-      GetUserReviewStatus getUserReviewStatus});
+      GetUserReviewStatus getUserReviewStatus,
+      GetPersonalReviewStatus getPersonalReviewStatus});
 
   @override
   $RecipeDetailCopyWith<$Res> get recipeDetail;
+  @override
+  $PersonalReviewCopyWith<$Res> get personalReview;
 }
 
 /// @nodoc
@@ -166,8 +194,10 @@ class __$$RecipeDetailStateImplCopyWithImpl<$Res>
     Object? recipeDetail = null,
     Object? userReviewList = null,
     Object? userReviewPage = null,
+    Object? personalReview = null,
     Object? getRecipeDetailStatus = null,
     Object? getUserReviewStatus = null,
+    Object? getPersonalReviewStatus = null,
   }) {
     return _then(_$RecipeDetailStateImpl(
       code: null == code
@@ -198,6 +228,10 @@ class __$$RecipeDetailStateImplCopyWithImpl<$Res>
           ? _value.userReviewPage
           : userReviewPage // ignore: cast_nullable_to_non_nullable
               as int,
+      personalReview: null == personalReview
+          ? _value.personalReview
+          : personalReview // ignore: cast_nullable_to_non_nullable
+              as PersonalReview,
       getRecipeDetailStatus: null == getRecipeDetailStatus
           ? _value.getRecipeDetailStatus
           : getRecipeDetailStatus // ignore: cast_nullable_to_non_nullable
@@ -206,6 +240,10 @@ class __$$RecipeDetailStateImplCopyWithImpl<$Res>
           ? _value.getUserReviewStatus
           : getUserReviewStatus // ignore: cast_nullable_to_non_nullable
               as GetUserReviewStatus,
+      getPersonalReviewStatus: null == getPersonalReviewStatus
+          ? _value.getPersonalReviewStatus
+          : getPersonalReviewStatus // ignore: cast_nullable_to_non_nullable
+              as GetPersonalReviewStatus,
     ));
   }
 }
@@ -221,8 +259,10 @@ class _$RecipeDetailStateImpl implements _RecipeDetailState {
       this.recipeDetail = const RecipeDetail(),
       final List<Review> userReviewList = const [],
       this.userReviewPage = 0,
+      this.personalReview = const PersonalReview(),
       this.getRecipeDetailStatus = GetRecipeDetailStatus.initial,
-      this.getUserReviewStatus = GetUserReviewStatus.initial})
+      this.getUserReviewStatus = GetUserReviewStatus.initial,
+      this.getPersonalReviewStatus = GetPersonalReviewStatus.initial})
       : _userReviewList = userReviewList;
 
   @override
@@ -258,14 +298,21 @@ class _$RecipeDetailStateImpl implements _RecipeDetailState {
 //
   @override
   @JsonKey()
+  final PersonalReview personalReview;
+//
+  @override
+  @JsonKey()
   final GetRecipeDetailStatus getRecipeDetailStatus;
   @override
   @JsonKey()
   final GetUserReviewStatus getUserReviewStatus;
+  @override
+  @JsonKey()
+  final GetPersonalReviewStatus getPersonalReviewStatus;
 
   @override
   String toString() {
-    return 'RecipeDetailState(code: $code, mess: $mess, currentTab: $currentTab, recipeId: $recipeId, recipeDetail: $recipeDetail, userReviewList: $userReviewList, userReviewPage: $userReviewPage, getRecipeDetailStatus: $getRecipeDetailStatus, getUserReviewStatus: $getUserReviewStatus)';
+    return 'RecipeDetailState(code: $code, mess: $mess, currentTab: $currentTab, recipeId: $recipeId, recipeDetail: $recipeDetail, userReviewList: $userReviewList, userReviewPage: $userReviewPage, personalReview: $personalReview, getRecipeDetailStatus: $getRecipeDetailStatus, getUserReviewStatus: $getUserReviewStatus, getPersonalReviewStatus: $getPersonalReviewStatus)';
   }
 
   @override
@@ -285,10 +332,15 @@ class _$RecipeDetailStateImpl implements _RecipeDetailState {
                 .equals(other._userReviewList, _userReviewList) &&
             (identical(other.userReviewPage, userReviewPage) ||
                 other.userReviewPage == userReviewPage) &&
+            (identical(other.personalReview, personalReview) ||
+                other.personalReview == personalReview) &&
             (identical(other.getRecipeDetailStatus, getRecipeDetailStatus) ||
                 other.getRecipeDetailStatus == getRecipeDetailStatus) &&
             (identical(other.getUserReviewStatus, getUserReviewStatus) ||
-                other.getUserReviewStatus == getUserReviewStatus));
+                other.getUserReviewStatus == getUserReviewStatus) &&
+            (identical(
+                    other.getPersonalReviewStatus, getPersonalReviewStatus) ||
+                other.getPersonalReviewStatus == getPersonalReviewStatus));
   }
 
   @override
@@ -301,8 +353,10 @@ class _$RecipeDetailStateImpl implements _RecipeDetailState {
       recipeDetail,
       const DeepCollectionEquality().hash(_userReviewList),
       userReviewPage,
+      personalReview,
       getRecipeDetailStatus,
-      getUserReviewStatus);
+      getUserReviewStatus,
+      getPersonalReviewStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -314,15 +368,18 @@ class _$RecipeDetailStateImpl implements _RecipeDetailState {
 
 abstract class _RecipeDetailState implements RecipeDetailState {
   const factory _RecipeDetailState(
-      {final int code,
-      final String mess,
-      final int currentTab,
-      final int recipeId,
-      final RecipeDetail recipeDetail,
-      final List<Review> userReviewList,
-      final int userReviewPage,
-      final GetRecipeDetailStatus getRecipeDetailStatus,
-      final GetUserReviewStatus getUserReviewStatus}) = _$RecipeDetailStateImpl;
+          {final int code,
+          final String mess,
+          final int currentTab,
+          final int recipeId,
+          final RecipeDetail recipeDetail,
+          final List<Review> userReviewList,
+          final int userReviewPage,
+          final PersonalReview personalReview,
+          final GetRecipeDetailStatus getRecipeDetailStatus,
+          final GetUserReviewStatus getUserReviewStatus,
+          final GetPersonalReviewStatus getPersonalReviewStatus}) =
+      _$RecipeDetailStateImpl;
 
   @override
   int get code;
@@ -339,9 +396,13 @@ abstract class _RecipeDetailState implements RecipeDetailState {
   @override
   int get userReviewPage;
   @override //
+  PersonalReview get personalReview;
+  @override //
   GetRecipeDetailStatus get getRecipeDetailStatus;
   @override
   GetUserReviewStatus get getUserReviewStatus;
+  @override
+  GetPersonalReviewStatus get getPersonalReviewStatus;
   @override
   @JsonKey(ignore: true)
   _$$RecipeDetailStateImplCopyWith<_$RecipeDetailStateImpl> get copyWith =>

@@ -17,15 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$RecipeReviewState {
   int get code => throw _privateConstructorUsedError;
-  String get mess => throw _privateConstructorUsedError;
-  int get recipeId => throw _privateConstructorUsedError; //old data
-  PersonalReview get personalReview =>
-      throw _privateConstructorUsedError; //new input data
+  String get mess => throw _privateConstructorUsedError; //new input data
   String get reviewImagePath => throw _privateConstructorUsedError;
   String get reviewContent => throw _privateConstructorUsedError;
   double get rating => throw _privateConstructorUsedError; //state controller
-  GetPersonalReviewStatus get getPersonalReviewStatus =>
-      throw _privateConstructorUsedError;
   AddRecipeReviewStatus get addRecipeReviewStatus =>
       throw _privateConstructorUsedError;
 
@@ -43,15 +38,10 @@ abstract class $RecipeReviewStateCopyWith<$Res> {
   $Res call(
       {int code,
       String mess,
-      int recipeId,
-      PersonalReview personalReview,
       String reviewImagePath,
       String reviewContent,
       double rating,
-      GetPersonalReviewStatus getPersonalReviewStatus,
       AddRecipeReviewStatus addRecipeReviewStatus});
-
-  $PersonalReviewCopyWith<$Res> get personalReview;
 }
 
 /// @nodoc
@@ -69,12 +59,9 @@ class _$RecipeReviewStateCopyWithImpl<$Res, $Val extends RecipeReviewState>
   $Res call({
     Object? code = null,
     Object? mess = null,
-    Object? recipeId = null,
-    Object? personalReview = null,
     Object? reviewImagePath = null,
     Object? reviewContent = null,
     Object? rating = null,
-    Object? getPersonalReviewStatus = null,
     Object? addRecipeReviewStatus = null,
   }) {
     return _then(_value.copyWith(
@@ -86,14 +73,6 @@ class _$RecipeReviewStateCopyWithImpl<$Res, $Val extends RecipeReviewState>
           ? _value.mess
           : mess // ignore: cast_nullable_to_non_nullable
               as String,
-      recipeId: null == recipeId
-          ? _value.recipeId
-          : recipeId // ignore: cast_nullable_to_non_nullable
-              as int,
-      personalReview: null == personalReview
-          ? _value.personalReview
-          : personalReview // ignore: cast_nullable_to_non_nullable
-              as PersonalReview,
       reviewImagePath: null == reviewImagePath
           ? _value.reviewImagePath
           : reviewImagePath // ignore: cast_nullable_to_non_nullable
@@ -106,23 +85,11 @@ class _$RecipeReviewStateCopyWithImpl<$Res, $Val extends RecipeReviewState>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as double,
-      getPersonalReviewStatus: null == getPersonalReviewStatus
-          ? _value.getPersonalReviewStatus
-          : getPersonalReviewStatus // ignore: cast_nullable_to_non_nullable
-              as GetPersonalReviewStatus,
       addRecipeReviewStatus: null == addRecipeReviewStatus
           ? _value.addRecipeReviewStatus
           : addRecipeReviewStatus // ignore: cast_nullable_to_non_nullable
               as AddRecipeReviewStatus,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PersonalReviewCopyWith<$Res> get personalReview {
-    return $PersonalReviewCopyWith<$Res>(_value.personalReview, (value) {
-      return _then(_value.copyWith(personalReview: value) as $Val);
-    });
   }
 }
 
@@ -137,16 +104,10 @@ abstract class _$$RecipeReviewStateImplCopyWith<$Res>
   $Res call(
       {int code,
       String mess,
-      int recipeId,
-      PersonalReview personalReview,
       String reviewImagePath,
       String reviewContent,
       double rating,
-      GetPersonalReviewStatus getPersonalReviewStatus,
       AddRecipeReviewStatus addRecipeReviewStatus});
-
-  @override
-  $PersonalReviewCopyWith<$Res> get personalReview;
 }
 
 /// @nodoc
@@ -162,12 +123,9 @@ class __$$RecipeReviewStateImplCopyWithImpl<$Res>
   $Res call({
     Object? code = null,
     Object? mess = null,
-    Object? recipeId = null,
-    Object? personalReview = null,
     Object? reviewImagePath = null,
     Object? reviewContent = null,
     Object? rating = null,
-    Object? getPersonalReviewStatus = null,
     Object? addRecipeReviewStatus = null,
   }) {
     return _then(_$RecipeReviewStateImpl(
@@ -179,14 +137,6 @@ class __$$RecipeReviewStateImplCopyWithImpl<$Res>
           ? _value.mess
           : mess // ignore: cast_nullable_to_non_nullable
               as String,
-      recipeId: null == recipeId
-          ? _value.recipeId
-          : recipeId // ignore: cast_nullable_to_non_nullable
-              as int,
-      personalReview: null == personalReview
-          ? _value.personalReview
-          : personalReview // ignore: cast_nullable_to_non_nullable
-              as PersonalReview,
       reviewImagePath: null == reviewImagePath
           ? _value.reviewImagePath
           : reviewImagePath // ignore: cast_nullable_to_non_nullable
@@ -199,10 +149,6 @@ class __$$RecipeReviewStateImplCopyWithImpl<$Res>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as double,
-      getPersonalReviewStatus: null == getPersonalReviewStatus
-          ? _value.getPersonalReviewStatus
-          : getPersonalReviewStatus // ignore: cast_nullable_to_non_nullable
-              as GetPersonalReviewStatus,
       addRecipeReviewStatus: null == addRecipeReviewStatus
           ? _value.addRecipeReviewStatus
           : addRecipeReviewStatus // ignore: cast_nullable_to_non_nullable
@@ -217,12 +163,9 @@ class _$RecipeReviewStateImpl implements _RecipeReviewState {
   const _$RecipeReviewStateImpl(
       {this.code = 200,
       this.mess = '',
-      this.recipeId = 0,
-      this.personalReview = const PersonalReview(),
       this.reviewImagePath = '',
       this.reviewContent = '',
       this.rating = 0,
-      this.getPersonalReviewStatus = GetPersonalReviewStatus.initial,
       this.addRecipeReviewStatus = AddRecipeReviewStatus.initial});
 
   @override
@@ -231,13 +174,6 @@ class _$RecipeReviewStateImpl implements _RecipeReviewState {
   @override
   @JsonKey()
   final String mess;
-  @override
-  @JsonKey()
-  final int recipeId;
-//old data
-  @override
-  @JsonKey()
-  final PersonalReview personalReview;
 //new input data
   @override
   @JsonKey()
@@ -251,14 +187,11 @@ class _$RecipeReviewStateImpl implements _RecipeReviewState {
 //state controller
   @override
   @JsonKey()
-  final GetPersonalReviewStatus getPersonalReviewStatus;
-  @override
-  @JsonKey()
   final AddRecipeReviewStatus addRecipeReviewStatus;
 
   @override
   String toString() {
-    return 'RecipeReviewState(code: $code, mess: $mess, recipeId: $recipeId, personalReview: $personalReview, reviewImagePath: $reviewImagePath, reviewContent: $reviewContent, rating: $rating, getPersonalReviewStatus: $getPersonalReviewStatus, addRecipeReviewStatus: $addRecipeReviewStatus)';
+    return 'RecipeReviewState(code: $code, mess: $mess, reviewImagePath: $reviewImagePath, reviewContent: $reviewContent, rating: $rating, addRecipeReviewStatus: $addRecipeReviewStatus)';
   }
 
   @override
@@ -268,34 +201,18 @@ class _$RecipeReviewStateImpl implements _RecipeReviewState {
             other is _$RecipeReviewStateImpl &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.mess, mess) || other.mess == mess) &&
-            (identical(other.recipeId, recipeId) ||
-                other.recipeId == recipeId) &&
-            (identical(other.personalReview, personalReview) ||
-                other.personalReview == personalReview) &&
             (identical(other.reviewImagePath, reviewImagePath) ||
                 other.reviewImagePath == reviewImagePath) &&
             (identical(other.reviewContent, reviewContent) ||
                 other.reviewContent == reviewContent) &&
             (identical(other.rating, rating) || other.rating == rating) &&
-            (identical(
-                    other.getPersonalReviewStatus, getPersonalReviewStatus) ||
-                other.getPersonalReviewStatus == getPersonalReviewStatus) &&
             (identical(other.addRecipeReviewStatus, addRecipeReviewStatus) ||
                 other.addRecipeReviewStatus == addRecipeReviewStatus));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      code,
-      mess,
-      recipeId,
-      personalReview,
-      reviewImagePath,
-      reviewContent,
-      rating,
-      getPersonalReviewStatus,
-      addRecipeReviewStatus);
+  int get hashCode => Object.hash(runtimeType, code, mess, reviewImagePath,
+      reviewContent, rating, addRecipeReviewStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -309,12 +226,9 @@ abstract class _RecipeReviewState implements RecipeReviewState {
   const factory _RecipeReviewState(
           {final int code,
           final String mess,
-          final int recipeId,
-          final PersonalReview personalReview,
           final String reviewImagePath,
           final String reviewContent,
           final double rating,
-          final GetPersonalReviewStatus getPersonalReviewStatus,
           final AddRecipeReviewStatus addRecipeReviewStatus}) =
       _$RecipeReviewStateImpl;
 
@@ -322,10 +236,6 @@ abstract class _RecipeReviewState implements RecipeReviewState {
   int get code;
   @override
   String get mess;
-  @override
-  int get recipeId;
-  @override //old data
-  PersonalReview get personalReview;
   @override //new input data
   String get reviewImagePath;
   @override
@@ -333,8 +243,6 @@ abstract class _RecipeReviewState implements RecipeReviewState {
   @override
   double get rating;
   @override //state controller
-  GetPersonalReviewStatus get getPersonalReviewStatus;
-  @override
   AddRecipeReviewStatus get addRecipeReviewStatus;
   @override
   @JsonKey(ignore: true)

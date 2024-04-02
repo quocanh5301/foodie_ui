@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:foodie/core/injection.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
@@ -11,35 +12,28 @@ import 'package:foodie/feature/recipe_detail/bloc/review/recipe_review_cubit.dar
 import 'package:foodie/feature/recipe_detail/bloc/review/recipe_review_state.dart';
 import 'package:foodie/feature/recipe_detail/ui/widget/tabs/review/add_review_image_button.dart';
 import 'package:foodie/generated/l10n.dart';
+import 'package:foodie/model/other/personal_review.dart';
 import 'package:go_router/go_router.dart';
 
 class AddReviewDialog extends StatelessWidget {
-  AddReviewDialog({super.key, required this.recipeId});
+  const AddReviewDialog({
+    super.key,
+    required this.recipeId,
+    required this.personalReview,
+  });
 
   final int recipeId;
 
-  final TextEditingController reviewController = TextEditingController();
-  final FocusNode focusNode = FocusNode();
+  final PersonalReview personalReview;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<RecipeReviewCubit>(
-      create: (context) =>
-          sl<RecipeReviewCubit>()..getRecipePersonalReview(recipeId: recipeId),
+      create: (context) => sl<RecipeReviewCubit>()
+        ..setRating(personalReview.rating ?? 0)
+        ..setReview(personalReview.review ?? ''),
       child: BlocBuilder<RecipeReviewCubit, RecipeReviewState>(
-        buildWhen: (previous, current) =>
-            previous.getPersonalReviewStatus != current.getPersonalReviewStatus ||
-            previous.reviewImagePath != current.reviewImagePath ||
-            previous.reviewContent != current.reviewContent,
         builder: (context, state) {
-          debugPrint('error: ${state.mess}');
-          reviewController.text = state.reviewContent;
-          reviewController.selection = TextSelection.fromPosition(
-            TextPosition(
-              offset: reviewController.text.length,
-            ),
-          );
-
           return Dialog(
             child: Container(
               decoration: BoxDecoration(
@@ -76,14 +70,14 @@ class AddReviewDialog extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10),
                                     color: '#FF6B00'.toColor().withOpacity(0.3),
                                   ),
-                                  child:
-                                      state.personalReview.reviewRecipeImage !=
+                                  child: state.reviewImagePath == ''
+                                      ? personalReview.reviewRecipeImage !=
                                                   null &&
-                                              state.personalReview
+                                              personalReview
                                                       .reviewRecipeImage !=
                                                   ''
                                           ? FirebaseImage(
-                                              imagePath: state.personalReview
+                                              imagePath: personalReview
                                                   .reviewRecipeImage!,
                                               cardWidth: AppStyles.screenW -
                                                   AppStyles.width(100),
@@ -92,28 +86,29 @@ class AddReviewDialog extends StatelessWidget {
                                               emptyImagePath:
                                                   AppImage.emptyImageRecipe,
                                             )
-                                          : state.reviewImagePath == ''
-                                              ? Image.asset(
-                                                  width: AppStyles.screenW -
-                                                      AppStyles.width(100),
-                                                  height: AppStyles.screenW -
-                                                      AppStyles.width(200),
-                                                  AppImage.emptyImageRecipe,
-                                                  fit: BoxFit.cover,
-                                                )
-                                              : Image.file(
-                                                  width: AppStyles.screenW -
-                                                      AppStyles.width(100),
-                                                  height: AppStyles.screenW -
-                                                      AppStyles.width(200),
-                                                  File(state.reviewImagePath),
-                                                  fit: BoxFit.cover,
-                                                ),
+                                          : Image.asset(
+                                              width: AppStyles.screenW -
+                                                  AppStyles.width(100),
+                                              height: AppStyles.screenW -
+                                                  AppStyles.width(200),
+                                              AppImage.emptyImageRecipe,
+                                              fit: BoxFit.cover,
+                                            )
+                                      : Image.file(
+                                          width: AppStyles.screenW -
+                                              AppStyles.width(100),
+                                          height: AppStyles.screenW -
+                                              AppStyles.width(200),
+                                          File(state.reviewImagePath),
+                                          fit: BoxFit.cover,
+                                        ),
                                 ),
-                                const Positioned.fill(
+                                Positioned.fill(
                                   child: Align(
                                     alignment: Alignment.bottomLeft,
-                                    child: AddReviewImageButton(),
+                                    child: AddReviewImageButton(
+                                      personalReview: personalReview,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -126,7 +121,7 @@ class AddReviewDialog extends StatelessWidget {
                             ),
                             const VerticalSpace(10),
                             StarRating(
-                              initialRating: state.rating,
+                              initialRating: personalReview.rating ?? 0,
                               isDisable: false,
                               allowHalfRating: true,
                               itemSize: AppStyles.width(45),
@@ -141,8 +136,9 @@ class AddReviewDialog extends StatelessWidget {
                                   .copyWith(color: Colors.white),
                             ),
                             const VerticalSpace(10),
-                            TextFormField(
-                              controller: reviewController,
+                            FormBuilderTextField(
+                              name: 'reviewTextField',
+                              initialValue: personalReview.review ?? '',
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor: Colors.grey,
@@ -160,7 +156,7 @@ class AddReviewDialog extends StatelessWidget {
                                   FocusManager.instance.primaryFocus?.unfocus(),
                               onChanged: (newString) => context
                                   .read<RecipeReviewCubit>()
-                                  .setReview(newString),
+                                  .setReview(newString ?? ''),
                             ),
                           ],
                         ),
@@ -175,7 +171,7 @@ class AddReviewDialog extends StatelessWidget {
                               child: InkWell(
                                 onTap: () => context
                                     .read<RecipeReviewCubit>()
-                                    .addNewReview()
+                                    .addNewReview(recipeId: recipeId)
                                     .then((success) {
                                   if (success) {
                                     context.pop(true);

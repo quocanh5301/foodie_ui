@@ -109,4 +109,32 @@ class RecipeDetailCubit extends Cubit<RecipeDetailState> {
   }
 
   void setCurrentTab(int newTab) => emit(state.copyWith(currentTab: newTab));
+
+  Future<void> getRecipePersonalReview({required int recipeId}) async {
+    emit(
+      state.copyWith(
+        getPersonalReviewStatus: GetPersonalReviewStatus.loading,
+        mess: '',
+      ),
+    );
+    final result = await recipeDetailRepository
+        .getRecipePersonalReview(recipeId: recipeId)
+        .run();
+    result.match(
+      (error) => emit(
+        state.copyWith(
+          getPersonalReviewStatus: GetPersonalReviewStatus.failure,
+          mess: error,
+        ),
+      ),
+      (success) {
+        return emit(
+          state.copyWith(
+            getPersonalReviewStatus: GetPersonalReviewStatus.success,
+            personalReview: success.review ?? state.personalReview,
+          ),
+        );
+      },
+    );
+  }
 }

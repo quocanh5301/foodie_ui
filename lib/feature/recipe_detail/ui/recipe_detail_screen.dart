@@ -38,7 +38,8 @@ class RecipeDetailScreen extends StatelessWidget {
       body: BlocProvider<RecipeDetailCubit>(
         create: (context) => sl<RecipeDetailCubit>()
           ..getRecipeDetail(recipeId: recipeId)
-          ..getReviewOfRecipe(),
+          ..getReviewOfRecipe()
+          ..getRecipePersonalReview(recipeId: recipeId),
         child: BlocBuilder<RecipeDetailCubit, RecipeDetailState>(
           buildWhen: (previous, current) =>
               previous.getRecipeDetailStatus != current.getRecipeDetailStatus,

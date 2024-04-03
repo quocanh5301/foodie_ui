@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: "#454545".toColor(),
       navBarStyle: NavBarStyle.style7,
       onItemSelected: (index) {
-        debugPrint('QA index: $index');
+        // debugPrint('QA index: $index');
       },
     );
   }

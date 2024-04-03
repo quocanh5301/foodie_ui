@@ -17,7 +17,6 @@ class RecipeReviewCubit extends Cubit<RecipeReviewState> {
         mess: '',
       ),
     );
-    debugPrint('state.reviewContent ${state.reviewContent}');
     final result = await recipeDetailRepository
         .addNewReview(
           recipeId: recipeId,
@@ -28,7 +27,6 @@ class RecipeReviewCubit extends Cubit<RecipeReviewState> {
         .run();
     return result.match(
       (error) {
-        debugPrint('errorrrrrr $error');
         emit(
           state.copyWith(
             addRecipeReviewStatus: AddRecipeReviewStatus.failure,
@@ -38,7 +36,6 @@ class RecipeReviewCubit extends Cubit<RecipeReviewState> {
         return false;
       },
       (success) {
-        debugPrint('success ');
         emit(
           state.copyWith(
             addRecipeReviewStatus: AddRecipeReviewStatus.success,

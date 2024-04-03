@@ -19,7 +19,6 @@ class LoginRepository {
   TaskEither<String, bool> login(
       {required String email, required String password}) {
     return TaskEither.tryCatch(() async {
-      debugPrint('login repo $email $password');
       final response =
           await loginProvider.login(email: email, password: password);
       if (response.data['mess'] == 'success') {

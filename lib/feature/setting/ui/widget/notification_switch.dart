@@ -12,7 +12,8 @@ class NotificationSwitchWidget extends StatelessWidget {
       builder: (context, state) {
         return Switch(
           value: state.notificationOn,
-          onChanged: (value) => context.read<AppCubit>().switchNoti(),
+          onChanged: (value) =>
+              context.read<AppCubit>().switchNotificationSetting(),
         );
       },
     );

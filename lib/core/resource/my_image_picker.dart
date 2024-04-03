@@ -30,8 +30,6 @@ class MyImagePicker {
       maxWidth: 512,
       maxHeight: 512,
     );
-    debugPrint('QA test file ${croppedFile?.path ?? 'null'}');
-
     if (croppedFile != null) {
       return File(croppedFile.path);
     }

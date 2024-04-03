@@ -10,7 +10,6 @@ class LoginCubit extends Cubit<LoginState> {
   final LoginRepository loginRepository;
 
   Future<void> login() async {
-    debugPrint('login ${state.email} ${state.password}');
     emit(
       state.copyWith(
         loginStatus: LoginStatus.loading,

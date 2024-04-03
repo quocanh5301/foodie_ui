@@ -62,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                       child: Image.asset(
                         AppImage.loginImage,
                         height: AppStyles.screenH,
-                        fit: BoxFit.fitHeight,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),

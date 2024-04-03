@@ -33,7 +33,6 @@ class ExploreCubit extends Cubit<ExploreState> {
         ),
       ),
       (response) {
-        debugPrint(response.recipeList.toString());
         if (response.recipeList != null) {
           if (response.recipeList!.length < topPageSize) {
             emit(
@@ -71,7 +70,6 @@ class ExploreCubit extends Cubit<ExploreState> {
   }
 
   Future<void> getNewRecipe() async {
-    debugPrint('getNewRecipe');
     emit(
       state.copyWith(
         getNewRecipeStatus: GetNewRecipeStatus.loading,
@@ -130,7 +128,6 @@ class ExploreCubit extends Cubit<ExploreState> {
   }
 
   Future<void> getFollowedUserNewRecipe() async {
-    debugPrint('getFollowedUserNewRecipe');
     emit(
       state.copyWith(
         getFollowUserRecipeStatus: GetFollowUserRecipeStatus.loading,
@@ -152,7 +149,6 @@ class ExploreCubit extends Cubit<ExploreState> {
         ),
       ),
       (response) {
-        debugPrint(response.recipeList.toString());
         if (response.recipeList != null) {
           if (response.recipeList!.length < followUserPageSize) {
             emit(

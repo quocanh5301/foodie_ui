@@ -29,7 +29,6 @@ class BookmarkRecipeCubit extends Cubit<BookmarkRecipeState> {
         ),
       ),
       (response) {
-        debugPrint(response.recipeList.toString());
         if (response.recipeList != null) {
           if (response.recipeList!.length <
               bookmarkRecipeRepository.bookmarkRecipeProvider.pageSize) {

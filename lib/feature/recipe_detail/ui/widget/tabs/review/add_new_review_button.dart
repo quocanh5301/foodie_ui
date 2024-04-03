@@ -35,6 +35,7 @@ class AddNewReviewButton extends StatelessWidget {
               }
               context.read<RecipeDetailCubit>()
                 ..refreshReview()
+                ..getRecipePersonalReview(recipeId: state.recipeId)
                 ..getRecipeDetail(recipeId: state.recipeId);
             }),
             child: Container(

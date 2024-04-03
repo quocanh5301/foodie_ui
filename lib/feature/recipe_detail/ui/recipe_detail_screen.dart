@@ -44,7 +44,6 @@ class RecipeDetailScreen extends StatelessWidget {
           buildWhen: (previous, current) =>
               previous.getRecipeDetailStatus != current.getRecipeDetailStatus,
           builder: (context, state) {
-            debugPrint('error: ${state.mess}');
             return EasyRefresh(
               header: MaterialHeader(
                 backgroundColor: '#FF6B00'.toColor(),

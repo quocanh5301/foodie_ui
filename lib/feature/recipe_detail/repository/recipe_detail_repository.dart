@@ -56,12 +56,10 @@ class RecipeDetailRepository {
       final response = await recipeDetailProvider.getRecipePersonalReview(
         recipeId: recipeId,
       );
-      debugPrint('response.data ${response.data}');
       if (response.data['mess'] == 'success') {
         try {
           return GetPersonalReviewOfUserResponse.fromJson(response.data);
         } catch (e) {
-          debugPrint('errorrrrrr QAaaa $e');
           throw Exception(e);
         }
       } else {

@@ -16,8 +16,12 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AppState {
+  String get mess => throw _privateConstructorUsedError;
+  int get code => throw _privateConstructorUsedError;
   String get languageCode => throw _privateConstructorUsedError;
   bool get notificationOn => throw _privateConstructorUsedError;
+  SetFirebaseTokenStatus get setFirebaseTokenStatus =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppStateCopyWith<AppState> get copyWith =>
@@ -29,7 +33,12 @@ abstract class $AppStateCopyWith<$Res> {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
       _$AppStateCopyWithImpl<$Res, AppState>;
   @useResult
-  $Res call({String languageCode, bool notificationOn});
+  $Res call(
+      {String mess,
+      int code,
+      String languageCode,
+      bool notificationOn,
+      SetFirebaseTokenStatus setFirebaseTokenStatus});
 }
 
 /// @nodoc
@@ -45,10 +54,21 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? mess = null,
+    Object? code = null,
     Object? languageCode = null,
     Object? notificationOn = null,
+    Object? setFirebaseTokenStatus = null,
   }) {
     return _then(_value.copyWith(
+      mess: null == mess
+          ? _value.mess
+          : mess // ignore: cast_nullable_to_non_nullable
+              as String,
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
       languageCode: null == languageCode
           ? _value.languageCode
           : languageCode // ignore: cast_nullable_to_non_nullable
@@ -57,6 +77,10 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
           ? _value.notificationOn
           : notificationOn // ignore: cast_nullable_to_non_nullable
               as bool,
+      setFirebaseTokenStatus: null == setFirebaseTokenStatus
+          ? _value.setFirebaseTokenStatus
+          : setFirebaseTokenStatus // ignore: cast_nullable_to_non_nullable
+              as SetFirebaseTokenStatus,
     ) as $Val);
   }
 }
@@ -69,7 +93,12 @@ abstract class _$$AppStateImplCopyWith<$Res>
       __$$AppStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String languageCode, bool notificationOn});
+  $Res call(
+      {String mess,
+      int code,
+      String languageCode,
+      bool notificationOn,
+      SetFirebaseTokenStatus setFirebaseTokenStatus});
 }
 
 /// @nodoc
@@ -83,10 +112,21 @@ class __$$AppStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? mess = null,
+    Object? code = null,
     Object? languageCode = null,
     Object? notificationOn = null,
+    Object? setFirebaseTokenStatus = null,
   }) {
     return _then(_$AppStateImpl(
+      mess: null == mess
+          ? _value.mess
+          : mess // ignore: cast_nullable_to_non_nullable
+              as String,
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
       languageCode: null == languageCode
           ? _value.languageCode
           : languageCode // ignore: cast_nullable_to_non_nullable
@@ -95,6 +135,10 @@ class __$$AppStateImplCopyWithImpl<$Res>
           ? _value.notificationOn
           : notificationOn // ignore: cast_nullable_to_non_nullable
               as bool,
+      setFirebaseTokenStatus: null == setFirebaseTokenStatus
+          ? _value.setFirebaseTokenStatus
+          : setFirebaseTokenStatus // ignore: cast_nullable_to_non_nullable
+              as SetFirebaseTokenStatus,
     ));
   }
 }
@@ -102,18 +146,32 @@ class __$$AppStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
-  const _$AppStateImpl({this.languageCode = "vi", this.notificationOn = false});
+  const _$AppStateImpl(
+      {this.mess = '',
+      this.code = 200,
+      this.languageCode = "vi",
+      this.notificationOn = false,
+      this.setFirebaseTokenStatus = SetFirebaseTokenStatus.initial});
 
+  @override
+  @JsonKey()
+  final String mess;
+  @override
+  @JsonKey()
+  final int code;
   @override
   @JsonKey()
   final String languageCode;
   @override
   @JsonKey()
   final bool notificationOn;
+  @override
+  @JsonKey()
+  final SetFirebaseTokenStatus setFirebaseTokenStatus;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppState(languageCode: $languageCode, notificationOn: $notificationOn)';
+    return 'AppState(mess: $mess, code: $code, languageCode: $languageCode, notificationOn: $notificationOn, setFirebaseTokenStatus: $setFirebaseTokenStatus)';
   }
 
   @override
@@ -121,8 +179,12 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'AppState'))
+      ..add(DiagnosticsProperty('mess', mess))
+      ..add(DiagnosticsProperty('code', code))
       ..add(DiagnosticsProperty('languageCode', languageCode))
-      ..add(DiagnosticsProperty('notificationOn', notificationOn));
+      ..add(DiagnosticsProperty('notificationOn', notificationOn))
+      ..add(DiagnosticsProperty(
+          'setFirebaseTokenStatus', setFirebaseTokenStatus));
   }
 
   @override
@@ -130,14 +192,19 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppStateImpl &&
+            (identical(other.mess, mess) || other.mess == mess) &&
+            (identical(other.code, code) || other.code == code) &&
             (identical(other.languageCode, languageCode) ||
                 other.languageCode == languageCode) &&
             (identical(other.notificationOn, notificationOn) ||
-                other.notificationOn == notificationOn));
+                other.notificationOn == notificationOn) &&
+            (identical(other.setFirebaseTokenStatus, setFirebaseTokenStatus) ||
+                other.setFirebaseTokenStatus == setFirebaseTokenStatus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, languageCode, notificationOn);
+  int get hashCode => Object.hash(runtimeType, mess, code, languageCode,
+      notificationOn, setFirebaseTokenStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -148,12 +215,22 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
 
 abstract class _AppState implements AppState {
   const factory _AppState(
-      {final String languageCode, final bool notificationOn}) = _$AppStateImpl;
+      {final String mess,
+      final int code,
+      final String languageCode,
+      final bool notificationOn,
+      final SetFirebaseTokenStatus setFirebaseTokenStatus}) = _$AppStateImpl;
 
+  @override
+  String get mess;
+  @override
+  int get code;
   @override
   String get languageCode;
   @override
   bool get notificationOn;
+  @override
+  SetFirebaseTokenStatus get setFirebaseTokenStatus;
   @override
   @JsonKey(ignore: true)
   _$$AppStateImplCopyWith<_$AppStateImpl> get copyWith =>

@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/core/app_state/bloc/app_state.dart';
 import 'package:foodie/core/app_state/repository/app_repository.dart';
 import 'package:foodie/core/data/share_pref.dart';
-import 'package:foodie/core/util/notification.dart';
 import 'package:fpdart/fpdart.dart';
 
 class AppCubit extends Cubit<AppState> {
@@ -13,7 +12,6 @@ class AppCubit extends Cubit<AppState> {
   }) : super(const AppState());
 
   AppRepository appRepository;
-  // static LocalNotificationHelper notificationHelper = sl<LocalNotificationHelper>();
 
   Future<void> changeLocale() async {
     final result = await Right(state.languageCode)
@@ -37,13 +35,36 @@ class AppCubit extends Cubit<AppState> {
     );
   }
 
-  void setNotificationSetting() {
-    emit(state.copyWith(notificationOn: SharedPref.getNotificationSetting()));
+  void setNotificationSetting() async {
+    final result = await appRepository
+        .setNotificationSetting(
+          isEnable: SharedPref.getNotificationSetting(),
+        )
+        .run();
+    result.fold(
+      (error) => debugPrint("setNotificationSetting error $error"),
+      (success) => emit(
+        state.copyWith(
+          notificationOn: SharedPref.getNotificationSetting(),
+        ),
+      ),
+    );
   }
 
   void switchNotificationSetting() async {
-    appRepository.setNotificationSetting(isEnable: !(state.notificationOn));
-    emit(state.copyWith(notificationOn: !(state.notificationOn)));
+    final result = await appRepository
+        .setNotificationSetting(
+          isEnable: !(state.notificationOn),
+        )
+        .run();
+    result.fold(
+      (error) => debugPrint("switchNotificationSetting error $error"),
+      (success) => emit(
+        state.copyWith(
+          notificationOn: !(state.notificationOn),
+        ),
+      ),
+    );
   }
 
   Future<void> _setFirebaseToken({required String token}) async {
@@ -68,7 +89,6 @@ class AppCubit extends Cubit<AppState> {
             setFirebaseTokenStatus: SetFirebaseTokenStatus.success,
           ),
         );
-        
       },
     );
   }
@@ -99,7 +119,11 @@ class AppCubit extends Cubit<AppState> {
     debugPrint('finish _setFirebaseToken ${state.setFirebaseTokenStatus}');
     if (state.setFirebaseTokenStatus == SetFirebaseTokenStatus.success) {
       debugPrint('set onBackgroundMessage');
-      FirebaseMessaging.onBackgroundMessage(backgroundNoti);
+      try {
+        FirebaseMessaging.onBackgroundMessage(backgroundNoti);
+      } catch (e) {
+        debugPrint('set onBackgroundMessage fail $e');
+      }
     }
   }
 }

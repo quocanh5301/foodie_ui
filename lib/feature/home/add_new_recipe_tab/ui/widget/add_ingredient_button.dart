@@ -14,7 +14,6 @@ class AddIngredientButton extends StatelessWidget {
     return InkWell(
       onTap: () => context.read<AddNewRecipeCubit>().addNewIngredient(),
       child: SizedBox(
-        width: AppStyles.width(160),
         height: AppStyles.width(40),
         child: Container(
           decoration: BoxDecoration(
@@ -27,24 +26,26 @@ class AddIngredientButton extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               horizontal: AppStyles.width(15),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SvgPicture.asset(
-                  AppImage.icAddRecipe,
-                  colorFilter: const ColorFilter.mode(
-                    Colors.white,
-                    BlendMode.srcIn,
+            child: IntrinsicWidth(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SvgPicture.asset(
+                    AppImage.icAddRecipe,
+                    colorFilter: const ColorFilter.mode(
+                      Colors.white,
+                      BlendMode.srcIn,
+                    ),
                   ),
-                ),
-                const HorizontalSpace(10),
-                Text(
-                  S.of(context).addIngredientButton,
-                  style: AppStyles.f12m().copyWith(
-                    color: Colors.white,
+                  const HorizontalSpace(10),
+                  Text(
+                    S.of(context).addIngredientButton,
+                    style: AppStyles.f12m().copyWith(
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:foodie/core/data/share_pref.dart';
 
@@ -59,6 +60,7 @@ class LocalNotificationHelper {
     String title,
     String body,
   ) async {
+    debugPrint('handleNotificationSetting $title ANDDDD $body');
     if (SharedPref.getNotificationSetting()) {
       await _scheduleNotification(title, body);
     } else {

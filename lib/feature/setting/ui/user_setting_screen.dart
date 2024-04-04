@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:foodie/core/data/share_pref.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/avatar_card.dart';
@@ -132,7 +133,7 @@ class UserSettingScreen extends StatelessWidget {
                 ),
                 const VerticalSpace(10),
                 Text(
-                  "haha",
+                  SharedPref.getUserInfo().userName ?? S.of(context).noNameUser,
                   textAlign: TextAlign.center,
                   style: AppStyles.f14m().copyWith(
                     color: Colors.white,
@@ -141,7 +142,7 @@ class UserSettingScreen extends StatelessWidget {
                 ),
                 const VerticalSpace(5),
                 Text(
-                  "hehe",
+                  SharedPref.getUserInfo().userEmail ?? S.of(context).noEmail,
                   textAlign: TextAlign.center,
                   style: AppStyles.f14m().copyWith(
                     color: Colors.white,

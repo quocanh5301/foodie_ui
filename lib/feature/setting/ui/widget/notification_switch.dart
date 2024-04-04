@@ -9,6 +9,8 @@ class NotificationSwitchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppCubit, AppState>(
+      buildWhen: (previous, current) =>
+          previous.notificationOn != current.notificationOn,
       builder: (context, state) {
         return Switch(
           value: state.notificationOn,

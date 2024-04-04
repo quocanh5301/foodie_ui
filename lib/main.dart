@@ -27,7 +27,7 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
       message.data['content'],
     );
   } catch (e) {
-    debugPrint('foodie firebase messaging error $e');
+    debugPrint('Handling a background message error $e');
   }
 }
 

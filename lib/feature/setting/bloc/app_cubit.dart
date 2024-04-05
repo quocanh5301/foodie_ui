@@ -36,16 +36,17 @@ class AppCubit extends Cubit<AppState> {
   }
 
   void setNotificationSetting() async {
+    final notificationSetting = await SharedPref.getNotificationSetting();
     final result = await appRepository
         .setNotificationSetting(
-          isEnable: SharedPref.getNotificationSetting(),
+          isEnable: notificationSetting,
         )
         .run();
     result.fold(
       (error) => debugPrint("setNotificationSetting error $error"),
       (success) => emit(
         state.copyWith(
-          notificationOn: SharedPref.getNotificationSetting(),
+          notificationOn: notificationSetting,
         ),
       ),
     );
@@ -126,6 +127,39 @@ class AppCubit extends Cubit<AppState> {
     );
   }
 
+  Future<void> logout() async {
+    emit(
+      state.copyWith(
+        logOutStatus: LogOutStatus.loading,
+      ),
+    );
+    final result = await appRepository.logout().run();
+
+    result.match(
+      (error) => emit(
+        state.copyWith(
+          mess: error,
+          logOutStatus: LogOutStatus.failure,
+        ),
+      ),
+      (response) async {
+        if (response) {
+          emit(
+            state.copyWith(
+              logOutStatus: LogOutStatus.success,
+            ),
+          );
+        } else {
+          emit(
+            state.copyWith(
+              logOutStatus: LogOutStatus.failure,
+            ),
+          );
+        }
+      },
+    );
+  }
+
   Future<void> initNotificationsFirebase({
     required Future<void> Function(RemoteMessage) backgroundNoti,
   }) async {
@@ -147,14 +181,19 @@ class AppCubit extends Cubit<AppState> {
     await fcmToken.getToken().then((token) async {
       if (token != null) {
         await _setFirebaseToken(token: token);
+        if (state.setFirebaseTokenStatus == SetFirebaseTokenStatus.success) {
+          try {
+            SharedPref.setFirebaseToken(token);
+
+            FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+              debugPrint("onMessage: $message");
+            });
+            FirebaseMessaging.onBackgroundMessage(backgroundNoti);
+          } catch (e) {
+            debugPrint('set onBackgroundMessage fail $e');
+          }
+        }
       }
     });
-    if (state.setFirebaseTokenStatus == SetFirebaseTokenStatus.success) {
-      try {
-        FirebaseMessaging.onBackgroundMessage(backgroundNoti);
-      } catch (e) {
-        debugPrint('set onBackgroundMessage fail $e');
-      }
-    }
   }
 }

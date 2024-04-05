@@ -1179,6 +1179,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Edit your password`
+  String get editPassword {
+    return Intl.message(
+      'Edit your password',
+      name: 'editPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logging Out`
+  String get logoutDialogTitle {
+    return Intl.message(
+      'Logging Out',
+      name: 'logoutDialogTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to log out of this account?`
+  String get logoutDialogContent {
+    return Intl.message(
+      'Are you sure you want to log out of this account?',
+      name: 'logoutDialogContent',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

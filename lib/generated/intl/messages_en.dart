@@ -49,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "createNewRecipe":
             MessageLookupByLibrary.simpleMessage("Create New Recipe !!!"),
         "detail": MessageLookupByLibrary.simpleMessage("Detail"),
+        "editPassword":
+            MessageLookupByLibrary.simpleMessage("Edit your password"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -92,6 +94,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Already have an account? "),
         "loginText2": MessageLookupByLibrary.simpleMessage("Log in"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "logoutDialogContent": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to log out of this account?"),
+        "logoutDialogTitle":
+            MessageLookupByLibrary.simpleMessage("Logging Out"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "nameError":
             MessageLookupByLibrary.simpleMessage("Please fill in your name"),

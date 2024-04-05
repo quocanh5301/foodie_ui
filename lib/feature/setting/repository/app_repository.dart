@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:foodie/core/data/share_pref.dart';
 import 'package:foodie/feature/setting/provider/app_provider.dart';
 import 'package:foodie/model/user/user.dart';
@@ -64,20 +65,16 @@ class AppRepository {
     );
   }
 
-  TaskEither<String, bool> changePassword({
-    required String oldPassword,
-    required String newPassword,
-  }) {
+  TaskEither<String, bool> logout() {
     return TaskEither.tryCatch(
       () async {
-        final response = await appProvider.changePassword(
-          oldPassword: oldPassword,
-          newPassword: newPassword,
-        );
+        final response = await appProvider.logout();
         if (response.data['mess'] == 'success') {
+          SharedPref.deleteAll();
           return true;
         } else {
-          throw Exception(response.data['mess'] ?? 'changePassword failed');
+          debugPrint(response.data['mess']);
+          throw Exception(response.data['mess'] ?? 'logout failed');
         }
       },
       (error, stackTrace) => error.toString(),

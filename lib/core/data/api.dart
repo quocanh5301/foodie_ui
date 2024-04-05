@@ -13,6 +13,7 @@ final apiRequest = Dio(BaseOptions(
 
 class Endpoints {
   static String login = 'authenticate/logIn';
+  static String logout = 'authenticate/logOut';
   static String register = 'register/registerUser';
   static String refreshToken = 'authenticate/refreshToken';
   static String getProfileImage = 'user/getProfileImage';

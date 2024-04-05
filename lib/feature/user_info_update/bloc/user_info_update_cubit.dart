@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/feature/user_info_update/bloc/user_info_update_state.dart';
 import 'package:foodie/feature/user_info_update/repository/user_info_update_repository.dart';
@@ -37,9 +38,13 @@ class UserInfoUpdateCubit extends Cubit<UserInfoUpdateState> {
     );
   }
 
-  void setUserName(String userName) => emit(state.copyWith(
-        userName: userName,
-      ));
+  void setUserName(String userName) {
+    debugPrint("setUserName $userName");
+    return emit(state.copyWith(
+      userName: userName,
+    ));
+  }
+
   void setUserEmail(String userEmail) => emit(state.copyWith(
         userEmail: userEmail,
       ));

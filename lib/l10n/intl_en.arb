@@ -112,5 +112,8 @@
     "newPasswordEmpty": "Old Password must not be empty",
     "confirmNewPassword": "Confirm New Password",
     "confirmNewPasswordHint": "Enter Your New Password Again",
-    "confirmNewPasswordEmpty": "Confirmation Password must not be empty"
+    "confirmNewPasswordEmpty": "Confirmation Password must not be empty",
+    "editPassword": "Edit your password",
+    "logoutDialogTitle": "Logging Out",
+    "logoutDialogContent": "Are you sure you want to log out of this account?"
 }

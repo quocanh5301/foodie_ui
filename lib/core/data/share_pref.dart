@@ -10,6 +10,7 @@ class SharedPref {
   static String userInfoKey = 'kUSERINFO';
   static String notificationSettingKey = 'kNOTIFICATIONSETTING';
   static String languageKey = 'kLANGUAGE';
+  static String firebaseTokenKey = 'kFIREBASETOKEN';
 
   static Future<bool> setUserInfo(User user) async =>
       await prefs!.setString(userInfoKey, jsonEncode(user.toJson()));
@@ -49,8 +50,18 @@ class SharedPref {
     return prefs!.setBool(notificationSettingKey, notificationOn);
   }
 
-  static bool getNotificationSetting() =>
-      prefs!.getBool(notificationSettingKey) ?? false;
+  static Future<bool> getNotificationSetting() async { //!this function usually called from background (notification in background)
+    prefs ?? (prefs = await SharedPreferences.getInstance());
+    return prefs!.getBool(notificationSettingKey) ?? false;
+  }
+
+  static void setFirebaseToken(String firebaseToken) async {
+    await prefs!.setString(firebaseTokenKey, firebaseToken);
+  }
+
+  static String getFirebaseToken() {
+    return prefs!.getString(firebaseTokenKey) ?? "";
+  }
 
   static Future<void> deleteAll() async {
     Set<String> listKey = prefs!.getKeys();

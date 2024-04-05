@@ -8,7 +8,7 @@ class UserPasswordUpdateRepository {
 
   final UserPasswordUpdateProvider userPasswordUpdateProvider;
 
-  TaskEither<String, bool> changePassword({
+  TaskEither<String, String> changePassword({
     required String oldPassword,
     required String newPassword,
   }) {
@@ -19,7 +19,7 @@ class UserPasswordUpdateRepository {
           newPassword: newPassword,
         );
         if (response.data['mess'] == 'success') {
-          return true;
+          return response.data['mess'];
         } else {
           throw Exception(response.data['mess'] ?? 'changePassword failed');
         }

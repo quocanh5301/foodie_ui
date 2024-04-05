@@ -21,7 +21,10 @@ class SubmitButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<UserInfoUpdateCubit, UserInfoUpdateState>(
       buildWhen: (previous, current) =>
-          previous.userInfoUpdateStatus != current.userInfoUpdateStatus,
+          previous.userInfoUpdateStatus != current.userInfoUpdateStatus ||
+          previous.userName != current.userName ||
+          previous.userEmail != current.userEmail ||
+          previous.description != current.description,
       builder: (context, state) {
         return Column(
           mainAxisSize: MainAxisSize.min,
@@ -43,12 +46,6 @@ class SubmitButton extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   User user = SharedPref.getUserInfo();
-                  debugPrint(
-                      'userName dif: ${user.userName != state.userName}');
-                  debugPrint(
-                      'userEmail dif: ${user.userEmail != state.userEmail}');
-                  debugPrint(
-                      'description dif: ${user.description != state.description}');
                   if (user.userName != state.userName ||
                       user.userEmail != state.userEmail ||
                       user.description != state.description) {
@@ -56,7 +53,7 @@ class SubmitButton extends StatelessWidget {
                       context.read<UserInfoUpdateCubit>().updateUserInfo();
                     }
                   } else {
-                    context.pop(false);//!qa
+                    context.pop(false); //!qa
                   }
                 },
                 child: Stack(

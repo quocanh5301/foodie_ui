@@ -42,7 +42,7 @@ class UserInfoUpdateScreen extends StatelessWidget {
               context.pop(true);
             } else if (state.userInfoUpdateStatus ==
                 UserInfoUpdateStatus.failure) {
-              context.pop(false);//!qa
+              // context.pop(false);//!qa
             }
           },
           buildWhen: (previous, current) =>

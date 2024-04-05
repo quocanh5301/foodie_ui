@@ -45,16 +45,13 @@ class AppProvider {
         },
       );
 
-  Future<Response> changePassword({
-    required String oldPassword,
-    required String newPassword,
-  }) async =>
-      await apiRequest.post(
-        endpoint: Endpoints.changePassword,
+  Future<Response> logout() async => await apiRequest.post(
+        endpoint: Endpoints.logout,
         data: {
           'userId': SharedPref.getUserInfo().id,
-          'oldPassword': oldPassword,
-          'newPassword': newPassword,
+          'email': SharedPref.getUserInfo().userEmail,
+          'accessToken': SharedPref.getAccessToken(),
+          'firebaseToken': SharedPref.getFirebaseToken(),
         },
       );
 }

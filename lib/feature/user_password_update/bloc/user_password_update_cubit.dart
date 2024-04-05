@@ -8,13 +8,30 @@ class UserPasswordUpdateCubit extends Cubit<UserPasswordUpdateState> {
 
   final UserPasswordUpdateRepository userPasswordUpdateRepository;
 
-  Future<void> updateUserInfo() async {
+  Future<void> updateUserPassword() async {
     emit(
       state.copyWith(
         userPasswordUpdateStatus: UserPasswordUpdateStatus.loading,
         mess: '',
       ),
     );
+    if (state.oldPassword == state.newPassword) {
+      emit(
+        state.copyWith(
+          userPasswordUpdateStatus: UserPasswordUpdateStatus.failure,
+          mess: 'New password must be different from old password',
+        ),
+      );
+      return;
+    } else if (state.newPassword != state.confirmNewPassword) {
+      emit(
+        state.copyWith(
+          userPasswordUpdateStatus: UserPasswordUpdateStatus.failure,
+          mess: 'New password and confirm new password must be the same',
+        ),
+      );
+      return;
+    }
     final result = await userPasswordUpdateRepository
         .changePassword(
           oldPassword: state.oldPassword,
@@ -31,6 +48,7 @@ class UserPasswordUpdateCubit extends Cubit<UserPasswordUpdateState> {
       (success) => emit(
         state.copyWith(
           userPasswordUpdateStatus: UserPasswordUpdateStatus.success,
+          mess: success,
         ),
       ),
     );

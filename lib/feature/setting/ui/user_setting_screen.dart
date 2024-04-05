@@ -141,7 +141,12 @@ class UserSettingScreen extends StatelessWidget {
               semanticsLabel: 'user screen\'s curve',
             ),
           ),
-          BlocBuilder<AppCubit, AppState>(
+          BlocConsumer<AppCubit, AppState>(
+            listener: (BuildContext context, AppState state) {
+              if (state.logOutStatus == LogOutStatus.success) {
+                const LoginRoute().go(context);
+              }
+            },
             buildWhen: (previous, current) =>
                 previous.getUSerInfoStatus != current.getUSerInfoStatus,
             builder: (context, state) {
@@ -257,12 +262,10 @@ class UserSettingScreen extends StatelessWidget {
                         await _showDialog(
                           isLogout: true,
                           currentCtx: context,
-                          onConfirm: () async {
-                            // context.read<UserInfoCubit>().logout();
-                          },
+                          onConfirm: () => context.read<AppCubit>().logout(),
                           onDeny: () => context.pop(),
-                          title: 'S.of(context).logoutDialogTitle',
-                          content: 'S.of(context).logoutDialogContent',
+                          title: S.of(context).logoutDialogTitle,
+                          content: S.of(context).logoutDialogContent,
                         );
                       },
                     ),

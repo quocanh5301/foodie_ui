@@ -13,9 +13,12 @@ class AppState with _$AppState {
     @Default(SetFirebaseTokenStatus.initial)
     SetFirebaseTokenStatus setFirebaseTokenStatus,
     @Default(GetUSerInfoStatus.initial) GetUSerInfoStatus getUSerInfoStatus,
+    @Default(LogOutStatus.initial) LogOutStatus logOutStatus,
   }) = _AppState;
 }
 
 enum SetFirebaseTokenStatus { initial, loading, success, failure }
 
 enum GetUSerInfoStatus { initial, loading, success, failure }
+
+enum LogOutStatus { initial, loading, success, failure }

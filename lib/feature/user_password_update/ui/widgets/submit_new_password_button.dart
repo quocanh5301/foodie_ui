@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/core/resource/styles.dart';
-import 'package:foodie/feature/user_info_update/bloc/user_info_update_cubit.dart';
 import 'package:foodie/feature/user_password_update/bloc/user_password_update_cubit.dart';
 import 'package:foodie/feature/user_password_update/bloc/user_password_update_state.dart';
 import 'package:foodie/generated/l10n.dart';
@@ -18,6 +17,12 @@ class SubmitNewPasswordButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UserPasswordUpdateCubit, UserPasswordUpdateState>(
+      buildWhen: (previous, current) =>
+          previous.userPasswordUpdateStatus !=
+              current.userPasswordUpdateStatus ||
+          previous.oldPassword != current.oldPassword ||
+          previous.newPassword != current.newPassword ||
+          previous.confirmNewPassword != current.confirmNewPassword,
       builder: (context, state) {
         return Column(
           mainAxisSize: MainAxisSize.min,
@@ -38,13 +43,10 @@ class SubmitNewPasswordButton extends StatelessWidget {
               ),
               child: TextButton(
                 onPressed: () {
-                  if (state.oldPassword != state.newPassword &&
-                      state.newPassword == state.confirmNewPassword) {
-                    if (formKey.currentState!.validate()) {
-                      context.read<UserInfoUpdateCubit>().updateUserInfo();
-                    }
-                  } else {
-                    // SnackBar(content: content)//!qa
+                  if (formKey.currentState!.validate()) {
+                    context
+                        .read<UserPasswordUpdateCubit>()
+                        .updateUserPassword();
                   }
                 },
                 child: Stack(

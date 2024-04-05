@@ -22,7 +22,7 @@ class UserPasswordUpdateScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          S.of(context).editProfile,
+          S.of(context).editPassword,
           style: AppStyles.f15m().copyWith(color: Colors.white),
         ),
         backgroundColor: '#FF6B00'.toColor().withOpacity(0.3),
@@ -37,11 +37,12 @@ class UserPasswordUpdateScreen extends StatelessWidget {
               context.pop(true);
             } else if (state.userPasswordUpdateStatus ==
                 UserPasswordUpdateStatus.failure) {
-              context.pop(false);//!qa
+              // context.pop(false); //!qa
             }
           },
-          // buildWhen: (previous, current) =>
-          //     previous.userInfoUpdateStatus != current.userInfoUpdateStatus,
+          buildWhen: (previous, current) =>
+              previous.userPasswordUpdateStatus !=
+              current.userPasswordUpdateStatus,
           builder: (context, state) {
             debugPrint('state mess: ${state.userPasswordUpdateStatus}');
             return Padding(

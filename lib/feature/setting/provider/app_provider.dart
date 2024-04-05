@@ -37,4 +37,24 @@ class AppProvider {
           'firebaseToken': firebaseToken,
         },
       );
+
+  Future<Response> getUserProfile() async => await apiRequest.post(
+        endpoint: Endpoints.getUserProfile,
+        data: {
+          'userId': SharedPref.getUserInfo().id,
+        },
+      );
+
+  Future<Response> changePassword({
+    required String oldPassword,
+    required String newPassword,
+  }) async =>
+      await apiRequest.post(
+        endpoint: Endpoints.changePassword,
+        data: {
+          'userId': SharedPref.getUserInfo().id,
+          'oldPassword': oldPassword,
+          'newPassword': newPassword,
+        },
+      );
 }

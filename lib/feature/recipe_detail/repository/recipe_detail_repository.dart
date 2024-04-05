@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:foodie/feature/recipe_detail/provider/recipe_detail_provider.dart';
 import 'package:foodie/response_model/other/get_personal_review_of_user_response.dart';
 import 'package:foodie/response_model/other/get_review_of_user_response.dart';

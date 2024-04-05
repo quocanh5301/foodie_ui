@@ -1,7 +1,7 @@
 import 'package:foodie/core/data/api.dart';
-import 'package:foodie/core/app_state/bloc/app_cubit.dart';
-import 'package:foodie/core/app_state/provider/app_provider.dart';
-import 'package:foodie/core/app_state/repository/app_repository.dart';
+import 'package:foodie/feature/setting/bloc/app_cubit.dart';
+import 'package:foodie/feature/setting/provider/app_provider.dart';
+import 'package:foodie/feature/setting/repository/app_repository.dart';
 import 'package:foodie/feature/home/add_new_recipe_tab/bloc/add_new_recipe_cubit.dart';
 import 'package:foodie/feature/home/add_new_recipe_tab/provider/add_new_recipe_provider.dart';
 import 'package:foodie/feature/home/add_new_recipe_tab/repository/add_new_recipe_repository.dart';
@@ -24,6 +24,9 @@ import 'package:foodie/feature/recipe_detail/repository/recipe_detail_repository
 import 'package:foodie/feature/register/bloc/register_cubit.dart';
 import 'package:foodie/feature/register/provider/register_provider.dart';
 import 'package:foodie/feature/register/repository/register_repository.dart';
+import 'package:foodie/feature/user_info_update/bloc/user_info_update_cubit.dart';
+import 'package:foodie/feature/user_info_update/provider/user_info_update_provider.dart';
+import 'package:foodie/feature/user_info_update/repository/user_info_update_repository.dart';
 import 'package:get_it/get_it.dart';
 
 final sl = GetIt.I;
@@ -37,6 +40,7 @@ Future<void> init() async {
   initBookmarkRecipe();
   initProfile();
   initRecipeDetail();
+  initUpdateUserInfo();
 }
 
 void initLogin() async {
@@ -87,4 +91,10 @@ void initRecipeDetail() async {
   sl.registerFactory(() => RecipeReviewCubit(recipeDetailRepository: sl()));
   sl.registerFactory(() => RecipeDetailRepository(recipeDetailProvider: sl()));
   sl.registerFactory(() => RecipeDetailProvider(apiRequest: APIRequest()));
+}
+
+void initUpdateUserInfo() async {
+  sl.registerFactory(() => UserInfoUpdateCubit(userInfoUpdateRepository: sl()));
+  sl.registerFactory(() => UserInfoUpdateRepository(updateProvider: sl()));
+  sl.registerFactory(() => UserInfoUpdateProvider(apiRequest: APIRequest()));
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/feature/home/explore_tab/bloc/explore_state.dart';
 import 'package:foodie/feature/home/explore_tab/repository/explore_repository.dart';

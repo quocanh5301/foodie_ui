@@ -6,6 +6,8 @@ import 'package:foodie/feature/login/ui/login_screen.dart';
 import 'package:foodie/feature/recipe_detail/ui/recipe_detail_screen.dart';
 import 'package:foodie/feature/register/ui/register_screen.dart';
 import 'package:foodie/feature/setting/ui/user_setting_screen.dart';
+import 'package:foodie/feature/user_info_update/ui/user_info_update_screen.dart';
+import 'package:foodie/feature/user_password_update/ui/user_password_update_screen.dart';
 import 'package:go_router/go_router.dart';
 
 part 'router.g.dart';
@@ -64,6 +66,24 @@ class UserSettingRoute extends GoRouteData {
       const UserSettingScreen();
 }
 
+@TypedGoRoute<UserInfoUpdateRoute>(path: Routes.udpateInfo)
+class UserInfoUpdateRoute extends GoRouteData {
+  const UserInfoUpdateRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      UserInfoUpdateScreen();
+}
+
+@TypedGoRoute<UserPasswordUpdateRoute>(path: Routes.udpatePassword)
+class UserPasswordUpdateRoute extends GoRouteData {
+  const UserPasswordUpdateRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      UserPasswordUpdateScreen();
+}
+
 class Routes {
   static const String login = '/login';
   static const String register = '/register';
@@ -71,4 +91,6 @@ class Routes {
   static const String home = '/home';
   static const String recipeDetail = '/recipe_detail';
   static const String setting = '/setting';
+  static const String udpateInfo = '/update_info';
+  static const String udpatePassword = '/update_password';
 }

@@ -46,13 +46,4 @@ class LoginRepository {
       }
     }, (error, stackTrace) => error.toString());
   }
-
-  void registerFirebaseMessaging() {
-    // firebaseMessaging.getToken().then((token) {
-    //   if (token != null) {
-    //     loginProvider.updateFirebaseMessagingToken(firebaseToken: token);
-    //     firebaseMessaging.subscribeToTopic('all');
-    //   }
-    // });
-  }
 }

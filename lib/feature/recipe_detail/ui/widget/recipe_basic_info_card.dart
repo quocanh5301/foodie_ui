@@ -28,7 +28,7 @@ class RecipeBasicInfoCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: '#2b2b2b'.toColor(),
             borderRadius: const BorderRadius.all(
-              Radius.circular(25),
+              Radius.circular(15),
             ),
             border: Border.all(
               color: '#FF6B00'.toColor(),

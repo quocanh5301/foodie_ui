@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foodie/core/app_state/bloc/app_cubit.dart';
-import 'package:foodie/core/app_state/bloc/app_state.dart';
+import 'package:foodie/feature/setting/bloc/app_cubit.dart';
+import 'package:foodie/feature/setting/bloc/app_state.dart';
 import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/generated/l10n.dart';
 

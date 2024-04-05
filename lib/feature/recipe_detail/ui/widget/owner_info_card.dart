@@ -25,7 +25,7 @@ class OwnerInfoCard extends StatelessWidget {
             decoration: BoxDecoration(
               color: '#2b2b2b'.toColor(),
               borderRadius: const BorderRadius.all(
-                Radius.circular(25),
+                Radius.circular(15),
               ),
               border: Border.all(
                 color: '#FF6B00'.toColor(),
@@ -46,8 +46,8 @@ class OwnerInfoCard extends StatelessWidget {
                         shape: BoxShape.rectangle,
                         color: Colors.grey,
                         borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(25),
-                          topLeft: Radius.circular(25),
+                          bottomLeft: Radius.circular(15),
+                          topLeft: Radius.circular(15),
                         ),
                       ),
                       width: AppStyles.screenW - AppStyles.width(30),

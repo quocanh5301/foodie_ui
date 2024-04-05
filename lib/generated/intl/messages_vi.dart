@@ -34,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Công thức bạn đã đánh dấu"),
         "camera": MessageLookupByLibrary.simpleMessage("Camera"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy"),
+        "changePassword":
+            MessageLookupByLibrary.simpleMessage("Thay đổi mật khẩu"),
         "chooseAnotherPhotoButton":
             MessageLookupByLibrary.simpleMessage("Chọn ảnh khác"),
         "comment": MessageLookupByLibrary.simpleMessage("Bình luận"),
@@ -42,6 +44,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "createNewRecipe":
             MessageLookupByLibrary.simpleMessage("Tạo công thức mới !!!"),
         "detail": MessageLookupByLibrary.simpleMessage("Chi tiết"),
+        "editProfile":
+            MessageLookupByLibrary.simpleMessage("Thay đổi thông tin cá nhân"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Chỉnh sửa hồ sơ"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailEmpty":
@@ -56,6 +60,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Không tìm thấy công thức"),
         "emptyReview":
             MessageLookupByLibrary.simpleMessage("Không tìm thấy bình luận"),
+        "emptyUserDescription":
+            MessageLookupByLibrary.simpleMessage("Người dùng không có mô tả"),
         "enterReview": MessageLookupByLibrary.simpleMessage(
             "Nhập bình luận của bạn ở đây..."),
         "explore":
@@ -160,10 +166,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Khám phá công thức mới với chúng tôi ngay hôm nay !!!"),
         "removePhotoButton":
             MessageLookupByLibrary.simpleMessage("\'Xóa ảnh\'"),
-        "review": MessageLookupByLibrary.simpleMessage("Bình luận"),
+        "review": MessageLookupByLibrary.simpleMessage("Đánh giá"),
         "searchAll": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
+        "submit": MessageLookupByLibrary.simpleMessage("GỬI"),
         "topRecipe": MessageLookupByLibrary.simpleMessage("Công thức hàng đầu"),
         "updateAt": MessageLookupByLibrary.simpleMessage("Cập nhật lúc"),
+        "userDescription": MessageLookupByLibrary.simpleMessage("Mô tả"),
         "writeReview": MessageLookupByLibrary.simpleMessage(
             "Viết bình luận cho công thức này"),
         "yourProfile": MessageLookupByLibrary.simpleMessage("Hồ sơ của bạn"),

@@ -22,6 +22,7 @@ mixin _$AppState {
   bool get notificationOn => throw _privateConstructorUsedError;
   SetFirebaseTokenStatus get setFirebaseTokenStatus =>
       throw _privateConstructorUsedError;
+  GetUSerInfoStatus get getUSerInfoStatus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppStateCopyWith<AppState> get copyWith =>
@@ -38,7 +39,8 @@ abstract class $AppStateCopyWith<$Res> {
       int code,
       String languageCode,
       bool notificationOn,
-      SetFirebaseTokenStatus setFirebaseTokenStatus});
+      SetFirebaseTokenStatus setFirebaseTokenStatus,
+      GetUSerInfoStatus getUSerInfoStatus});
 }
 
 /// @nodoc
@@ -59,6 +61,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
     Object? languageCode = null,
     Object? notificationOn = null,
     Object? setFirebaseTokenStatus = null,
+    Object? getUSerInfoStatus = null,
   }) {
     return _then(_value.copyWith(
       mess: null == mess
@@ -81,6 +84,10 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
           ? _value.setFirebaseTokenStatus
           : setFirebaseTokenStatus // ignore: cast_nullable_to_non_nullable
               as SetFirebaseTokenStatus,
+      getUSerInfoStatus: null == getUSerInfoStatus
+          ? _value.getUSerInfoStatus
+          : getUSerInfoStatus // ignore: cast_nullable_to_non_nullable
+              as GetUSerInfoStatus,
     ) as $Val);
   }
 }
@@ -98,7 +105,8 @@ abstract class _$$AppStateImplCopyWith<$Res>
       int code,
       String languageCode,
       bool notificationOn,
-      SetFirebaseTokenStatus setFirebaseTokenStatus});
+      SetFirebaseTokenStatus setFirebaseTokenStatus,
+      GetUSerInfoStatus getUSerInfoStatus});
 }
 
 /// @nodoc
@@ -117,6 +125,7 @@ class __$$AppStateImplCopyWithImpl<$Res>
     Object? languageCode = null,
     Object? notificationOn = null,
     Object? setFirebaseTokenStatus = null,
+    Object? getUSerInfoStatus = null,
   }) {
     return _then(_$AppStateImpl(
       mess: null == mess
@@ -139,6 +148,10 @@ class __$$AppStateImplCopyWithImpl<$Res>
           ? _value.setFirebaseTokenStatus
           : setFirebaseTokenStatus // ignore: cast_nullable_to_non_nullable
               as SetFirebaseTokenStatus,
+      getUSerInfoStatus: null == getUSerInfoStatus
+          ? _value.getUSerInfoStatus
+          : getUSerInfoStatus // ignore: cast_nullable_to_non_nullable
+              as GetUSerInfoStatus,
     ));
   }
 }
@@ -151,7 +164,8 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
       this.code = 200,
       this.languageCode = "vi",
       this.notificationOn = false,
-      this.setFirebaseTokenStatus = SetFirebaseTokenStatus.initial});
+      this.setFirebaseTokenStatus = SetFirebaseTokenStatus.initial,
+      this.getUSerInfoStatus = GetUSerInfoStatus.initial});
 
   @override
   @JsonKey()
@@ -168,10 +182,13 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
   @override
   @JsonKey()
   final SetFirebaseTokenStatus setFirebaseTokenStatus;
+  @override
+  @JsonKey()
+  final GetUSerInfoStatus getUSerInfoStatus;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppState(mess: $mess, code: $code, languageCode: $languageCode, notificationOn: $notificationOn, setFirebaseTokenStatus: $setFirebaseTokenStatus)';
+    return 'AppState(mess: $mess, code: $code, languageCode: $languageCode, notificationOn: $notificationOn, setFirebaseTokenStatus: $setFirebaseTokenStatus, getUSerInfoStatus: $getUSerInfoStatus)';
   }
 
   @override
@@ -183,8 +200,9 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
       ..add(DiagnosticsProperty('code', code))
       ..add(DiagnosticsProperty('languageCode', languageCode))
       ..add(DiagnosticsProperty('notificationOn', notificationOn))
-      ..add(DiagnosticsProperty(
-          'setFirebaseTokenStatus', setFirebaseTokenStatus));
+      ..add(
+          DiagnosticsProperty('setFirebaseTokenStatus', setFirebaseTokenStatus))
+      ..add(DiagnosticsProperty('getUSerInfoStatus', getUSerInfoStatus));
   }
 
   @override
@@ -199,12 +217,14 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
             (identical(other.notificationOn, notificationOn) ||
                 other.notificationOn == notificationOn) &&
             (identical(other.setFirebaseTokenStatus, setFirebaseTokenStatus) ||
-                other.setFirebaseTokenStatus == setFirebaseTokenStatus));
+                other.setFirebaseTokenStatus == setFirebaseTokenStatus) &&
+            (identical(other.getUSerInfoStatus, getUSerInfoStatus) ||
+                other.getUSerInfoStatus == getUSerInfoStatus));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, mess, code, languageCode,
-      notificationOn, setFirebaseTokenStatus);
+      notificationOn, setFirebaseTokenStatus, getUSerInfoStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -219,7 +239,8 @@ abstract class _AppState implements AppState {
       final int code,
       final String languageCode,
       final bool notificationOn,
-      final SetFirebaseTokenStatus setFirebaseTokenStatus}) = _$AppStateImpl;
+      final SetFirebaseTokenStatus setFirebaseTokenStatus,
+      final GetUSerInfoStatus getUSerInfoStatus}) = _$AppStateImpl;
 
   @override
   String get mess;
@@ -231,6 +252,8 @@ abstract class _AppState implements AppState {
   bool get notificationOn;
   @override
   SetFirebaseTokenStatus get setFirebaseTokenStatus;
+  @override
+  GetUSerInfoStatus get getUSerInfoStatus;
   @override
   @JsonKey(ignore: true)
   _$$AppStateImplCopyWith<_$AppStateImpl> get copyWith =>

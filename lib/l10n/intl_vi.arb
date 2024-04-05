@@ -82,7 +82,7 @@
 "noDescriptionRecipe": "Không có mô tả cho công thức",
 "numOfIngredients": "Số lượng nguyên liệu",
 "detail": "Chi tiết",
-"review": "Bình luận",
+"review": "Đánh giá",
 "comment": "Bình luận",
 "recipeInfo": "Thông tin công thức",
 "recipe": "Chi tiết công thức",
@@ -101,5 +101,10 @@
 "notification": "Thông báo",
 "language": "Ngôn ngữ",
 "lang": "Tiếng Việt",
-"logout": "Đăng xuất"
+"logout": "Đăng xuất",
+"changePassword": "Thay đổi mật khẩu",
+"editProfile": "Thay đổi thông tin cá nhân",
+"submit": "GỬI",
+"userDescription": "Mô tả",
+"emptyUserDescription": "Người dùng không có mô tả"
 }

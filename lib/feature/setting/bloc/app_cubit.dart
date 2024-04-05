@@ -1,8 +1,8 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foodie/core/app_state/bloc/app_state.dart';
-import 'package:foodie/core/app_state/repository/app_repository.dart';
+import 'package:foodie/feature/setting/bloc/app_state.dart';
+import 'package:foodie/feature/setting/repository/app_repository.dart';
 import 'package:foodie/core/data/share_pref.dart';
 import 'package:fpdart/fpdart.dart';
 
@@ -93,6 +93,39 @@ class AppCubit extends Cubit<AppState> {
     );
   }
 
+  Future<void> getUserProfile() async {
+    emit(
+      state.copyWith(
+        getUSerInfoStatus: GetUSerInfoStatus.loading,
+      ),
+    );
+    final result = await appRepository.getUserProfile().run();
+
+    result.match(
+      (error) => emit(
+        state.copyWith(
+          mess: error,
+          getUSerInfoStatus: GetUSerInfoStatus.failure,
+        ),
+      ),
+      (response) async {
+        if (response) {
+          emit(
+            state.copyWith(
+              getUSerInfoStatus: GetUSerInfoStatus.success,
+            ),
+          );
+        } else {
+          emit(
+            state.copyWith(
+              getUSerInfoStatus: GetUSerInfoStatus.failure,
+            ),
+          );
+        }
+      },
+    );
+  }
+
   Future<void> initNotificationsFirebase({
     required Future<void> Function(RemoteMessage) backgroundNoti,
   }) async {
@@ -116,9 +149,7 @@ class AppCubit extends Cubit<AppState> {
         await _setFirebaseToken(token: token);
       }
     });
-    debugPrint('finish _setFirebaseToken ${state.setFirebaseTokenStatus}');
     if (state.setFirebaseTokenStatus == SetFirebaseTokenStatus.success) {
-      debugPrint('set onBackgroundMessage');
       try {
         FirebaseMessaging.onBackgroundMessage(backgroundNoti);
       } catch (e) {

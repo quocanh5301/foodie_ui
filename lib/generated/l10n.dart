@@ -1039,6 +1039,146 @@ class S {
       args: [],
     );
   }
+
+  /// `Change Password`
+  String get changePassword {
+    return Intl.message(
+      'Change Password',
+      name: 'changePassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Profile`
+  String get editProfile {
+    return Intl.message(
+      'Edit Profile',
+      name: 'editProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SUBMIT`
+  String get submit {
+    return Intl.message(
+      'SUBMIT',
+      name: 'submit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get userDescription {
+    return Intl.message(
+      'Description',
+      name: 'userDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User has no description`
+  String get emptyUserDescription {
+    return Intl.message(
+      'User has no description',
+      name: 'emptyUserDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Old Password`
+  String get oldPassword {
+    return Intl.message(
+      'Old Password',
+      name: 'oldPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Your Old Password`
+  String get oldPasswordHint {
+    return Intl.message(
+      'Enter Your Old Password',
+      name: 'oldPasswordHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Old Password must not be empty`
+  String get oldPasswordEmpty {
+    return Intl.message(
+      'Old Password must not be empty',
+      name: 'oldPasswordEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Password`
+  String get newPassword {
+    return Intl.message(
+      'New Password',
+      name: 'newPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Your New Password`
+  String get newPasswordHint {
+    return Intl.message(
+      'Enter Your New Password',
+      name: 'newPasswordHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Old Password must not be empty`
+  String get newPasswordEmpty {
+    return Intl.message(
+      'Old Password must not be empty',
+      name: 'newPasswordEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm New Password`
+  String get confirmNewPassword {
+    return Intl.message(
+      'Confirm New Password',
+      name: 'confirmNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Your New Password Again`
+  String get confirmNewPasswordHint {
+    return Intl.message(
+      'Enter Your New Password Again',
+      name: 'confirmNewPasswordHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirmation Password must not be empty`
+  String get confirmNewPasswordEmpty {
+    return Intl.message(
+      'Confirmation Password must not be empty',
+      name: 'confirmNewPasswordEmpty',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

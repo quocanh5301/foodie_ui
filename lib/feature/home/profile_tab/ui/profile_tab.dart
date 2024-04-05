@@ -188,8 +188,12 @@ class ProfileTab extends StatelessWidget {
                                 ),
                                 const VerticalSpace(15),
                                 Text(
-                                  SharedPref.getUserInfo().description ??
-                                      S.of(context).noDescription,
+                                  SharedPref.getUserInfo().description == '' ||
+                                          SharedPref.getUserInfo()
+                                                  .description ==
+                                              null
+                                      ? S.of(context).noDescription
+                                      : SharedPref.getUserInfo().description!,
                                   style: AppStyles.f16sb().copyWith(
                                     color: Colors.white,
                                   ),

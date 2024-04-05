@@ -14,7 +14,7 @@ class LogoutButton extends StatelessWidget {
       width: AppStyles.width(150),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        color: Colors.red,
+        color: "#8f1d2e".toColor(),
       ),
       child: TextButton(
         onPressed: onPressed,

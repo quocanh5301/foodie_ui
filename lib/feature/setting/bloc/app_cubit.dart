@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -98,6 +100,7 @@ class AppCubit extends Cubit<AppState> {
     emit(
       state.copyWith(
         getUSerInfoStatus: GetUSerInfoStatus.loading,
+        updateProfileImageStatus: UpdateProfileImageStatus.initial
       ),
     );
     final result = await appRepository.getUserProfile().run();
@@ -110,6 +113,7 @@ class AppCubit extends Cubit<AppState> {
         ),
       ),
       (response) async {
+        debugPrint('getUserProfile $response');
         if (response) {
           emit(
             state.copyWith(
@@ -153,6 +157,41 @@ class AppCubit extends Cubit<AppState> {
           emit(
             state.copyWith(
               logOutStatus: LogOutStatus.failure,
+            ),
+          );
+        }
+      },
+    );
+  }
+
+  Future<void> updateProfileImage({required String imagPath}) async {
+    emit(
+      state.copyWith(
+        updateProfileImageStatus: UpdateProfileImageStatus.loading,
+      ),
+    );
+    final result = await appRepository
+        .updateProfileImage(userAvatar: File(imagPath))
+        .run();
+
+    result.match(
+      (error) => emit(
+        state.copyWith(
+          mess: error,
+          updateProfileImageStatus: UpdateProfileImageStatus.failure,
+        ),
+      ),
+      (response) async {
+        if (response) {
+          emit(
+            state.copyWith(
+              updateProfileImageStatus: UpdateProfileImageStatus.success,
+            ),
+          );
+        } else {
+          emit(
+            state.copyWith(
+              updateProfileImageStatus: UpdateProfileImageStatus.failure,
             ),
           );
         }

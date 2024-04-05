@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:dio/dio.dart';
@@ -54,4 +55,24 @@ class AppProvider {
           'firebaseToken': SharedPref.getFirebaseToken(),
         },
       );
+
+  Future<Response> updateProfileImage({required File? userAvatar}) async {
+    FormData data = FormData.fromMap({
+      "userId": SharedPref.getUserInfo().id,
+    });
+
+    if (userAvatar != null) {
+      MultipartFile multipartFile =
+          await MultipartFile.fromFile(userAvatar.path);
+      data.files.add(MapEntry(
+        'file',
+        multipartFile,
+      ));
+    }
+
+    return await apiRequest.post(
+      endpoint: Endpoints.updateProfileImage,
+      data: data,
+    );
+  }
 }

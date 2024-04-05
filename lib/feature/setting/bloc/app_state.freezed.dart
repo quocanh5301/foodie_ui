@@ -24,6 +24,8 @@ mixin _$AppState {
       throw _privateConstructorUsedError;
   GetUSerInfoStatus get getUSerInfoStatus => throw _privateConstructorUsedError;
   LogOutStatus get logOutStatus => throw _privateConstructorUsedError;
+  UpdateProfileImageStatus get updateProfileImageStatus =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppStateCopyWith<AppState> get copyWith =>
@@ -42,7 +44,8 @@ abstract class $AppStateCopyWith<$Res> {
       bool notificationOn,
       SetFirebaseTokenStatus setFirebaseTokenStatus,
       GetUSerInfoStatus getUSerInfoStatus,
-      LogOutStatus logOutStatus});
+      LogOutStatus logOutStatus,
+      UpdateProfileImageStatus updateProfileImageStatus});
 }
 
 /// @nodoc
@@ -65,6 +68,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
     Object? setFirebaseTokenStatus = null,
     Object? getUSerInfoStatus = null,
     Object? logOutStatus = null,
+    Object? updateProfileImageStatus = null,
   }) {
     return _then(_value.copyWith(
       mess: null == mess
@@ -95,6 +99,10 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
           ? _value.logOutStatus
           : logOutStatus // ignore: cast_nullable_to_non_nullable
               as LogOutStatus,
+      updateProfileImageStatus: null == updateProfileImageStatus
+          ? _value.updateProfileImageStatus
+          : updateProfileImageStatus // ignore: cast_nullable_to_non_nullable
+              as UpdateProfileImageStatus,
     ) as $Val);
   }
 }
@@ -114,7 +122,8 @@ abstract class _$$AppStateImplCopyWith<$Res>
       bool notificationOn,
       SetFirebaseTokenStatus setFirebaseTokenStatus,
       GetUSerInfoStatus getUSerInfoStatus,
-      LogOutStatus logOutStatus});
+      LogOutStatus logOutStatus,
+      UpdateProfileImageStatus updateProfileImageStatus});
 }
 
 /// @nodoc
@@ -135,6 +144,7 @@ class __$$AppStateImplCopyWithImpl<$Res>
     Object? setFirebaseTokenStatus = null,
     Object? getUSerInfoStatus = null,
     Object? logOutStatus = null,
+    Object? updateProfileImageStatus = null,
   }) {
     return _then(_$AppStateImpl(
       mess: null == mess
@@ -165,6 +175,10 @@ class __$$AppStateImplCopyWithImpl<$Res>
           ? _value.logOutStatus
           : logOutStatus // ignore: cast_nullable_to_non_nullable
               as LogOutStatus,
+      updateProfileImageStatus: null == updateProfileImageStatus
+          ? _value.updateProfileImageStatus
+          : updateProfileImageStatus // ignore: cast_nullable_to_non_nullable
+              as UpdateProfileImageStatus,
     ));
   }
 }
@@ -179,7 +193,8 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
       this.notificationOn = false,
       this.setFirebaseTokenStatus = SetFirebaseTokenStatus.initial,
       this.getUSerInfoStatus = GetUSerInfoStatus.initial,
-      this.logOutStatus = LogOutStatus.initial});
+      this.logOutStatus = LogOutStatus.initial,
+      this.updateProfileImageStatus = UpdateProfileImageStatus.initial});
 
   @override
   @JsonKey()
@@ -202,10 +217,13 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
   @override
   @JsonKey()
   final LogOutStatus logOutStatus;
+  @override
+  @JsonKey()
+  final UpdateProfileImageStatus updateProfileImageStatus;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppState(mess: $mess, code: $code, languageCode: $languageCode, notificationOn: $notificationOn, setFirebaseTokenStatus: $setFirebaseTokenStatus, getUSerInfoStatus: $getUSerInfoStatus, logOutStatus: $logOutStatus)';
+    return 'AppState(mess: $mess, code: $code, languageCode: $languageCode, notificationOn: $notificationOn, setFirebaseTokenStatus: $setFirebaseTokenStatus, getUSerInfoStatus: $getUSerInfoStatus, logOutStatus: $logOutStatus, updateProfileImageStatus: $updateProfileImageStatus)';
   }
 
   @override
@@ -220,7 +238,9 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
       ..add(
           DiagnosticsProperty('setFirebaseTokenStatus', setFirebaseTokenStatus))
       ..add(DiagnosticsProperty('getUSerInfoStatus', getUSerInfoStatus))
-      ..add(DiagnosticsProperty('logOutStatus', logOutStatus));
+      ..add(DiagnosticsProperty('logOutStatus', logOutStatus))
+      ..add(DiagnosticsProperty(
+          'updateProfileImageStatus', updateProfileImageStatus));
   }
 
   @override
@@ -239,12 +259,23 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
             (identical(other.getUSerInfoStatus, getUSerInfoStatus) ||
                 other.getUSerInfoStatus == getUSerInfoStatus) &&
             (identical(other.logOutStatus, logOutStatus) ||
-                other.logOutStatus == logOutStatus));
+                other.logOutStatus == logOutStatus) &&
+            (identical(
+                    other.updateProfileImageStatus, updateProfileImageStatus) ||
+                other.updateProfileImageStatus == updateProfileImageStatus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, mess, code, languageCode,
-      notificationOn, setFirebaseTokenStatus, getUSerInfoStatus, logOutStatus);
+  int get hashCode => Object.hash(
+      runtimeType,
+      mess,
+      code,
+      languageCode,
+      notificationOn,
+      setFirebaseTokenStatus,
+      getUSerInfoStatus,
+      logOutStatus,
+      updateProfileImageStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -255,13 +286,15 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
 
 abstract class _AppState implements AppState {
   const factory _AppState(
-      {final String mess,
-      final int code,
-      final String languageCode,
-      final bool notificationOn,
-      final SetFirebaseTokenStatus setFirebaseTokenStatus,
-      final GetUSerInfoStatus getUSerInfoStatus,
-      final LogOutStatus logOutStatus}) = _$AppStateImpl;
+          {final String mess,
+          final int code,
+          final String languageCode,
+          final bool notificationOn,
+          final SetFirebaseTokenStatus setFirebaseTokenStatus,
+          final GetUSerInfoStatus getUSerInfoStatus,
+          final LogOutStatus logOutStatus,
+          final UpdateProfileImageStatus updateProfileImageStatus}) =
+      _$AppStateImpl;
 
   @override
   String get mess;
@@ -277,6 +310,8 @@ abstract class _AppState implements AppState {
   GetUSerInfoStatus get getUSerInfoStatus;
   @override
   LogOutStatus get logOutStatus;
+  @override
+  UpdateProfileImageStatus get updateProfileImageStatus;
   @override
   @JsonKey(ignore: true)
   _$$AppStateImplCopyWith<_$AppStateImpl> get copyWith =>

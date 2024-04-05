@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:foodie/core/data/share_pref.dart';
 import 'package:foodie/feature/setting/provider/app_provider.dart';
@@ -75,6 +77,23 @@ class AppRepository {
         } else {
           debugPrint(response.data['mess']);
           throw Exception(response.data['mess'] ?? 'logout failed');
+        }
+      },
+      (error, stackTrace) => error.toString(),
+    );
+  }
+
+  TaskEither<String, bool> updateProfileImage({required File? userAvatar}) {
+    return TaskEither.tryCatch(
+      () async {
+        final response = await appProvider.updateProfileImage(
+          userAvatar: userAvatar,
+        );
+        if (response.data['mess'] == 'success') {
+          return true;
+        } else {
+          debugPrint(response.data['mess']);
+          throw Exception(response.data['mess'] ?? 'updateProfileImage failed');
         }
       },
       (error, stackTrace) => error.toString(),

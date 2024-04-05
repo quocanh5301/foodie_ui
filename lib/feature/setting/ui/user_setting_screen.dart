@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -101,20 +102,17 @@ class UserSettingScreen extends StatelessWidget {
         },
       );
 
-  _showImagePickerChoices(
+  _showImagePickerChoices({
     //!qa
-    BuildContext parrentContext,
-  ) {
+    required BuildContext parrentContext,
+    required FutureOr<dynamic> Function(dynamic) callBack,
+  }) {
     showModalBottomSheet(
       context: parrentContext,
       builder: (BuildContext imagePickerContext) {
         return RecipeImagePicker();
       },
-    ).then((chosenImg) async {
-      if (chosenImg != null) {
-        //do sthg
-      }
-    });
+    ).then(callBack);
   }
 
   @override
@@ -146,12 +144,15 @@ class UserSettingScreen extends StatelessWidget {
               if (state.logOutStatus == LogOutStatus.success) {
                 const LoginRoute().go(context);
               }
+              if (state.updateProfileImageStatus ==
+                  UpdateProfileImageStatus.success) {
+                context.read<AppCubit>().getUserProfile();
+              }
             },
             buildWhen: (previous, current) =>
                 previous.getUSerInfoStatus != current.getUSerInfoStatus,
             builder: (context, state) {
               return Container(
-                // height: AppStyles.screenH,
                 width: AppStyles.screenW,
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
@@ -159,8 +160,18 @@ class UserSettingScreen extends StatelessWidget {
                   children: [
                     const VerticalSpace(100),
                     AvatarCard(
-                      onTap: () => _showImagePickerChoices(context),
-                      imagePath: 'https://i.imgur.com/BoN9kdC.png',
+                      onTap: () => _showImagePickerChoices(
+                        parrentContext: context,
+                        callBack: (chosenImg) async {
+                          if (chosenImg != null) {
+                            //do sthg
+                            await context.read<AppCubit>().updateProfileImage(
+                                  imagPath: (chosenImg as File).path,
+                                );
+                          }
+                        },
+                      ),
+                      imagePath: SharedPref.getUserInfo().userImage ?? '',
                       height: AppStyles.width(100),
                     ),
                     const VerticalSpace(10),

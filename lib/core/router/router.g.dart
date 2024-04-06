@@ -12,6 +12,8 @@ List<RouteBase> get $appRoutes => [
       $homeRoute,
       $recipeDetailRoute,
       $userSettingRoute,
+      $userInfoUpdateRoute,
+      $userPasswordUpdateRoute,
     ];
 
 RouteBase get $loginRoute => GoRouteData.$route(
@@ -118,6 +120,52 @@ extension $UserSettingRouteExtension on UserSettingRoute {
 
   String get location => GoRouteData.$location(
         '/setting',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $userInfoUpdateRoute => GoRouteData.$route(
+      path: '/update_info',
+      factory: $UserInfoUpdateRouteExtension._fromState,
+    );
+
+extension $UserInfoUpdateRouteExtension on UserInfoUpdateRoute {
+  static UserInfoUpdateRoute _fromState(GoRouterState state) =>
+      const UserInfoUpdateRoute();
+
+  String get location => GoRouteData.$location(
+        '/update_info',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $userPasswordUpdateRoute => GoRouteData.$route(
+      path: '/update_password',
+      factory: $UserPasswordUpdateRouteExtension._fromState,
+    );
+
+extension $UserPasswordUpdateRouteExtension on UserPasswordUpdateRoute {
+  static UserPasswordUpdateRoute _fromState(GoRouterState state) =>
+      const UserPasswordUpdateRoute();
+
+  String get location => GoRouteData.$location(
+        '/update_password',
       );
 
   void go(BuildContext context) => context.go(location);

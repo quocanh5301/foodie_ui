@@ -4,29 +4,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:foodie/core/app_state/bloc/app_cubit.dart';
-import 'package:foodie/core/app_state/bloc/app_state.dart';
+import 'package:foodie/feature/setting/bloc/app_cubit.dart';
+import 'package:foodie/feature/setting/bloc/app_state.dart';
 import 'package:foodie/core/injection.dart';
-import 'package:foodie/core/util/notification.dart';
 import 'package:foodie/core/router/router.dart';
 import 'package:foodie/core/data/share_pref.dart';
 import 'package:foodie/core/resource/styles.dart';
+import 'package:foodie/core/util/notification.dart';
 import 'package:foodie/firebase_options.dart';
 import 'package:foodie/generated/l10n.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:foodie/core/injection.dart' as di;
 
-//!qa notification
-NotificationHelper notificationHelper = NotificationHelper();
-
 @pragma('vm:entry-point')
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  debugPrint('Handling a background message ${message.data['title']} ${message.data['content']}');
-  notificationHelper.handleNotificationSetting(
-    message.data['title'],
-    message.data['content'],
-  );
+Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  debugPrint(
+      'Handling a background message ${message.data['title']} ${message.data['content']}');
+  try {
+    LocalNotificationHelper.handleNotificationSetting(
+      message.data['title'],
+      message.data['content'],
+    );
+  } catch (e) {
+    debugPrint('Handling a background message error $e');
+  }
 }
 
 void main() async {
@@ -34,12 +36,8 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   SharedPref.prefs = await SharedPreferences.getInstance();
   await di.init();
-
-  //!qa notification
-  notificationHelper.initNotifications(
-    backgroundNoti: _firebaseMessagingBackgroundHandler,
-  );
-
+  bool? initNoti = await LocalNotificationHelper.initNotificationLocal();
+  debugPrint('init notification $initNoti');
   runApp(const MyApp());
 }
 
@@ -49,7 +47,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl<AppCubit>()..loadCurrentLanguage(),
+      create: (context) => sl<AppCubit>()
+        ..loadCurrentLanguage()
+        ..setNotificationSetting()
+        ..initNotificationsFirebase(
+          backgroundNoti: firebaseMessagingBackgroundHandler,
+        ),
       child: BlocBuilder<AppCubit, AppState>(
         builder: (context, state) {
           return ScreenUtilInit(

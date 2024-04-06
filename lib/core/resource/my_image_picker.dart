@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -30,8 +29,6 @@ class MyImagePicker {
       maxWidth: 512,
       maxHeight: 512,
     );
-    debugPrint('QA test file ${croppedFile?.path ?? 'null'}');
-
     if (croppedFile != null) {
       return File(croppedFile.path);
     }

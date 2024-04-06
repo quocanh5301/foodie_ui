@@ -35,4 +35,5 @@ class AppImage {
       "assets/images/ic_user_screen_curve.svg";
   static const String icEditProfile = "assets/images/ic_edit_profile.svg";
   static const String icLanguage = "assets/images/ic_language.svg";
+  static const String icPrivacy = "assets/images/ic_privacy.svg";
 }

@@ -19,7 +19,6 @@ class LoginRepository {
   TaskEither<String, bool> login(
       {required String email, required String password}) {
     return TaskEither.tryCatch(() async {
-      debugPrint('login repo $email $password');
       final response =
           await loginProvider.login(email: email, password: password);
       if (response.data['mess'] == 'success') {
@@ -46,14 +45,5 @@ class LoginRepository {
         throw Exception(response.data['mess'] ?? 'Login failed');
       }
     }, (error, stackTrace) => error.toString());
-  }
-
-  void registerFirebaseMessaging() {
-    // firebaseMessaging.getToken().then((token) {
-    //   if (token != null) {
-    //     loginProvider.updateFirebaseMessagingToken(firebaseToken: token);
-    //     firebaseMessaging.subscribeToTopic('all');
-    //   }
-    // });
   }
 }

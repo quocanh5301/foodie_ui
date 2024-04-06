@@ -1,23 +1,14 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-// import 'package:foodie/core/data/share_pref.dart';
+import 'package:foodie/core/data/share_pref.dart';
 
-class NotificationHelper {
-  static const String channelId = "Foodie";
-  static const String channelName = "Foodie_app";
-
-  static bool helperNotificationOn = true;
-
-  NotificationHelper() {
-    // helperNotificationOn = SharedPref.getNotificationSetting();
-  }
-
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+class LocalNotificationHelper {
+  static FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
+  static const String _channelId = "Foodie";
+  static const String _channelName = "Foodie_app";
+  static const int _notificationId = 5042230;
 
-  Future<void> initNotifications(
-      {required Future<void> Function(RemoteMessage) backgroundNoti}) async {
+  static Future<bool?> initNotificationLocal() async {
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('app_icon');
 
@@ -33,78 +24,50 @@ class NotificationHelper {
       iOS: initializationSettingsDarwin,
     );
 
-    await flutterLocalNotificationsPlugin.initialize(
+    return await flutterLocalNotificationsPlugin.initialize(
       initializationSettings,
       onDidReceiveNotificationResponse: (notiRes) async {},
+      // onDidReceiveBackgroundNotificationResponse: (details) async {},
     );
-
-    //firebase
-    final fcmToken = FirebaseMessaging.instance;
-
-    NotificationSettings settings = await fcmToken.requestPermission(
-      alert: true,
-      announcement: false,
-      badge: true,
-      carPlay: false,
-      criticalAlert: false,
-      provisional: false,
-      sound: true,
-    );
-    debugPrint('User granted permission: ${settings.authorizationStatus}');
-
-    await fcmToken.getToken().then((token) {
-      // if (token != null) {
-
-      // debugPrint('token $token');
-      // }
-    });
-
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      if (message.notification != null) {
-        // get user to update sthg
-        debugPrint('message $message');
-      }
-    });
-
-    FirebaseMessaging.onBackgroundMessage(backgroundNoti);
   }
 
-  Future<void> handleNotificationSetting(
-    String title,
-    String body,
-  ) async {
-    if (helperNotificationOn) {
-      await scheduleNotification(title, body);
-    } else {
-      await cancelNotification();
-    }
-  }
-
-  Future<void> scheduleNotification(String title, String body) async {
-    const AndroidNotificationDetails androidNotificationDetails =
-        AndroidNotificationDetails(
-      channelId,
-      channelName,
+  static Future<void> _scheduleNotification(String title, String body) async {
+    AndroidNotificationDetails androidNotificationDetails =
+        const AndroidNotificationDetails(
+      _channelId,
+      _channelName,
       styleInformation: BigTextStyleInformation(''),
     );
 
     const DarwinNotificationDetails darwinNotificationDetails =
         DarwinNotificationDetails();
 
-    const NotificationDetails platformChannelSpecifics = NotificationDetails(
+    NotificationDetails platformChannelSpecifics = NotificationDetails(
       android: androidNotificationDetails,
       iOS: darwinNotificationDetails,
     );
 
     await flutterLocalNotificationsPlugin.show(
-      0, // Notification ID
+      _notificationId, // Notification ID
       title, // Notification title
       body, // Notification body
       platformChannelSpecifics,
     );
   }
 
-  Future<void> cancelNotification() async {
-    await flutterLocalNotificationsPlugin.cancel(0);
+  static Future<void> handleNotificationSetting(
+    String title,
+    String body,
+  ) async {
+    final notificationOn = await SharedPref.getNotificationSetting();
+    if (notificationOn) {
+      await _scheduleNotification(title, body);
+    } else {
+      await _cancelNotification();
+    }
+  }
+
+  static Future<void> _cancelNotification() async {
+    await flutterLocalNotificationsPlugin.cancel(_notificationId);
   }
 }

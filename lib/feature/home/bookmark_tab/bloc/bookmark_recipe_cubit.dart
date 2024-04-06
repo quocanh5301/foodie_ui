@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/feature/home/bookmark_tab/bloc/bookmark_recipe_state.dart';
 import 'package:foodie/feature/home/bookmark_tab/repository/bookmark_recipe_repository.dart';
@@ -29,7 +28,6 @@ class BookmarkRecipeCubit extends Cubit<BookmarkRecipeState> {
         ),
       ),
       (response) {
-        debugPrint(response.recipeList.toString());
         if (response.recipeList != null) {
           if (response.recipeList!.length <
               bookmarkRecipeRepository.bookmarkRecipeProvider.pageSize) {

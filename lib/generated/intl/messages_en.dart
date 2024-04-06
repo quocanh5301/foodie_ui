@@ -33,14 +33,25 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Your Bookmark Recipe"),
         "camera": MessageLookupByLibrary.simpleMessage("Camera"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "changePassword":
+            MessageLookupByLibrary.simpleMessage("Change Password"),
         "chooseAnotherPhotoButton":
             MessageLookupByLibrary.simpleMessage("Choose Another Photo"),
         "comment": MessageLookupByLibrary.simpleMessage("Comments"),
         "commentsFilter": MessageLookupByLibrary.simpleMessage("Comments"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "confirmNewPassword":
+            MessageLookupByLibrary.simpleMessage("Confirm New Password"),
+        "confirmNewPasswordEmpty": MessageLookupByLibrary.simpleMessage(
+            "Confirmation Password must not be empty"),
+        "confirmNewPasswordHint": MessageLookupByLibrary.simpleMessage(
+            "Enter Your New Password Again"),
         "createNewRecipe":
             MessageLookupByLibrary.simpleMessage("Create New Recipe !!!"),
         "detail": MessageLookupByLibrary.simpleMessage("Detail"),
+        "editPassword":
+            MessageLookupByLibrary.simpleMessage("Edit your password"),
+        "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailEmpty":
@@ -53,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Empty Ingredient"),
         "emptyRecipe": MessageLookupByLibrary.simpleMessage("No Recipe Found"),
         "emptyReview": MessageLookupByLibrary.simpleMessage("No Review Found"),
+        "emptyUserDescription":
+            MessageLookupByLibrary.simpleMessage("User has no description"),
         "enterReview":
             MessageLookupByLibrary.simpleMessage("Enter your review here..."),
         "explore": MessageLookupByLibrary.simpleMessage(
@@ -81,10 +94,19 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Already have an account? "),
         "loginText2": MessageLookupByLibrary.simpleMessage("Log in"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "logoutDialogContent": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to log out of this account?"),
+        "logoutDialogTitle":
+            MessageLookupByLibrary.simpleMessage("Logging Out"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "nameError":
             MessageLookupByLibrary.simpleMessage("Please fill in your name"),
         "nameHint": MessageLookupByLibrary.simpleMessage("Enter your Name"),
+        "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
+        "newPasswordEmpty": MessageLookupByLibrary.simpleMessage(
+            "Old Password must not be empty"),
+        "newPasswordHint":
+            MessageLookupByLibrary.simpleMessage("Enter Your New Password"),
         "noBookmarkRecipefound":
             MessageLookupByLibrary.simpleMessage("No Bookmark Recipe Found"),
         "noDescription": MessageLookupByLibrary.simpleMessage(
@@ -108,6 +130,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "numOfFollower": MessageLookupByLibrary.simpleMessage("Follwers"),
         "numOfIngredients": MessageLookupByLibrary.simpleMessage("Ingredients"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "oldPassword": MessageLookupByLibrary.simpleMessage("Old Password"),
+        "oldPasswordEmpty": MessageLookupByLibrary.simpleMessage(
+            "Old Password must not be empty"),
+        "oldPasswordHint":
+            MessageLookupByLibrary.simpleMessage("Enter Your Old Password"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordEmpty":
             MessageLookupByLibrary.simpleMessage("Password must not be empty"),
@@ -153,8 +180,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("\'Remove Photo\'"),
         "review": MessageLookupByLibrary.simpleMessage("Reviews"),
         "searchAll": MessageLookupByLibrary.simpleMessage("Search"),
+        "submit": MessageLookupByLibrary.simpleMessage("SUBMIT"),
         "topRecipe": MessageLookupByLibrary.simpleMessage("Top Recipe"),
         "updateAt": MessageLookupByLibrary.simpleMessage("Update At"),
+        "userDescription": MessageLookupByLibrary.simpleMessage("Description"),
         "writeReview": MessageLookupByLibrary.simpleMessage(
             "Write a review for this recipe"),
         "yourProfile": MessageLookupByLibrary.simpleMessage("Your Profile"),

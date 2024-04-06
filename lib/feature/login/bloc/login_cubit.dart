@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/feature/login/bloc/login_state.dart';
 import 'package:foodie/feature/login/repository/login_repository.dart';
@@ -10,7 +9,6 @@ class LoginCubit extends Cubit<LoginState> {
   final LoginRepository loginRepository;
 
   Future<void> login() async {
-    debugPrint('login ${state.email} ${state.password}');
     emit(
       state.copyWith(
         loginStatus: LoginStatus.loading,

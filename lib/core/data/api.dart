@@ -3,7 +3,7 @@ import 'package:foodie/core/router/router.dart';
 import 'package:foodie/core/data/share_pref.dart';
 
 final apiRequest = Dio(BaseOptions(
-  baseUrl: 'http://192.168.1.226:3000/',
+  baseUrl: 'http://192.168.1.10:3000/',
   connectTimeout: const Duration(minutes: 1),
   receiveTimeout: const Duration(minutes: 1),
   headers: {
@@ -13,6 +13,7 @@ final apiRequest = Dio(BaseOptions(
 
 class Endpoints {
   static String login = 'authenticate/logIn';
+  static String logout = 'authenticate/logOut';
   static String register = 'register/registerUser';
   static String refreshToken = 'authenticate/refreshToken';
   static String getProfileImage = 'user/getProfileImage';
@@ -35,6 +36,7 @@ class Endpoints {
   static String getReviewsOfRecipe = 'recipe/getReviewOnRecipe';
   static String rateRecipe = 'recipe/rateRecipe';
   static String getPersonalRatingForRecipe = 'recipe/getPersonalRatingForRecipe';
+  static String getUserProfile = 'user/getUserProfile';
 }
 
 class Token {

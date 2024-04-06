@@ -98,5 +98,22 @@
     "notification": "Notifications",
     "language": "Language",
     "lang": "English",
-    "logout": "Logout"
+    "logout": "Logout",
+    "changePassword": "Change Password",
+    "editProfile": "Edit Profile",
+    "submit": "SUBMIT",
+    "userDescription": "Description",
+    "emptyUserDescription": "User has no description",
+    "oldPassword": "Old Password",
+    "oldPasswordHint": "Enter Your Old Password",
+    "oldPasswordEmpty": "Old Password must not be empty",
+    "newPassword": "New Password",
+    "newPasswordHint": "Enter Your New Password",
+    "newPasswordEmpty": "Old Password must not be empty",
+    "confirmNewPassword": "Confirm New Password",
+    "confirmNewPasswordHint": "Enter Your New Password Again",
+    "confirmNewPasswordEmpty": "Confirmation Password must not be empty",
+    "editPassword": "Edit your password",
+    "logoutDialogTitle": "Logging Out",
+    "logoutDialogContent": "Are you sure you want to log out of this account?"
 }

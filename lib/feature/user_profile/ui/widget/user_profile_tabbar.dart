@@ -2,20 +2,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/core/resource/styles.dart';
-import 'package:foodie/feature/home/profile_tab/bloc/profile_cubit.dart';
-import 'package:foodie/feature/home/profile_tab/bloc/profile_state.dart';
-import 'package:foodie/feature/home/profile_tab/ui/widget/tab_bar/review_tab.dart';
-import 'package:foodie/feature/home/profile_tab/ui/widget/tab_bar/my_recipe.dart';
+import 'package:foodie/feature/user_profile/bloc/user_profile_cubit.dart';
+import 'package:foodie/feature/user_profile/bloc/user_profile_state.dart';
+import 'package:foodie/feature/user_profile/ui/widget/tab_bar/review_tab.dart';
+import 'package:foodie/feature/user_profile/ui/widget/tab_bar/user_recipe.dart';
+
 import 'package:foodie/generated/l10n.dart';
 
-class ProfileTabWidget extends StatelessWidget {
-  const ProfileTabWidget({
+class UserProfileTabWidget extends StatelessWidget {
+  const UserProfileTabWidget({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProfileCubit, ProfileState>(
+    return BlocBuilder<UserProfileCubit, UserProfileState>(
       buildWhen: (previous, current) =>
           previous.currentTab != current.currentTab,
       builder: (context, state) {
@@ -26,7 +27,7 @@ class ProfileTabWidget extends StatelessWidget {
             children: [
               TabBar(
                 onTap: (tapNumber) =>
-                    context.read<ProfileCubit>().setCurrentTab(tapNumber),
+                    context.read<UserProfileCubit>().setCurrentTab(tapNumber),
                 labelColor: Colors.white,
                 indicatorColor: '#DBA510'.toColor(),
                 dividerColor: Colors.transparent,
@@ -99,9 +100,13 @@ class ProfileTabWidget extends StatelessWidget {
                     //   ),
                     // ),
                   ),
+                  // Tab(
+                  //   // text: S.of(context).document,
+                  // ),
                 ],
               ),
-              _buildTabContent(state.currentTab, context.read<ProfileCubit>()),
+              _buildTabContent(
+                  state.currentTab, context.read<UserProfileCubit>()),
             ],
           ),
         );
@@ -109,12 +114,12 @@ class ProfileTabWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildTabContent(int index, ProfileCubit cubit) {
+  Widget _buildTabContent(int index, UserProfileCubit cubit) {
     switch (index) {
       case 0:
-        return MyRecipe(cubit: cubit);
+        return UserRecipe(cubit: cubit);
       case 1:
-        return MyReviewTab(cubit: cubit);
+        return UserReviewTab(cubit: cubit);
       // case 2:
       //   return const DocumentTab();
       default:

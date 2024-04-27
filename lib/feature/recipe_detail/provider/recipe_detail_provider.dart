@@ -66,4 +66,14 @@ class RecipeDetailProvider {
       data: data,
     );
   }
+
+  Future<Response> bookmarkRecipe({required int recipeId, required int isBookmark,}) async =>
+      await apiRequest.post(
+        endpoint: Endpoints.bookmarkRecipe,
+        data: {
+          'userId': SharedPref.getUserInfo().id,
+          'recipeId': recipeId,
+          'isBookmark': isBookmark,
+        },
+      );
 }

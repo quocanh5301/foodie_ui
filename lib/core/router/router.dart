@@ -8,6 +8,7 @@ import 'package:foodie/feature/register/ui/register_screen.dart';
 import 'package:foodie/feature/setting/ui/user_setting_screen.dart';
 import 'package:foodie/feature/user_info_update/ui/user_info_update_screen.dart';
 import 'package:foodie/feature/user_password_update/ui/user_password_update_screen.dart';
+import 'package:foodie/feature/user_profile/ui/user_profile_screen.dart';
 import 'package:go_router/go_router.dart';
 
 part 'router.g.dart';
@@ -84,6 +85,17 @@ class UserPasswordUpdateRoute extends GoRouteData {
       UserPasswordUpdateScreen();
 }
 
+@TypedGoRoute<UserProfileRoute>(path: Routes.userInfo)
+class UserProfileRoute extends GoRouteData {
+  const UserProfileRoute({required this.userId});
+
+  final int userId;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      UserProfileScreen(userId: userId);
+}
+
 class Routes {
   static const String login = '/login';
   static const String register = '/register';
@@ -93,4 +105,5 @@ class Routes {
   static const String setting = '/setting';
   static const String udpateInfo = '/update_info';
   static const String udpatePassword = '/update_password';
+  static const String userInfo = '/user_info';
 }

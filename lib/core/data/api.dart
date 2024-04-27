@@ -22,21 +22,23 @@ class Endpoints {
   static String changePassword = 'user/changeUserPassword';
   static String updateUserInfo = 'user/updateUserData';
   static String getRecipeDetail = 'recipe/getRecipeDetail';
-  static String getUserBookmarkRecipe = 'recipe/getUserBookmarkRecipe'; //paging
+  static String getUserBookmarkRecipe = 'recipe/getUserBookmarkRecipe'; 
   static String getNewRecipe = 'recipe/getNewRecipe';
   static String getTopRecipe = 'recipe/getTopRecipe';
   static String getRecipeOfUser = 'recipe/getRecipeOfUser';
   static String createNewRecipe = 'recipe/createNewRecipe';
   static String bookmarkRecipe = 'recipe/bookmarkRecipe';
-  static String followUser = 'user/followUser';
+  static String followUser = 'user/followUser';//!
   static String setFirebaseToken = 'user/setFirebaseToken';
-  static String searchAll = 'recipe/searchRecipeAndUser';
+  static String searchAll = 'recipe/searchRecipeAndUser';//!
   static String getFollowedUserNewRecipe = 'recipe/getUserFollowingNewRecipe';
   static String getReviewOfUserRecipe = 'user/getReviewsOnUserRecipe';
   static String getReviewsOfRecipe = 'recipe/getReviewOnRecipe';
   static String rateRecipe = 'recipe/rateRecipe';
   static String getPersonalRatingForRecipe = 'recipe/getPersonalRatingForRecipe';
   static String getUserProfile = 'user/getUserProfile';
+  static String checkIsFollowOrNot = 'user/checkIsFollowOrNot';//!
+  static String getRecipeNumFollowerFollowing = 'user/getRecipeNumFollowerFollowing';
 }
 
 class Token {

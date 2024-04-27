@@ -1,55 +1,27 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/feature/home/profile_tab/bloc/profile_state.dart';
-import 'package:foodie/feature/home/profile_tab/repository/profile_repository.dart';
 import 'package:foodie/feature/setting/bloc/app_state.dart';
+import 'package:foodie/feature/user_profile/bloc/user_profile_state.dart';
+import 'package:foodie/feature/user_profile/repository/user_profile_repository.dart';
 
-class ProfileCubit extends Cubit<ProfileState> {
-  ProfileCubit({required this.profileRepository}) : super(const ProfileState());
+class UserProfileCubit extends Cubit<UserProfileState> {
+  UserProfileCubit({required this.userProfileRepository})
+      : super(const UserProfileState());
 
-  final ProfileRepository profileRepository;
+  final UserProfileRepository userProfileRepository;
 
-  Future<void> getUserProfile() async {
-    emit(
-      state.copyWith(
-        getUSerInfoStatus: GetUSerInfoStatus.loading,
-      ),
-    );
-    final result = await profileRepository.getUserProfile().run();
-
-    result.match(
-      (error) => emit(
-        state.copyWith(
-          mess: error,
-          getUSerInfoStatus: GetUSerInfoStatus.failure,
-        ),
-      ),
-      (response) async {
-        if (response) {
-          emit(
-            state.copyWith(
-              getUSerInfoStatus: GetUSerInfoStatus.success,
-            ),
-          );
-        } else {
-          emit(
-            state.copyWith(
-              getUSerInfoStatus: GetUSerInfoStatus.failure,
-            ),
-          );
-        }
-      },
-    );
-  }
-
-  Future<void> getReviewOfMyRecipe() async {
+  Future<void> getReviewOfUserRecipe() async {
     emit(
       state.copyWith(
         getUserReviewStatus: GetUserReviewStatus.loading,
         mess: '',
       ),
     );
-    final result = await profileRepository
-        .getReviewOfMyRecipe(page: state.userReviewPage)
+    final result = await userProfileRepository
+        .getReviewOfUserRecipe(
+          page: state.userReviewPage,
+          userId: state.userId,
+        )
         .run();
     result.match(
       (error) => emit(
@@ -61,7 +33,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       (success) {
         if (success.reviewList != null) {
           if (success.reviewList!.length <
-              profileRepository.profileProvider.pageSize) {
+              userProfileRepository.userProfileProvider.pageSize) {
             emit(
               state.copyWith(
                 getUserReviewStatus: GetUserReviewStatus.noMore,
@@ -105,18 +77,22 @@ class ProfileCubit extends Cubit<ProfileState> {
         mess: '',
       ),
     );
-    await getReviewOfMyRecipe();
+    await getReviewOfUserRecipe();
   }
 
-  Future<void> getMyRecipe() async {
+  Future<void> getRecipeOfUser() async {
     emit(
       state.copyWith(
         getUserRecipeStatus: GetUserRecipeStatus.loading,
         mess: '',
       ),
     );
-    final result =
-        await profileRepository.getMyRecipe(page: state.userRecipePage).run();
+    final result = await userProfileRepository
+        .getRecipeOfUser(
+          page: state.userRecipePage,
+          userId: state.userId,
+        )
+        .run();
     result.match(
       (error) => emit(
         state.copyWith(
@@ -127,7 +103,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       (success) {
         if (success.recipeList != null) {
           if (success.recipeList!.length <
-              profileRepository.profileProvider.pageSize) {
+              userProfileRepository.userProfileProvider.pageSize) {
             emit(
               state.copyWith(
                 getUserRecipeStatus: GetUserRecipeStatus.noMore,
@@ -171,17 +147,79 @@ class ProfileCubit extends Cubit<ProfileState> {
         mess: '',
       ),
     );
-    await getMyRecipe();
+    await getRecipeOfUser();
   }
 
-  Future<void> getUserRecipeNumFollowerFollowing() async {
+  Future<void> checkIsFollowOrNot({required int userId}) async {
+    emit(
+      state.copyWith(
+        checkUserFollowStatus: CheckUserFollowStatus.loading,
+        mess: '',
+      ),
+    );
+    final result = await userProfileRepository
+        .checkIsFollowOrNot(
+          userId: userId,
+        )
+        .run();
+    result.match(
+      (error) => emit(
+        state.copyWith(
+          checkUserFollowStatus: CheckUserFollowStatus.failure,
+          mess: error,
+        ),
+      ),
+      (checkResult) => emit(
+        state.copyWith(
+          checkUserFollowStatus: CheckUserFollowStatus.success,
+          isFollowedByCurrentuser: checkResult,
+        ),
+      ),
+    );
+  }
+
+  Future<void> getUserProfile({required int userId}) async {
+    emit(
+      state.copyWith(
+        getUSerInfoStatus: GetUSerInfoStatus.loading,
+        userId: userId,
+      ),
+    );
+    final result = await userProfileRepository
+        .getUserProfile(
+          userId: state.userId,
+        )
+        .run();
+
+    result.match(
+      (error) => emit(
+        state.copyWith(
+          mess: error,
+          getUSerInfoStatus: GetUSerInfoStatus.failure,
+        ),
+      ),
+      (user) async {
+        emit(
+          state.copyWith(
+            getUSerInfoStatus: GetUSerInfoStatus.success,
+            userInfo: user,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> getUserRecipeNumFollowerFollowing({required int userId}) async {
     emit(
       state.copyWith(
         getUserFollowerFollowingStatus: GetUserFollowerFollowingStatus.loading,
       ),
     );
-    final result =
-        await profileRepository.getUserRecipeNumFollowerFollowing().run();
+    final result = await userProfileRepository
+        .getUserRecipeNumFollowerFollowing(
+          userId: userId,
+        )
+        .run();
 
     result.match(
       (error) => emit(
@@ -199,6 +237,49 @@ class ProfileCubit extends Cubit<ProfileState> {
                 GetUserFollowerFollowingStatus.success,
           ),
         );
+      },
+    );
+  }
+
+  Future<void> followUser({
+    required int userId,
+    required int isFollow,
+  }) async {
+    emit(
+      state.copyWith(
+        followUserStatus: FollowUserStatus.loading,
+      ),
+    );
+    final result = await userProfileRepository
+        .followUser(
+          isFollow: isFollow,
+          userId: userId,
+        )
+        .run();
+
+    result.match(
+      (error) => emit(
+        state.copyWith(
+          mess: error,
+          followUserStatus: FollowUserStatus.failure,
+        ),
+      ),
+      (response) async {
+        if (response) {
+          emit(
+            state.copyWith(
+              isFollowedByCurrentuser: isFollow == 1 ? true : false,
+              followUserStatus: FollowUserStatus.success,
+            ),
+          );
+        } else {
+          emit(
+            state.copyWith(
+              mess: 'followUser failed',
+              followUserStatus: FollowUserStatus.failure,
+            ),
+          );
+        }
       },
     );
   }

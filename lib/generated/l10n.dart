@@ -1209,6 +1209,56 @@ class S {
       args: [],
     );
   }
+
+  /// `User Profile`
+  String get userProfile {
+    return Intl.message(
+      'User Profile',
+      name: 'userProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Follow`
+  String get follow {
+    return Intl.message(
+      'Follow',
+      name: 'follow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Following`
+  String get following {
+    return Intl.message(
+      'Following',
+      name: 'following',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Follower`
+  String get follower {
+    return Intl.message(
+      'Follower',
+      name: 'follower',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recipe`
+  String get recipeProfile {
+    return Intl.message(
+      'Recipe',
+      name: 'recipeProfile',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

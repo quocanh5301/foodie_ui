@@ -30,6 +30,9 @@ import 'package:foodie/feature/user_info_update/repository/user_info_update_repo
 import 'package:foodie/feature/user_password_update/bloc/user_password_update_cubit.dart';
 import 'package:foodie/feature/user_password_update/provider/user_password_update_provider.dart';
 import 'package:foodie/feature/user_password_update/repository/user_password_update_repository.dart';
+import 'package:foodie/feature/user_profile/bloc/user_profile_cubit.dart';
+import 'package:foodie/feature/user_profile/provider/user_profile_provider.dart';
+import 'package:foodie/feature/user_profile/repository/user_profile_repository.dart';
 import 'package:get_it/get_it.dart';
 
 final sl = GetIt.I;
@@ -45,6 +48,7 @@ Future<void> init() async {
   initRecipeDetail();
   initUpdateUserInfo();
   initUpdateUserPassword();
+  initUserProfile();
 }
 
 void initLogin() async {
@@ -107,4 +111,10 @@ void initUpdateUserPassword() async {
   sl.registerFactory(() => UserPasswordUpdateCubit(userPasswordUpdateRepository: sl()));
   sl.registerFactory(() => UserPasswordUpdateRepository(userPasswordUpdateProvider: sl()));
   sl.registerFactory(() => UserPasswordUpdateProvider(apiRequest: APIRequest()));
+}
+
+void initUserProfile() async {
+  sl.registerFactory(() => UserProfileCubit(userProfileRepository: sl()));
+  sl.registerFactory(() => UserProfileRepository(userProfileProvider: sl()));
+  sl.registerFactory(() => UserProfileProvider(apiRequest: APIRequest()));
 }

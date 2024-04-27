@@ -70,6 +70,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your review here..."),
         "explore": MessageLookupByLibrary.simpleMessage(
             "What would you like to cook today?"),
+        "follow": MessageLookupByLibrary.simpleMessage("Follow"),
+        "follower": MessageLookupByLibrary.simpleMessage("Follower"),
+        "following": MessageLookupByLibrary.simpleMessage("Following"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot Password?"),
         "forgotPasswordSuccess": MessageLookupByLibrary.simpleMessage(
@@ -166,6 +169,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "New Recipe From Your Followed User"),
         "recipeNewFollowNo": MessageLookupByLibrary.simpleMessage(
             "No new recipe from your followed user"),
+        "recipeProfile": MessageLookupByLibrary.simpleMessage("Recipe"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "registerSuccess": MessageLookupByLibrary.simpleMessage(
             "Registration successful. Please check your email to confirm your account"),
@@ -184,6 +188,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "topRecipe": MessageLookupByLibrary.simpleMessage("Top Recipe"),
         "updateAt": MessageLookupByLibrary.simpleMessage("Update At"),
         "userDescription": MessageLookupByLibrary.simpleMessage("Description"),
+        "userProfile": MessageLookupByLibrary.simpleMessage("User Profile"),
         "writeReview": MessageLookupByLibrary.simpleMessage(
             "Write a review for this recipe"),
         "yourProfile": MessageLookupByLibrary.simpleMessage("Your Profile"),

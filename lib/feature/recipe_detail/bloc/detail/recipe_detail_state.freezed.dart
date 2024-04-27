@@ -30,6 +30,8 @@ mixin _$RecipeDetailState {
       throw _privateConstructorUsedError;
   GetPersonalReviewStatus get getPersonalReviewStatus =>
       throw _privateConstructorUsedError;
+  BookmarkRecipeStatus get bookmarkRecipeStatus =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RecipeDetailStateCopyWith<RecipeDetailState> get copyWith =>
@@ -53,7 +55,8 @@ abstract class $RecipeDetailStateCopyWith<$Res> {
       PersonalReview personalReview,
       GetRecipeDetailStatus getRecipeDetailStatus,
       GetUserReviewStatus getUserReviewStatus,
-      GetPersonalReviewStatus getPersonalReviewStatus});
+      GetPersonalReviewStatus getPersonalReviewStatus,
+      BookmarkRecipeStatus bookmarkRecipeStatus});
 
   $RecipeDetailCopyWith<$Res> get recipeDetail;
   $PersonalReviewCopyWith<$Res> get personalReview;
@@ -83,6 +86,7 @@ class _$RecipeDetailStateCopyWithImpl<$Res, $Val extends RecipeDetailState>
     Object? getRecipeDetailStatus = null,
     Object? getUserReviewStatus = null,
     Object? getPersonalReviewStatus = null,
+    Object? bookmarkRecipeStatus = null,
   }) {
     return _then(_value.copyWith(
       code: null == code
@@ -129,6 +133,10 @@ class _$RecipeDetailStateCopyWithImpl<$Res, $Val extends RecipeDetailState>
           ? _value.getPersonalReviewStatus
           : getPersonalReviewStatus // ignore: cast_nullable_to_non_nullable
               as GetPersonalReviewStatus,
+      bookmarkRecipeStatus: null == bookmarkRecipeStatus
+          ? _value.bookmarkRecipeStatus
+          : bookmarkRecipeStatus // ignore: cast_nullable_to_non_nullable
+              as BookmarkRecipeStatus,
     ) as $Val);
   }
 
@@ -168,7 +176,8 @@ abstract class _$$RecipeDetailStateImplCopyWith<$Res>
       PersonalReview personalReview,
       GetRecipeDetailStatus getRecipeDetailStatus,
       GetUserReviewStatus getUserReviewStatus,
-      GetPersonalReviewStatus getPersonalReviewStatus});
+      GetPersonalReviewStatus getPersonalReviewStatus,
+      BookmarkRecipeStatus bookmarkRecipeStatus});
 
   @override
   $RecipeDetailCopyWith<$Res> get recipeDetail;
@@ -198,6 +207,7 @@ class __$$RecipeDetailStateImplCopyWithImpl<$Res>
     Object? getRecipeDetailStatus = null,
     Object? getUserReviewStatus = null,
     Object? getPersonalReviewStatus = null,
+    Object? bookmarkRecipeStatus = null,
   }) {
     return _then(_$RecipeDetailStateImpl(
       code: null == code
@@ -244,6 +254,10 @@ class __$$RecipeDetailStateImplCopyWithImpl<$Res>
           ? _value.getPersonalReviewStatus
           : getPersonalReviewStatus // ignore: cast_nullable_to_non_nullable
               as GetPersonalReviewStatus,
+      bookmarkRecipeStatus: null == bookmarkRecipeStatus
+          ? _value.bookmarkRecipeStatus
+          : bookmarkRecipeStatus // ignore: cast_nullable_to_non_nullable
+              as BookmarkRecipeStatus,
     ));
   }
 }
@@ -262,7 +276,8 @@ class _$RecipeDetailStateImpl implements _RecipeDetailState {
       this.personalReview = const PersonalReview(),
       this.getRecipeDetailStatus = GetRecipeDetailStatus.initial,
       this.getUserReviewStatus = GetUserReviewStatus.initial,
-      this.getPersonalReviewStatus = GetPersonalReviewStatus.initial})
+      this.getPersonalReviewStatus = GetPersonalReviewStatus.initial,
+      this.bookmarkRecipeStatus = BookmarkRecipeStatus.initial})
       : _userReviewList = userReviewList;
 
   @override
@@ -309,10 +324,13 @@ class _$RecipeDetailStateImpl implements _RecipeDetailState {
   @override
   @JsonKey()
   final GetPersonalReviewStatus getPersonalReviewStatus;
+  @override
+  @JsonKey()
+  final BookmarkRecipeStatus bookmarkRecipeStatus;
 
   @override
   String toString() {
-    return 'RecipeDetailState(code: $code, mess: $mess, currentTab: $currentTab, recipeId: $recipeId, recipeDetail: $recipeDetail, userReviewList: $userReviewList, userReviewPage: $userReviewPage, personalReview: $personalReview, getRecipeDetailStatus: $getRecipeDetailStatus, getUserReviewStatus: $getUserReviewStatus, getPersonalReviewStatus: $getPersonalReviewStatus)';
+    return 'RecipeDetailState(code: $code, mess: $mess, currentTab: $currentTab, recipeId: $recipeId, recipeDetail: $recipeDetail, userReviewList: $userReviewList, userReviewPage: $userReviewPage, personalReview: $personalReview, getRecipeDetailStatus: $getRecipeDetailStatus, getUserReviewStatus: $getUserReviewStatus, getPersonalReviewStatus: $getPersonalReviewStatus, bookmarkRecipeStatus: $bookmarkRecipeStatus)';
   }
 
   @override
@@ -340,7 +358,9 @@ class _$RecipeDetailStateImpl implements _RecipeDetailState {
                 other.getUserReviewStatus == getUserReviewStatus) &&
             (identical(
                     other.getPersonalReviewStatus, getPersonalReviewStatus) ||
-                other.getPersonalReviewStatus == getPersonalReviewStatus));
+                other.getPersonalReviewStatus == getPersonalReviewStatus) &&
+            (identical(other.bookmarkRecipeStatus, bookmarkRecipeStatus) ||
+                other.bookmarkRecipeStatus == bookmarkRecipeStatus));
   }
 
   @override
@@ -356,7 +376,8 @@ class _$RecipeDetailStateImpl implements _RecipeDetailState {
       personalReview,
       getRecipeDetailStatus,
       getUserReviewStatus,
-      getPersonalReviewStatus);
+      getPersonalReviewStatus,
+      bookmarkRecipeStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -378,7 +399,8 @@ abstract class _RecipeDetailState implements RecipeDetailState {
           final PersonalReview personalReview,
           final GetRecipeDetailStatus getRecipeDetailStatus,
           final GetUserReviewStatus getUserReviewStatus,
-          final GetPersonalReviewStatus getPersonalReviewStatus}) =
+          final GetPersonalReviewStatus getPersonalReviewStatus,
+          final BookmarkRecipeStatus bookmarkRecipeStatus}) =
       _$RecipeDetailStateImpl;
 
   @override
@@ -403,6 +425,8 @@ abstract class _RecipeDetailState implements RecipeDetailState {
   GetUserReviewStatus get getUserReviewStatus;
   @override
   GetPersonalReviewStatus get getPersonalReviewStatus;
+  @override
+  BookmarkRecipeStatus get bookmarkRecipeStatus;
   @override
   @JsonKey(ignore: true)
   _$$RecipeDetailStateImplCopyWith<_$RecipeDetailStateImpl> get copyWith =>

@@ -8,7 +8,7 @@ class ProfileProvider {
   final APIRequest apiRequest;
   final int pageSize = 5;
 
-  Future<Response> getRecipeOfUser({required int page}) async =>
+  Future<Response> getMyRecipe({required int page}) async =>
       await apiRequest.post(
         endpoint: Endpoints.getRecipeOfUser,
         data: {
@@ -18,13 +18,28 @@ class ProfileProvider {
         },
       );
 
-  Future<Response> getReviewOfUserRecipe({required int page}) async =>
+  Future<Response> getReviewOfMyRecipe({required int page}) async =>
       await apiRequest.post(
         endpoint: Endpoints.getReviewOfUserRecipe,
         data: {
           'userId': SharedPref.getUserInfo().id,
           'page': page,
           'pageSize': pageSize,
+        },
+      );
+
+  Future<Response> getUserProfile() async => await apiRequest.post(
+        endpoint: Endpoints.getUserProfile,
+        data: {
+          'userId': SharedPref.getUserInfo().id,
+        },
+      );
+
+  Future<Response> getRecipeNumFollowerFollowing() async =>
+      await apiRequest.post(
+        endpoint: Endpoints.getRecipeNumFollowerFollowing,
+        data: {
+          'userId': SharedPref.getUserInfo().id,
         },
       );
 }

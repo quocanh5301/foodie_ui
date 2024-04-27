@@ -84,8 +84,24 @@ class RecipeDetailRepository {
       if (response.data['mess'] == 'success') {
         return true;
       } else {
-        throw Exception(
-            response.data['mess'] ?? 'addNewReview failed');
+        throw Exception(response.data['mess'] ?? 'addNewReview failed');
+      }
+    }, (error, stackTrace) => error.toString());
+  }
+
+  TaskEither<String, bool> bookmarkRecipe({
+    required int recipeId,
+    required int isBookmark,
+  }) {
+    return TaskEither.tryCatch(() async {
+      final response = await recipeDetailProvider.bookmarkRecipe(
+        recipeId: recipeId,
+        isBookmark: isBookmark,
+      );
+      if (response.data['mess'] == 'success') {
+        return true;
+      } else {
+        throw Exception(response.data['mess'] ?? 'bookmarkRecipe failed');
       }
     }, (error, stackTrace) => error.toString());
   }

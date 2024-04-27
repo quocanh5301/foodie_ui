@@ -1,10 +1,12 @@
 import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:foodie/core/injection.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/firebase_image.dart';
+import 'package:foodie/feature/home/profile_tab/bloc/profile_state.dart';
 import 'package:foodie/feature/recipe_detail/bloc/detail/recipe_detail_cubit.dart';
 import 'package:foodie/feature/recipe_detail/bloc/detail/recipe_detail_state.dart';
 import 'package:foodie/feature/recipe_detail/ui/widget/owner_info_card.dart';
@@ -19,32 +21,57 @@ class RecipeDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: '#2b2b2b'.toColor(),
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(100, 0, 0, 0),
-        title: Text(
-          S.of(context).recipe,
-          style: AppStyles.f16sb().copyWith(
-            color: '#FF6B00'.toColor(),
-          ),
-        ),
-        centerTitle: true,
-        iconTheme: IconThemeData(
-          color: '#FF6B00'.toColor(),
-        ),
-      ),
-      body: BlocProvider<RecipeDetailCubit>(
-        create: (context) => sl<RecipeDetailCubit>()
-          ..getRecipeDetail(recipeId: recipeId)
-          ..getReviewOfRecipe()
-          ..getRecipePersonalReview(recipeId: recipeId),
-        child: BlocBuilder<RecipeDetailCubit, RecipeDetailState>(
-          buildWhen: (previous, current) =>
-              previous.getRecipeDetailStatus != current.getRecipeDetailStatus,
-          builder: (context, state) {
-            return EasyRefresh(
+    return BlocProvider<RecipeDetailCubit>(
+      create: (context) => sl<RecipeDetailCubit>()
+        ..getRecipeDetail(recipeId: recipeId)
+        ..getReviewOfRecipe()
+        ..getRecipePersonalReview(recipeId: recipeId),
+      child: BlocConsumer<RecipeDetailCubit, RecipeDetailState>(
+        listener: (context, state) {
+          if (state.bookmarkRecipeStatus == BookmarkRecipeStatus.success) {
+            context
+                .read<RecipeDetailCubit>()
+                .getRecipeDetail(recipeId: recipeId);
+          }
+        },
+        buildWhen: (previous, current) =>
+            previous.getRecipeDetailStatus != current.getRecipeDetailStatus ||
+            previous.bookmarkRecipeStatus != current.bookmarkRecipeStatus,
+        builder: (context, state) {
+          return Scaffold(
+            backgroundColor: '#2b2b2b'.toColor(),
+            extendBodyBehindAppBar: true,
+            appBar: AppBar(
+              backgroundColor: const Color.fromARGB(100, 0, 0, 0),
+              title: Text(
+                S.of(context).recipe,
+                style: AppStyles.f16sb().copyWith(
+                  color: '#FF6B00'.toColor(),
+                ),
+              ),
+              centerTitle: true,
+              iconTheme: IconThemeData(
+                color: '#FF6B00'.toColor(),
+              ),
+              actions: [
+                IconButton(
+                  onPressed: state.bookmarkRecipeStatus !=
+                          BookmarkRecipeStatus.loading
+                      ? () => context.read<RecipeDetailCubit>().bookmarkRecipe()
+                      : () => {},
+                  icon: SvgPicture.asset(
+                    AppImage.icBookmark,
+                    colorFilter: ColorFilter.mode(
+                      ((state.recipeDetail.isBookmark ?? 0) == 0)
+                          ? Colors.white
+                          : '#DBA510'.toColor(),
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            body: EasyRefresh(
               header: MaterialHeader(
                 backgroundColor: '#FF6B00'.toColor(),
                 color: Colors.white,
@@ -54,8 +81,23 @@ class RecipeDetailScreen extends StatelessWidget {
                 backgroundColor: '#FF6B00'.toColor(),
                 color: Colors.white,
               ),
-              onLoad: () async {},
-              onRefresh: () {},
+              onLoad: () async {
+                if (state.currentTab == 1) {
+                  if (state.getUserReviewStatus == GetUserReviewStatus.noMore) {
+                    return IndicatorResult.noMore;
+                  }
+                  await context.read<RecipeDetailCubit>().getReviewOfRecipe();
+                }
+              },
+              onRefresh: () {
+                if (state.currentTab == 0) {
+                  context
+                      .read<RecipeDetailCubit>()
+                      .getRecipeDetail(recipeId: recipeId);
+                } else {
+                  context.read<RecipeDetailCubit>().refreshReview();
+                }
+              },
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -156,9 +198,9 @@ class RecipeDetailScreen extends StatelessWidget {
                   ],
                 ),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

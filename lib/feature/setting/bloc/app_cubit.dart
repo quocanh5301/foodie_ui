@@ -113,7 +113,6 @@ class AppCubit extends Cubit<AppState> {
         ),
       ),
       (response) async {
-        debugPrint('getUserProfile $response');
         if (response) {
           emit(
             state.copyWith(

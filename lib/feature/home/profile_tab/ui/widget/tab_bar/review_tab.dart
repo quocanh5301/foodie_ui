@@ -8,7 +8,7 @@ import 'package:foodie/generated/l10n.dart';
 
 class MyReviewTab extends StatelessWidget {
   MyReviewTab({super.key, required this.cubit}) {
-    cubit.getReviewOfUserRecipe();
+    cubit.getReviewOfMyRecipe();
   }
 
   final ProfileCubit cubit;

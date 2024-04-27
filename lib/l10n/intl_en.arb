@@ -115,5 +115,10 @@
     "confirmNewPasswordEmpty": "Confirmation Password must not be empty",
     "editPassword": "Edit your password",
     "logoutDialogTitle": "Logging Out",
-    "logoutDialogContent": "Are you sure you want to log out of this account?"
+    "logoutDialogContent": "Are you sure you want to log out of this account?",
+    "userProfile": "User Profile",
+    "follow": "Follow",
+    "following": "Following",
+    "follower": "Follower",
+    "recipeProfile": "Recipe"
 }

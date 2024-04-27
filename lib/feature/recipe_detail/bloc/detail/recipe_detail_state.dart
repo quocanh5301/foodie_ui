@@ -27,9 +27,13 @@ class RecipeDetailState with _$RecipeDetailState {
     GetUserReviewStatus getUserReviewStatus,
     @Default(GetPersonalReviewStatus.initial)
     GetPersonalReviewStatus getPersonalReviewStatus,
+    @Default(BookmarkRecipeStatus.initial)
+    BookmarkRecipeStatus bookmarkRecipeStatus,
   }) = _RecipeDetailState;
 }
 
 enum GetRecipeDetailStatus { initial, loading, success, failure }
 
 enum GetPersonalReviewStatus { initial, loading, success, failure }
+
+enum BookmarkRecipeStatus { initial, loading, success, failure }

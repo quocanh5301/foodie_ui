@@ -86,6 +86,7 @@ class RecipeDetailCubit extends Cubit<RecipeDetailState> {
         getRecipeDetailStatus: GetRecipeDetailStatus.loading,
         mess: '',
         recipeId: recipeId,
+        bookmarkRecipeStatus: BookmarkRecipeStatus.initial,
       ),
     );
     final result =
@@ -132,6 +133,35 @@ class RecipeDetailCubit extends Cubit<RecipeDetailState> {
           state.copyWith(
             getPersonalReviewStatus: GetPersonalReviewStatus.success,
             personalReview: success.review ?? state.personalReview,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> bookmarkRecipe() async {
+    emit(
+      state.copyWith(
+        getPersonalReviewStatus: GetPersonalReviewStatus.loading,
+        mess: '',
+      ),
+    );
+    final result = await recipeDetailRepository
+        .bookmarkRecipe(
+            recipeId: state.recipeId,
+            isBookmark: (state.recipeDetail.isBookmark ?? 0) ^ 1)
+        .run();
+    result.match(
+      (error) => emit(
+        state.copyWith(
+          bookmarkRecipeStatus: BookmarkRecipeStatus.failure,
+          mess: error,
+        ),
+      ),
+      (success) {
+        return emit(
+          state.copyWith(
+            bookmarkRecipeStatus: BookmarkRecipeStatus.success,
           ),
         );
       },

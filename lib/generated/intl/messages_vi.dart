@@ -178,6 +178,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "yourRecipeTab":
             MessageLookupByLibrary.simpleMessage("Công thức của bạn"),
         "yourReview": MessageLookupByLibrary.simpleMessage("BÌNH LUẬN CỦA BẠN"),
-        "yourReviews": MessageLookupByLibrary.simpleMessage("Bình luận")
+        "yourReviews": MessageLookupByLibrary.simpleMessage("Đánh giá cho bạn")
       };
 }

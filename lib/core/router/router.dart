@@ -5,6 +5,7 @@ import 'package:foodie/feature/home/home_base_tab.dart';
 import 'package:foodie/feature/login/ui/login_screen.dart';
 import 'package:foodie/feature/recipe_detail/ui/recipe_detail_screen.dart';
 import 'package:foodie/feature/register/ui/register_screen.dart';
+import 'package:foodie/feature/search_result/ui/search_result_screen.dart';
 import 'package:foodie/feature/setting/ui/user_setting_screen.dart';
 import 'package:foodie/feature/user_info_update/ui/user_info_update_screen.dart';
 import 'package:foodie/feature/user_password_update/ui/user_password_update_screen.dart';
@@ -96,6 +97,17 @@ class UserProfileRoute extends GoRouteData {
       UserProfileScreen(userId: userId);
 }
 
+@TypedGoRoute<SearchResultRoute>(path: Routes.searchResult)
+class SearchResultRoute extends GoRouteData {
+  const SearchResultRoute({required this.keyword});
+
+  final String keyword;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      SearchResultScreen(keyword: keyword);
+}
+
 class Routes {
   static const String login = '/login';
   static const String register = '/register';
@@ -106,4 +118,5 @@ class Routes {
   static const String udpateInfo = '/update_info';
   static const String udpatePassword = '/update_password';
   static const String userInfo = '/user_info';
+  static const String searchResult = '/search_result';
 }

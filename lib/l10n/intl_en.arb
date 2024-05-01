@@ -120,5 +120,9 @@
     "follow": "Follow",
     "following": "Following",
     "follower": "Follower",
-    "recipeProfile": "Recipe"
+    "recipeProfile": "Recipe",
+    "searchResult": "Search Result For",
+    "noUserMatchSearch": "No User Found",
+    "noRecipeMatchSearch": "No Recipe Found",
+    "user": "User"
 }

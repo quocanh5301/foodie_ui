@@ -1259,6 +1259,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Search Result For`
+  String get searchResult {
+    return Intl.message(
+      'Search Result For',
+      name: 'searchResult',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No User Found`
+  String get noUserMatchSearch {
+    return Intl.message(
+      'No User Found',
+      name: 'noUserMatchSearch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Recipe Found`
+  String get noRecipeMatchSearch {
+    return Intl.message(
+      'No Recipe Found',
+      name: 'noRecipeMatchSearch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User`
+  String get user {
+    return Intl.message(
+      'User',
+      name: 'user',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

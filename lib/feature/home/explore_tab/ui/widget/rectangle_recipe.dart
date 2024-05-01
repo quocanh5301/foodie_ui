@@ -26,9 +26,7 @@ class RectangleRecipeItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () =>
-          RecipeDetailRoute(recipeId: recipeBasic.id ?? 0).push(context)
-      // context.goRecipeDetail(recipeBasic.recipeId)
-      ,
+          RecipeDetailRoute(recipeId: recipeBasic.id ?? 0).push(context),
       child: Stack(
         children: [
           Stack(

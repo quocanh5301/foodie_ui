@@ -48,7 +48,7 @@ class FollowUserRecipeList extends StatelessWidget {
                       ),
                       const VerticalSpace(10),
                       SizedBox(
-                        height: AppStyles.screenW / 1.8,
+                        height: AppStyles.screenW / 1.62,
                         child: ListView.separated(
                           scrollDirection: Axis.horizontal,
                           itemCount: state.followUserRecipeList.length,

@@ -128,7 +128,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "This recipe has no instruction !"),
         "noNameRecipe": MessageLookupByLibrary.simpleMessage("No Name Recipe"),
         "noNameUser": MessageLookupByLibrary.simpleMessage("No Name User"),
+        "noRecipeMatchSearch":
+            MessageLookupByLibrary.simpleMessage("No Recipe Found"),
         "noReviewText": MessageLookupByLibrary.simpleMessage("No Review"),
+        "noUserMatchSearch":
+            MessageLookupByLibrary.simpleMessage("No User Found"),
         "notification": MessageLookupByLibrary.simpleMessage("Notifications"),
         "numOfFollower": MessageLookupByLibrary.simpleMessage("Follwers"),
         "numOfIngredients": MessageLookupByLibrary.simpleMessage("Ingredients"),
@@ -184,9 +188,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("\'Remove Photo\'"),
         "review": MessageLookupByLibrary.simpleMessage("Reviews"),
         "searchAll": MessageLookupByLibrary.simpleMessage("Search"),
+        "searchResult":
+            MessageLookupByLibrary.simpleMessage("Search Result For"),
         "submit": MessageLookupByLibrary.simpleMessage("SUBMIT"),
         "topRecipe": MessageLookupByLibrary.simpleMessage("Top Recipe"),
         "updateAt": MessageLookupByLibrary.simpleMessage("Update At"),
+        "user": MessageLookupByLibrary.simpleMessage("User"),
         "userDescription": MessageLookupByLibrary.simpleMessage("Description"),
         "userProfile": MessageLookupByLibrary.simpleMessage("User Profile"),
         "writeReview": MessageLookupByLibrary.simpleMessage(

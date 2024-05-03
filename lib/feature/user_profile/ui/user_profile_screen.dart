@@ -327,19 +327,31 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           const VerticalSpace(15),
                           InkWell(
                             onTap: allowFollowBtnClick
-                                ? () => state.isFollowedByCurrentuser
-                                    ? context
-                                        .read<UserProfileCubit>()
-                                        .followUser(
-                                          userId: widget.userId,
-                                          isFollow: 0,
-                                        )
-                                    : context
-                                        .read<UserProfileCubit>()
-                                        .followUser(
-                                          userId: widget.userId,
-                                          isFollow: 1,
-                                        )
+                                ? state.isFollowedByCurrentuser
+                                    ? () {
+                                        allowFollowBtnClick = false;
+                                        context
+                                            .read<UserProfileCubit>()
+                                            .followUser(
+                                              userId: widget.userId,
+                                              isFollow: 0,
+                                            )
+                                            .then(
+                                              (_) => allowFollowBtnClick = true,
+                                            );
+                                      }
+                                    : () {
+                                        allowFollowBtnClick = false;
+                                        context
+                                            .read<UserProfileCubit>()
+                                            .followUser(
+                                              userId: widget.userId,
+                                              isFollow: 1,
+                                            )
+                                            .then(
+                                              (_) => allowFollowBtnClick = true,
+                                            );
+                                      }
                                 : () {},
                             child: Container(
                               width: AppStyles.screenW,

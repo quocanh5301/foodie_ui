@@ -52,12 +52,30 @@ class ExploreTab extends StatelessWidget {
                           const Spacer(),
                           IconButton(
                             onPressed: () => {},
-                            icon: SvgPicture.asset(
-                              AppImage.icNotification,
-                              colorFilter: const ColorFilter.mode(
-                                Colors.white,
-                                BlendMode.srcIn,
-                              ),
+                            icon: Stack(
+                              children: [
+                                SvgPicture.asset(
+                                  AppImage.icNotification,
+                                  colorFilter: const ColorFilter.mode(
+                                    Colors.white,
+                                    BlendMode.srcIn,
+                                  ),
+                                ),
+                                false
+                                    ? Positioned(
+                                        right: 0,
+                                        top: 0,
+                                        child: Container(
+                                          height: AppStyles.width(8),
+                                          width: AppStyles.width(8),
+                                          decoration: BoxDecoration(
+                                            color: '#FF6B00'.toColor(),
+                                            shape: BoxShape.circle,
+                                          ),
+                                        ),
+                                      )
+                                    : const SizedBox.shrink(),
+                              ],
                             ),
                           ),
                         ],

@@ -16,18 +16,20 @@ class CoreWidgetController {
     }
   }
 
-  void showDropdownNotification() {
+  void showDropdownNotification({
+    required String title,
+    required String content,
+    void Function()? onTap,
+  }) {
     if (context != null && _overlayEntry == null) {
       _overlayEntry = OverlayEntry(
         builder: (BuildContext context) {
           return DropdownNotification(
             dismissibleKeyVertical: ValueKey(uuid.v4()),
             dismissibleKeyHorizontal: ValueKey(uuid.v4()),
-            title: 'This is a dropdown notification',
-            content: 'Dropdown notification test content',
-            onTap: () {
-              debugPrint('notification tapped');
-            },
+            title: title,
+            content: content,
+            onTap: onTap,
           );
         },
       );

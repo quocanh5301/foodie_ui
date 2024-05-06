@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodie/core/injection.dart';
+import 'package:foodie/core/widget/controller/core_widget_controller.dart';
 import 'package:foodie/feature/setting/bloc/app_state.dart';
 import 'package:foodie/feature/setting/repository/app_repository.dart';
 import 'package:foodie/core/data/share_pref.dart';
@@ -99,9 +101,8 @@ class AppCubit extends Cubit<AppState> {
   Future<void> getUserProfile() async {
     emit(
       state.copyWith(
-        getUSerInfoStatus: GetUSerInfoStatus.loading,
-        updateProfileImageStatus: UpdateProfileImageStatus.initial
-      ),
+          getUSerInfoStatus: GetUSerInfoStatus.loading,
+          updateProfileImageStatus: UpdateProfileImageStatus.initial),
     );
     final result = await appRepository.getUserProfile().run();
 
@@ -218,13 +219,19 @@ class AppCubit extends Cubit<AppState> {
 
     await fcmToken.getToken().then((token) async {
       if (token != null) {
+        debugPrint('token: $token');
         await _setFirebaseToken(token: token);
         if (state.setFirebaseTokenStatus == SetFirebaseTokenStatus.success) {
           try {
             SharedPref.setFirebaseToken(token);
 
             FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-              debugPrint("onMessage: $message");
+              sl<CoreWidgetController>().showDropdownNotification(
+                  title: message.notification?.title ?? '',
+                  content: message.notification?.body ?? '',
+                  onTap: () {
+                    debugPrint('notification tapped');
+                  });
             });
             FirebaseMessaging.onBackgroundMessage(backgroundNoti);
           } catch (e) {

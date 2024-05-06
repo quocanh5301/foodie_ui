@@ -3,7 +3,7 @@ import 'package:foodie/core/router/router.dart';
 import 'package:foodie/core/data/share_pref.dart';
 
 final apiRequest = Dio(BaseOptions(
-  baseUrl: 'http://10.14.0.108:3000/',
+  baseUrl: 'http://10.14.8.104:3000/',
   connectTimeout: const Duration(minutes: 1),
   receiveTimeout: const Duration(minutes: 1),
   headers: {

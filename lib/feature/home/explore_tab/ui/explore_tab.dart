@@ -83,14 +83,10 @@ class ExploreTab extends StatelessWidget {
                       ),
                     ),
                     Center(
-                      child: InkWell(
-                        onTap: () => sl<CoreWidgetController>()
-                            .showDropdownNotification(),
-                        child: SizedBox(
-                          height: AppStyles.height(71),
-                          width: AppStyles.width(75),
-                          child: Image.asset(AppImage.appIcon),
-                        ),
+                      child: SizedBox(
+                        height: AppStyles.height(71),
+                        width: AppStyles.width(75),
+                        child: Image.asset(AppImage.appIcon),
                       ),
                     ),
                   ],

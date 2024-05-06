@@ -116,10 +116,14 @@ class DropdownNotificationState extends State<DropdownNotification>
                           _animationController.dispose();
                         },
                         child: Container(
+                          margin: EdgeInsets.symmetric(
+                            horizontal: AppStyles.width(20),
+                            vertical: AppStyles.width(10),
+                          ),
                           padding: EdgeInsets.all(AppStyles.width(10)),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: '#FF6B00'.toColor(),
+                            color: Colors.brown,
                           ),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,

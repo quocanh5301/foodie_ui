@@ -18,26 +18,29 @@ class FirebaseImage extends StatelessWidget {
   final String emptyImagePath;
 
   Future<Uint8List?> downloadImage() async {
-    final ref = FirebaseStorage.instance.ref().child(imagePath);
+    if (imagePath != '') {
+      final ref = FirebaseStorage.instance.ref().child(imagePath);
 
-    try {
-      final Uint8List? downloadData = await ref.getData();
-      return downloadData;
-    } catch (e) {
-      debugPrint('Error download image: $e');
+      try {
+        final Uint8List? downloadData = await ref.getData();
+        return downloadData;
+      } catch (e) {
+        debugPrint('Error download image: $e');
+        return null;
+      }
+    } else {
       return null;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return 
-    Image.asset(
-            emptyImagePath,
-            width: cardWidth,
-            height: cardHeight,
-          );
-    
+    return Image.asset(
+      emptyImagePath,
+      width: cardWidth,
+      height: cardHeight,
+    );
+
     //  FutureBuilder(
     //   future: downloadImage(),
     //   builder: (context, snapshot) {

@@ -19,8 +19,6 @@ import 'package:foodie/core/injection.dart' as di;
 
 @pragma('vm:entry-point')
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  debugPrint(
-      'Handling a background message ${message.data['title']} ${message.data['content']}');
   try {
     LocalNotificationHelper.handleNotificationSetting(
       message.data['title'],

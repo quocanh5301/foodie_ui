@@ -6,6 +6,7 @@ import 'package:foodie/core/injection.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/core/router/router.dart';
+import 'package:foodie/core/widget/controller/core_widget_controller.dart';
 import 'package:foodie/feature/home/explore_tab/bloc/explore_cubit.dart';
 import 'package:foodie/feature/home/explore_tab/bloc/explore_state.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/list_follow_user_recipe.dart';
@@ -82,10 +83,14 @@ class ExploreTab extends StatelessWidget {
                       ),
                     ),
                     Center(
-                      child: SizedBox(
-                        height: AppStyles.height(71),
-                        width: AppStyles.width(75),
-                        child: Image.asset(AppImage.appIcon),
+                      child: InkWell(
+                        onTap: () => sl<CoreWidgetController>()
+                            .showDropdownNotification(),
+                        child: SizedBox(
+                          height: AppStyles.height(71),
+                          width: AppStyles.width(75),
+                          child: Image.asset(AppImage.appIcon),
+                        ),
                       ),
                     ),
                   ],

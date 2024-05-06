@@ -1,4 +1,5 @@
 import 'package:foodie/core/data/api.dart';
+import 'package:foodie/core/widget/controller/core_widget_controller.dart';
 import 'package:foodie/feature/search_result/bloc/search_result_cubit.dart';
 import 'package:foodie/feature/search_result/provider/search_result_provider.dart';
 import 'package:foodie/feature/search_result/repository/search_result_repository.dart';
@@ -41,6 +42,7 @@ import 'package:get_it/get_it.dart';
 final sl = GetIt.I;
 
 Future<void> init() async {
+  initCore();
   initLogin();
   initRegister();
   initAppSetting();
@@ -53,6 +55,10 @@ Future<void> init() async {
   initUpdateUserPassword();
   initUserProfile();
   initSearchResult();
+}
+
+void initCore() async {
+  sl.registerSingleton(CoreWidgetController());
 }
 
 void initLogin() async {

@@ -67,6 +67,17 @@ class NotificationCubit extends Cubit<NotificationState> {
     );
   }
 
+  Future<void> refreshNotification() async {
+    emit(
+      state.copyWith(
+        notificationPage: 0,
+        notificationList: [],
+        mess: '',
+      ),
+    );
+    await getNotification();
+  }
+
   Future<void> seenNotification({
     required double notificationId,
     required double isSeen,

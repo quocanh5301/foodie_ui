@@ -51,9 +51,8 @@ class NotificationScreen extends StatelessWidget {
                     return IndicatorResult.noMore;
                   }
                 },
-                // onRefresh: () => context
-                //     .read<NotificationCubit>()
-                //     .refreshBookmarkRecipe(),
+                onRefresh: () =>
+                    context.read<NotificationCubit>().refreshNotification(),
                 child: state.notificationList.isNotEmpty
                     ? SingleChildScrollView(
                         child: ListView.separated(

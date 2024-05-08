@@ -1,3 +1,4 @@
+import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/core/resource/styles.dart';
@@ -20,42 +21,62 @@ class SearchRecipeListTab extends StatelessWidget {
           previous.getRecipeSearchResultStatus !=
           current.getRecipeSearchResultStatus,
       builder: (context, state) {
-        return state.recipeList.isNotEmpty
-            ? SingleChildScrollView(
-                child: GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 185.0 / 249.0,
-                    crossAxisSpacing: AppStyles.width(15),
-                    mainAxisSpacing: AppStyles.height(10),
+        return EasyRefresh(
+          header: MaterialHeader(
+            backgroundColor: '#FF6B00'.toColor(),
+            color: Colors.white,
+          ),
+          triggerAxis: Axis.vertical,
+          canLoadAfterNoMore: false,
+          footer: MaterialFooter(
+            backgroundColor: '#FF6B00'.toColor(),
+            color: Colors.white,
+          ),
+          onLoad: () async {
+            await cubit.getRecipeSearchResult();
+            if (state.getRecipeSearchResultStatus ==
+                GetRecipeSearchResultStatus.noMore) {
+              return IndicatorResult.noMore;
+            }
+          },
+          onRefresh: () => cubit.refreshRecipeSearch(),
+          child: state.recipeList.isNotEmpty
+              ? SingleChildScrollView(
+                  child: GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 185.0 / 253.0,
+                      crossAxisSpacing: AppStyles.width(15),
+                      mainAxisSpacing: AppStyles.height(10),
+                    ),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: AppStyles.width(10),
+                      vertical: AppStyles.width(5),
+                    ),
+                    itemCount: state.recipeList.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return SquareRecipeItem(
+                        cardWidth: AppStyles.screenW / 2.6,
+                        cardHeight: AppStyles.screenW / 1.8,
+                        recipeBasic: state.recipeList[index],
+                      );
+                    },
                   ),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: AppStyles.width(10),
-                    vertical: AppStyles.width(5),
-                  ),
-                  itemCount: state.recipeList.length,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return SquareRecipeItem(
-                      cardWidth: AppStyles.screenW / 2.6,
-                      cardHeight: AppStyles.screenW / 1.8,
-                      recipeBasic: state.recipeList[index],
-                    );
-                  },
-                ),
-              )
-            : SizedBox(
-                height: AppStyles.screenH / 2,
-                child: Center(
-                  child: Text(
-                    S.of(context).noRecipeMatchSearch,
-                    style: AppStyles.f16sb().copyWith(
-                      color: Colors.white,
+                )
+              : SizedBox(
+                  height: AppStyles.screenH / 2,
+                  child: Center(
+                    child: Text(
+                      S.of(context).noRecipeMatchSearch,
+                      style: AppStyles.f16sb().copyWith(
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
-              );
+        );
       },
     );
   }

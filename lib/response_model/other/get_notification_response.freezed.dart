@@ -26,7 +26,7 @@ mixin _$GetNotificationResponse {
   @JsonKey(name: 'mess')
   String? get mess => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
-  Notification? get notification => throw _privateConstructorUsedError;
+  List<Notification>? get notification => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,9 +43,7 @@ abstract class $GetNotificationResponseCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'code') int? code,
       @JsonKey(name: 'mess') String? mess,
-      @JsonKey(name: 'data') Notification? notification});
-
-  $NotificationCopyWith<$Res>? get notification;
+      @JsonKey(name: 'data') List<Notification>? notification});
 }
 
 /// @nodoc
@@ -78,20 +76,8 @@ class _$GetNotificationResponseCopyWithImpl<$Res,
       notification: freezed == notification
           ? _value.notification
           : notification // ignore: cast_nullable_to_non_nullable
-              as Notification?,
+              as List<Notification>?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $NotificationCopyWith<$Res>? get notification {
-    if (_value.notification == null) {
-      return null;
-    }
-
-    return $NotificationCopyWith<$Res>(_value.notification!, (value) {
-      return _then(_value.copyWith(notification: value) as $Val);
-    });
   }
 }
 
@@ -107,10 +93,7 @@ abstract class _$$GetNotificationResponseImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'code') int? code,
       @JsonKey(name: 'mess') String? mess,
-      @JsonKey(name: 'data') Notification? notification});
-
-  @override
-  $NotificationCopyWith<$Res>? get notification;
+      @JsonKey(name: 'data') List<Notification>? notification});
 }
 
 /// @nodoc
@@ -140,9 +123,9 @@ class __$$GetNotificationResponseImplCopyWithImpl<$Res>
           : mess // ignore: cast_nullable_to_non_nullable
               as String?,
       notification: freezed == notification
-          ? _value.notification
+          ? _value._notification
           : notification // ignore: cast_nullable_to_non_nullable
-              as Notification?,
+              as List<Notification>?,
     ));
   }
 }
@@ -153,7 +136,8 @@ class _$GetNotificationResponseImpl implements _GetNotificationResponse {
   const _$GetNotificationResponseImpl(
       {@JsonKey(name: 'code') this.code,
       @JsonKey(name: 'mess') this.mess,
-      @JsonKey(name: 'data') this.notification});
+      @JsonKey(name: 'data') final List<Notification>? notification})
+      : _notification = notification;
 
   factory _$GetNotificationResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$GetNotificationResponseImplFromJson(json);
@@ -164,9 +148,16 @@ class _$GetNotificationResponseImpl implements _GetNotificationResponse {
   @override
   @JsonKey(name: 'mess')
   final String? mess;
+  final List<Notification>? _notification;
   @override
   @JsonKey(name: 'data')
-  final Notification? notification;
+  List<Notification>? get notification {
+    final value = _notification;
+    if (value == null) return null;
+    if (_notification is EqualUnmodifiableListView) return _notification;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -180,13 +171,14 @@ class _$GetNotificationResponseImpl implements _GetNotificationResponse {
             other is _$GetNotificationResponseImpl &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.mess, mess) || other.mess == mess) &&
-            (identical(other.notification, notification) ||
-                other.notification == notification));
+            const DeepCollectionEquality()
+                .equals(other._notification, _notification));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, code, mess, notification);
+  int get hashCode => Object.hash(runtimeType, code, mess,
+      const DeepCollectionEquality().hash(_notification));
 
   @JsonKey(ignore: true)
   @override
@@ -207,7 +199,7 @@ abstract class _GetNotificationResponse implements GetNotificationResponse {
   const factory _GetNotificationResponse(
           {@JsonKey(name: 'code') final int? code,
           @JsonKey(name: 'mess') final String? mess,
-          @JsonKey(name: 'data') final Notification? notification}) =
+          @JsonKey(name: 'data') final List<Notification>? notification}) =
       _$GetNotificationResponseImpl;
 
   factory _GetNotificationResponse.fromJson(Map<String, dynamic> json) =
@@ -221,7 +213,7 @@ abstract class _GetNotificationResponse implements GetNotificationResponse {
   String? get mess;
   @override
   @JsonKey(name: 'data')
-  Notification? get notification;
+  List<Notification>? get notification;
   @override
   @JsonKey(ignore: true)
   _$$GetNotificationResponseImplCopyWith<_$GetNotificationResponseImpl>

@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:foodie/core/injection.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
+import 'package:foodie/core/util/date_time.dart';
 import 'package:foodie/core/widget/controller/core_widget_controller.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/firebase_image.dart';
 
 class DropdownNotification extends StatefulWidget {
   final String title;
   final String content;
+  final String createAt;
   final String? image;
   final VoidCallback? onTap;
   final Key dismissibleKeyHorizontal;
@@ -23,6 +25,7 @@ class DropdownNotification extends StatefulWidget {
     this.onTap,
     required this.dismissibleKeyHorizontal,
     required this.dismissibleKeyVertical,
+    required this.createAt,
   });
 
   @override
@@ -47,7 +50,7 @@ class DropdownNotificationState extends State<DropdownNotification>
   }
 
   void _startTimer() {
-    timer = Timer(const Duration(seconds: 5), () async {
+    timer = Timer(const Duration(seconds: 7), () async {
       // Your task to be executed after 5 seconds
       if (mounted) {
         await _animationController.reverse();
@@ -126,7 +129,7 @@ class DropdownNotificationState extends State<DropdownNotification>
                             color: Colors.brown,
                           ),
                           child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               FirebaseImage(
                                 imagePath: widget.image ?? '',
@@ -150,6 +153,17 @@ class DropdownNotificationState extends State<DropdownNotification>
                                     Text(
                                       widget.content,
                                       style: AppStyles.f13m().copyWith(
+                                        color: Colors.white,
+                                        decoration: TextDecoration.none,
+                                      ),
+                                    ),
+                                    const VerticalSpace(7),
+                                    Text(
+                                      DateTimeHelper.getTimeAgo(
+                                        dateFormat: DateTimeHelper.dateFormat4,
+                                        dateTimeString: widget.createAt,
+                                      ),
+                                      style: AppStyles.f12r().copyWith(
                                         color: Colors.white,
                                         decoration: TextDecoration.none,
                                       ),

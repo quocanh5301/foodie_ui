@@ -11,9 +11,9 @@ _$GetNotificationResponseImpl _$$GetNotificationResponseImplFromJson(
     _$GetNotificationResponseImpl(
       code: json['code'] as int?,
       mess: json['mess'] as String?,
-      notification: json['data'] == null
-          ? null
-          : Notification.fromJson(json['data'] as Map<String, dynamic>),
+      notification: (json['data'] as List<dynamic>?)
+          ?.map((e) => Notification.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$GetNotificationResponseImplToJson(

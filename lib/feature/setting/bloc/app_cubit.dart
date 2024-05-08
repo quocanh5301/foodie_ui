@@ -1,13 +1,16 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/core/injection.dart';
+import 'package:foodie/core/router/router.dart';
 import 'package:foodie/core/widget/controller/core_widget_controller.dart';
 import 'package:foodie/feature/setting/bloc/app_state.dart';
 import 'package:foodie/feature/setting/repository/app_repository.dart';
 import 'package:foodie/core/data/share_pref.dart';
+import 'package:foodie/model/other/notification.dart';
 import 'package:fpdart/fpdart.dart';
 
 class AppCubit extends Cubit<AppState> {
@@ -224,14 +227,35 @@ class AppCubit extends Cubit<AppState> {
         if (state.setFirebaseTokenStatus == SetFirebaseTokenStatus.success) {
           try {
             SharedPref.setFirebaseToken(token);
-
+            debugPrint('set onBackgroundMessage');
             FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-              sl<CoreWidgetController>().showDropdownNotification(
-                  title: message.notification?.title ?? '',
-                  content: message.notification?.body ?? '',
-                  onTap: () {
-                    debugPrint('notification tapped');
-                  });
+              if (message.notification?.body != null) {
+                debugPrint('onMessage ${message.notification?.body}');
+                Notification notification = Notification.fromJson(
+                    json.decode((message.notification?.body)!));
+                sl<CoreWidgetController>().showDropdownNotification(
+                    title: notification.title ?? '',
+                    content: notification.notificationContent ?? '',
+                    createAt: notification.createAt ?? '',
+                    imagePath: notification.notificationImage ?? '',
+                    onTap: () {
+                      if (notification.onClickType == 'recipe') {
+                        if (notification.relevantData != null &&
+                            rootNavigatorKey.currentContext != null) {
+                          RecipeDetailRoute(
+                                  recipeId: notification.relevantData!.toInt())
+                              .push(rootNavigatorKey.currentContext!);
+                        }
+                      } else {
+                        if (notification.relevantData != null &&
+                            rootNavigatorKey.currentContext != null) {
+                          UserProfileRoute(
+                                  userId: notification.relevantData!.toInt())
+                              .push(rootNavigatorKey.currentContext!);
+                        }
+                      }
+                    });
+              }
             });
             FirebaseMessaging.onBackgroundMessage(backgroundNoti);
           } catch (e) {

@@ -19,6 +19,8 @@ class CoreWidgetController {
   void showDropdownNotification({
     required String title,
     required String content,
+    required String createAt,
+    String? imagePath,
     void Function()? onTap,
   }) {
     if (context != null && _overlayEntry == null) {
@@ -29,6 +31,8 @@ class CoreWidgetController {
             dismissibleKeyHorizontal: ValueKey(uuid.v4()),
             title: title,
             content: content,
+            createAt: createAt,
+            image: imagePath,
             onTap: onTap,
           );
         },

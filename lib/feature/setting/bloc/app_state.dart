@@ -10,11 +10,15 @@ class AppState with _$AppState {
     @Default(200) int code,
     @Default("vi") String languageCode,
     @Default(false) bool notificationOn,
+    //
+    @Default(false) bool haveNewNotification,
+    //
     @Default(SetFirebaseTokenStatus.initial)
     SetFirebaseTokenStatus setFirebaseTokenStatus,
     @Default(GetUSerInfoStatus.initial) GetUSerInfoStatus getUSerInfoStatus,
     @Default(LogOutStatus.initial) LogOutStatus logOutStatus,
-    @Default(UpdateProfileImageStatus.initial) UpdateProfileImageStatus updateProfileImageStatus,
+    @Default(UpdateProfileImageStatus.initial)
+    UpdateProfileImageStatus updateProfileImageStatus,
   }) = _AppState;
 }
 

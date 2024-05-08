@@ -220,49 +220,73 @@ class AppCubit extends Cubit<AppState> {
 
     debugPrint('User granted permission: ${settings.authorizationStatus}');
 
-    await fcmToken.getToken().then((token) async {
-      if (token != null) {
-        debugPrint('token: $token');
-        await _setFirebaseToken(token: token);
-        if (state.setFirebaseTokenStatus == SetFirebaseTokenStatus.success) {
-          try {
-            SharedPref.setFirebaseToken(token);
-            debugPrint('set onBackgroundMessage');
-            FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-              if (message.notification?.body != null) {
-                debugPrint('onMessage ${message.notification?.body}');
-                Notification notification = Notification.fromJson(
-                    json.decode((message.notification?.body)!));
-                sl<CoreWidgetController>().showDropdownNotification(
-                    title: notification.title ?? '',
-                    content: notification.notificationContent ?? '',
-                    createAt: notification.createAt ?? '',
-                    imagePath: notification.notificationImage ?? '',
-                    onTap: () {
-                      if (notification.onClickType == 'recipe') {
-                        if (notification.relevantData != null &&
-                            rootNavigatorKey.currentContext != null) {
-                          RecipeDetailRoute(
-                                  recipeId: notification.relevantData!.toInt())
-                              .push(rootNavigatorKey.currentContext!);
+    await fcmToken.getToken().then(
+      (token) async {
+        if (token != null) {
+          debugPrint('token: $token');
+          await _setFirebaseToken(token: token);
+          if (state.setFirebaseTokenStatus == SetFirebaseTokenStatus.success) {
+            try {
+              SharedPref.setFirebaseToken(token);
+              debugPrint('set onBackgroundMessage');
+              FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+                if (message.notification?.body != null) {
+                  debugPrint('onMessage ${message.notification?.body}');
+                  MyNotification notification = MyNotification.fromJson(
+                      json.decode((message.notification?.body)!));
+                  SharedPref.setNewNotificationAlert(true);
+                  emit(
+                    state.copyWith(
+                      haveNewNotification: true,
+                    ),
+                  );
+                  sl<CoreWidgetController>().showDropdownNotification(
+                      title: notification.title ?? '',
+                      content: notification.notificationContent ?? '',
+                      createAt: notification.createAt ?? 'error',
+                      imagePath: notification.notificationImage ?? '',
+                      onTap: () {
+                        if (notification.onClickType == 'recipe') {
+                          if (notification.relevantData != null &&
+                              rootNavigatorKey.currentContext != null) {
+                            RecipeDetailRoute(
+                                    recipeId:
+                                        notification.relevantData!.toInt())
+                                .push(rootNavigatorKey.currentContext!);
+                          }
+                        } else {
+                          if (notification.relevantData != null &&
+                              rootNavigatorKey.currentContext != null) {
+                            UserProfileRoute(
+                                    userId: notification.relevantData!.toInt())
+                                .push(rootNavigatorKey.currentContext!);
+                          }
                         }
-                      } else {
-                        if (notification.relevantData != null &&
-                            rootNavigatorKey.currentContext != null) {
-                          UserProfileRoute(
-                                  userId: notification.relevantData!.toInt())
-                              .push(rootNavigatorKey.currentContext!);
-                        }
-                      }
-                    });
-              }
-            });
-            FirebaseMessaging.onBackgroundMessage(backgroundNoti);
-          } catch (e) {
-            debugPrint('set onBackgroundMessage fail $e');
+                      });
+                }
+              });
+              FirebaseMessaging.onBackgroundMessage(backgroundNoti);
+            } catch (e) {
+              debugPrint('set onBackgroundMessage fail $e');
+            }
           }
         }
-      }
-    });
+      },
+    );
+  }
+
+  void notificationCheck() => emit(
+        state.copyWith(
+          haveNewNotification: SharedPref.getNewNotificationAlert(),
+        ),
+      );
+
+  void checkedNotification() {
+    SharedPref.setNewNotificationAlert(false);
+    emit(
+      state.copyWith(
+        haveNewNotification: false,
+      ),
+    );
   }
 }

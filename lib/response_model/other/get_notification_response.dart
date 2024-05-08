@@ -11,7 +11,7 @@ class GetNotificationResponse with _$GetNotificationResponse {
   const factory GetNotificationResponse({
     @JsonKey(name: 'code') int? code,
     @JsonKey(name: 'mess') String? mess,
-    @JsonKey(name: 'data') List<Notification>? notification,
+    @JsonKey(name: 'data') List<MyNotification>? notification,
   }) = _GetNotificationResponse;
 
   factory GetNotificationResponse.fromJson(Map<String, dynamic> json) =>

@@ -20,15 +20,16 @@ class SearchResultScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: '#2b2b2b'.toColor(),
       appBar: AppBar(
-          backgroundColor: '#FF6B00'.toColor().withOpacity(0.3),
-          centerTitle: false,
-          iconTheme: const IconThemeData(color: Colors.white),
-          title: Text(
-            '${S.of(context).searchResult} \'$keyword\'',
-            style: AppStyles.f16sb().copyWith(
-              color: Colors.white,
-            ),
-          )),
+        backgroundColor: '#FF6B00'.toColor().withOpacity(0.3),
+        centerTitle: false,
+        iconTheme: const IconThemeData(color: Colors.white),
+        title: Text(
+          '${S.of(context).searchResult} \'$keyword\'',
+          style: AppStyles.f16sb().copyWith(
+            color: Colors.white,
+          ),
+        ),
+      ),
       body: BlocProvider<SearchResultCubit>(
         create: (context) => sl<SearchResultCubit>()..setSearchKey(keyword),
         child: BlocBuilder<SearchResultCubit, SearchResultState>(

@@ -12,7 +12,7 @@ _$GetNotificationResponseImpl _$$GetNotificationResponseImplFromJson(
       code: json['code'] as int?,
       mess: json['mess'] as String?,
       notification: (json['data'] as List<dynamic>?)
-          ?.map((e) => Notification.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => MyNotification.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

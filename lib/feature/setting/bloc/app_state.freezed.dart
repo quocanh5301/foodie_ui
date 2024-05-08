@@ -19,7 +19,8 @@ mixin _$AppState {
   String get mess => throw _privateConstructorUsedError;
   int get code => throw _privateConstructorUsedError;
   String get languageCode => throw _privateConstructorUsedError;
-  bool get notificationOn => throw _privateConstructorUsedError;
+  bool get notificationOn => throw _privateConstructorUsedError; //
+  bool get haveNewNotification => throw _privateConstructorUsedError; //
   SetFirebaseTokenStatus get setFirebaseTokenStatus =>
       throw _privateConstructorUsedError;
   GetUSerInfoStatus get getUSerInfoStatus => throw _privateConstructorUsedError;
@@ -42,6 +43,7 @@ abstract class $AppStateCopyWith<$Res> {
       int code,
       String languageCode,
       bool notificationOn,
+      bool haveNewNotification,
       SetFirebaseTokenStatus setFirebaseTokenStatus,
       GetUSerInfoStatus getUSerInfoStatus,
       LogOutStatus logOutStatus,
@@ -65,6 +67,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
     Object? code = null,
     Object? languageCode = null,
     Object? notificationOn = null,
+    Object? haveNewNotification = null,
     Object? setFirebaseTokenStatus = null,
     Object? getUSerInfoStatus = null,
     Object? logOutStatus = null,
@@ -86,6 +89,10 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
       notificationOn: null == notificationOn
           ? _value.notificationOn
           : notificationOn // ignore: cast_nullable_to_non_nullable
+              as bool,
+      haveNewNotification: null == haveNewNotification
+          ? _value.haveNewNotification
+          : haveNewNotification // ignore: cast_nullable_to_non_nullable
               as bool,
       setFirebaseTokenStatus: null == setFirebaseTokenStatus
           ? _value.setFirebaseTokenStatus
@@ -120,6 +127,7 @@ abstract class _$$AppStateImplCopyWith<$Res>
       int code,
       String languageCode,
       bool notificationOn,
+      bool haveNewNotification,
       SetFirebaseTokenStatus setFirebaseTokenStatus,
       GetUSerInfoStatus getUSerInfoStatus,
       LogOutStatus logOutStatus,
@@ -141,6 +149,7 @@ class __$$AppStateImplCopyWithImpl<$Res>
     Object? code = null,
     Object? languageCode = null,
     Object? notificationOn = null,
+    Object? haveNewNotification = null,
     Object? setFirebaseTokenStatus = null,
     Object? getUSerInfoStatus = null,
     Object? logOutStatus = null,
@@ -162,6 +171,10 @@ class __$$AppStateImplCopyWithImpl<$Res>
       notificationOn: null == notificationOn
           ? _value.notificationOn
           : notificationOn // ignore: cast_nullable_to_non_nullable
+              as bool,
+      haveNewNotification: null == haveNewNotification
+          ? _value.haveNewNotification
+          : haveNewNotification // ignore: cast_nullable_to_non_nullable
               as bool,
       setFirebaseTokenStatus: null == setFirebaseTokenStatus
           ? _value.setFirebaseTokenStatus
@@ -191,6 +204,7 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
       this.code = 200,
       this.languageCode = "vi",
       this.notificationOn = false,
+      this.haveNewNotification = false,
       this.setFirebaseTokenStatus = SetFirebaseTokenStatus.initial,
       this.getUSerInfoStatus = GetUSerInfoStatus.initial,
       this.logOutStatus = LogOutStatus.initial,
@@ -208,6 +222,11 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
   @override
   @JsonKey()
   final bool notificationOn;
+//
+  @override
+  @JsonKey()
+  final bool haveNewNotification;
+//
   @override
   @JsonKey()
   final SetFirebaseTokenStatus setFirebaseTokenStatus;
@@ -223,7 +242,7 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppState(mess: $mess, code: $code, languageCode: $languageCode, notificationOn: $notificationOn, setFirebaseTokenStatus: $setFirebaseTokenStatus, getUSerInfoStatus: $getUSerInfoStatus, logOutStatus: $logOutStatus, updateProfileImageStatus: $updateProfileImageStatus)';
+    return 'AppState(mess: $mess, code: $code, languageCode: $languageCode, notificationOn: $notificationOn, haveNewNotification: $haveNewNotification, setFirebaseTokenStatus: $setFirebaseTokenStatus, getUSerInfoStatus: $getUSerInfoStatus, logOutStatus: $logOutStatus, updateProfileImageStatus: $updateProfileImageStatus)';
   }
 
   @override
@@ -235,6 +254,7 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
       ..add(DiagnosticsProperty('code', code))
       ..add(DiagnosticsProperty('languageCode', languageCode))
       ..add(DiagnosticsProperty('notificationOn', notificationOn))
+      ..add(DiagnosticsProperty('haveNewNotification', haveNewNotification))
       ..add(
           DiagnosticsProperty('setFirebaseTokenStatus', setFirebaseTokenStatus))
       ..add(DiagnosticsProperty('getUSerInfoStatus', getUSerInfoStatus))
@@ -254,6 +274,8 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
                 other.languageCode == languageCode) &&
             (identical(other.notificationOn, notificationOn) ||
                 other.notificationOn == notificationOn) &&
+            (identical(other.haveNewNotification, haveNewNotification) ||
+                other.haveNewNotification == haveNewNotification) &&
             (identical(other.setFirebaseTokenStatus, setFirebaseTokenStatus) ||
                 other.setFirebaseTokenStatus == setFirebaseTokenStatus) &&
             (identical(other.getUSerInfoStatus, getUSerInfoStatus) ||
@@ -272,6 +294,7 @@ class _$AppStateImpl with DiagnosticableTreeMixin implements _AppState {
       code,
       languageCode,
       notificationOn,
+      haveNewNotification,
       setFirebaseTokenStatus,
       getUSerInfoStatus,
       logOutStatus,
@@ -290,6 +313,7 @@ abstract class _AppState implements AppState {
           final int code,
           final String languageCode,
           final bool notificationOn,
+          final bool haveNewNotification,
           final SetFirebaseTokenStatus setFirebaseTokenStatus,
           final GetUSerInfoStatus getUSerInfoStatus,
           final LogOutStatus logOutStatus,
@@ -304,7 +328,9 @@ abstract class _AppState implements AppState {
   String get languageCode;
   @override
   bool get notificationOn;
-  @override
+  @override //
+  bool get haveNewNotification;
+  @override //
   SetFirebaseTokenStatus get setFirebaseTokenStatus;
   @override
   GetUSerInfoStatus get getUSerInfoStatus;

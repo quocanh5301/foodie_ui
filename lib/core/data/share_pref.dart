@@ -11,6 +11,7 @@ class SharedPref {
   static String notificationSettingKey = 'kNOTIFICATIONSETTING';
   static String languageKey = 'kLANGUAGE';
   static String firebaseTokenKey = 'kFIREBASETOKEN';
+  static String newNotificationKey = 'kNEWNOTIFICATION';
 
   static Future<bool> setUserInfo(User user) async =>
       await prefs!.setString(userInfoKey, jsonEncode(user.toJson()));
@@ -50,7 +51,8 @@ class SharedPref {
     return prefs!.setBool(notificationSettingKey, notificationOn);
   }
 
-  static Future<bool> getNotificationSetting() async { //!this function usually called from background (notification in background)
+  static Future<bool> getNotificationSetting() async {
+    //!this function usually called from THE background (notification in background)
     prefs ?? (prefs = await SharedPreferences.getInstance());
     return prefs!.getBool(notificationSettingKey) ?? false;
   }
@@ -68,5 +70,13 @@ class SharedPref {
     for (var i = 0; i < listKey.length; i++) {
       await prefs!.remove(listKey.elementAt(i));
     }
+  }
+
+  static void setNewNotificationAlert(bool haveNewNoti) async {
+    await prefs!.setBool(newNotificationKey, haveNewNoti);
+  }
+
+  static bool getNewNotificationAlert() {
+    return prefs!.getBool(newNotificationKey) ?? false;
   }
 }

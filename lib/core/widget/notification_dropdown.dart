@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:foodie/core/injection.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
-import 'package:foodie/core/util/date_time.dart';
+// import 'package:foodie/core/util/date_time.dart';
 import 'package:foodie/core/widget/controller/core_widget_controller.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/firebase_image.dart';
 
@@ -157,17 +157,17 @@ class DropdownNotificationState extends State<DropdownNotification>
                                         decoration: TextDecoration.none,
                                       ),
                                     ),
-                                    const VerticalSpace(7),
-                                    Text(
-                                      DateTimeHelper.getTimeAgo(
-                                        dateFormat: DateTimeHelper.dateFormat4,
-                                        dateTimeString: widget.createAt,
-                                      ),
-                                      style: AppStyles.f12r().copyWith(
-                                        color: Colors.white,
-                                        decoration: TextDecoration.none,
-                                      ),
-                                    ),
+                                    // const VerticalSpace(7),
+                                    // Text(
+                                    //   DateTimeHelper.getTimeAgo(
+                                    //     dateFormat: DateTimeHelper.dateFormat4,
+                                    //     dateTimeString: widget.createAt,
+                                    //   ),
+                                    //   style: AppStyles.f12r().copyWith(
+                                    //     color: Colors.white,
+                                    //     decoration: TextDecoration.none,
+                                    //   ),
+                                    // ),
                                   ],
                                 ),
                               ),

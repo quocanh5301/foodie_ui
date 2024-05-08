@@ -6,13 +6,14 @@ import 'package:foodie/core/injection.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/core/router/router.dart';
-import 'package:foodie/core/widget/controller/core_widget_controller.dart';
 import 'package:foodie/feature/home/explore_tab/bloc/explore_cubit.dart';
 import 'package:foodie/feature/home/explore_tab/bloc/explore_state.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/list_follow_user_recipe.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/list_new_recipe.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/list_top_recipe.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/search_field.dart';
+import 'package:foodie/feature/setting/bloc/app_cubit.dart';
+import 'package:foodie/feature/setting/bloc/app_state.dart';
 import 'package:foodie/generated/l10n.dart';
 
 class ExploreTab extends StatelessWidget {
@@ -37,49 +38,64 @@ class ExploreTab extends StatelessWidget {
                   children: [
                     SizedBox(
                       height: AppStyles.height(71),
-                      child: Row(
-                        children: [
-                          IconButton(
-                            onPressed: () =>
-                                const UserSettingRoute().push(context),
-                            icon: SvgPicture.asset(
-                              AppImage.icProfile,
-                              colorFilter: const ColorFilter.mode(
-                                Colors.white,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                          ),
-                          const Spacer(),
-                          IconButton(
-                            onPressed: () => {},
-                            icon: Stack(
+                      child: BlocProvider<AppCubit>(
+                        create: (context) =>
+                            sl<AppCubit>()..notificationCheck(),
+                        child: BlocBuilder<AppCubit, AppState>(
+                          buildWhen: (previous, current) =>
+                              current.haveNewNotification !=
+                              previous.haveNewNotification,
+                          builder: (context, state) {
+                            return Row(
                               children: [
-                                SvgPicture.asset(
-                                  AppImage.icNotification,
-                                  colorFilter: const ColorFilter.mode(
-                                    Colors.white,
-                                    BlendMode.srcIn,
+                                IconButton(
+                                  onPressed: () =>
+                                      const UserSettingRoute().push(context),
+                                  icon: SvgPicture.asset(
+                                    AppImage.icProfile,
+                                    colorFilter: const ColorFilter.mode(
+                                      Colors.white,
+                                      BlendMode.srcIn,
+                                    ),
                                   ),
                                 ),
-                                false
-                                    ? Positioned(
-                                        right: 0,
-                                        top: 0,
-                                        child: Container(
-                                          height: AppStyles.width(8),
-                                          width: AppStyles.width(8),
-                                          decoration: BoxDecoration(
-                                            color: '#FF6B00'.toColor(),
-                                            shape: BoxShape.circle,
-                                          ),
+                                const Spacer(),
+                                IconButton(
+                                  onPressed: () {
+                                    sl<AppCubit>().checkedNotification();
+                                    //do sthg
+                                    const NotificationRoute().push(context);
+                                  },
+                                  icon: Stack(
+                                    children: [
+                                      SvgPicture.asset(
+                                        AppImage.icNotification,
+                                        colorFilter: const ColorFilter.mode(
+                                          Colors.white,
+                                          BlendMode.srcIn,
                                         ),
-                                      )
-                                    : const SizedBox.shrink(),
+                                      ),
+                                      state.haveNewNotification
+                                          ? Positioned(
+                                              right: 0,
+                                              top: 0,
+                                              child: Container(
+                                                height: AppStyles.width(8),
+                                                width: AppStyles.width(8),
+                                                decoration: BoxDecoration(
+                                                  color: '#FF6B00'.toColor(),
+                                                  shape: BoxShape.circle,
+                                                ),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
+                                    ],
+                                  ),
+                                ),
                               ],
-                            ),
-                          ),
-                        ],
+                            );
+                          },
+                        ),
                       ),
                     ),
                     Center(

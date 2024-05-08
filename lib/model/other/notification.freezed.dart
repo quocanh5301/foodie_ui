@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Notification _$NotificationFromJson(Map<String, dynamic> json) {
+MyNotification _$MyNotificationFromJson(Map<String, dynamic> json) {
   return _Notification.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Notification {
+mixin _$MyNotification {
   @JsonKey(name: 'id')
   double? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'title')
@@ -37,15 +37,15 @@ mixin _$Notification {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $NotificationCopyWith<Notification> get copyWith =>
+  $MyNotificationCopyWith<MyNotification> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NotificationCopyWith<$Res> {
-  factory $NotificationCopyWith(
-          Notification value, $Res Function(Notification) then) =
-      _$NotificationCopyWithImpl<$Res, Notification>;
+abstract class $MyNotificationCopyWith<$Res> {
+  factory $MyNotificationCopyWith(
+          MyNotification value, $Res Function(MyNotification) then) =
+      _$MyNotificationCopyWithImpl<$Res, MyNotification>;
   @useResult
   $Res call(
       {@JsonKey(name: 'id') double? id,
@@ -58,9 +58,9 @@ abstract class $NotificationCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NotificationCopyWithImpl<$Res, $Val extends Notification>
-    implements $NotificationCopyWith<$Res> {
-  _$NotificationCopyWithImpl(this._value, this._then);
+class _$MyNotificationCopyWithImpl<$Res, $Val extends MyNotification>
+    implements $MyNotificationCopyWith<$Res> {
+  _$MyNotificationCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -113,7 +113,7 @@ class _$NotificationCopyWithImpl<$Res, $Val extends Notification>
 
 /// @nodoc
 abstract class _$$NotificationImplCopyWith<$Res>
-    implements $NotificationCopyWith<$Res> {
+    implements $MyNotificationCopyWith<$Res> {
   factory _$$NotificationImplCopyWith(
           _$NotificationImpl value, $Res Function(_$NotificationImpl) then) =
       __$$NotificationImplCopyWithImpl<$Res>;
@@ -131,7 +131,7 @@ abstract class _$$NotificationImplCopyWith<$Res>
 
 /// @nodoc
 class __$$NotificationImplCopyWithImpl<$Res>
-    extends _$NotificationCopyWithImpl<$Res, _$NotificationImpl>
+    extends _$MyNotificationCopyWithImpl<$Res, _$NotificationImpl>
     implements _$$NotificationImplCopyWith<$Res> {
   __$$NotificationImplCopyWithImpl(
       _$NotificationImpl _value, $Res Function(_$NotificationImpl) _then)
@@ -220,7 +220,7 @@ class _$NotificationImpl implements _Notification {
 
   @override
   String toString() {
-    return 'Notification(id: $id, title: $title, notificationContent: $notificationContent, notificationImage: $notificationImage, onClickType: $onClickType, relevantData: $relevantData, createAt: $createAt)';
+    return 'MyNotification(id: $id, title: $title, notificationContent: $notificationContent, notificationImage: $notificationImage, onClickType: $onClickType, relevantData: $relevantData, createAt: $createAt)';
   }
 
   @override
@@ -261,7 +261,7 @@ class _$NotificationImpl implements _Notification {
   }
 }
 
-abstract class _Notification implements Notification {
+abstract class _Notification implements MyNotification {
   const factory _Notification(
       {@JsonKey(name: 'id') final double? id,
       @JsonKey(name: 'title') final String? title,

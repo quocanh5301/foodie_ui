@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/core/injection.dart';
 import 'package:foodie/core/router/router.dart';
-import 'package:foodie/core/widget/controller/core_widget_controller.dart';
+import 'package:foodie/core/widget/controller/dropdown_widget_controller.dart';
 import 'package:foodie/feature/setting/bloc/app_state.dart';
 import 'package:foodie/feature/setting/repository/app_repository.dart';
 import 'package:foodie/core/data/share_pref.dart';
@@ -234,13 +234,13 @@ class AppCubit extends Cubit<AppState> {
                   debugPrint('onMessage ${message.data['body']}');
                   MyNotification? notification = MyNotification.fromJson(
                       json.decode((message.data['body'])!));
-                  await SharedPref.setNewNotificationAlert(true);//!qa
+                  await SharedPref.setNewNotificationAlert(true); //!qa
                   emit(
                     state.copyWith(
                       haveNewNotification: true,
                     ),
                   );
-                  sl<CoreWidgetController>().showDropdownNotification(
+                  sl<DropDownWidgetController>().showDropdownNotification(
                       title: notification.title ?? '',
                       content: notification.notificationContent ?? '',
                       createAt: notification.createAt ?? 'error',
@@ -275,7 +275,8 @@ class AppCubit extends Cubit<AppState> {
     );
   }
 
-  void notificationCheck() async {//!qa
+  void notificationCheck() async {
+    //!qa
     final haveNewNotification = await SharedPref.getNewNotificationAlert();
     debugPrint('notificationCheck haveNewNotification $haveNewNotification');
     emit(

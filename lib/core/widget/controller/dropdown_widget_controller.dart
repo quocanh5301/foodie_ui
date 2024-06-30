@@ -3,7 +3,7 @@ import 'package:foodie/core/router/router.dart';
 import 'package:foodie/core/widget/notification_dropdown.dart';
 import 'package:uuid/uuid.dart';
 
-class CoreWidgetController {
+class DropDownWidgetController {
   BuildContext? get context => rootNavigatorKey.currentContext;
 
   OverlayEntry? _overlayEntry;

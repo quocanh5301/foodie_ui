@@ -128,11 +128,18 @@ class NotificationCubit extends Cubit<NotificationState> {
           mess: error,
         ),
       ),
-      (success) => emit(
-        state.copyWith(
-          deleteNotificationStatus: DeleteNotificationStatus.success,
-        ),
-      ),
+      (success) {
+        //new notification list after delete
+        final newNotificationList = state.notificationList
+            .where((element) => (element.id ?? 0) != notificationId)
+            .toList();
+        emit(
+          state.copyWith(
+            deleteNotificationStatus: DeleteNotificationStatus.success,
+            notificationList: newNotificationList,
+          ),
+        );
+      },
     );
   }
 }

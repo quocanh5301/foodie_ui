@@ -5,7 +5,7 @@ import 'package:foodie/core/injection.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
 // import 'package:foodie/core/util/date_time.dart';
-import 'package:foodie/core/widget/controller/core_widget_controller.dart';
+import 'package:foodie/core/widget/controller/dropdown_widget_controller.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/firebase_image.dart';
 
 class DropdownNotification extends StatefulWidget {
@@ -54,7 +54,7 @@ class DropdownNotificationState extends State<DropdownNotification>
       // Your task to be executed after 5 seconds
       if (mounted) {
         await _animationController.reverse();
-        sl<CoreWidgetController>().removeOverlay();
+        sl<DropDownWidgetController>().removeOverlay();
         _animationController.dispose();
       }
     });
@@ -86,7 +86,7 @@ class DropdownNotificationState extends State<DropdownNotification>
                     onDismissed: (direction) {
                       if (direction == DismissDirection.up) {
                         timer.cancel();
-                        sl<CoreWidgetController>().removeOverlay();
+                        sl<DropDownWidgetController>().removeOverlay();
                         _animationController.dispose();
                       }
                     },
@@ -103,7 +103,7 @@ class DropdownNotificationState extends State<DropdownNotification>
                         if (direction == DismissDirection.startToEnd ||
                             direction == DismissDirection.endToStart) {
                           timer.cancel();
-                          sl<CoreWidgetController>().removeOverlay();
+                          sl<DropDownWidgetController>().removeOverlay();
                           _animationController.dispose();
                         }
                       },
@@ -115,7 +115,7 @@ class DropdownNotificationState extends State<DropdownNotification>
                           widget.onTap?.call();
                           await _animationController.reverse();
                           timer.cancel();
-                          sl<CoreWidgetController>().removeOverlay();
+                          sl<DropDownWidgetController>().removeOverlay();
                           _animationController.dispose();
                         },
                         child: Container(

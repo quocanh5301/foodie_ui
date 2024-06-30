@@ -3,7 +3,7 @@ import 'package:foodie/core/router/router.dart';
 import 'package:foodie/core/data/share_pref.dart';
 
 final apiRequest = Dio(BaseOptions(
-  baseUrl: 'http://192.168.1.10:3000/',
+  baseUrl: 'http://192.168.1.12:3000/',
   connectTimeout: const Duration(minutes: 1),
   receiveTimeout: const Duration(minutes: 1),
   headers: {
@@ -22,23 +22,28 @@ class Endpoints {
   static String changePassword = 'user/changeUserPassword';
   static String updateUserInfo = 'user/updateUserData';
   static String getRecipeDetail = 'recipe/getRecipeDetail';
-  static String getUserBookmarkRecipe = 'recipe/getUserBookmarkRecipe'; 
+  static String getUserBookmarkRecipe = 'recipe/getUserBookmarkRecipe';
   static String getNewRecipe = 'recipe/getNewRecipe';
   static String getTopRecipe = 'recipe/getTopRecipe';
   static String getRecipeOfUser = 'recipe/getRecipeOfUser';
   static String createNewRecipe = 'recipe/createNewRecipe';
   static String bookmarkRecipe = 'recipe/bookmarkRecipe';
-  static String followUser = 'user/followUser';//!
+  static String followUser = 'user/followUser'; //!
   static String setFirebaseToken = 'user/setFirebaseToken';
-  static String searchAll = 'recipe/searchRecipeAndUser';//!
   static String getFollowedUserNewRecipe = 'recipe/getUserFollowingNewRecipe';
   static String getReviewOfUserRecipe = 'user/getReviewsOnUserRecipe';
   static String getReviewsOfRecipe = 'recipe/getReviewOnRecipe';
   static String rateRecipe = 'recipe/rateRecipe';
-  static String getPersonalRatingForRecipe = 'recipe/getPersonalRatingForRecipe';
+  static String getPersonalRatingForRecipe =
+      'recipe/getPersonalRatingForRecipe';
   static String getUserProfile = 'user/getUserProfile';
-  static String checkIsFollowOrNot = 'user/checkIsFollowOrNot';//!
-  static String getRecipeNumFollowerFollowing = 'user/getRecipeNumFollowerFollowing';
+  static String checkIsFollowOrNot = 'user/checkIsFollowOrNot'; //!
+  static String getRecipeNumFollowerFollowing =
+      'user/getRecipeNumFollowerFollowing';
+  static String searchRecipeAndUser = 'recipe/searchRecipeAndUser';
+  static String getNotificationOfUser = 'notification/getNotificationOfUser';
+  static String seenNotification = 'notification/seenNotification';
+  static String deleteNotification = 'notification/deleteNotification';
 }
 
 class Token {

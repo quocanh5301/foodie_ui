@@ -15,6 +15,8 @@ List<RouteBase> get $appRoutes => [
       $userInfoUpdateRoute,
       $userPasswordUpdateRoute,
       $userProfileRoute,
+      $searchResultRoute,
+      $notificationRoute,
     ];
 
 RouteBase get $loginRoute => GoRouteData.$route(
@@ -194,6 +196,56 @@ extension $UserProfileRouteExtension on UserProfileRoute {
         queryParams: {
           'user-id': userId.toString(),
         },
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $searchResultRoute => GoRouteData.$route(
+      path: '/search_result',
+      factory: $SearchResultRouteExtension._fromState,
+    );
+
+extension $SearchResultRouteExtension on SearchResultRoute {
+  static SearchResultRoute _fromState(GoRouterState state) => SearchResultRoute(
+        keyword: state.uri.queryParameters['keyword']!,
+      );
+
+  String get location => GoRouteData.$location(
+        '/search_result',
+        queryParams: {
+          'keyword': keyword,
+        },
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $notificationRoute => GoRouteData.$route(
+      path: '/notification',
+      factory: $NotificationRouteExtension._fromState,
+    );
+
+extension $NotificationRouteExtension on NotificationRoute {
+  static NotificationRoute _fromState(GoRouterState state) =>
+      const NotificationRoute();
+
+  String get location => GoRouteData.$location(
+        '/notification',
       );
 
   void go(BuildContext context) => context.go(location);

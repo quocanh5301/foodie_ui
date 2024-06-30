@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
+import 'package:foodie/core/router/router.dart';
 import 'package:foodie/generated/l10n.dart';
 
 class SearchField extends StatelessWidget {
@@ -40,8 +41,8 @@ class SearchField extends StatelessWidget {
             child: SvgPicture.asset(AppImage.icSearch),
           ),
         ),
-        onFieldSubmitted: (value) => {},
-        // SearchResultRoute(keyword: value).push(context),
+        onFieldSubmitted: (value) =>
+            SearchResultRoute(keyword: value).push(context),
       ),
     );
   }

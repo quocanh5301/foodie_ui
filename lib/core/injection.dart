@@ -1,4 +1,12 @@
 import 'package:foodie/core/data/api.dart';
+import 'package:foodie/core/widget/controller/dropdown_widget_controller.dart';
+import 'package:foodie/core/widget/controller/loading_controller.dart';
+import 'package:foodie/feature/notification/bloc/notification_cubit.dart';
+import 'package:foodie/feature/notification/provider/notification_provider.dart';
+import 'package:foodie/feature/notification/repository/notification_repository.dart';
+import 'package:foodie/feature/search_result/bloc/search_result_cubit.dart';
+import 'package:foodie/feature/search_result/provider/search_result_provider.dart';
+import 'package:foodie/feature/search_result/repository/search_result_repository.dart';
 import 'package:foodie/feature/setting/bloc/app_cubit.dart';
 import 'package:foodie/feature/setting/provider/app_provider.dart';
 import 'package:foodie/feature/setting/repository/app_repository.dart';
@@ -38,6 +46,7 @@ import 'package:get_it/get_it.dart';
 final sl = GetIt.I;
 
 Future<void> init() async {
+  initCore();
   initLogin();
   initRegister();
   initAppSetting();
@@ -49,6 +58,13 @@ Future<void> init() async {
   initUpdateUserInfo();
   initUpdateUserPassword();
   initUserProfile();
+  initSearchResult();
+  initNotification();
+}
+
+void initCore() async {
+  sl.registerSingleton(DropDownWidgetController());
+  sl.registerSingleton(LoadingDialogController());
 }
 
 void initLogin() async {
@@ -108,13 +124,28 @@ void initUpdateUserInfo() async {
 }
 
 void initUpdateUserPassword() async {
-  sl.registerFactory(() => UserPasswordUpdateCubit(userPasswordUpdateRepository: sl()));
-  sl.registerFactory(() => UserPasswordUpdateRepository(userPasswordUpdateProvider: sl()));
-  sl.registerFactory(() => UserPasswordUpdateProvider(apiRequest: APIRequest()));
+  sl.registerFactory(
+      () => UserPasswordUpdateCubit(userPasswordUpdateRepository: sl()));
+  sl.registerFactory(
+      () => UserPasswordUpdateRepository(userPasswordUpdateProvider: sl()));
+  sl.registerFactory(
+      () => UserPasswordUpdateProvider(apiRequest: APIRequest()));
 }
 
 void initUserProfile() async {
   sl.registerFactory(() => UserProfileCubit(userProfileRepository: sl()));
   sl.registerFactory(() => UserProfileRepository(userProfileProvider: sl()));
   sl.registerFactory(() => UserProfileProvider(apiRequest: APIRequest()));
+}
+
+void initSearchResult() async {
+  sl.registerFactory(() => SearchResultCubit(searchResultRepository: sl()));
+  sl.registerFactory(() => SearchResultRepository(searchResultProvider: sl()));
+  sl.registerFactory(() => SearchResultProvider(apiRequest: APIRequest()));
+}
+
+void initNotification() async {
+  sl.registerFactory(() => NotificationCubit(notifcationRepository: sl()));
+  sl.registerFactory(() => NotificationRepository(notificationProvider: sl()));
+  sl.registerFactory(() => NotificationProvider(apiRequest: APIRequest()));
 }

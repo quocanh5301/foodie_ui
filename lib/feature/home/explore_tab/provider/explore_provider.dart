@@ -31,20 +31,6 @@ class ExploreProvider {
         },
       );
 
-  Future<Response> searchAll({
-    required int page,
-    required int pageSize,
-    required String searchKey,
-  }) async =>
-      await apiRequest.post(
-        endpoint: Endpoints.searchAll,
-        data: {
-          'searchKey': searchKey,
-          'page': page,
-          'pageSize': pageSize,
-        },
-      );
-
   Future<Response> getFollowedUserNewRecipe({
     required int page,
     required int pageSize,

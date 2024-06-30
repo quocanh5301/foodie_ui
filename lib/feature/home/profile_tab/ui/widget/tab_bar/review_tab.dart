@@ -21,7 +21,7 @@ class MyReviewTab extends StatelessWidget {
       builder: (context, state) {
         return SingleChildScrollView(
           physics: const NeverScrollableScrollPhysics(),
-          child: state.userRecipeList.isNotEmpty
+          child: state.userReviewList.isNotEmpty
               ? Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: AppStyles.width(15),

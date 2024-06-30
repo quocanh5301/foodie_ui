@@ -229,12 +229,12 @@ class AppCubit extends Cubit<AppState> {
             try {
               SharedPref.setFirebaseToken(token);
               debugPrint('set onBackgroundMessage');
-              FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-                if (message.notification?.body != null) {
-                  debugPrint('onMessage ${message.notification?.body}');
-                  MyNotification notification = MyNotification.fromJson(
-                      json.decode((message.notification?.body)!));
-                  SharedPref.setNewNotificationAlert(true);
+              FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
+                if (message.data['body'] != null) {
+                  debugPrint('onMessage ${message.data['body']}');
+                  MyNotification? notification = MyNotification.fromJson(
+                      json.decode((message.data['body'])!));
+                  await SharedPref.setNewNotificationAlert(true);//!qa
                   emit(
                     state.copyWith(
                       haveNewNotification: true,
@@ -275,11 +275,16 @@ class AppCubit extends Cubit<AppState> {
     );
   }
 
-  void notificationCheck() => emit(
-        state.copyWith(
-          haveNewNotification: SharedPref.getNewNotificationAlert(),
-        ),
-      );
+  void notificationCheck() async {//!qa
+    final haveNewNotification = await SharedPref.getNewNotificationAlert();
+    debugPrint('notificationCheck haveNewNotification $haveNewNotification');
+    emit(
+      state.copyWith(
+        haveNewNotification: haveNewNotification,
+      ),
+    );
+    debugPrint('state haveNewNotification ${state.haveNewNotification}');
+  }
 
   void checkedNotification() {
     SharedPref.setNewNotificationAlert(false);

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:foodie/model/user/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -72,11 +73,16 @@ class SharedPref {
     }
   }
 
-  static void setNewNotificationAlert(bool haveNewNoti) async {
-    await prefs!.setBool(newNotificationKey, haveNewNoti);
+  static Future<bool> setNewNotificationAlert(bool haveNewNoti) async {//!qa
+    debugPrint('set new notification alert $haveNewNoti');
+    prefs ?? (prefs = await SharedPreferences.getInstance());
+    return await prefs!.setBool(newNotificationKey, haveNewNoti);
   }
 
-  static bool getNewNotificationAlert() {
+  static Future<bool> getNewNotificationAlert() async {//!qa
+    prefs ?? (prefs = await SharedPreferences.getInstance());
+    debugPrint(
+        'get new notification alert 2 ${prefs!.getBool(newNotificationKey)}');
     return prefs!.getBool(newNotificationKey) ?? false;
   }
 }

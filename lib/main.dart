@@ -20,10 +20,17 @@ import 'package:foodie/core/injection.dart' as di;
 @pragma('vm:entry-point')
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   try {
-    LocalNotificationHelper.handleNotificationSetting(
-      message.data['title'],
-      message.data['content'],
-    );
+    debugPrint('Handling a background message ${message.data}');
+    if (message.data.isNotEmpty) {
+      if (message.data['title'] != null && message.data['content'] != null) {
+        final setNewNoti = await SharedPref.setNewNotificationAlert(true);
+        debugPrint('set new notification alert $setNewNoti');
+        LocalNotificationHelper.handleNotificationSetting(
+          message.data['title'],
+          message.data['content'],
+        );
+      }
+    }
   } catch (e) {
     debugPrint('Handling a background message error $e');
   }

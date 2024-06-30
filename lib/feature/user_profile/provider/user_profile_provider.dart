@@ -70,6 +70,8 @@ class UserProfileProvider {
         data: {
           'userId': userId,
           'followerUserId': SharedPref.getUserInfo().id,
+          'followerUserName': SharedPref.getUserInfo().userName ?? 'No Name User',
+          'followerUserImage': SharedPref.getUserInfo().userImage,
           'isFollow': isFollow,
         },
       );

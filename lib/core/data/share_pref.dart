@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:foodie/model/user/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -11,6 +12,7 @@ class SharedPref {
   static String notificationSettingKey = 'kNOTIFICATIONSETTING';
   static String languageKey = 'kLANGUAGE';
   static String firebaseTokenKey = 'kFIREBASETOKEN';
+  static String newNotificationKey = 'kNEWNOTIFICATION';
 
   static Future<bool> setUserInfo(User user) async =>
       await prefs!.setString(userInfoKey, jsonEncode(user.toJson()));
@@ -50,7 +52,8 @@ class SharedPref {
     return prefs!.setBool(notificationSettingKey, notificationOn);
   }
 
-  static Future<bool> getNotificationSetting() async { //!this function usually called from background (notification in background)
+  static Future<bool> getNotificationSetting() async {
+    //!this function usually called from THE background (notification in background)
     prefs ?? (prefs = await SharedPreferences.getInstance());
     return prefs!.getBool(notificationSettingKey) ?? false;
   }
@@ -68,5 +71,18 @@ class SharedPref {
     for (var i = 0; i < listKey.length; i++) {
       await prefs!.remove(listKey.elementAt(i));
     }
+  }
+
+  static Future<bool> setNewNotificationAlert(bool haveNewNoti) async {//!qa
+    debugPrint('set new notification alert $haveNewNoti');
+    prefs ?? (prefs = await SharedPreferences.getInstance());
+    return await prefs!.setBool(newNotificationKey, haveNewNoti);
+  }
+
+  static Future<bool> getNewNotificationAlert() async {//!qa
+    prefs ?? (prefs = await SharedPreferences.getInstance());
+    debugPrint(
+        'get new notification alert 2 ${prefs!.getBool(newNotificationKey)}');
+    return prefs!.getBool(newNotificationKey) ?? false;
   }
 }

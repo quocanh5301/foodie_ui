@@ -1,11 +1,16 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodie/core/injection.dart';
+import 'package:foodie/core/router/router.dart';
+import 'package:foodie/core/widget/controller/dropdown_widget_controller.dart';
 import 'package:foodie/feature/setting/bloc/app_state.dart';
 import 'package:foodie/feature/setting/repository/app_repository.dart';
 import 'package:foodie/core/data/share_pref.dart';
+import 'package:foodie/model/other/notification.dart';
 import 'package:fpdart/fpdart.dart';
 
 class AppCubit extends Cubit<AppState> {
@@ -99,9 +104,8 @@ class AppCubit extends Cubit<AppState> {
   Future<void> getUserProfile() async {
     emit(
       state.copyWith(
-        getUSerInfoStatus: GetUSerInfoStatus.loading,
-        updateProfileImageStatus: UpdateProfileImageStatus.initial
-      ),
+          getUSerInfoStatus: GetUSerInfoStatus.loading,
+          updateProfileImageStatus: UpdateProfileImageStatus.initial),
     );
     final result = await appRepository.getUserProfile().run();
 
@@ -216,22 +220,79 @@ class AppCubit extends Cubit<AppState> {
 
     debugPrint('User granted permission: ${settings.authorizationStatus}');
 
-    await fcmToken.getToken().then((token) async {
-      if (token != null) {
-        await _setFirebaseToken(token: token);
-        if (state.setFirebaseTokenStatus == SetFirebaseTokenStatus.success) {
-          try {
-            SharedPref.setFirebaseToken(token);
-
-            FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-              debugPrint("onMessage: $message");
-            });
-            FirebaseMessaging.onBackgroundMessage(backgroundNoti);
-          } catch (e) {
-            debugPrint('set onBackgroundMessage fail $e');
+    await fcmToken.getToken().then(
+      (token) async {
+        if (token != null) {
+          debugPrint('token: $token');
+          await _setFirebaseToken(token: token);
+          if (state.setFirebaseTokenStatus == SetFirebaseTokenStatus.success) {
+            try {
+              SharedPref.setFirebaseToken(token);
+              debugPrint('set onBackgroundMessage');
+              FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
+                if (message.data['body'] != null) {
+                  debugPrint('onMessage ${message.data['body']}');
+                  MyNotification? notification = MyNotification.fromJson(
+                      json.decode((message.data['body'])!));
+                  await SharedPref.setNewNotificationAlert(true); //!qa
+                  emit(
+                    state.copyWith(
+                      haveNewNotification: true,
+                    ),
+                  );
+                  sl<DropDownWidgetController>().showDropdownNotification(
+                      title: notification.title ?? '',
+                      content: notification.notificationContent ?? '',
+                      createAt: notification.createAt ?? 'error',
+                      imagePath: notification.notificationImage ?? '',
+                      onTap: () {
+                        if (notification.onClickType == 'recipe') {
+                          if (notification.relevantData != null &&
+                              rootNavigatorKey.currentContext != null) {
+                            RecipeDetailRoute(
+                                    recipeId:
+                                        notification.relevantData!.toInt())
+                                .push(rootNavigatorKey.currentContext!);
+                          }
+                        } else {
+                          if (notification.relevantData != null &&
+                              rootNavigatorKey.currentContext != null) {
+                            UserProfileRoute(
+                                    userId: notification.relevantData!.toInt())
+                                .push(rootNavigatorKey.currentContext!);
+                          }
+                        }
+                      });
+                }
+              });
+              FirebaseMessaging.onBackgroundMessage(backgroundNoti);
+            } catch (e) {
+              debugPrint('set onBackgroundMessage fail $e');
+            }
           }
         }
-      }
-    });
+      },
+    );
+  }
+
+  void notificationCheck() async {
+    //!qa
+    final haveNewNotification = await SharedPref.getNewNotificationAlert();
+    debugPrint('notificationCheck haveNewNotification $haveNewNotification');
+    emit(
+      state.copyWith(
+        haveNewNotification: haveNewNotification,
+      ),
+    );
+    debugPrint('state haveNewNotification ${state.haveNewNotification}');
+  }
+
+  void checkedNotification() {
+    SharedPref.setNewNotificationAlert(false);
+    emit(
+      state.copyWith(
+        haveNewNotification: false,
+      ),
+    );
   }
 }

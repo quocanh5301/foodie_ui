@@ -41,7 +41,6 @@ class BookmarkRecipeTab extends StatelessWidget {
               previous.searchBookmarkRecipeStatus !=
                   current.searchBookmarkRecipeStatus,
           builder: (context, state) {
-            debugPrint('BookmarkRecipeTab: REBUILD');
             return EasyRefresh(
               header: MaterialHeader(
                 backgroundColor: '#FF6B00'.toColor(),

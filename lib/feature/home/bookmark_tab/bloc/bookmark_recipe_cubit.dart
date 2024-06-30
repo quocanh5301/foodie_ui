@@ -111,9 +111,10 @@ class BookmarkRecipeCubit extends Cubit<BookmarkRecipeState> {
         (recipe, anotherRecipe) => (anotherRecipe.numOfFollower ?? 0)
             .compareTo((recipe.numOfFollower ?? 0)),
       );
-    } else {
-      filterList = [...state.bookmarkRecipeList];
-    }
+    } 
+    // else {
+    //   filterList = [...state.bookmarkRecipeList];
+    // }
 
     emit(state.copyWith(
       filterBookmarkRecipeList: filterList,

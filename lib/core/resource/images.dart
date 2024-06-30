@@ -36,4 +36,13 @@ class AppImage {
   static const String icEditProfile = "assets/images/ic_edit_profile.svg";
   static const String icLanguage = "assets/images/ic_language.svg";
   static const String icPrivacy = "assets/images/ic_privacy.svg";
+
+  //loading icon
+  static const String icBurger = "assets/images/ic_burger.svg";
+  static const String icCheese = "assets/images/ic_cheese.svg";
+  static const String icChicken = "assets/images/ic_chicken.svg";
+  static const String icEgg = "assets/images/ic_egg.svg";
+  static const String icFish = "assets/images/ic_fish.svg";
+  static const String icMeat = "assets/images/ic_meat.svg";
+  static const String icWater = "assets/images/ic_water.svg";
 }

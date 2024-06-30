@@ -3,7 +3,7 @@ import 'package:foodie/core/router/router.dart';
 import 'package:foodie/core/data/share_pref.dart';
 
 final apiRequest = Dio(BaseOptions(
-  baseUrl: 'http://192.168.1.14:3000/',
+  baseUrl: 'http://192.168.1.12:3000/',
   connectTimeout: const Duration(minutes: 1),
   receiveTimeout: const Duration(minutes: 1),
   headers: {
@@ -41,6 +41,9 @@ class Endpoints {
   static String getRecipeNumFollowerFollowing =
       'user/getRecipeNumFollowerFollowing';
   static String searchRecipeAndUser = 'recipe/searchRecipeAndUser';
+  static String getNotificationOfUser = 'notification/getNotificationOfUser';
+  static String seenNotification = 'notification/seenNotification';
+  static String deleteNotification = 'notification/deleteNotification';
 }
 
 class Token {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodie/core/resource/styles.dart';
-import 'package:foodie/feature/home/explore_tab/ui/widget/rectangle_recipe.dart';
 import 'package:foodie/feature/home/profile_tab/bloc/profile_cubit.dart';
 import 'package:foodie/feature/home/profile_tab/bloc/profile_state.dart';
+import 'package:foodie/feature/home/profile_tab/ui/widget/my_recipe_card.dart';
 import 'package:foodie/generated/l10n.dart';
 
 class MyRecipe extends StatelessWidget {
@@ -31,7 +31,7 @@ class MyRecipe extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: state.userRecipeList.length,
                     padding: EdgeInsets.zero,
-                    itemBuilder: (context, index) => RectangleRecipeItem(
+                    itemBuilder: (context, index) => MyRecipeCard(
                       cardWidth: AppStyles.screenW - AppStyles.width(30),
                       cardHeight: AppStyles.screenW / 1.7,
                       recipeBasic: state.userRecipeList[index],

@@ -45,4 +45,6 @@ class AppImage {
   static const String icFish = "assets/images/ic_fish.svg";
   static const String icMeat = "assets/images/ic_meat.svg";
   static const String icWater = "assets/images/ic_water.svg";
+
+  static const String icXMark = "assets/images/ic_x_mark.svg";
 }

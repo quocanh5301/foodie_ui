@@ -1,6 +1,7 @@
 import 'package:foodie/core/data/api.dart';
 import 'package:foodie/core/widget/controller/dropdown_widget_controller.dart';
 import 'package:foodie/core/widget/controller/loading_controller.dart';
+import 'package:foodie/core/widget/controller/recipe_option_dialog_controller.dart';
 import 'package:foodie/feature/notification/bloc/notification_cubit.dart';
 import 'package:foodie/feature/notification/provider/notification_provider.dart';
 import 'package:foodie/feature/notification/repository/notification_repository.dart';
@@ -65,6 +66,7 @@ Future<void> init() async {
 void initCore() async {
   sl.registerSingleton(DropDownWidgetController());
   sl.registerSingleton(LoadingDialogController());
+  sl.registerSingleton(MyRecipeOptionDialogController());
 }
 
 void initLogin() async {

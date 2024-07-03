@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodie/core/data/share_pref.dart';
 import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/core/router/router.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/avatar_card.dart';
@@ -12,7 +13,11 @@ class UserSearchResultCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => UserProfileRoute(userId: userBasicSearch.id ?? 0).push(context),
+      onTap: () {
+        userBasicSearch.id != SharedPref.getUserInfo().id
+            ? UserProfileRoute(userId: userBasicSearch.id ?? 0).push(context)
+            : const ProfileRoute().push(context);
+      },
       child: IntrinsicHeight(
         child: Container(
           width: AppStyles.screenW,

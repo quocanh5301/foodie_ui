@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodie/core/data/share_pref.dart';
 import 'package:foodie/feature/home/home_base_tab.dart';
+import 'package:foodie/feature/home/profile_tab/ui/profile_tab.dart';
 import 'package:foodie/feature/login/ui/login_screen.dart';
 import 'package:foodie/feature/notification/ui/notification_screen.dart';
 import 'package:foodie/feature/recipe_detail/ui/recipe_detail_screen.dart';
@@ -118,6 +119,14 @@ class NotificationRoute extends GoRouteData {
       const NotificationScreen();
 }
 
+@TypedGoRoute<ProfileRoute>(path: Routes.profile)
+class ProfileRoute extends GoRouteData {
+  const ProfileRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) => const ProfileTab();
+}
+
 class Routes {
   static const String login = '/login';
   static const String register = '/register';
@@ -130,4 +139,5 @@ class Routes {
   static const String userInfo = '/user_info';
   static const String searchResult = '/search_result';
   static const String notification = '/notification';
+  static const String profile = '/profile';
 }

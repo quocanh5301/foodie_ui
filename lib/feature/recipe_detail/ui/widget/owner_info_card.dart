@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foodie/core/data/share_pref.dart';
 import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/core/router/router.dart';
 import 'package:foodie/core/util/date_time.dart';
@@ -17,7 +18,12 @@ class OwnerInfoCard extends StatelessWidget {
     return BlocBuilder<RecipeDetailCubit, RecipeDetailState>(
       builder: (context, state) {
         return InkWell(
-          onTap: () => UserProfileRoute(userId: state.recipeDetail.owner?.id ?? 0).push(context),
+          onTap: () =>
+              state.recipeDetail.owner?.id != SharedPref.getUserInfo().id
+                  ? UserProfileRoute(userId: state.recipeDetail.owner?.id ?? 0)
+                      .push(context)
+                  : const ProfileRoute()
+                      .push(context),
           child: IntrinsicHeight(
             child: Container(
               width: AppStyles.screenW,
@@ -99,18 +105,16 @@ class OwnerInfoCard extends StatelessWidget {
                                       ),
                                     ),
                                     TextSpan(
-                                      text:
-                                          state.recipeDetail.owner?.joinAt == null
-                                              ? S.of(context).empty
-                                              : DateTimeHelper.getTimeAgo(
-                                                  dateFormat:
-                                                      DateTimeHelper.dateFormat4,
-                                                  dateTimeString: state
-                                                          .recipeDetail
-                                                          .owner
-                                                          ?.joinAt ??
-                                                      "error",
-                                                ),
+                                      text: state.recipeDetail.owner?.joinAt ==
+                                              null
+                                          ? S.of(context).empty
+                                          : DateTimeHelper.getTimeAgo(
+                                              dateFormat:
+                                                  DateTimeHelper.dateFormat4,
+                                              dateTimeString: state.recipeDetail
+                                                      .owner?.joinAt ??
+                                                  "error",
+                                            ),
                                       style: AppStyles.f14m().copyWith(
                                         color: Colors.white,
                                       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:foodie/core/data/share_pref.dart';
 import 'package:foodie/core/injection.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
@@ -86,25 +87,40 @@ class _NotificationCardState extends State<NotificationCard> {
               if (widget.notification.relevantData != null &&
                   rootNavigatorKey.currentContext != null) {
                 RecipeDetailRoute(
-                        recipeId: widget.notification.relevantData!.toInt())
-                    .push(rootNavigatorKey.currentContext!)
-                    .then(
-                  (_) {
-                     context.read<NotificationCubit>().refreshNotification();
-                  },
-                );
-              }
-            } else {
-              if (widget.notification.relevantData != null &&
-                  rootNavigatorKey.currentContext != null) {
-                UserProfileRoute(
-                        userId: widget.notification.relevantData!.toInt())
+                        recipeId:
+                            (widget.notification.relevantData ?? 0).toInt())
                     .push(rootNavigatorKey.currentContext!)
                     .then(
                   (_) {
                     context.read<NotificationCubit>().refreshNotification();
                   },
                 );
+              }
+            } else {
+              if (widget.notification.relevantData != null &&
+                  rootNavigatorKey.currentContext != null) {
+                (widget.notification.relevantData ?? 0).toInt() !=
+                        SharedPref.getUserInfo().id
+                    ? UserProfileRoute(
+                            userId:
+                                (widget.notification.relevantData ?? 0).toInt())
+                        .push(rootNavigatorKey.currentContext!)
+                        .then(
+                        (_) {
+                          context
+                              .read<NotificationCubit>()
+                              .refreshNotification();
+                        },
+                      )
+                    : const ProfileRoute()
+                        .push(rootNavigatorKey.currentContext!)
+                        .then(
+                        (_) {
+                          context
+                              .read<NotificationCubit>()
+                              .refreshNotification();
+                        },
+                      );
               }
             }
           },

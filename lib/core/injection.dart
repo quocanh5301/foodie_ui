@@ -1,6 +1,13 @@
 import 'package:foodie/core/data/api.dart';
+import 'package:foodie/core/widget/controller/dialog_controller.dart';
 import 'package:foodie/core/widget/controller/dropdown_widget_controller.dart';
 import 'package:foodie/core/widget/controller/loading_controller.dart';
+import 'package:foodie/feature/delete_recipe/bloc/delete_recipe_cubit.dart';
+import 'package:foodie/feature/delete_recipe/provider/delete_recipe_provider.dart';
+import 'package:foodie/feature/delete_recipe/repository/delete_recipe_repository.dart';
+import 'package:foodie/feature/edit_recipe/bloc/edit_recipe_cubit.dart';
+import 'package:foodie/feature/edit_recipe/provider/edit_recipe_provider.dart';
+import 'package:foodie/feature/edit_recipe/repository/edit_recipe_repository.dart';
 import 'package:foodie/feature/notification/bloc/notification_cubit.dart';
 import 'package:foodie/feature/notification/provider/notification_provider.dart';
 import 'package:foodie/feature/notification/repository/notification_repository.dart';
@@ -60,11 +67,14 @@ Future<void> init() async {
   initUserProfile();
   initSearchResult();
   initNotification();
+  initDeleteRecipe();
+  initEditRecipe();
 }
 
 void initCore() async {
   sl.registerSingleton(DropDownWidgetController());
   sl.registerSingleton(LoadingDialogController());
+  sl.registerSingleton(DialogWidgetController());
 }
 
 void initLogin() async {
@@ -148,4 +158,16 @@ void initNotification() async {
   sl.registerFactory(() => NotificationCubit(notifcationRepository: sl()));
   sl.registerFactory(() => NotificationRepository(notificationProvider: sl()));
   sl.registerFactory(() => NotificationProvider(apiRequest: APIRequest()));
+}
+
+void initDeleteRecipe() async {
+  sl.registerFactory(() => DeleteRecipeCubit(deleteRecipeRepository: sl()));
+  sl.registerFactory(() => DeleteRecipeRepository(deleteRecipeProvider: sl()));
+  sl.registerFactory(() => DeleteRecipeProvider(apiRequest: APIRequest()));
+}
+
+void initEditRecipe() async {
+  sl.registerFactory(() => EditRecipeCubit(editRecipeRepository: sl()));
+  sl.registerFactory(() => EditRecipeRepository(editRecipeProvider: sl()));
+  sl.registerFactory(() => EditRecipeProvider(apiRequest: APIRequest()));
 }

@@ -1299,6 +1299,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Delete or Edit`
+  String get dialogDeleteEdit {
+    return Intl.message(
+      'Delete or Edit',
+      name: 'dialogDeleteEdit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete this recipe`
+  String get deleteRecipe {
+    return Intl.message(
+      'Delete this recipe',
+      name: 'deleteRecipe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit this recipe`
+  String get editRecipe {
+    return Intl.message(
+      'Edit this recipe',
+      name: 'editRecipe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deleting recipe`
+  String get deletingRecipeTitle {
+    return Intl.message(
+      'Deleting recipe',
+      name: 'deletingRecipeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you sure you want to delete this recipe?`
+  String get deletingRecipeContent {
+    return Intl.message(
+      'Do you sure you want to delete this recipe?',
+      name: 'deletingRecipeContent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit recipe`
+  String get editRecipeButton {
+    return Intl.message(
+      'Edit recipe',
+      name: 'editRecipeButton',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

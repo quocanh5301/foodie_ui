@@ -48,10 +48,20 @@ class MessageLookup extends MessageLookupByLibrary {
             "Enter Your New Password Again"),
         "createNewRecipe":
             MessageLookupByLibrary.simpleMessage("Create New Recipe !!!"),
+        "deleteRecipe":
+            MessageLookupByLibrary.simpleMessage("Delete this recipe"),
+        "deletingRecipeContent": MessageLookupByLibrary.simpleMessage(
+            "Do you sure you want to delete this recipe?"),
+        "deletingRecipeTitle":
+            MessageLookupByLibrary.simpleMessage("Deleting recipe"),
         "detail": MessageLookupByLibrary.simpleMessage("Detail"),
+        "dialogDeleteEdit":
+            MessageLookupByLibrary.simpleMessage("Delete or Edit"),
         "editPassword":
             MessageLookupByLibrary.simpleMessage("Edit your password"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
+        "editRecipe": MessageLookupByLibrary.simpleMessage("Edit this recipe"),
+        "editRecipeButton": MessageLookupByLibrary.simpleMessage("Edit recipe"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailEmpty":

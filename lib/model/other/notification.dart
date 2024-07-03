@@ -15,6 +15,7 @@ class MyNotification with _$MyNotification {
     @JsonKey(name: 'on_click_type') String? onClickType,
     @JsonKey(name: 'relevant_data') double? relevantData,
     @JsonKey(name: 'create_at') String? createAt,
+    @JsonKey(name: 'is_seen') int? isSeen,
   }) = _Notification;
 
   factory MyNotification.fromJson(Map<String, dynamic> json) =>

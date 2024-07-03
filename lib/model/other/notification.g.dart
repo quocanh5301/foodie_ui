@@ -15,6 +15,7 @@ _$NotificationImpl _$$NotificationImplFromJson(Map<String, dynamic> json) =>
       onClickType: json['on_click_type'] as String?,
       relevantData: (json['relevant_data'] as num?)?.toDouble(),
       createAt: json['create_at'] as String?,
+      isSeen: json['is_seen'] as int?,
     );
 
 Map<String, dynamic> _$$NotificationImplToJson(_$NotificationImpl instance) =>
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$NotificationImplToJson(_$NotificationImpl instance) =>
       'on_click_type': instance.onClickType,
       'relevant_data': instance.relevantData,
       'create_at': instance.createAt,
+      'is_seen': instance.isSeen,
     };

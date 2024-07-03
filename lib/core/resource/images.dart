@@ -47,4 +47,5 @@ class AppImage {
   static const String icWater = "assets/images/ic_water.svg";
 
   static const String icXMark = "assets/images/ic_x_mark.svg";
+  static const String icEdit = "assets/images/ic_edit.svg";
 }

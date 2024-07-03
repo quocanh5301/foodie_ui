@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:foodie/core/injection.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
 import 'package:foodie/core/router/router.dart';
 import 'package:foodie/core/util/date_time.dart';
-import 'package:foodie/core/widget/controller/recipe_option_dialog_controller.dart';
+import 'package:foodie/feature/delete_recipe/ui/recipe_option_dialog.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/avatar_card.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/firebase_image.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/star_rating.dart';
+import 'package:foodie/feature/home/profile_tab/bloc/profile_cubit.dart';
 import 'package:foodie/generated/l10n.dart';
 import 'package:foodie/model/recipe/recipe_basic.dart';
 
@@ -59,12 +60,31 @@ class MyRecipeCard extends StatelessWidget {
             top: AppStyles.height(8),
             right: AppStyles.width(8),
             child: InkWell(
-              onTap: () => sl<MyRecipeOptionDialogController>().showRecipeDialog(),
-              child: SvgPicture.asset(
-                AppImage.icTwoDots,
-                colorFilter: const ColorFilter.mode(
-                  Colors.white,
-                  BlendMode.srcIn,
+              onTap: () => showDialog(
+                barrierDismissible: false,
+                context: context,
+                builder: (dialogContext) {
+                  return MyRecipeOptionDialog(
+                    recipeId: (recipeBasic.id ?? 0).toString(),
+                    recipeImage: recipeBasic.recipeImage,
+                  );
+                },
+              ).then((change) {
+                if (change) {
+                  context.read<ProfileCubit>().refreshUserRecipe();
+                }
+              }),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: const Color.fromARGB(100, 0, 0, 0), //!
+                ),
+                child: SvgPicture.asset(
+                  AppImage.icTwoDots,
+                  colorFilter: const ColorFilter.mode(
+                    Colors.white,
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
             ),

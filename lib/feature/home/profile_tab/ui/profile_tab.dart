@@ -159,46 +159,6 @@ class ProfileTab extends StatelessWidget {
                                           ),
                                           child: IntrinsicHeight(
                                             child: Column(
-                                              //!qa
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  S.of(context).recipeProfile,
-                                                  style:
-                                                      AppStyles.f11m().copyWith(
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                                Text(
-                                                  '${state.userData.numRecipe}', //!qa
-                                                  style: AppStyles.f12sb()
-                                                      .copyWith(
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        const HorizontalSpace(10),
-                                        Container(
-                                          clipBehavior: Clip.hardEdge,
-                                          decoration: BoxDecoration(
-                                            color: '#2b2b2b'.toColor(),
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            border: Border.all(
-                                              color: '#FF6B00'.toColor(),
-                                              width: 2,
-                                            ),
-                                          ),
-                                          padding: EdgeInsets.symmetric(
-                                            vertical: AppStyles.width(5),
-                                            horizontal: AppStyles.width(10),
-                                          ),
-                                          child: IntrinsicHeight(
-                                            child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.center,
                                               children: [
@@ -280,6 +240,43 @@ class ProfileTab extends StatelessWidget {
                                 S.of(context).noNameUser,
                             style: AppStyles.f16sb().copyWith(
                               color: Colors.white,
+                            ),
+                          ),
+                          const VerticalSpace(15),
+                          Container(
+                            clipBehavior: Clip.hardEdge,
+                            decoration: BoxDecoration(
+                              color: '#2b2b2b'.toColor(),
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                color: '#FF6B00'.toColor(),
+                                width: 2,
+                              ),
+                            ),
+                            padding: EdgeInsets.symmetric(
+                              vertical: AppStyles.width(5),
+                              horizontal: AppStyles.width(10),
+                            ),
+                            child: IntrinsicWidth(
+                              child: Row(
+                                //!qa
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    S.of(context).recipeProfile,
+                                    style: AppStyles.f16m().copyWith(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  const HorizontalSpace(15),
+                                  Text(
+                                    '${state.userData.numRecipe}', //!qa
+                                    style: AppStyles.f16sb().copyWith(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           const VerticalSpace(15),

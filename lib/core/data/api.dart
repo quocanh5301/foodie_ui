@@ -3,7 +3,7 @@ import 'package:foodie/core/router/router.dart';
 import 'package:foodie/core/data/share_pref.dart';
 
 final apiRequest = Dio(BaseOptions(
-  baseUrl: 'http://192.168.1.12:3000/',
+  baseUrl: 'http://192.168.172.1:3000/',
   connectTimeout: const Duration(minutes: 1),
   receiveTimeout: const Duration(minutes: 1),
   headers: {
@@ -28,7 +28,7 @@ class Endpoints {
   static String getRecipeOfUser = 'recipe/getRecipeOfUser';
   static String createNewRecipe = 'recipe/createNewRecipe';
   static String bookmarkRecipe = 'recipe/bookmarkRecipe';
-  static String followUser = 'user/followUser'; //!
+  static String followUser = 'user/followUser';
   static String setFirebaseToken = 'user/setFirebaseToken';
   static String getFollowedUserNewRecipe = 'recipe/getUserFollowingNewRecipe';
   static String getReviewOfUserRecipe = 'user/getReviewsOnUserRecipe';
@@ -37,18 +37,25 @@ class Endpoints {
   static String getPersonalRatingForRecipe =
       'recipe/getPersonalRatingForRecipe';
   static String getUserProfile = 'user/getUserProfile';
-  static String checkIsFollowOrNot = 'user/checkIsFollowOrNot'; //!
+  static String checkIsFollowOrNot = 'user/checkIsFollowOrNot';
   static String getRecipeNumFollowerFollowing =
       'user/getRecipeNumFollowerFollowing';
   static String searchRecipeAndUser = 'recipe/searchRecipeAndUser';
   static String getNotificationOfUser = 'notification/getNotificationOfUser';
-  static String seenNotification = 'notification/seenNotification';
+  static String seenNotification = 'notification/seenNotification';//!
   static String deleteNotification = 'notification/deleteNotification';
+  static String deleteRecipe = 'recipe/removeRecipeOfUser';//!
+  static String editRecipe = 'recipe/editRecipe';//!
+  static String getRecipeInfo = 'recipe/getRecipeNameInstructionDescription';//!
 }
 
 class Token {
+  //! run flutter run --dart-define=accessTokenSecret=mygfisinanothernationimaginationhaha --dart-define=refreshTokenSecret=mylifeisafuckingjokeplshelpwtf
   static String accessTokenSecret = 'mygfisinanothernationimaginationhaha';
   static String refreshTokenSecret = 'mylifeisafuckingjokeplshelpwtf';
+  //! usage: 
+  //! const accessTokenSecret = String.fromEnvironment('accessTokenSecret', defaultValue: 'i don't know :P');
+  //! const refreshTokenSecret = String.fromEnvironment('refreshTokenSecret', defaultValue: 'get out please');
 }
 
 void configInterceptor(Dio apiRequest) {

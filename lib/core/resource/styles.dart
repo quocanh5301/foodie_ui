@@ -73,6 +73,9 @@ class AppStyles {
 
   static TextStyle f16sb() => GoogleFonts.montserrat(
       fontSize: fontSize(16), fontWeight: FontWeight.w600, color: Colors.black);
+      
+  static TextStyle f18sb() => GoogleFonts.montserrat(
+      fontSize: fontSize(18), fontWeight: FontWeight.w600, color: Colors.black);
 }
 
 class VerticalSpace extends StatelessWidget {

@@ -124,5 +124,11 @@
     "searchResult": "Search Result For",
     "noUserMatchSearch": "No User Found",
     "noRecipeMatchSearch": "No Recipe Found",
-    "user": "User"
+    "user": "User",
+    "dialogDeleteEdit": "Delete or Edit",
+    "deleteRecipe": "Delete this recipe",
+    "editRecipe": "Edit this recipe",
+    "deletingRecipeTitle": "Deleting recipe",
+    "deletingRecipeContent": "Do you sure you want to delete this recipe?",
+    "editRecipeButton": "Edit recipe"
 }

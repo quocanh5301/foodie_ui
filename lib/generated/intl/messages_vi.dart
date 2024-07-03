@@ -41,11 +41,31 @@ class MessageLookup extends MessageLookupByLibrary {
         "comment": MessageLookupByLibrary.simpleMessage("Bình luận"),
         "commentsFilter": MessageLookupByLibrary.simpleMessage("Bình luận"),
         "confirm": MessageLookupByLibrary.simpleMessage("Xác nhận"),
+        "confirmNewPassword":
+            MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu mới"),
+        "confirmNewPasswordEmpty": MessageLookupByLibrary.simpleMessage(
+            "Xác nhận mật khẩu không được để trống"),
+        "confirmNewPasswordHint": MessageLookupByLibrary.simpleMessage(
+            "Nhập lại mật khẩu mới của bạn"),
         "createNewRecipe":
             MessageLookupByLibrary.simpleMessage("Tạo công thức mới !!!"),
+        "deleteRecipe":
+            MessageLookupByLibrary.simpleMessage("Xóa công thức này"),
+        "deletingRecipeContent": MessageLookupByLibrary.simpleMessage(
+            "Bạn có chắc chắn muốn xóa công thức này không?"),
+        "deletingRecipeTitle":
+            MessageLookupByLibrary.simpleMessage("Đang xóa công thức"),
         "detail": MessageLookupByLibrary.simpleMessage("Chi tiết"),
+        "dialogDeleteEdit":
+            MessageLookupByLibrary.simpleMessage("Xóa hoặc Chỉnh sửa"),
+        "editPassword":
+            MessageLookupByLibrary.simpleMessage("Chỉnh sửa mật khẩu của bạn"),
         "editProfile":
             MessageLookupByLibrary.simpleMessage("Thay đổi thông tin cá nhân"),
+        "editRecipe":
+            MessageLookupByLibrary.simpleMessage("Chỉnh sửa công thức này"),
+        "editRecipeButton":
+            MessageLookupByLibrary.simpleMessage("Chỉnh sửa công thức"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Chỉnh sửa hồ sơ"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailEmpty":
@@ -66,6 +86,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nhập bình luận của bạn ở đây..."),
         "explore":
             MessageLookupByLibrary.simpleMessage("Bạn muốn nấu gì hôm nay?"),
+        "follow": MessageLookupByLibrary.simpleMessage("Theo dõi"),
+        "follower": MessageLookupByLibrary.simpleMessage("Người theo dõi"),
+        "following": MessageLookupByLibrary.simpleMessage("Đang theo dõi"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
         "forgotPasswordSuccess": MessageLookupByLibrary.simpleMessage(
@@ -90,9 +113,17 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Bạn đã có tài khoản? "),
         "loginText2": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "logout": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
+        "logoutDialogContent": MessageLookupByLibrary.simpleMessage(
+            "Bạn có chắc chắn muốn đăng xuất khỏi tài khoản này?"),
+        "logoutDialogTitle": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
         "name": MessageLookupByLibrary.simpleMessage("Tên"),
         "nameError": MessageLookupByLibrary.simpleMessage("Vui lòng điền tên"),
         "nameHint": MessageLookupByLibrary.simpleMessage("Nhập tên của bạn"),
+        "newPassword": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
+        "newPasswordEmpty": MessageLookupByLibrary.simpleMessage(
+            "Mật khẩu mới không được để trống"),
+        "newPasswordHint":
+            MessageLookupByLibrary.simpleMessage("Nhập mật khẩu mới của bạn"),
         "noBookmarkRecipefound": MessageLookupByLibrary.simpleMessage(
             "Không tìm thấy công thức đã đánh dấu"),
         "noDescription":
@@ -113,13 +144,22 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Không có công thức nào"),
         "noNameUser":
             MessageLookupByLibrary.simpleMessage("Không có tên người dùng"),
+        "noRecipeMatchSearch":
+            MessageLookupByLibrary.simpleMessage("Không tìm thấy công thức"),
         "noReviewText":
             MessageLookupByLibrary.simpleMessage("Không có bình luận"),
+        "noUserMatchSearch":
+            MessageLookupByLibrary.simpleMessage("Không tìm thấy người dùng"),
         "notification": MessageLookupByLibrary.simpleMessage("Thông báo"),
         "numOfFollower": MessageLookupByLibrary.simpleMessage("Người theo dõi"),
         "numOfIngredients":
             MessageLookupByLibrary.simpleMessage("Số lượng nguyên liệu"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "oldPassword": MessageLookupByLibrary.simpleMessage("Mật khẩu cũ"),
+        "oldPasswordEmpty": MessageLookupByLibrary.simpleMessage(
+            "Mật khẩu cũ không được để trống"),
+        "oldPasswordHint":
+            MessageLookupByLibrary.simpleMessage("Nhập mật khẩu cũ của bạn"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "passwordEmpty": MessageLookupByLibrary.simpleMessage(
             "Mật khẩu không được để trống"),
@@ -155,6 +195,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Công thức mới từ người dùng bạn theo dõi"),
         "recipeNewFollowNo": MessageLookupByLibrary.simpleMessage(
             "Không có công thức mới từ người dùng bạn theo dõi"),
+        "recipeProfile": MessageLookupByLibrary.simpleMessage("Công thức"),
         "register": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "registerSuccess": MessageLookupByLibrary.simpleMessage(
             "Đăng ký thành công. Vui lòng kiểm tra email của bạn để xác nhận tài khoản"),
@@ -168,10 +209,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("\'Xóa ảnh\'"),
         "review": MessageLookupByLibrary.simpleMessage("Đánh giá"),
         "searchAll": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
+        "searchResult":
+            MessageLookupByLibrary.simpleMessage("Kết quả tìm kiếm cho"),
         "submit": MessageLookupByLibrary.simpleMessage("GỬI"),
         "topRecipe": MessageLookupByLibrary.simpleMessage("Công thức hàng đầu"),
         "updateAt": MessageLookupByLibrary.simpleMessage("Cập nhật lúc"),
+        "user": MessageLookupByLibrary.simpleMessage("Người dùng"),
         "userDescription": MessageLookupByLibrary.simpleMessage("Mô tả"),
+        "userProfile": MessageLookupByLibrary.simpleMessage("Hồ sơ người dùng"),
         "writeReview": MessageLookupByLibrary.simpleMessage(
             "Viết bình luận cho công thức này"),
         "yourProfile": MessageLookupByLibrary.simpleMessage("Hồ sơ của bạn"),

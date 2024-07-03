@@ -18,7 +18,7 @@ class RecipeDeatilTabbar extends StatelessWidget {
       builder: (context, state) {
         return DefaultTabController(
           initialIndex: 0,
-          length: 3,
+          length: 2,
           child: Column(
             children: [
               TabBar(
@@ -96,38 +96,38 @@ class RecipeDeatilTabbar extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Tab(
-                    child: Container(
-                      width: AppStyles.screenW / 2.3,
-                      decoration: BoxDecoration(
-                        color: state.currentTab != 2
-                            ? const Color.fromARGB(255, 128, 122, 122)
-                            : '#8f1d2e'.toColor(),
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(25),
-                        ),
-                        border: Border.all(
-                          color: '#FF6B00'.toColor(),
-                          width: 2,
-                        ),
-                      ),
-                      padding: EdgeInsets.all(
-                        AppStyles.width(8),
-                      ),
-                      margin: EdgeInsets.only(
-                        bottom: AppStyles.width(8),
-                      ),
-                      child: Center(
-                        child: Text(
-                          S.of(context).comment,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style:
-                              AppStyles.f16sb().copyWith(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Tab(
+                  //   child: Container(
+                  //     width: AppStyles.screenW / 2.3,
+                  //     decoration: BoxDecoration(
+                  //       color: state.currentTab != 2
+                  //           ? const Color.fromARGB(255, 128, 122, 122)
+                  //           : '#8f1d2e'.toColor(),
+                  //       borderRadius: const BorderRadius.all(
+                  //         Radius.circular(25),
+                  //       ),
+                  //       border: Border.all(
+                  //         color: '#FF6B00'.toColor(),
+                  //         width: 2,
+                  //       ),
+                  //     ),
+                  //     padding: EdgeInsets.all(
+                  //       AppStyles.width(8),
+                  //     ),
+                  //     margin: EdgeInsets.only(
+                  //       bottom: AppStyles.width(8),
+                  //     ),
+                  //     child: Center(
+                  //       child: Text(
+                  //         S.of(context).comment,
+                  //         overflow: TextOverflow.ellipsis,
+                  //         maxLines: 1,
+                  //         style:
+                  //             AppStyles.f16sb().copyWith(color: Colors.white),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
               const VerticalSpace(15),

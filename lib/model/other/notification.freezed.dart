@@ -34,6 +34,8 @@ mixin _$MyNotification {
   double? get relevantData => throw _privateConstructorUsedError;
   @JsonKey(name: 'create_at')
   String? get createAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_seen')
+  int? get isSeen => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +56,8 @@ abstract class $MyNotificationCopyWith<$Res> {
       @JsonKey(name: 'notification_image') String? notificationImage,
       @JsonKey(name: 'on_click_type') String? onClickType,
       @JsonKey(name: 'relevant_data') double? relevantData,
-      @JsonKey(name: 'create_at') String? createAt});
+      @JsonKey(name: 'create_at') String? createAt,
+      @JsonKey(name: 'is_seen') int? isSeen});
 }
 
 /// @nodoc
@@ -77,6 +80,7 @@ class _$MyNotificationCopyWithImpl<$Res, $Val extends MyNotification>
     Object? onClickType = freezed,
     Object? relevantData = freezed,
     Object? createAt = freezed,
+    Object? isSeen = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -107,6 +111,10 @@ class _$MyNotificationCopyWithImpl<$Res, $Val extends MyNotification>
           ? _value.createAt
           : createAt // ignore: cast_nullable_to_non_nullable
               as String?,
+      isSeen: freezed == isSeen
+          ? _value.isSeen
+          : isSeen // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -126,7 +134,8 @@ abstract class _$$NotificationImplCopyWith<$Res>
       @JsonKey(name: 'notification_image') String? notificationImage,
       @JsonKey(name: 'on_click_type') String? onClickType,
       @JsonKey(name: 'relevant_data') double? relevantData,
-      @JsonKey(name: 'create_at') String? createAt});
+      @JsonKey(name: 'create_at') String? createAt,
+      @JsonKey(name: 'is_seen') int? isSeen});
 }
 
 /// @nodoc
@@ -147,6 +156,7 @@ class __$$NotificationImplCopyWithImpl<$Res>
     Object? onClickType = freezed,
     Object? relevantData = freezed,
     Object? createAt = freezed,
+    Object? isSeen = freezed,
   }) {
     return _then(_$NotificationImpl(
       id: freezed == id
@@ -177,6 +187,10 @@ class __$$NotificationImplCopyWithImpl<$Res>
           ? _value.createAt
           : createAt // ignore: cast_nullable_to_non_nullable
               as String?,
+      isSeen: freezed == isSeen
+          ? _value.isSeen
+          : isSeen // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -191,7 +205,8 @@ class _$NotificationImpl implements _Notification {
       @JsonKey(name: 'notification_image') this.notificationImage,
       @JsonKey(name: 'on_click_type') this.onClickType,
       @JsonKey(name: 'relevant_data') this.relevantData,
-      @JsonKey(name: 'create_at') this.createAt});
+      @JsonKey(name: 'create_at') this.createAt,
+      @JsonKey(name: 'is_seen') this.isSeen});
 
   factory _$NotificationImpl.fromJson(Map<String, dynamic> json) =>
       _$$NotificationImplFromJson(json);
@@ -217,10 +232,13 @@ class _$NotificationImpl implements _Notification {
   @override
   @JsonKey(name: 'create_at')
   final String? createAt;
+  @override
+  @JsonKey(name: 'is_seen')
+  final int? isSeen;
 
   @override
   String toString() {
-    return 'MyNotification(id: $id, title: $title, notificationContent: $notificationContent, notificationImage: $notificationImage, onClickType: $onClickType, relevantData: $relevantData, createAt: $createAt)';
+    return 'MyNotification(id: $id, title: $title, notificationContent: $notificationContent, notificationImage: $notificationImage, onClickType: $onClickType, relevantData: $relevantData, createAt: $createAt, isSeen: $isSeen)';
   }
 
   @override
@@ -239,13 +257,14 @@ class _$NotificationImpl implements _Notification {
             (identical(other.relevantData, relevantData) ||
                 other.relevantData == relevantData) &&
             (identical(other.createAt, createAt) ||
-                other.createAt == createAt));
+                other.createAt == createAt) &&
+            (identical(other.isSeen, isSeen) || other.isSeen == isSeen));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, title, notificationContent,
-      notificationImage, onClickType, relevantData, createAt);
+      notificationImage, onClickType, relevantData, createAt, isSeen);
 
   @JsonKey(ignore: true)
   @override
@@ -269,7 +288,8 @@ abstract class _Notification implements MyNotification {
       @JsonKey(name: 'notification_image') final String? notificationImage,
       @JsonKey(name: 'on_click_type') final String? onClickType,
       @JsonKey(name: 'relevant_data') final double? relevantData,
-      @JsonKey(name: 'create_at') final String? createAt}) = _$NotificationImpl;
+      @JsonKey(name: 'create_at') final String? createAt,
+      @JsonKey(name: 'is_seen') final int? isSeen}) = _$NotificationImpl;
 
   factory _Notification.fromJson(Map<String, dynamic> json) =
       _$NotificationImpl.fromJson;
@@ -295,6 +315,9 @@ abstract class _Notification implements MyNotification {
   @override
   @JsonKey(name: 'create_at')
   String? get createAt;
+  @override
+  @JsonKey(name: 'is_seen')
+  int? get isSeen;
   @override
   @JsonKey(ignore: true)
   _$$NotificationImplCopyWith<_$NotificationImpl> get copyWith =>

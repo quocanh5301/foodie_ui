@@ -134,7 +134,7 @@ class ProfileTab extends StatelessWidget {
                                             ),
                                           ),
                                           child: FirebaseImage(
-                                            imagePath: '',
+                                            imagePath: SharedPref.getUserInfo().userImage ?? '',
                                             emptyImagePath:
                                                 AppImage.defaultAvatar,
                                             cardHeight: AppStyles.height(100),
@@ -259,7 +259,6 @@ class ProfileTab extends StatelessWidget {
                             ),
                             child: IntrinsicWidth(
                               child: Row(
-                                //!qa
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(

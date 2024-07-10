@@ -160,7 +160,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                             ),
                                           ),
                                           child: FirebaseImage(
-                                            imagePath: '',
+                                            imagePath:
+                                                state.userInfo.userImage ?? '',
                                             emptyImagePath:
                                                 AppImage.defaultAvatar,
                                             cardHeight: AppStyles.height(100),
@@ -185,19 +186,18 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                           ),
                                           child: IntrinsicHeight(
                                             child: Column(
-                                              //!qa
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  S.of(context).recipeProfile,
+                                                  S.of(context).following,
                                                   style:
                                                       AppStyles.f11m().copyWith(
                                                     color: Colors.white,
                                                   ),
                                                 ),
                                                 Text(
-                                                  '${state.userData.numRecipe}', //!qa
+                                                  '${state.userData.numFollowing}',
                                                   style: AppStyles.f12sb()
                                                       .copyWith(
                                                     color: Colors.white,
@@ -246,45 +246,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                             ),
                                           ),
                                         ),
-                                        const HorizontalSpace(10),
-                                        Container(
-                                          clipBehavior: Clip.hardEdge,
-                                          decoration: BoxDecoration(
-                                            color: '#2b2b2b'.toColor(),
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            border: Border.all(
-                                              color: '#FF6B00'.toColor(),
-                                              width: 2,
-                                            ),
-                                          ),
-                                          padding: EdgeInsets.symmetric(
-                                            vertical: AppStyles.width(5),
-                                            horizontal: AppStyles.width(10),
-                                          ),
-                                          child: IntrinsicHeight(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  S.of(context).following,
-                                                  style:
-                                                      AppStyles.f11m().copyWith(
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                                Text(
-                                                  '${state.userData.numFollowing}',
-                                                  style: AppStyles.f12sb()
-                                                      .copyWith(
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
                                       ],
                                     ),
                                   ),
@@ -305,6 +266,43 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             state.userInfo.userName ?? S.of(context).noNameUser,
                             style: AppStyles.f16sb().copyWith(
                               color: Colors.white,
+                            ),
+                          ),
+                          const VerticalSpace(15),
+                          Container(
+                            clipBehavior: Clip.hardEdge,
+                            decoration: BoxDecoration(
+                              color: '#2b2b2b'.toColor(),
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                color: '#FF6B00'.toColor(),
+                                width: 2,
+                              ),
+                            ),
+                            padding: EdgeInsets.symmetric(
+                              vertical: AppStyles.width(5),
+                              horizontal: AppStyles.width(10),
+                            ),
+                            child: IntrinsicWidth(
+                              child: Row(
+                                //!qa
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    S.of(context).recipeProfile,
+                                    style: AppStyles.f16m().copyWith(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  const HorizontalSpace(10),
+                                  Text(
+                                    '${state.userData.numRecipe}', //!qa
+                                    style: AppStyles.f16sb().copyWith(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           const VerticalSpace(15),

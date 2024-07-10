@@ -17,6 +17,7 @@ List<RouteBase> get $appRoutes => [
       $userProfileRoute,
       $searchResultRoute,
       $notificationRoute,
+      $profileRoute,
     ];
 
 RouteBase get $loginRoute => GoRouteData.$route(
@@ -246,6 +247,28 @@ extension $NotificationRouteExtension on NotificationRoute {
 
   String get location => GoRouteData.$location(
         '/notification',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $profileRoute => GoRouteData.$route(
+      path: '/profile',
+      factory: $ProfileRouteExtension._fromState,
+    );
+
+extension $ProfileRouteExtension on ProfileRoute {
+  static ProfileRoute _fromState(GoRouterState state) => const ProfileRoute();
+
+  String get location => GoRouteData.$location(
+        '/profile',
       );
 
   void go(BuildContext context) => context.go(location);

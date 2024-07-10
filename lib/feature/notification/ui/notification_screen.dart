@@ -53,39 +53,46 @@ class NotificationScreen extends StatelessWidget {
               },
               onRefresh: () =>
                   context.read<NotificationCubit>().refreshNotification(),
-              child: state.notificationList.isNotEmpty
-                  ? SingleChildScrollView(
-                      child: ListView.separated(
-                        physics: const NeverScrollableScrollPhysics(),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: AppStyles.width(10),
-                          vertical: AppStyles.width(5),
-                        ),
-                        itemCount: state.notificationList.length,
-                        shrinkWrap: true,
-                        separatorBuilder: (context, index) =>
-                            const VerticalSpace(20),
-                        itemBuilder: (context, index) {
-                          return NotificationCard(
-                            dismissibleKey:
-                                ValueKey(state.notificationList[index].id),
-                            notification: state.notificationList[index],
-                          );
-                        },
-                      ),
-                    )
-                  : SingleChildScrollView(
-                      child: SizedBox(
-                        height: AppStyles.screenH,
-                        child: Center(
-                          child: Text(
-                            S.of(context).noUserMatchSearch,
-                            style: AppStyles.f16sb().copyWith(
-                              color: Colors.white,
+              child: state.getNotificationStatus !=
+                      GetNotificationStatus.loading
+                  ? state.notificationList.isNotEmpty
+                      ? SingleChildScrollView(
+                          child: ListView.separated(
+                            physics: const NeverScrollableScrollPhysics(),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: AppStyles.width(10),
+                              vertical: AppStyles.width(5),
+                            ),
+                            itemCount: state.notificationList.length,
+                            shrinkWrap: true,
+                            separatorBuilder: (context, index) =>
+                                const VerticalSpace(20),
+                            itemBuilder: (context, index) {
+                              return NotificationCard(
+                                dismissibleKey:
+                                    ValueKey(state.notificationList[index].id),
+                                notification: state.notificationList[index],
+                              );
+                            },
+                          ),
+                        )
+                      : SingleChildScrollView(
+                          child: SizedBox(
+                            height: AppStyles.screenH,
+                            child: Center(
+                              child: Text(
+                                S.of(context).noUserMatchSearch,
+                                style: AppStyles.f16sb().copyWith(
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
+                        )
+                  : const Center(
+                      child: CircularProgressIndicator(
+                          // valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                          ),
                     ),
             );
           },

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:foodie/core/data/share_pref.dart';
 import 'package:foodie/core/injection.dart';
 import 'package:foodie/core/resource/images.dart';
 import 'package:foodie/core/resource/styles.dart';
+import 'package:foodie/core/router/router.dart';
 import 'package:foodie/core/util/date_time.dart';
 import 'package:foodie/core/widget/controller/loading_controller.dart';
 import 'package:foodie/feature/home/explore_tab/ui/widget/firebase_image.dart';
@@ -57,10 +59,8 @@ class _NotificationCardState extends State<NotificationCard> {
       direction: DismissDirection.endToStart,
       background: Row(
         mainAxisAlignment: MainAxisAlignment.end,
-        // crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SizedBox(
-            // color: Colors.transparent,
             width: backGroundWidth,
             child: SvgPicture.asset(
               AppImage.icDismiss,
@@ -68,8 +68,6 @@ class _NotificationCardState extends State<NotificationCard> {
                 Colors.white,
                 BlendMode.srcIn,
               ),
-              // height: AppStyles.height(20),
-              // width: AppStyles.height(20),
             ),
           ),
         ],
@@ -78,70 +76,144 @@ class _NotificationCardState extends State<NotificationCard> {
         opacity: fadeOpacity,
         duration: const Duration(milliseconds: 100),
         child: InkWell(
-          onTap: () => debugPrint('notification clicked'),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const HorizontalSpace(15),
-              (widget.notification.notificationImage == '' ||
-                      widget.notification.notificationImage == null)
-                  ? SizedBox(
-                      height: AppStyles.height(50),
-                      width: AppStyles.height(50),
-                      child: SvgPicture.asset(
-                        AppImage.icNotification,
-                        colorFilter: const ColorFilter.mode(
-                          Colors.white,
-                          BlendMode.srcIn,
+          onTap: () async {
+            sl<LoadingDialogController>().showLoadingDialog();
+            await context.read<NotificationCubit>().seenNotification(
+                  notificationId: widget.notification.id ?? 0,
+                  isSeen: 1,
+                );
+            sl<LoadingDialogController>().removeOverlay();
+            if (widget.notification.onClickType == 'recipe') {
+              if (widget.notification.relevantData != null &&
+                  rootNavigatorKey.currentContext != null) {
+                RecipeDetailRoute(
+                        recipeId:
+                            (widget.notification.relevantData ?? 0).toInt())
+                    .push(rootNavigatorKey.currentContext!)
+                    .then(
+                  (_) {
+                    context.read<NotificationCubit>().refreshNotification();
+                  },
+                );
+              }
+            } else {
+              if (widget.notification.relevantData != null &&
+                  rootNavigatorKey.currentContext != null) {
+                (widget.notification.relevantData ?? 0).toInt() !=
+                        SharedPref.getUserInfo().id
+                    ? UserProfileRoute(
+                            userId:
+                                (widget.notification.relevantData ?? 0).toInt())
+                        .push(rootNavigatorKey.currentContext!)
+                        .then(
+                        (_) {
+                          context
+                              .read<NotificationCubit>()
+                              .refreshNotification();
+                        },
+                      )
+                    : const ProfileRoute()
+                        .push(rootNavigatorKey.currentContext!)
+                        .then(
+                        (_) {
+                          context
+                              .read<NotificationCubit>()
+                              .refreshNotification();
+                        },
+                      );
+              }
+            }
+          },
+          child: BlocBuilder<NotificationCubit, NotificationState>(
+            buildWhen: (previous, current) =>
+                previous.seenNotificationStatus !=
+                current.seenNotificationStatus,
+            builder: (context, state) {
+              return Stack(
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const HorizontalSpace(15),
+                      (widget.notification.notificationImage == '' ||
+                              widget.notification.notificationImage == null)
+                          ? SizedBox(
+                              height: AppStyles.height(50),
+                              width: AppStyles.height(50),
+                              child: SvgPicture.asset(
+                                AppImage.icNotification,
+                                colorFilter: const ColorFilter.mode(
+                                  Colors.white,
+                                  BlendMode.srcIn,
+                                ),
+                              ),
+                            )
+                          : FirebaseImage(
+                              imagePath: widget.notification.notificationImage!,
+                              emptyImagePath: AppImage.emptyImageRecipe,
+                              cardHeight: AppStyles.height(50),
+                              cardWidth: AppStyles.height(50),
+                            ),
+                      const HorizontalSpace(15),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const VerticalSpace(10),
+                            Text(
+                              widget.notification.title ?? "No title",
+                              style: AppStyles.f16sb().copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w800,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            const VerticalSpace(5),
+                            Text(
+                              widget.notification.notificationContent ??
+                                  "No content",
+                              style: AppStyles.f13m().copyWith(
+                                color: Colors.white,
+                              ),
+                            ),
+                            const VerticalSpace(10),
+                          ],
                         ),
                       ),
-                    )
-                  : FirebaseImage(
-                      imagePath: widget.notification.notificationImage!,
-                      emptyImagePath: AppImage.emptyImageRecipe,
-                      cardHeight: AppStyles.height(50),
-                      cardWidth: AppStyles.height(50),
-                    ),
-              const HorizontalSpace(15),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const VerticalSpace(10),
-                    Text(
-                      widget.notification.title ?? "No title",
-                      style: AppStyles.f16sb().copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w800,
+                      const HorizontalSpace(15),
+                      Text(
+                        DateTimeHelper.getTimeAgo(
+                          dateFormat: DateTimeHelper.dateFormat4,
+                          dateTimeString:
+                              widget.notification.createAt ?? 'error',
+                        ),
+                        style: AppStyles.f12r().copyWith(
+                          color: Colors.white,
+                          decoration: TextDecoration.none,
+                        ),
                       ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const VerticalSpace(5),
-                    Text(
-                      widget.notification.notificationContent ?? "No content",
-                      style: AppStyles.f13m().copyWith(
-                        color: Colors.white,
-                      ),
-                    ),
-                    const VerticalSpace(10),
-                  ],
-                ),
-              ),
-              const HorizontalSpace(15),
-              Text(
-                DateTimeHelper.getTimeAgo(
-                  dateFormat: DateTimeHelper.dateFormat4,
-                  dateTimeString: widget.notification.createAt ?? 'error',
-                ),
-                style: AppStyles.f12r().copyWith(
-                  color: Colors.white,
-                  decoration: TextDecoration.none,
-                ),
-              ),
-              const HorizontalSpace(15),
-            ],
+                      const HorizontalSpace(15),
+                    ],
+                  ),
+                  widget.notification.isSeen == 0
+                      ? Positioned(
+                          top: AppStyles.height(20),
+                          right: AppStyles.width(20),
+                          child: Container(
+                            width: AppStyles.width(10),
+                            height: AppStyles.width(10),
+                            decoration: const BoxDecoration(
+                              color: Colors.blue,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                        )
+                      : const SizedBox.shrink(),
+                ],
+              );
+            },
           ),
         ),
       ),

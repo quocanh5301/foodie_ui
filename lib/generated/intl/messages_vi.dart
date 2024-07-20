@@ -144,6 +144,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Không có công thức nào"),
         "noNameUser":
             MessageLookupByLibrary.simpleMessage("Không có tên người dùng"),
+        "noNotificationFound":
+            MessageLookupByLibrary.simpleMessage("Không có thông báo mới"),
         "noRecipeMatchSearch":
             MessageLookupByLibrary.simpleMessage("Không tìm thấy công thức"),
         "noReviewText":

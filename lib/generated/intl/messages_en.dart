@@ -138,6 +138,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "This recipe has no instruction !"),
         "noNameRecipe": MessageLookupByLibrary.simpleMessage("No Name Recipe"),
         "noNameUser": MessageLookupByLibrary.simpleMessage("No Name User"),
+        "noNotificationFound":
+            MessageLookupByLibrary.simpleMessage("No new notification"),
         "noRecipeMatchSearch":
             MessageLookupByLibrary.simpleMessage("No Recipe Found"),
         "noReviewText": MessageLookupByLibrary.simpleMessage("No Review"),

@@ -130,5 +130,6 @@
   "editRecipe": "Chỉnh sửa công thức này",
   "deletingRecipeTitle": "Đang xóa công thức",
   "deletingRecipeContent": "Bạn có chắc chắn muốn xóa công thức này không?",
-  "editRecipeButton": "Chỉnh sửa công thức"
+  "editRecipeButton": "Chỉnh sửa công thức",
+  "noNotificationFound": "Không có thông báo mới"
 }

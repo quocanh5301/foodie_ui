@@ -81,7 +81,7 @@ class NotificationScreen extends StatelessWidget {
                             height: AppStyles.screenH,
                             child: Center(
                               child: Text(
-                                S.of(context).noUserMatchSearch,
+                                S.of(context).noNotificationFound,
                                 style: AppStyles.f16sb().copyWith(
                                   color: Colors.white,
                                 ),

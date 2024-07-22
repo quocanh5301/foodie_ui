@@ -1359,6 +1359,16 @@ class S {
       args: [],
     );
   }
+
+  /// `No new notification`
+  String get noNotificationFound {
+    return Intl.message(
+      'No new notification',
+      name: 'noNotificationFound',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

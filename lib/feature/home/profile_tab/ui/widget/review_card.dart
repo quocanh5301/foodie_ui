@@ -76,7 +76,7 @@ class ReviewCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: FirebaseImage(
-                imagePath: '',
+                imagePath: review.recipeImage ?? '',
                 emptyImagePath: AppImage.emptyImageRecipe,
                 cardHeight: AppStyles.screenW / 2,
                 cardWidth: AppStyles.screenW,
